@@ -237,6 +237,34 @@
   padding-top: 10px;
 }
 
+input.inputInf {
+  padding : 15px;
+  width: 90%;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.527);
+
+}
+
+input.inputInf:focus {
+  outline: 0;
+}
+.textarea:focus {
+  outline: none;
+}
+
+.entserSendThin {
+  padding : 7px;
+  width: 80%;
+  font-size: 18px;
+  color: #e4e4e4;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+}
+
+
 /* FONTS ARABIC */
 
 .title_ar {

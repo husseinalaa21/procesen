@@ -5,6 +5,7 @@ export default function SendCommint(x) {
     const [isSendCo, sendingco] = useState(false)
     const [isCancel, isCancelX] = useState(false)
     const [isCncelSend, isCncelSendX] = useState(false)
+    const [isWrAll , isWrAllX] = useState(false)
 
     return (
         <div className="sendCommitn" onClick={() => sendingco(true)}>
@@ -17,6 +18,7 @@ export default function SendCommint(x) {
     function FormSend() {
         return (
             <div className="formSendNotesMain" style={{ textAlign: 'center' }}>
+                <p style={{fontSize : '18px', padding : '10px', paddingBottom : '15px', color : ' #494a4b'}}> أرسال أبلاغ </p>
                 <div className="enterNam">
                     <input type="text" className="inputInf" placeholder=" ادخل اسمك هنا "></input>
                 </div>
@@ -24,9 +26,9 @@ export default function SendCommint(x) {
                     <input type="text" className="inputInf" placeholder=" ادخل ايميلك هنا "></input>
                 </div>
                 <div className="enterNotes">
-                    <textarea className="inputInf" placeholder=" ادخل ملاحظتك هنا "></textarea>
+                    <textarea className="textarea" style={{color: '#393e46',resize: 'none',backgroundColor: 'rgba(255, 255, 255, 0.527)',borderRradius: '3px',width: '90%',border: '0', padding: '10px'}} rows="10" placeholder=" ادخل ملاحظتك هنا "></textarea>
                 </div>
-                <div className="entserSendThin"> أرسال </div>
+                <div className="entserSendThin " style={isWrAll ? {backgroundColor : ' #30475e' , cursor : 'pointer'}: {backgroundColor : ' #30475e3d'}}> أرسال </div>
             </div>
         )
     }

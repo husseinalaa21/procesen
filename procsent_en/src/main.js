@@ -1,15 +1,15 @@
 import './design/main.css';
-import BodyEn from './en/bodyEn'
-import EndPage from './en/endPageEn'
-import HeaderMenuEn from './en/headerMenuEn'
+import Body from './main/body'
+import EndPage from './main/endPage'
+import HeaderMenu from './main/headerMenu'
 
 
 function mainHome() {
 
   return (
     <>
-      <HeaderMenuEn />
-      <BodyEn />
+      <HeaderMenu />
+      <Body />
       <EndPage />
     </>
   );

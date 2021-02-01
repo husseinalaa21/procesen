@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+.header {
+  padding: 20px;   
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.089);
+  background-color:  #f7f7f7;
+}
+
+.header_main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo_text {
+  display: flex;
+  font-size: 26px;
+  color: #1687a7;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.net_logo {
+  color: #30475e;
+}
+
+.info_about_logo {
+  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin-left: -4px;
+}
+.Pprocessing{
+  color: #1687a7;
+}
+.Psentence{
+  color: #30475e;
+}
+.container {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 23px;
+  height: 3px;
+  background-color: #494a4b;
+  margin: 4px 0;
+  transition: 0.4s;
+  border-radius: 3px;
+}
+.change  {
+  margin-top: 2px;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 2px);
+  transform: rotate(-45deg) translate(-5px, 4px);
+  background-color:#30475e;
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-6px, -5px);
+  background-color: #1687a7;
+}
+
+.menuMainTols{
+  display: inline-block;
+  transition: 0.1s;
+}
+.sectionsNavFlex {
+  display: flex;
+}
+.sectionsNavFlex div{
+  margin-right: 15px;
+  cursor: pointer;
+}
+.container_log {
+  margin-left: -30px;
+}
+.information {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.about_info {
+  padding: 20px 10px 20px 10px;
+  background-color: #ececec;
+}
+.prolognet_info {
+  padding: 20px 10px 20px 10px;
+  border: 0;
+  border-top: 2px solid  #1687a7;
+  display: flex;
+  justify-content: space-between;
+  background-color: #dbd9d9;
+  color: #383838;
+  font-family: 'Indie Flower', cursive;
+}
+
+.prolog_about {
+  background-color: #1688a700;
+  color: #1687a7;
+}
+
+.mainInfoAbout {
+  display: flex;
+  justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mainInfoAbout div{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container:hover , .container:hover{
+  outline: 0;
+}
+
+.langChose {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.langChose div{
+  padding: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #cfcdcd18;
+  color: #3b3b3b;
+  width: 100px;
+  text-align: center;
+  display: inline-block;
+  transition: 0.4s;
+}
+
+.thisLangItem {
+  background-color: #3f78b186 !important;
+  color: #eeeeee !important;
+  cursor: auto  !important;
+}
+.langChose div:hover{
+  background-color: #6faeece1;
+  color: #eeeeee ;
+}
+
+.thisLangItem:hover{
+  background-color: #3f78b186 !important;
+  color: #eeeeee !important;
+  cursor: auto  !important;
+}

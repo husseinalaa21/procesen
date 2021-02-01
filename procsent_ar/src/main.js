@@ -9,8 +9,10 @@ function mainHome() {
   return (
     <>
       <HeaderMenu />
-      <Body />
-      <EndPage />
+      <div className="bodyDivs">
+        <Body />
+        <EndPage />
+      </div>
     </>
   );
 }

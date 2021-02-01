@@ -7,12 +7,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
+.headerMenu {
+  position: fixed;
+  width: 100%;
+}
 .header {
   padding: 20px;   
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.089);
   background-color:  #f7f7f7;
 }
-
 .header_main {
   display: flex;
   justify-content: space-between;
@@ -89,8 +92,6 @@
   margin-left: -30px;
 }
 .information {
-  position: absolute;
-  width: 100%;
   bottom: 0;
 }
 .about_info {
@@ -163,4 +164,87 @@
   background-color: #3f78b186 !important;
   color: #eeeeee !important;
   cursor: auto  !important;
+}
+
+.bodyDivs {
+  padding-top : 90px
+}
+
+.infoStart {
+  padding: 10px;
+  background-color: #dddddd5d;
+}
+
+.titleThisPage {
+  margin: 10px;
+  border: 1px solid #cacbcc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.thisTitlePage_first {
+  background-color: #f7f7f7;
+  padding: 10px;
+  padding-bottom: 0;
+}
+
+.titleMain {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-bottom: 10px;
+  border: 0;
+  border-bottom: 1px solid #494a4b65;
+}
+
+.thisTitlePage_seconed {
+  background-color: #fdfdfd85;
+  padding: 10px;
+}
+
+.desInfoContainerMAin {
+  margin: 10px;
+  background-color: #eee;
+  color: #383838;
+  border: 0;
+  border-right : 4px solid #00458b;
+  padding: 20px 10px 20px 10px;
+  width: 80%;
+  max-width: 400px;
+}
+
+.sendCommitn {
+  display: flex;
+}
+
+.cancelSendNote {
+  background-color: #eee;
+  padding: 5px;
+  width: 50px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #494a4b;
+}
+
+.cancelSendNote:hover {
+  background-color: rgb(245, 245, 245);
+  color: #494a4ba4;
+
+}
+
+.sendCommitn {
+  padding-top: 10px;
+}
+
+/* FONTS ARABIC */
+
+.title_ar {
+  font-size: 20px;
+}
+.ar_text{
+  direction: rtl;
+}
+.containerNotes_ar {
+  font-size: 18px;
 }

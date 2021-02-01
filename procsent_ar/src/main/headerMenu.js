@@ -15,14 +15,15 @@ export default function HeaderMenuEn() {
         } if (clickNavLang) {
             return (
                 <div className="langChose">
-                    <TolsNavMain itemCase="Lang" lang=" English " thisLang={true} />
-                    <TolsNavMain itemCase="Lang" lang=" Arabic " thisHref="ar" thisLang={false} />
+                    <TolsNavMain itemCase="Lang" lang=" انجليزي " thisHref="en" thisLang={false} />
+                    <TolsNavMain itemCase="Lang" lang=" عربي " thisHref="ar" thisLang={true} />
                 </div>
             )
         }
     }
 
     return (
+        <div className = "headerMenu">
         <div className="header">
             <div className="header_main">
                 <div className="sectionsNavFlex">
@@ -48,7 +49,7 @@ export default function HeaderMenuEn() {
                         <img src={Logo} width="30px" height="30px" alt="" style={{ marginTop: '1px' }}></img>
                     </div>
                     <div className="info_about_logo">
-                        <p className="Pprocessing">Processing&nbsp;</p><p className="Psentence">Sentence .</p>
+                        <p className="Pprocessing">الجمل &nbsp;</p><p className="Psentence">محلل</p>
                     </div>
                 </div>
 
@@ -67,6 +68,7 @@ export default function HeaderMenuEn() {
 
             { tolsMenu()}
 
+        </div>
         </div>
     )
 }

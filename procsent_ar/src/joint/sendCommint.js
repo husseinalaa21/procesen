@@ -1,0 +1,56 @@
+import React from 'react'
+import { useState } from 'react'
+
+export default function SendCommint(x) {
+    const [isSendCo, sendingco] = useState(false)
+    const [isCancel, isCancelX] = useState(false)
+    const [isCncelSend, isCncelSendX] = useState(false)
+
+    return (
+        <div className="sendCommitn" onClick={() => sendingco(true)}>
+            <i className='fa fa-question-circle' style={{ fontSize: '15px', color: '#383838', marginLeft: '6px' }}></i>
+
+            {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" ابلاغ . " classN={false} />}
+        </div>
+    )
+
+    function FormSend() {
+        return (
+            <div className="formSendNotesMain" style={{ textAlign: 'center' }}>
+                <div className="enterNam">
+                    <input type="text" className="inputInf" placeholder=" ادخل اسمك هنا "></input>
+                </div>
+                <div className="enterGmail" >
+                    <input type="text" className="inputInf" placeholder=" ادخل ايميلك هنا "></input>
+                </div>
+                <div className="enterNotes">
+                    <textarea className="inputInf" placeholder=" ادخل ملاحظتك هنا "></textarea>
+                </div>
+                <div className="entserSendThin"> أرسال </div>
+            </div>
+        )
+    }
+
+    function ThenSendThis(x) {
+        return (
+            <>
+                <div className="formSendNotes" style={isCancel ? {padding: '5px' , paddingTop : '0'}:{ padding: '10px', border: '0', borderRight: ' 4px solid  #2682df', width: '80%', borderRadius: '2px', margin: 'auto', backgroundColor: ' rgb(245, 245, 245)', marginTop: '20px' }}>
+                    {isCancel ? '' : <FormSend />}
+                    <div onClick={() => {
+                        isCancelX(true)
+                        isCncelSendX(true)
+                    }}>{isCncelSend ? ' تم الغاء الابلاغ .  ' : <div className="cancelSendNote">الغاء </div>}</div>
+
+                </div>
+            </>
+        )
+    }
+}
+
+function TextSendHere(x) {
+    return (
+        <div style={x.classN ? { color: '#00458b', marginRight: '6px', fontSize: '13px' } : { border: '0', borderBottom: '1px solid  #2c2a2a5d', cursor: 'pointer', fontSize: '15px' }}>
+            {x.type}
+        </div>
+    )
+}

@@ -6,12 +6,12 @@ export default function endPage() {
             <div className="about_info">
                 <div className="mainInfoAbout">
                     <div>
-                        <div > The developer </div>
-                        <div > Usage Policy </div>
+                        <div > اتصل بنا </div>
+                        <div > دعمنا </div>
                     </div>
                     <div>
-                        <div > call us </div>
-                        <div > Our support </div>
+                        <div > المطور </div>
+                        <div > سياسة استخدام الموقع </div>
                     </div>
                 </div>
                 <div className="socialInfoAbout">
@@ -21,7 +21,7 @@ export default function endPage() {
                 </div>
             </div>
             <div className="prolognet_info">
-                <div> © All rights reserved  </div>
+                <div> © جميع الحقوق محفوضة  </div>
                 <div> <mark className="prolog_about">P</mark>rologNet @ 2020 - 2021</div>
             </div>
         </div>

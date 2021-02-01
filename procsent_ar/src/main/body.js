@@ -1,10 +1,26 @@
 import React from 'react'
+import NotesCon from '../joint/notesCon'
+import SendCommint from '../joint/sendCommint'
+import TextCon from '../joint/textCon'
+import Textsp from '../joint/textSp'
 
 export default function BodyEn() {
     return (
-        <div className="infoStart">
-            <div className="">
-                
+        <div className="infoStart ar_text">
+            <div className="titleThisPage">
+                <div className="thisTitlePage_first title_ar">
+                    <div className="titleMain">
+                        محلل الجمل "Procsent"
+                    </div>
+                </div>
+                <div className="thisTitlePage_seconed">
+                    <Textsp type="container_ar" text=" بروكسين هو برنامج لمعالجة الجمل"/>
+                    <NotesCon type="containerNotes_ar" text=" ملاحظة : الموقع قيد التطوير " />
+                    <TextCon type="container_ar" text=" قم بأدخال العبارة أو الجملة التي ترغب في تغييرها و التعديل عليها , وسيتم معالجتها تلقائياً بواسطة الذاكاء الاصطناعي . " />
+                    <SendCommint sec="1" />
+                </div>
+            </div>
+            <div className="containerThisPage">
             </div>
         </div>
     )

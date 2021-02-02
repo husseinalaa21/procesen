@@ -166,13 +166,14 @@
 }
 
 .bodyDivs {
-  padding-top : 100px;
+  top : 100px;
+  position: relative;
   background-color: #dddddd5d;
 }
 
 @media screen and (min-width: 800px) {
   .bodyDivs {
-    padding-top : 130px;
+    padding-top : 100px;
   }
 }
 

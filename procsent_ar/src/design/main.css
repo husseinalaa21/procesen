@@ -279,7 +279,7 @@ input.inputInf:focus {
   background-color: #f0f0f0;
   padding: 14px;
   padding-top: 20px;
-  
+
 }
 
 .editeSections {
@@ -294,6 +294,7 @@ input.inputInf:focus {
 .textTUsers {
   margin: 10px;
   margin-right: 2px;
+  direction: rtl;
 }
 .sectionEditeFromUser {
   background-color: #a1c7ca;

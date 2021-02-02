@@ -14,8 +14,8 @@ export default class ProcessFromUser extends Component {
                         </div>
                     </div>
                     <div className="textTUsers">
+                   <i className='fas fa-fire' style={{ color: '#eb561b', fontSize: '15px' }}></i> &nbsp;
                         {this.props.messToApper}
-                         &nbsp;&nbsp;<i className='fas fa-fire' style={{ color: '#eb561b', fontSize: '15px' }}></i>
                     </div>
                 </div>
             </div>

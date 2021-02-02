@@ -166,12 +166,12 @@
 }
 
 .bodyDivs {
-  padding-top : 90px;
+  padding-top : 100px;
+  background-color: #dddddd5d;
 }
 
 .infoStart {
   padding: 10px;
-  background-color: #dddddd5d;
 }
 
 .titleThisPage {
@@ -276,10 +276,10 @@ input.inputInf:focus {
 }
 
 .NotesInfoPage {
-  background-color: #f0f0f0;
   padding: 14px;
-  padding-top: 20px;
-
+  border: 0;
+  border-right: 5px solid #305b5e;
+  background-color: #ffffff50;
 }
 
 .editeSections {

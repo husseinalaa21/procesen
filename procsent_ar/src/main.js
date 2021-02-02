@@ -11,7 +11,7 @@ function mainHome() {
     <>
       <HeaderMenu />
       <div className="bodyDivs">
-        <ProcessFromUser className = "messArabic" useWeb = " استخدام الموقع " learnWeb = " تعليم الموقع " messToApper = " يمكنك استخدام الموقع أو يمكنك المبادرة في تحسين الموقع "/>
+        <ProcessFromUser className = "messArabic" useWeb = " استخدام الموقع " learnWeb = " تعليم الموقع " messToApper = " يمكنك استخدام الموقع أو يمكنك المبادرة في تحسين الموقع ."/>
         <Body />
         <EndPage />
       </div>

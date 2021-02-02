@@ -166,15 +166,8 @@
 }
 
 .bodyDivs {
-  top : 100px;
-  position: relative;
+  padding-top : 100px;
   background-color: #dddddd5d;
-}
-
-@media screen and (min-width: 800px) {
-  .bodyDivs {
-    padding-top : 100px;
-  }
 }
 
 .infoStart {

@@ -10,7 +10,7 @@ export default function BodyEn() {
             <div className="titleThisPage">
                 <div className="thisTitlePage_first title_ar">
                     <div className="titleMain">
-                        محلل الجمل "Procsent"
+                        تعريف بالموقع |  محلل الجمل "Procsent"
                     </div>
                 </div>
                 <div className="thisTitlePage_seconed">
@@ -24,6 +24,17 @@ export default function BodyEn() {
                 <div className="thisTitlePage_first title_ar">
                     <div className="titleMain">
                         كيفية الاستخدام
+                    </div>
+                </div>
+                <div className="thisTitlePage_seconed">
+                     <TextCon text = '' type='container_ar' />
+                     <SendCommint sec="2" />
+                </div>
+            </div>
+            <div className="titleThisPage">
+                <div className="thisTitlePage_first title_ar">
+                    <div className="titleMain">
+                        شروط الاستخدام
                     </div>
                 </div>
                 <div className="thisTitlePage_seconed">

@@ -6,6 +6,7 @@ import TolsNavMain from '../joint/tolsNavMain'
 export default function HeaderMenuEn() {
     const [clickNav, setClickNav] = useState(false)
     const [clickNavLang, setClickNavLang] = useState(false)
+    const [isNight, isNightX] = useState(false)
 
     function tolsMenu() {
         if (clickNav) {
@@ -27,8 +28,8 @@ export default function HeaderMenuEn() {
         <div className="header">
             <div className="header_main">
                 <div className="sectionsNavFlex">
-                    <div className="searchToggThem">
-                        <i className="fa fa-moon-o" style={{ marginTop: '6px', color: '#30475e', fontSize: '20px' }}></i>
+                    <div className="searchToggThem" onClick={()=>{isNightX(!isNight)}}>
+                        <i className="fas fa-moon" style={isNight ? { marginTop: '10px', color: ' rgb(223, 180, 39)', fontSize: '17px' ,transition: '0.4s' }: { marginTop: '10px', color: ' #30475ecc', fontSize: '17px',transition: '0.4s'  }  }></i>
                     </div>
 
                     <div className="searchChangeLang" onClick={() => {
@@ -37,8 +38,7 @@ export default function HeaderMenuEn() {
                             document.getElementById("toggleNavBar").classList.toggle("change");
                             setClickNav(false)
                         }
-                    }}>
-                        <i className="fa fa-language" style={{ marginTop: '6px', color: '#30475e', fontSize: '20px' }}></i>
+                    }}><i className="fas fa-language" style={clickNavLang ? { marginTop: '6px', color: '  #3b72aa', fontSize: '24px',transition: '0.4s' } : { marginTop: '6px', color: ' #30475ecc', fontSize: '24px' ,transition: '0.4s' }}></i>
                     </div>
                 </div>
 

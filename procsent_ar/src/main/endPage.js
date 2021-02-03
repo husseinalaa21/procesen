@@ -15,7 +15,7 @@ export default function endPage() {
                     </div>
                 </div>
                 <div className="socialInfoAbout">
-                    <div>  </div>
+                    <div> <i class="fab fa-twitter"></i> </div>
                     <div>  </div>
                     <div>  </div>
                 </div>

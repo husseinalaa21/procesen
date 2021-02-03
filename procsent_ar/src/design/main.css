@@ -5,7 +5,8 @@
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
 
 .headerMenu {
   position: fixed;
@@ -94,7 +95,7 @@
 }
 .information {
   border: 0;
-  border-top: 2px solid  #1687a7;
+  border-top: 4px solid  #1687a7;
 }
 .about_info {
   padding: 10px;
@@ -104,9 +105,12 @@
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  background-color: #3b3b3be1;
-  color: #f7f7f7;
-  font-family: 'Indie Flower', cursive;
+  background-color:rgb(16, 18, 20);
+  color: #b8b6b6;
+  font-family: 'Tajawal', sans-serif;
+  border: 0;
+  border-top: 5px solid #494a4b;
+  direction: rtl;
 }
 
 .prolog_about {
@@ -121,10 +125,16 @@
 }
 
 .mainInfoAbout div{
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 2px;
+  border-radius: 4px;
   cursor: pointer;
+  width: 80%;
+  max-width: 300px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: rgba(235, 233, 233, 0.815);
 }
 
 .container:hover , .container:hover{
@@ -214,6 +224,43 @@
 
 .sendCommitn {
   display: flex;
+}
+
+.socialInfoAbout {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+  font-size: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.socialInfoAbout i{
+  color: #383838;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.socialInfoAbout i:hover{
+  color: #1687a7;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logoInfoAr {
+  font-family: 'Cairo', sans-serif;
+  font-size: 14px;
+  margin-top: -4px;
+}
+
+.infoDirPage {
+  font-family: 'Cairo', sans-serif;
+  background-color: #3b3b3be3;
+  transition: 0.2s;
+}
+.infoDirPage:hover{
+  font-family: 'Cairo', sans-serif;
+  background-color: #30475e;
+  transition: 0.2s;
 }
 
 .cancelSendNote {

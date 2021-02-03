@@ -6,22 +6,23 @@ export default function endPage() {
             <div className="about_info">
                 <div className="mainInfoAbout">
                     <div>
-                        <div > اتصل بنا </div>
-                        <div > دعمنا </div>
+                        <div className="infoDirPage"> اتصل بنا </div>
+                        <div  className="infoDirPage"> دعمنا </div>
                     </div>
                     <div>
-                        <div > المطور </div>
-                        <div > سياسة استخدام الموقع </div>
+                        <div  className="infoDirPage"> المطور </div>
+                        <div  className="infoDirPage"> سياسة استخدام الموقع </div>
                     </div>
                 </div>
                 <div className="socialInfoAbout">
                     <div> <i class="fab fa-twitter"></i> </div>
-                    <div>  </div>
-                    <div>  </div>
+                    <div> <i class="fab fa-facebook-f"></i> </div>
+                    <div> <i class="fas fa-envelope-open"></i> </div>
+                    <div> <i class="fas fa-paper-plane"></i> </div>
                 </div>
             </div>
             <div className="prolognet_info">
-                <div> © جميع الحقوق محفوضة  </div>
+                <div className="logoInfoAr"> © جميع الحقوق محفوضة  </div>
                 <div> <mark className="prolog_about">P</mark>rologNet @ 2020 - 2021</div>
             </div>
         </div>

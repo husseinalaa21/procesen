@@ -5,7 +5,22 @@ export default class Proc extends Component {
     constructor(props) {
         super(props);
         this.wordsPcs = this.tPcsWor.bind(this);
+        this.chThemProcsThat = this.chThemProcs.bind(this);
         this.state = { len: '0', words: '0' };
+        this.state.themProcs = false
+        this.state.styleFormPrcsDark = { backgroundColor : '#02101f', color : '#eee',border: '1.4px solid rgb(204, 202, 202)',paddingTop: '5px',paddingBottom: '10px',padding:' 10px',borderRadius: '9px' }
+        this.state.styleFormPrcsLight = { border: '1.4px solid rgb(204, 202, 202)',paddingTop: '5px',paddingBottom: '10px',padding:' 10px',borderRadius: '9px' }
+        this.state.styleFormPrcsTextAreaLight = {color: '#393e46',resize: 'none',backgroundColor: 'transparent',margin: 'auto',width: '100%',fontSize: '17px'}
+        this.state.styleFormPrcsTextAreaDark = {color: '#f7f7f7',resize: 'none',backgroundColor: 'transparent',margin: 'auto',width: '100%',fontSize: '17px'}
+    }
+    
+    chThemProcs(x){
+        if(this.state.themProcs == false){
+            this.setState({themProcs : true })
+        } else {
+            this.setState({themProcs : false})
+        }
+        
     }
 
     tPcsWor(x) {
@@ -34,20 +49,17 @@ export default class Proc extends Component {
             <div className="sectionProcsent">
                 <div className="ffPcs">
                     <label className="llPcs">
-                        <div className="areaPcc">
+                        <div className="areaPcc" style={this.state.themProcs ? this.state.styleFormPrcsDark : this.state.styleFormPrcsLight}>
                             <div className="toolsMenuAreaPcs">
-
+                                <div>
+                                    تحضير النص
+                                </div>
+                                <div onClick={this.chThemProcsThat}>
+                                    {this.state.themProcs ? <i class="fas fa-sun" style={{ color: ' rgb(223, 180, 39)', fontSize: '17px' ,transition: '0.4s' }}></i> : <i class="fas fa-moon" style={{ color: ' #1687a7', fontSize: '17px' ,transition: '0.4s' }}></i>}
+                                </div>
                             </div>
                             <textarea className="areaPcP"
-                                style={{
-                                    color: '#393e46',
-                                    resize: 'none',
-                                    backgroundColor: 'transparent',
-                                    margin: 'auto',
-                                    width: '100%',
-                                    fontSize: '17px'
-
-                                }}
+                                style={this.state.themProcs ? this.state.styleFormPrcsTextAreaDark: this.state.styleFormPrcsTextAreaLight}
                                 rows="10"
                                 placeholder=" اكتب هنا .."
                                 onChange={this.wordsPcs}>

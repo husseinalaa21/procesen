@@ -9,7 +9,7 @@ export default function SendCommint(x) {
 
     return (
         <div className="sendCommitn" onClick={() => sendingco(true)}>
-            <i className='fa fa-question-circle' style={{ fontSize: '12px', color: '#383838', marginLeft: '6px' }}></i>
+            <i className='fa fa-question-circle' style={{ fontSize: '11px', color: '#383838', marginLeft: '6px', marginTop : '2px' }}></i>
 
             {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" ابلاغ . " classN={false} />}
         </div>

@@ -10,6 +10,7 @@
 .headerMenu {
   position: fixed;
   width: 100%;
+  z-index: 100;
 }
 .header {
   padding: 20px;   
@@ -309,8 +310,65 @@ input.inputInf:focus {
   transition: 0.4s;
 }
 
+.MainProcsent {
+  padding: 10px;
+}
+.MainProcsentSec {
+  background-color: #f7f7f7;
+  padding: 10px;
+  padding-top: 20px;
+  border: 2px solid #1687a7;
+  border-radius: 4px;
+  
+}
+.llPcs {
+  position: relative;
+  font-size: 1rem;
+  display: block;
+}
 
-/* FONTS ARABIC */
+.titlePcs {
+  position: absolute;
+  top: -38px;
+  left: 10px;
+  color:  #1687a7;
+  font-size: 18px;
+  padding: 0.3rem;
+  background:  #f7f7f7;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: sans-serif;
+  text-transform: capitalize;
+  border-radius: 4px;
+}
+.areaPcc {
+  border: 1.9px solid rgb(204, 202, 202);
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding: 10px;
+  border-radius: 9px;
+}
+.areaPcP:focus {
+  outline: none;
+}
+.toolsMenuAreaPcs {
+  border: 0;
+  border-bottom: 1px solid rgba(204, 202, 202, 0.356);
+  margin-bottom: 10px;
+}
+.toolsBottomAreaPcs {
+  border: 0;
+  border-top: 1px solid rgba(204, 202, 202, 0.356);
+  width: 100%;
+  right: 0px;
+  bottom:6px;
+  display: flex;
+  justify-content: space-between;
+}
+.textAreaBottom {
+  padding: 10px;
+  padding-bottom: 2px;
+}
+/* FONTS */
 
 .title_ar {
   font-size: 20px;

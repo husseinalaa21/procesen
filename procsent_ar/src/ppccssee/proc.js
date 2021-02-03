@@ -15,7 +15,7 @@ export default class Proc extends Component {
         if (x.target.value.length < 3) {
             wwords = words.length - 1
         }
-        var wowords = x.target.value.replace(/[^\x00-\x7F]/g, "").replace(/[0-9]/g, '')
+        var wowords = x.target.value.replace(/\d+||\s+||\s+$/g,'')
         var woword = wowords.split(" ")
         for (var w = 0; w < woword.length; w++) {
             if (woword[w] < 1) {

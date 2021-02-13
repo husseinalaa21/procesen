@@ -1,5 +1,5 @@
 import React  from 'react'
-import Logo from '../design/logo7.png';
+import Logo from '../design/logo/logo7.png';
 import { useState } from 'react'
 import TolsNavMain from '../joint/tolsNavMain'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -10,6 +10,7 @@
 .headerMenu {
   position: fixed;
   width: 100%;
+  z-index: 100;
 }
 .header {
   padding: 20px;   
@@ -91,45 +92,6 @@
 .container_log {
   margin-left: -30px;
 }
-.information {
-  border: 0;
-  border-top: 2px solid  #1687a7;
-}
-.about_info {
-  padding: 10px;
-  background-color: #ececec;
-}
-.prolognet_info {
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  background-color: #3b3b3be1;
-  color: #f7f7f7;
-  font-family: 'Indie Flower', cursive;
-}
-
-.prolog_about {
-  background-color: #1688a700;
-  color: #1687a7;
-}
-
-.mainInfoAbout {
-  display: flex;
-  justify-content: space-evenly;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.mainInfoAbout div{
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.container:hover , .container:hover{
-  outline: 0;
-}
-
 .langChose {
   display: flex;
   justify-content: space-evenly;

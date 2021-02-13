@@ -1,4 +1,6 @@
-import './design/main.css';
+import './design/style/main.css';
+import './design/style/end.css';
+import './design/style/procs.css';
 import Body from './main/body'
 import EndPage from './main/endPage'
 import HeaderMenu from './main/headerMenu'
@@ -7,7 +9,6 @@ import Proc from './ppccssee/proc';
 
 
 function mainHome() {
-
   return (
     <>
       <HeaderMenu />

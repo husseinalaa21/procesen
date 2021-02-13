@@ -1,7 +1,9 @@
 import React  from 'react'
-import Logo from '../design/logo7.png';
+import Logo from '../design/logo/logo7.png';
 import { useState } from 'react'
 import TolsNavMain from '../joint/tolsNavMain'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLanguage, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 export default function HeaderMenuEn() {
     const [clickNav, setClickNav] = useState(false)
@@ -29,7 +31,7 @@ export default function HeaderMenuEn() {
             <div className="header_main">
                 <div className="sectionsNavFlex">
                     <div className="searchToggThem" onClick={()=>{isNightX(!isNight)}}>
-                        <i className="fas fa-moon" style={isNight ? { marginTop: '10px', color: ' rgb(223, 180, 39)', fontSize: '17px' ,transition: '0.4s' }: { marginTop: '10px', color: ' #30475ecc', fontSize: '17px',transition: '0.4s'  }  }></i>
+                        <FontAwesomeIcon icon={faMoon} style={isNight ? { marginTop: '10px', color: ' rgb(223, 180, 39)', fontSize: '17px' ,transition: '0.4s' }: { marginTop: '10px', color: ' #30475ecc', fontSize: '17px',transition: '0.4s'  }  } />
                     </div>
 
                     <div className="searchChangeLang" onClick={() => {
@@ -38,7 +40,7 @@ export default function HeaderMenuEn() {
                             document.getElementById("toggleNavBar").classList.toggle("change");
                             setClickNav(false)
                         }
-                    }}><i className="fas fa-language" style={clickNavLang ? { marginTop: '6px', color: '  #3b72aa', fontSize: '24px',transition: '0.4s' } : { marginTop: '6px', color: ' #30475ecc', fontSize: '24px' ,transition: '0.4s' }}></i>
+                    }}><FontAwesomeIcon icon={faLanguage} style={clickNavLang ? { marginTop: '6px', color: '  #3b72aa', fontSize: '24px',transition: '0.4s' } : { marginTop: '6px', color: ' #30475ecc', fontSize: '24px' ,transition: '0.4s' }} />
                     </div>
                 </div>
 

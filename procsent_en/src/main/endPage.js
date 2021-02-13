@@ -1,4 +1,5 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function endPage() {
     return (
@@ -6,22 +7,23 @@ export default function endPage() {
             <div className="about_info">
                 <div className="mainInfoAbout">
                     <div>
-                        <div > اتصل بنا </div>
-                        <div > دعمنا </div>
+                        <div className="infoDirPage"> call us </div>
+                        <div  className="infoDirPage"> support us </div>
                     </div>
                     <div>
-                        <div > المطور </div>
-                        <div > سياسة استخدام الموقع </div>
+                        <div  className="infoDirPage"> developer </div>
+                        <div  className="infoDirPage"> Website usage policy </div>
                     </div>
                 </div>
                 <div className="socialInfoAbout">
-                    <div>  </div>
-                    <div>  </div>
-                    <div>  </div>
+                    <div> <FontAwesomeIcon icon={['fab', 'facebook-f']}  /> </div>
+                    <div> <i className="fab fa-facebook-f"></i> </div>
+                    <div> <i className="fas fa-envelope-open"></i> </div>
+                    <div> <i className="fas fa-paper-plane"></i> </div>
                 </div>
             </div>
             <div className="prolognet_info">
-                <div> © جميع الحقوق محفوضة  </div>
+                <div className="logoInfoAr"> © all rights are save  </div>
                 <div> <mark className="prolog_about">P</mark>rologNet @ 2020 - 2021</div>
             </div>
         </div>

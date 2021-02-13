@@ -109,7 +109,7 @@
   color: #b8b6b6;
   font-family: 'Tajawal', sans-serif;
   border: 0;
-  border-top: 5px solid #494a4b;
+  border-top: 3px solid #494a4b;
   direction: rtl;
 }
 
@@ -183,6 +183,11 @@
 
 .infoStart {
   padding: 10px;
+}
+
+.infoStartP {
+  padding: 10px;
+  padding-bottom: 0;
 }
 
 .titleThisPage {
@@ -360,9 +365,9 @@ input.inputInf:focus {
 
 .MainProcsent {
   padding: 10px;
+  padding-top: 23px;
 }
 .MainProcsentSec {
-  background-color: #f7f7f7;
   padding: 10px;
   padding-top: 20px;
   border: 2px solid #1687a7;
@@ -382,7 +387,7 @@ input.inputInf:focus {
   color:  #1687a7;
   font-size: 18px;
   padding: 0.3rem;
-  background:  #f7f7f7;
+  background:  #f3f3f3;
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: sans-serif;
   text-transform: capitalize;
@@ -411,6 +416,115 @@ input.inputInf:focus {
 .textAreaBottom {
   padding: 10px;
   padding-bottom: 2px;
+}
+
+.optionTolsJs {
+  font-size: 18px;
+  background-color: #bdd6d891;
+  padding: 10px;
+  border-radius: 4px;
+  color: #383838;
+}
+
+.optionTolsJs div{
+  cursor: pointer;
+}
+
+.titlePcsSec {
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 18px;
+  background-color: #1687a7;
+  color: #eee;
+  margin-bottom: 10px;
+  width: 30%;
+  max-width: 170px;
+
+}
+.containerStartdProcs {
+  padding: 15px;
+  margin: 10px;
+  margin-bottom: 0;
+  border-radius: 5px;
+  font-size: 19px;
+  background-color: #eee;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+.chooseListProcs {
+  margin: 10px 2px 10px 2px;
+  padding: 15px;
+  background-color: #eee;
+  border-radius: 5px;
+  grid-column: auto auto;
+}
+.titleNameList {
+  font-size: 20px;
+  text-align: center;
+  color: #3b3b3b;
+}
+.listProcs {
+  display: grid;
+  grid-template-columns:  auto auto;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+@media screen and (min-width: 800px) {
+  .listProcs {
+    display: grid;
+    grid-template-columns:  auto auto auto auto;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 340px) {
+  .listProcs {
+    display: grid;
+    grid-template-columns:  auto;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+}
+.showHideList {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  background-color: #f3f3f3;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.checkBoxLestChoo {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #ffffff59;
+  margin: 10px;
+  border-radius: 20px;
+  max-width: 150px;
+  font-size: 17px;
+  color: #3b3b3b;
+  cursor: pointer;
+}
+.checkBoxLestChooTrue {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #105ceb59;
+  margin: 10px;
+  border-radius: 20px;
+  max-width: 150px;
+  font-size: 17px;
+  color: #383838;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.068), 0 6px 20px 0 rgba(0, 0, 0, 0.062);
+}
+.inputCheck {
+  margin-right: 10px;
+  border: none;
 }
 /* FONTS */
 

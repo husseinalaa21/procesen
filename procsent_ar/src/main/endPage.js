@@ -1,4 +1,5 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function endPage() {
     return (
@@ -15,10 +16,10 @@ export default function endPage() {
                     </div>
                 </div>
                 <div className="socialInfoAbout">
-                    <div> <i class="fab fa-twitter"></i> </div>
-                    <div> <i class="fab fa-facebook-f"></i> </div>
-                    <div> <i class="fas fa-envelope-open"></i> </div>
-                    <div> <i class="fas fa-paper-plane"></i> </div>
+                    <div> <FontAwesomeIcon icon={['fab', 'facebook-f']}  /> </div>
+                    <div> <i className="fab fa-facebook-f"></i> </div>
+                    <div> <i className="fas fa-envelope-open"></i> </div>
+                    <div> <i className="fas fa-paper-plane"></i> </div>
                 </div>
             </div>
             <div className="prolognet_info">

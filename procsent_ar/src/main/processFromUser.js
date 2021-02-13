@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFire } from '@fortawesome/free-solid-svg-icons';
 
 export default class ProcessFromUser extends Component {
     constructor(props) {
@@ -14,7 +16,7 @@ export default class ProcessFromUser extends Component {
                         </div>
                     </div>
                     <div className="textTUsers">
-                   <i className='fas fa-fire' style={{ color: '#eb561b', fontSize: '15px' }}></i> &nbsp;
+                        <FontAwesomeIcon icon={faFire}style={{ color: '#eb561b', fontSize: '15px' }} /> &nbsp;
                         {this.props.messToApper}
                     </div>
                 </div>

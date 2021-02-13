@@ -3,7 +3,6 @@ import NotesCon from '../joint/notesCon'
 import SendCommint from '../joint/sendCommint'
 import TextCon from '../joint/textCon'
 import Textsp from '../joint/textSp'
-import Sent from '../ppccssee/sent'
 
 export default function BodyEn() {
     return (
@@ -21,12 +20,6 @@ export default function BodyEn() {
                     <SendCommint sec="1" />
                 </div>
             </div>
-
-            {/* Main Function :  */}
-
-            <Sent />
-
-            {/* . */}
 
             <div className="titleThisPage">
                 <div className="thisTitlePage_first title_ar">

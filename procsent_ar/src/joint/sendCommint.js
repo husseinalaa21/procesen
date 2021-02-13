@@ -1,15 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {  faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
 export default function SendCommint(x) {
     const [isSendCo, sendingco] = useState(false)
     const [isCancel, isCancelX] = useState(false)
     const [isCncelSend, isCncelSendX] = useState(false)
-    const [isWrAll , isWrAllX] = useState(false)
+    const [isWrAll] = useState(false)
 
     return (
         <div className="sendCommitn" onClick={() => sendingco(true)}>
-            <i className='fa fa-question-circle' style={{ fontSize: '11px', color: '#383838', marginLeft: '6px', marginTop : '2px' }}></i>
+            <FontAwesomeIcon icon={faQuestionCircle} style={{ fontSize: '11px', color: '#383838', marginLeft: '6px', marginTop : '2px' }} />
 
             {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" ابلاغ . " classN={false} />}
         </div>

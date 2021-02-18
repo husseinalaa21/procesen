@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDoubleLeft, faArrowDown, faArrowUp, faAtom, faBookmark, faBookOpen, faEye, faEyeSlash, faFeather, faFeatherAlt, faHandSparkles, faInfo, faInfoCircle, faMinus, faMoon, faPlus, faSlidersH, faStarOfLife, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown, faArrowUp, faEye, faEyeSlash, faFeatherAlt, faInfoCircle, faMinus, faMoon, faPlus, faSlidersH, faSun } from '@fortawesome/free-solid-svg-icons'
 import Cookies from 'universal-cookie';
 import TextareaAutosize from 'react-textarea-autosize';
+import P___rps from './sent';
 
 const cookies = new Cookies();
 
@@ -40,6 +41,10 @@ export default class Proc extends Component {
         this.state.isShowMoreOpProcs = false
         this.cShowHide = this.thisShowHide.bind(this)
         this.caseSettingTols = false
+
+        // < />
+
+        this.xtex = "saasdasdd"
     }
 
     checkThat(x) {
@@ -51,10 +56,10 @@ export default class Proc extends Component {
     }
 
     changevis(x) {
-        if( this.state.caseSettingTols === true){
-            this.setState({caseSettingTols: false})
-        }else{
-            this.setState({caseSettingTols: true})
+        if (this.state.caseSettingTols === true) {
+            this.setState({ caseSettingTols: false })
+        } else {
+            this.setState({ caseSettingTols: true })
         }
     }
 
@@ -96,7 +101,7 @@ export default class Proc extends Component {
         if (wwords === -1) {
             wwords = wwords + 1
         }
-
+        this.setState({ xtex: x.target.value })
         this.setState({ words: wwords });
     }
     setCo(x, z) {
@@ -136,10 +141,10 @@ export default class Proc extends Component {
                                     </div>
                                     <div className="toolsBottomAreaPcs">
                                         <div className="textAreaBottom">
-                                           2000 / {this.state.len}
+                                            2000 / {this.state.len}
                                         </div>
                                         <div className="textAreaBottomLogo">
-                                            Power by procsent
+                                            Powered by procsent
                                         </div>
                                     </div>
                                 </div>
@@ -150,11 +155,11 @@ export default class Proc extends Component {
                             <div className="headerTolsMain">
                                 <div className="cotrolsTil__">
                                     <div className="stolsCONTROL">
-                                        <FontAwesomeIcon icon={faSlidersH} className="icTolsSett"/>
+                                        <FontAwesomeIcon icon={faSlidersH} className="icTolsSett" />
                                         خيارات التحكم بمعالجة الكلمات
                                     </div>
                                     <div className="casSett casSettT" onClick={this.changeTolsVis}>
-                                        {this.state.caseSettingTols ? <div> أخفاء  <FontAwesomeIcon icon={faEyeSlash}/> </div> : <div> أضهار  / <FontAwesomeIcon icon={faEye} /> </div>}
+                                        {this.state.caseSettingTols ? <div> أخفاء  <FontAwesomeIcon icon={faEyeSlash} /> </div> : <div> أضهار  / <FontAwesomeIcon icon={faEye} /> </div>}
                                     </div>
                                 </div>
 
@@ -162,7 +167,7 @@ export default class Proc extends Component {
 
                                 </div>
                             </div>
-                            <div className="chooseListProcs" style={this.state.caseSettingTols ? {display : 'block'} : {display : 'none'}}>
+                            <div className="chooseListProcs" style={this.state.caseSettingTols ? { display: 'block' } : { display: 'none' }}>
                                 <div style={{ height: this.state.heightList, overflow: 'hidden' }} >
                                     <div className="listProcs">
                                         <div onClick={() => {
@@ -204,54 +209,11 @@ export default class Proc extends Component {
                                 </div>
                             </div>
                         </div>
-                        
-                        <TextAfProc />
+
+                        <P___rps ccThem={this.state.themProcs} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.xtex} />
                     </div>
                 </div>
             </div>
         )
-
-        function TextAfProc() {
-            const [themP, setthemP] = useState(themProcs)
-            return (
-                <div className="ffPcsSec" style={{ paddingTop: '10px' }}>
-                    <label className="llPcsSec">
-                        <div className="titlePcs redeyTextAreaK">
-                            <div className="titleTextArea"> <FontAwesomeIcon icon={faAtom} className="icInfredeyTextAreaKV" />  النص بعد التعديل و المعالجة  </div>
-                            <FontAwesomeIcon icon={faInfoCircle} className="icInfredeyTextAreaK" />
-                        </div>
-                        <div className="areaPccSec" style={themP ? styleFormPrcsDarkV : styleFormPrcsLightV}>
-                            <div className="toolsMenuAreaPcs">
-                                <div className="optionTolsJs" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <div style={{ paddingLeft: '10px', paddingRight: '5px', border: '0', borderLeft: '1.5px solid  #38383867' }}>
-                                        نسخ
-                                   </div>
-                                    <div style={{ paddingLeft: '5px', paddingRight: '10px', }}>
-                                        مسح
-                                   </div>
-                                </div>
-                                <div >
-
-                                </div>
-                            </div>
-                            <div className="textArea">
-                                <TextareaAutosize className="areaPcP"
-                                    style={themP ? styleFormPrcsTextAreaDarkV : styleFormPrcsTextAreaLightV}
-                                    rows="4"
-                                    placeholder=" النص المستخرج " />
-                            </div>
-                            <div className="toolsBottomAreaPcs">
-                                <div className="textAreaBottom">
-                                   2000 / 0
-                                </div>
-                                <div className="textAreaBottomLogo">
-                                    Power by procsent
-                                </div>
-                            </div>
-                        </div>
-                    </label>
-                </div>
-            )
-        }
     }
 }

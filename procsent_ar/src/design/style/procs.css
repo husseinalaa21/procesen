@@ -22,7 +22,7 @@
   justify-content: space-between;
 }
 .redeyTextArea{
-  background-color:#eae3c8;
+  background-color:#e7e7de;
   color: #353027;
   border-right: 5px solid #353027a4;
 }
@@ -32,6 +32,7 @@
 }
 .icInfredeyTextAreaV {
   color: #35302781;
+  font-size: 16px;
   padding-left: 5px;
 }
 .icInfredeyTextArea:hover {
@@ -48,8 +49,9 @@
   cursor: pointer;
 }
 .icInfredeyTextAreaKV {
-  color: #4e838aee;
-  padding-left: 5px;
+  color: #3e99a0;
+  padding-left: 10px;
+  font-size: 16px;
 }
 .icInfredeyTextAreaK:hover {
   color: #2b2e2ee1;
@@ -210,9 +212,27 @@
 }
 
 .headerTolsMain {
-  background-color: #e7e7de;
+  background-color: #e8e8e8;
   padding: 5px;
   border-right: 4px solid #3b3b3b;
+}
+.redeyTextAreaInf {
+  border-right: 4px solid #3b3b3b;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.redeyTextAreaInfTIT {
+  background-color: #e8e8e8;
+  padding: 10px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.redeyTextAreaInfbody {
+  background-color: #ebe9e9;
 }
 .stolsCONTROL{
   font-size: 18px;
@@ -227,7 +247,10 @@
   padding-left: 10px;
   font-size: 16px;
 }
-
+.icInfPrcs {
+  padding-left: 10px;
+  font-size: 16px;
+}
 .casSett {
   background-color: #5992a3;
   color: #d1dbdb;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faAtom, faInfoCircle, faMinus, faPlus, faRedoAlt } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faAtom, faCircle, faInfoCircle, faMinus, faPlus, faRedoAlt, faStream } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default class P___rps extends Component {
@@ -124,7 +124,7 @@ export default class P___rps extends Component {
             vpmNuP = 0,
             velseNu = 0,
             velseNup = 0,
-            caseInfoPP = " لا يوجد ";
+            caseInfoPP = <FontAwesomeIcon icon={faCircle} style={{ fontSize : "12px" , color : "#54545591" , transition: '0.4s'}}/>;
 
         var vnumX = false,
             vspaceX = false,
@@ -139,7 +139,7 @@ export default class P___rps extends Component {
         var xtexs = this.props.xtex
         if (this.props.caseXtex == true) {
             if (xtexs.length > 0) {
-                caseInfoPP = " تمت المعالجة "
+                caseInfoPP = <FontAwesomeIcon icon={faCircle} style={{ fontSize : "12px" , color : "#1687a7" , transition: '0.4s'}}/>
                 var ccss = this.checkN(xtexs)
                 var sspp = this.checkS(xtexs)
                 vnum = ccss[2]
@@ -155,7 +155,7 @@ export default class P___rps extends Component {
                     laChar[i].n = thisCx[0]
                 }
             } else {
-                caseInfoPP = " لا يوجد "
+                caseInfoPP = <FontAwesomeIcon icon={faCircle} style={{ fontSize : "12px" , color : "#54545591" , transition: '0.4s'}}/>
             }
         }
         var cct = []

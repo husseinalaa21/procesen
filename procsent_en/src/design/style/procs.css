@@ -2,28 +2,60 @@
 
 .MainProcsent {
   padding: 10px;
-  padding-top: 23px;
 }
 .MainProcsentSec {
   padding: 10px;
-  padding-top: 20px;
-  border: 2px solid #1687a7;
-  border-radius: 4px;
+  padding-top: 0;
+}
+.titleTextArea {
+  display: flex;
+  justify-content: space-between;
+}
+.titlePcs {
+  font-size: 18px;
+  padding: 10px;
+  font-family: sans-serif;
+  border: 0;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+.redeyTextArea{
+  background-color:#e7e7de;
+  color: #353027;
+  border-right: 5px solid #353027a4;
+}
+.icInfredeyTextArea {
+  color: #35302781;
+  cursor: pointer;
+}
+.icInfredeyTextAreaV {
+  color: #35302781;
+  font-size: 16px;
+  padding-left: 5px;
+}
+.icInfredeyTextArea:hover {
+  color: #353027e5;
   
 }
-
-.titlePcs {
-  position: absolute;
-  top: -38px;
-  left: 10px;
-  color:  #1687a7;
-  font-size: 18px;
-  padding: 0.3rem;
-  background:  #f3f3f3;
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  font-family: sans-serif;
-  text-transform: capitalize;
-  border-radius: 4px;
+.redeyTextAreaK{
+  background-color:#9fb8ad;
+  color: #2b2e2e;
+  border-right: 5px solid #5b6d5b;
+}
+.icInfredeyTextAreaK {
+  color: #2b2e2e8a;
+  cursor: pointer;
+}
+.icInfredeyTextAreaKV {
+  color: #3e99a0;
+  padding-left: 10px;
+  font-size: 16px;
+}
+.icInfredeyTextAreaK:hover {
+  color: #2b2e2ee1;
+  
 }
 .areaPcP:focus {
   outline: none;
@@ -31,19 +63,24 @@
 .toolsMenuAreaPcs {
   border: 0;
   border-bottom: 1px solid rgba(204, 202, 202, 0.356);
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding: 4px 5px 14px 5px;
   display: flex;
   justify-content: space-between
 }
 .toolsBottomAreaPcs {
   border: 0;
   border-top: 1px solid rgba(204, 202, 202, 0.356);
-  width: 100%;
-  right: 0px;
-  bottom:6px;
+  background-color: rgba(204, 202, 202, 0.089);
   display: flex;
   justify-content: space-between;
+  padding: 5px;
+}
+
+.toolsBottomAreaPcs div{
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
+  color: dimgrey;
 }
 .llPcs {
   position: relative;
@@ -87,9 +124,7 @@
   justify-content: center;
 }
 .chooseListProcs {
-  margin: 10px 2px 10px 2px;
   padding: 15px;
-  background-color: #eee;
   border-radius: 5px;
   grid-column: auto auto;
 }
@@ -158,4 +193,130 @@
 .inputCheck {
   margin-right: 10px;
   border: none;
+}
+
+.textArea {
+  padding: 10px;
+}
+
+.secOntext {
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.mainTolsControl {
+  background-color: #e8eae6;
+  border-radius: 3px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.headerTolsMain {
+  background-color: #e8e8e8;
+  padding: 5px;
+  border-right: 4px solid #3b3b3b;
+}
+.redeyTextAreaInf {
+  border-right: 4px solid #3b3b3b;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.redeyTextAreaInfTIT {
+  background-color: #e8e8e8;
+  padding: 10px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.redeyTextAreaInfbody {
+  background-color: #ebe9e9;
+}
+.stolsCONTROL{
+  font-size: 18px;
+  font-family: sans-serif;
+  padding: 5px;
+}
+.cotrolsTil__ {
+  display: flex;
+  justify-content: space-between;
+}
+.icTolsSett {
+  padding-left: 10px;
+  font-size: 16px;
+}
+.icInfPrcs {
+  padding-left: 10px;
+  font-size: 16px;
+}
+.casSett {
+  background-color: #5992a3;
+  color: #d1dbdb;
+  padding: 6px 10px 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
+.textAreaBottomLogo , .textAreaBottom{
+  font-family: 'Comfortaa', cursive;
+  font-size: 13px;
+}
+.ddTable {
+  background-color: #e8e8e886;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+._listInfo {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 97%;
+  margin: auto;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+._listInfo td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+._listInfo th {
+  border: 1px solid #ddddddf1;
+  background-color: #1688a7ce;
+  color: #eee;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+._listInfo tr:nth-child(even) {
+  background-color: #eee;
+}
+.faMinusDiv {
+  min-width: 20%;
+  margin: auto;
+  background: #1687a7;
+  cursor: pointer;
+}
+.faPlusDiv {
+  min-width: 20%;
+  margin: auto;
+  background: #e1e3e4ce;
+  cursor: pointer;
+}
+.faMinusDiv:hover {
+  background: #1687a7;
+}
+.faPlusDiv:hover {
+  background: #eaecec;
+}
+.faMinusi{
+  font-size: 13px;
+  color: #d1dbdb;
+}
+.faPlusi{
+  font-size: 13px;
+  color: #3b3b3bd5;
 }

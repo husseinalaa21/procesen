@@ -167,18 +167,6 @@
   background-color: #fdfdfd85;
   padding: 10px;
 }
-
-.desInfoContainerMAin {
-  margin: 10px;
-  background-color: #eee;
-  color: #383838;
-  border: 0;
-  border-right : 4px solid #00458b;
-  padding: 13px 10px 13px 10px;
-  width: 80%;
-  max-width: 400px;
-}
-
 .sendCommitn {
   display: flex;
 }
@@ -311,4 +299,13 @@ input.inputInf:focus {
 .messArabic {
   font-size: 16px;
   text-align: right;
+}
+.__desInfoContainerMAin {
+  display: flex;
+  margin: 10px;
+  width: 80%;
+  max-width: 400px;
+}
+.__desInfoContainerMAin div{
+  padding: 13px 10px 13px 10px;
 }

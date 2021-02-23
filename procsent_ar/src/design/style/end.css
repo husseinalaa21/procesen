@@ -1,7 +1,6 @@
 
 .information {
   border: 0;
-  border-top: 4px solid  #1687a7;
 }
 .about_info {
   padding: 10px;
@@ -11,12 +10,12 @@
   padding: 10px;
   display: flex;
   justify-content: space-between;
-  background-color:rgb(16, 18, 20);
   color: #b8b6b6;
   font-family: 'Tajawal', sans-serif;
   border: 0;
-  border-top: 3px solid #494a4b;
   direction: rtl;
+  border-top: 5px solid  #55ACEE;
+  background-color: #0c7d9c;
 }
 
 .prolog_about {
@@ -32,7 +31,6 @@
 
 .mainInfoAbout div{
   padding: 3px;
-  border-radius: 4px;
   cursor: pointer;
   width: 80%;
   max-width: 300px;
@@ -40,7 +38,6 @@
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;
-  color: rgba(235, 233, 233, 0.815);
 }
 
 .container:hover , .container:hover{
@@ -48,12 +45,13 @@
 }
 .infoDirPage {
   font-family: 'Cairo', sans-serif;
-  background-color: #3b3b3be3;
   transition: 0.2s;
+  border-bottom: 4px solid #30475e00;
 }
 .infoDirPage:hover{
   font-family: 'Cairo', sans-serif;
-  background-color: #30475e;
+  border: 0;
+  border-bottom: 4px solid #30475e;
   transition: 0.2s;
 }
 .socialInfoAbout i{
@@ -71,4 +69,22 @@
   font-family: 'Cairo', sans-serif;
   font-size: 14px;
   margin-top: -4px;
+}
+.fa {
+  padding: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+.fa-facebook {
+  color: #3B5998;
+}
+.fa-twitter {
+  color: #55ACEE;
+}
+.fa-linkedin {
+  color: #007bb5;
+}
+.fa-google {
+  color: #dd4b39;
 }

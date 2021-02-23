@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { useState } from 'react'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown, faArrowUp, faEye, faEyeSlash, faFeatherAlt, faInfoCircle, faMinus, faMoon, faPlus, faSlidersH, faSun } from '@fortawesome/free-solid-svg-icons'
 import Cookies from 'universal-cookie';
@@ -44,7 +42,8 @@ export default class Proc extends Component {
 
         // < />
 
-        this.xtex = "saasdasdd"
+        this.xtex = "n"
+        this.caseXtext = false
     }
 
     checkThat(x) {
@@ -90,6 +89,7 @@ export default class Proc extends Component {
         var wwords = words.length
         if (x.target.value.length < 3) {
             wwords = words.length - 1
+            this.setState({ caseXtex: true })
         }
         var wowords = x.target.value.replace(/\d+||\s+||\s+$/g, '')
         var woword = wowords.split(" ")
@@ -210,7 +210,7 @@ export default class Proc extends Component {
                             </div>
                         </div>
 
-                        <P___rps ccThem={this.state.themProcs} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.xtex} />
+                        <P___rps ccThem={this.state.themProcs} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.xtex} caseXtex={this.state.caseXtex}/>
                     </div>
                 </div>
             </div>

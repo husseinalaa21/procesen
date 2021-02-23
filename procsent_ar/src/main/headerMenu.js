@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import Logo from '../design/logo/logo5.png';
 import { useState } from 'react'
 import TolsNavMain from '../joint/tolsNavMain'
@@ -10,10 +10,29 @@ export default function HeaderMenuEn() {
     const [clickNavLang, setClickNavLang] = useState(false)
     const [isNight, isNightX] = useState(false)
 
+    function ItemListMain(x) {
+        return (
+            <div >
+                <a href={x.css}> {x.i} </a>
+            </div>
+        )
+    }
     function tolsMenu() {
         if (clickNav) {
             return (
-                <TolsNavMain itemCase="menu" lang=" English " />
+                <div className="navMain">
+                    <div className="socialMainMediaNav">
+                        <div> <a href="#" className="fa fa-facebook"></a> </div>
+                        <div> <a href="#" className="fa fa-twitter"></a> </div>
+                        <div> <a href="#" className="fa fa-linkedin"></a> </div>
+                        <div> <a href="#" className="fa fa-google"></a> </div>
+                    </div>
+                    <div className="namMainTols">
+                        <ItemListMain i={" سياسة استعمال الموقع "} css={"#ppsite"} />
+                        <ItemListMain i={" المطور "} css={"#ppsite"} />
+                        <ItemListMain i={" تواصل معنا "} css={"#ppsite"} />
+                    </div>
+                </div>
             )
         } if (clickNavLang) {
             return (
@@ -26,51 +45,51 @@ export default function HeaderMenuEn() {
     }
 
     return (
-        <div className = "headerMenu">
-        <div className="header">
-            <div className="header_main">
-                <div className="sectionsNavFlex">
-                    <div className="searchToggThem" onClick={()=>{isNightX(!isNight)}}>
-                        <FontAwesomeIcon icon={faMoon} style={isNight ? { marginTop: '10px', color: ' rgb(223, 180, 39)', fontSize: '17px' ,transition: '0.4s' }: { marginTop: '10px', color: ' #30475ecc', fontSize: '17px',transition: '0.4s'  }  } />
+        <div className="headerMenu">
+            <div className="header">
+                <div className="header_main">
+                    <div className="sectionsNavFlex">
+                        <div className="searchToggThem" onClick={() => { isNightX(!isNight) }}>
+                            <FontAwesomeIcon icon={faMoon} style={isNight ? { marginTop: '10px', color: ' rgb(223, 180, 39)', fontSize: '17px', transition: '0.4s' } : { marginTop: '10px', color: ' #30475ecc', fontSize: '17px', transition: '0.4s' }} />
+                        </div>
+
+                        <div className="searchChangeLang" onClick={() => {
+                            setClickNavLang(!clickNavLang)
+                            if (clickNav === true) {
+                                document.getElementById("toggleNavBar").classList.toggle("change");
+                                setClickNav(false)
+                            }
+                        }}><FontAwesomeIcon icon={faLanguage} style={clickNavLang ? { marginTop: '6px', color: '  #3b72aa', fontSize: '24px', transition: '0.4s' } : { marginTop: '6px', color: ' #30475ecc', fontSize: '24px', transition: '0.4s' }} />
+                        </div>
                     </div>
 
-                    <div className="searchChangeLang" onClick={() => {
-                        setClickNavLang(!clickNavLang)
-                        if (clickNav === true) {
-                            document.getElementById("toggleNavBar").classList.toggle("change");
-                            setClickNav(false)
+                    <div className="container_log">
+                        <div className="logo_text">
+                            <p className="prolog_logo">Proc</p>
+                            <p className="net_logo">sent</p>
+                            <img src={Logo} width="30px" height="30px" alt="" style={{ marginTop: '1px' }}></img>
+                        </div>
+                        <div className="info_about_logo">
+                            <p className="Pprocessing">الجمل &nbsp;</p><p className="Psentence">محلل</p>
+                        </div>
+                    </div>
+
+                    <div id="toggleNavBar" className="container" onClick={() => {
+                        setClickNav(!clickNav)
+                        document.getElementById("toggleNavBar").classList.toggle("change");
+                        if (clickNavLang === true) {
+                            setClickNavLang(false)
                         }
-                    }}><FontAwesomeIcon icon={faLanguage} style={clickNavLang ? { marginTop: '6px', color: '  #3b72aa', fontSize: '24px',transition: '0.4s' } : { marginTop: '6px', color: ' #30475ecc', fontSize: '24px' ,transition: '0.4s' }} />
+                    }}>
+                        <div className="bar1"></div>
+                        <div className="bar2"></div>
+                        <div className="bar3"></div>
                     </div>
                 </div>
 
-                <div className="container_log">
-                    <div className="logo_text">
-                        <p className="prolog_logo">Proc</p>
-                        <p className="net_logo">sent</p>
-                        <img src={Logo} width="30px" height="30px" alt="" style={{ marginTop: '1px' }}></img>
-                    </div>
-                    <div className="info_about_logo">
-                        <p className="Pprocessing">الجمل &nbsp;</p><p className="Psentence">محلل</p>
-                    </div>
-                </div>
+                {tolsMenu()}
 
-                <div id="toggleNavBar" className="container" onClick={() => {
-                    setClickNav(!clickNav)
-                    document.getElementById("toggleNavBar").classList.toggle("change");
-                    if (clickNavLang === true) {
-                        setClickNavLang(false)
-                    }
-                }}>
-                    <div className="bar1"></div>
-                    <div className="bar2"></div>
-                    <div className="bar3"></div>
-                </div>
             </div>
-
-            { tolsMenu()}
-
-        </div>
         </div>
     )
 }

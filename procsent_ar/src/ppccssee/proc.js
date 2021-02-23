@@ -158,8 +158,8 @@ export default class Proc extends Component {
                                         <FontAwesomeIcon icon={faSlidersH} className="icTolsSett" />
                                         خيارات التحكم بمعالجة الكلمات
                                     </div>
-                                    <div className="casSett casSettT" onClick={this.changeTolsVis}>
-                                        {this.state.caseSettingTols ? <div> أخفاء  <FontAwesomeIcon icon={faEyeSlash} /> </div> : <div> أضهار  / <FontAwesomeIcon icon={faEye} /> </div>}
+                                    <div className={this.state.caseSettingTols ? "casSett casSettHide" : "casSett casSettShow"} onClick={this.changeTolsVis}>
+                                        {this.state.caseSettingTols ? <FontAwesomeIcon icon={faEyeSlash} />  : <FontAwesomeIcon icon={faEye} />}
                                     </div>
                                 </div>
 

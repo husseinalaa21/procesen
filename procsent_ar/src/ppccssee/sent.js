@@ -74,40 +74,7 @@ export default class P___rps extends Component {
     checkEls(){
         
     }
-    /*
-    CaseInfoThisP() {
-        var xtexs = this.props.xtex
-        try {
-            if (xtexs.length > 0) {
-
-                function Ctisithis(){
-                    for(var it = 0 ; it < this.char.length ; it ++){
-                        var inLan = this.char[it].cv
-                        if (inLan.test(xtexs)) {
-                            var numithis = xtexs.length - xtexs.replace(inLan, "").length  
-                            this.char[it].num = numithis
-                            return (
-                                <>
-                                    <SetElement item={this.char[it].nv +" احرف "} itemNu = {this.char[it].num} itemNumP = {this.char[it].numP} cn={""}/>
-                                </>
-                            )
-                        }
-                    }
-                }
-            } else {
-                this.setState({ caseInfoProcs: " لا يوجد " })
-                return (
-                    <div>
-                    </div>
-                )
-            }
-        } catch (err) {
-            return (
-                <div>
-                </div>
-            )
-        }
-    }*/
+    
     render() {
 
         var ccThem = this.props.ccThem,

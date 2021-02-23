@@ -3,131 +3,8 @@
   padding: 0;
   border: 0;
 }
-
-
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
-
-.headerMenu {
-  position: fixed;
-  width: 100%;
-  z-index: 100;
-}
-.header {
-  padding: 20px;   
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.13), 0 6px 20px 0 rgba(0, 0, 0, 0.089);
-  background-color:  #f7f7f7;
-}
-.header_main {
-  display: flex;
-  justify-content: space-between;
-}
-
-.logo_text {
-  display: flex;
-  font-size: 26px;
-  color: #1687a7;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.net_logo {
-  color: #30475e;
-}
-
-.info_about_logo {
-  padding-top: 5px;
-  display: flex;
-  justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  margin-left: -4px;
-}
-.Pprocessing{
-  color: #1687a7;
-}
-.Psentence{
-  color: #30475e;
-}
-.container {
-  display: inline-block;
-  cursor: pointer;
-  margin-top: 2px;
-}
-
-.bar1, .bar2, .bar3 {
-  width: 23px;
-  height: 3px;
-  background-color: #494a4b;
-  margin: 4px 0;
-  transition: 0.4s;
-  border-radius: 3px;
-}
-.change  {
-  margin-top: 2px;
-}
-
-.change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 2px);
-  transform: rotate(-45deg) translate(-5px, 4px);
-  background-color:#30475e;
-}
-
-.change .bar2 {opacity: 0;}
-
-.change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px);
-  transform: rotate(45deg) translate(-6px, -5px);
-  background-color: #1687a7;
-}
-
-.menuMainTols{
-  display: inline-block;
-  transition: 0.1s;
-}
-.sectionsNavFlex {
-  display: flex;
-}
-.sectionsNavFlex div{
-  margin-right: 15px;
-  cursor: pointer;
-}
-.container_log {
-  margin-left: -30px;
-}
-.langChose {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 20px;
-}
-
-.langChose div{
-  padding: 8px;
-  font-family: Arial, Helvetica, sans-serif;
-  cursor: pointer;
-  border-radius: 5px;
-  background-color: #cfcdcd18;
-  color: #3b3b3b;
-  width: 100px;
-  text-align: center;
-  display: inline-block;
-  transition: 0.4s;
-}
-
-.thisLangItem {
-  background-color: #3f78b186 !important;
-  color: #eeeeee !important;
-  cursor: auto  !important;
-}
-.langChose div:hover{
-  background-color: #6faeece1;
-  color: #eeeeee ;
-}
-
-.thisLangItem:hover{
-  background-color: #3f78b186 !important;
-  color: #eeeeee !important;
-  cursor: auto  !important;
-}
-
 .bodyDivs {
   padding-top : 100px;
   background-color: #dddddd5d;
@@ -302,8 +179,8 @@ input.inputInf:focus {
 .__desInfoContainerMAin {
   display: flex;
   margin: 10px;
-  width: 80%;
-  max-width: 400px;
+  width: 90%;
+  max-width: 800px;
 }
 .__desInfoContainerMAin div{
   padding: 13px 10px 13px 10px;

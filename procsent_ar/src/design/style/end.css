@@ -25,19 +25,24 @@
 
 .mainInfoAbout {
   display: flex;
-  justify-content: space-evenly;
   font-family: Arial, Helvetica, sans-serif;
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 10px;
+  background-color:  #f5f5f5e1;
+  border-radius: 4px;
+  border: 0;
 }
 
 .mainInfoAbout div{
   padding: 3px;
   cursor: pointer;
-  width: 80%;
-  max-width: 300px;
+  width: 100%;
   margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
   text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .container:hover , .container:hover{
@@ -46,12 +51,11 @@
 .infoDirPage {
   font-family: 'Cairo', sans-serif;
   transition: 0.2s;
-  border-bottom: 4px solid #30475e00;
 }
+
 .infoDirPage:hover{
   font-family: 'Cairo', sans-serif;
   border: 0;
-  border-bottom: 4px solid #30475e;
   transition: 0.2s;
 }
 .socialInfoAbout i{

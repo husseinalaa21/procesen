@@ -8,14 +8,34 @@ export default function SendCommint(x) {
     const [isCancel, isCancelX] = useState(false)
     const [isCncelSend, isCncelSendX] = useState(false)
     const [isWrAll] = useState(false)
-
-    return (
-        <div className="sendCommitn" onClick={() => sendingco(true)}>
-            <FontAwesomeIcon icon={faQuestionCircle} style={{ fontSize: '11px', color: '#383838', marginLeft: '6px', marginTop : '2px' }} />
-
-            {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" ابلاغ . " classN={false} />}
-        </div>
-    )
+    try {
+        if(x.xc == true){
+            return (
+                
+                <div className="sendCommitn" onClick={() => sendingco(true)}>
+                    {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" أرسال ابلاغ " classN={false} />}
+                </div>
+            )
+        } else {
+            return (
+                
+                <div className="sendCommitn" onClick={() => sendingco(true)}>
+                    <FontAwesomeIcon icon={faQuestionCircle} style={{ fontSize: '11px', color: '#383838', marginLeft: '6px', marginTop : '2px' }} />
+        
+                    {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" ابلاغ . " classN={false} />}
+                </div>
+            )
+        }
+    } catch (err) {
+        return (
+            
+            <div className="sendCommitn" onClick={() => sendingco(true)}>
+                <FontAwesomeIcon icon={faQuestionCircle} style={{ fontSize: '11px', color: '#383838', marginLeft: '6px', marginTop : '2px' }} />
+    
+                {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" ابلاغ . " classN={false} />}
+            </div>
+        )
+    }
 
     function FormSend() {
         return (

@@ -50,7 +50,17 @@ export default function BodyEn() {
                      <TextCon text = ' لا نفرض قيود لاستخدام الموقع  على أي شخص أو مؤسسة , حيث أن استخدام الموقع مجاناً .' type='container_ar' />
                      <TextCon text = ' نحن غير مسؤلين عن أي استخدم من قبل المستخدمين . ' type='container_ar' />
                      <TextCon text = ' الموقع لا ينتهك أي حقوق طبع و نشر لأي مؤسسة حيث أنه يعيد صياغة الجمل . ' type='container_ar' />
-                     <SendCommint sec="2" />
+                     <SendCommint sec="3" />
+                </div>
+            </div>
+            <div className="titleThisPage">
+                <div className="thisTitlePage_first title_ar">
+                    <div className="titleMain" id="learnWebsite">
+                        المساهمة بتطوير موقع بروكسين
+                    </div>
+                </div>
+                <div className="thisTitlePage_seconed">
+                     <SendCommint sec="4" />
                 </div>
             </div>
         </div>

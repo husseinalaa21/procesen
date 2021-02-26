@@ -115,44 +115,6 @@ input.inputInf:focus {
   padding: 5px;
   color: #3b3b3b;
 }
-
-.NotesInfoPage {
-  padding: 14px;
-  border: 0;
-  border-right: 5px solid #305b5e;
-  background-color: #ffffff50;
-}
-
-.editeSections {
-  background-color: #94b5c0;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  color: #1c1c1d;
-  padding: 10px;
-}
-
-.textTUsers {
-  margin: 10px;
-  margin-right: 2px;
-  direction: rtl;
-}
-.sectionEditeFromUser {
-  background-color: #a1c7ca;
-  padding: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  color: #494a4b;
-  transition: 0.4s;
-}
-.sectionEditeFromUser:hover {
-  background-color: #bdd6d8;
-  transition: 0.4s;
-}
-.textAreaBottom {
-  padding: 10px;
-  padding-bottom: 2px;
-}
 /* FONTS */
 
 .title_ar {

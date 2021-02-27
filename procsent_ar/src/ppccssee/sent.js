@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faAtom, faCircle, faInfoCircle, faMinus, faPlus, faRedoAlt, faStream } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faAtom, faBold, faCircle, faCopy, faInfo, faInfoCircle, faMinus, faPaste, faPlus, faRedoAlt, faStream, faUndoAlt } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default class P___rps extends Component {
@@ -23,8 +23,11 @@ export default class P___rps extends Component {
         this.drThem = this.props.drThem
         this.lliThem = this.props.lliThem
         this.liThem = this.props.liThem
+
+        this.careavsold = this.careavsoldv.bind(this)
+        this.apiUndoAlt = false
     }
-    chxxc(){
+    chxxc() {
         alert("D")
     }
     checkN(xtexs) {
@@ -71,10 +74,16 @@ export default class P___rps extends Component {
             return [nis, nisp, ccs]
         }
     }
-    checkEls(){
-        
+    checkEls() {
+
     }
-    
+    careavsoldv(x){
+        alert( x.target.value)
+        if(this.props.caseXtex  == x.target.value){
+            alert("wtf")
+        }
+    }
+
     render() {
 
         var ccThem = this.props.ccThem,
@@ -91,7 +100,7 @@ export default class P___rps extends Component {
             vpmNuP = 0,
             velseNu = 0,
             velseNup = 0,
-            caseInfoPP = <FontAwesomeIcon icon={faCircle} style={{ fontSize : "12px" , color : "#54545591" , transition: '0.4s'}}/>;
+            caseInfoPP = "casSettShow";
 
         var vnumX = false,
             vspaceX = false,
@@ -99,14 +108,22 @@ export default class P___rps extends Component {
             velseX = false;
 
         var laChar = [
-            { lan: "ar", caseLan: false, inputLan: /[\u0600-\u06FF]/g, n: 0, np: 0, lann: " عربية " , caseLann : false},
-            { lan: "en", caseLan: false, inputLan: /[a-zA-Z]/g, n: 0, np: 0, lann: " انجليزية " , caseLann : false}
+            { lan: "ar", caseLan: false, inputLan: /[\u0600-\u06FF]/g, n: 0, np: 0, lann: " عربية ", caseLann: false },
+            { lan: "en", caseLan: false, inputLan: /[a-zA-Z]/g, n: 0, np: 0, lann: " انجليزية ", caseLann: false }
         ]
 
         var xtexs = this.props.xtex
+        var n_NTes_ols = () =>{
+            if(this.props.caseXtex == true){
+                var tab = this.props.xtex.replace(/\n/g, '<br />')
+                return {
+                   __html: tab
+                };
+            }
+        }
         if (this.props.caseXtex == true) {
             if (xtexs.length > 0) {
-                caseInfoPP = <FontAwesomeIcon icon={faCircle} style={{ fontSize : "12px" , color : "#1687a7" , transition: '0.4s'}}/>
+                caseInfoPP = "casSettHide"
                 var ccss = this.checkN(xtexs)
                 var sspp = this.checkS(xtexs)
                 vnum = ccss[2]
@@ -122,7 +139,7 @@ export default class P___rps extends Component {
                     laChar[i].n = thisCx[0]
                 }
             } else {
-                caseInfoPP = <FontAwesomeIcon icon={faCircle} style={{ fontSize : "12px" , color : "#54545591" , transition: '0.4s'}}/>
+                caseInfoPP = "casSettShow"
             }
         }
         var cct = []
@@ -135,40 +152,38 @@ export default class P___rps extends Component {
                 <label className="llPcsSec">
                     <div className="redeyTextAreaInf">
                         <div className="redeyTextAreaInfTIT">
-                            <div>
-                                <FontAwesomeIcon icon={faAlignLeft} className="icInfPrcs" />
+                            <div className="stolsCONTROL">
                                 معلومات النص المدخل
                             </div>
-                            <div>
-                                {caseInfoPP}
+                            <div className={"casSett " + caseInfoPP }>
+                                <FontAwesomeIcon icon={faAlignLeft} className="icTolsSett" />
                             </div>
                         </div>
                         <CseInfoThisP />
                     </div>
                     <div className="titlePcs redeyTextAreaK">
-                        <div className="titleTextArea"> <FontAwesomeIcon icon={faAtom} className="icInfredeyTextAreaKV" />  النص بعد التعديل و المعالجة  </div>
-                        <FontAwesomeIcon icon={faInfoCircle} className="icInfredeyTextAreaK" />
+                        <div className="InfredeyTextAreaK"> <FontAwesomeIcon icon={faInfo} /> </div>
+                        <div className="titleTextArea"> في هذا القسم سيظهر النص بعد التعديل و المعالجة  . <a href="#"> معرفة المزيد </a></div>
                     </div>
                     <div className="areaPccSec" style={ccThem ? this.drThem : this.liThem}>
-                        <div className="toolsMenuAreaPcs">
-                            <div className="optionTolsJs" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <div style={{ paddingLeft: '10px', paddingRight: '5px', border: '0', borderLeft: '1.5px solid  #38383867' }}>
-                                    نسخ
-                               </div>
-                                <div style={{ paddingLeft: '5px', paddingRight: '10px', }}>
-                                    مسح
-                               </div>
-                            </div>
-                            <div >
-
+                        <div className="secOntext">
+                            <div className="toolsMenuAreaPcs">
+                                <div className="tolsMainTextArea">
+                                    <div className="apiChoose">
+                                        <FontAwesomeIcon icon={faCopy} className={this.state.apicopy ? "apiChose" : "apiunChose"} />
+                                    </div>
+                                    <div className="apiChoose">
+                                        <FontAwesomeIcon icon={faUndoAlt} className={this.state.apiUndoAlt ? "apiChose" : "apiunChose"} />
+                                    </div>
+                                </div>
+                                <div >
+                                </div>
                             </div>
                         </div>
                         <div className="textArea">
-                            <TextareaAutosize className="areaPcP"
-                                style={ccThem ? this.ddrThem : this.lliThem}
-                                rows="4"
-                                placeholder=" النص المستخرج "
-                                value={xtexs} />
+                            <div contenteditable="true" className="areaPcP areaPlus" onClick={this.careavsold}>
+                                <div dangerouslySetInnerHTML={n_NTes_ols()} /> 
+                            </div>
                         </div>
                         <div className="toolsBottomAreaPcs">
                             <div className="textAreaBottom">
@@ -190,18 +205,18 @@ export default class P___rps extends Component {
                         <div className="ddTable">
                             <table className="_listInfo">
                                 <tbody>
-                                <tr>
-                                    <th> نوع العنصر </th>
-                                    <th> العدد </th>
-                                    <th> النسبة </th>
-                                    <th> حذف </th>
-                                </tr>
-                                {vnum ? <SetElement item={" ارقام "} itemNu={vnumNu} itemNumP={vnumNuP} cn={""} ccv={vnumX} ccb={vnumX}/> : false}
-                                {vspace ? <SetElement item={" مسافات "} itemNu={vspacemNu} itemNumP={vspacemNuP} cn={""} ccv={vspaceX} ccb={vspaceX}/> : false}
-                                {vpm ? <SetElement item={" علامات ترقيم "} itemNu={vpmNu} itemNumP={vpmNuP} cn={""} ccv={vpmX} ccb={vpmX}/> : false}
-                                {laChar[0].caseLan ? <SetElement item={" احرف " + laChar[0].lann} itemNu={laChar[0].n} itemNumP={laChar[0].np} cn={""} ccv={laChar[0].caseLann} ccb={laChar[0].caseLann}/> : false}
-                                {laChar[1].caseLan ? <SetElement item={" احرف " + laChar[1].lann} itemNu={laChar[1].n} itemNumP={laChar[1].np} cn={""} ccv={laChar[1].caseLann} ccb={laChar[1].caseLann}/> : false}
-                                {velse ? <SetElement item={" أخرى "} itemNu={velseNu} itemNumP={velseNup} cn={""} ccv={velseX} ccb={velseX}/> : false}
+                                    <tr>
+                                        <th> نوع العنصر </th>
+                                        <th> العدد </th>
+                                        <th> النسبة </th>
+                                        <th> حذف </th>
+                                    </tr>
+                                    {vnum ? <SetElement item={" ارقام "} itemNu={vnumNu} itemNumP={vnumNuP} cn={""} ccv={vnumX} ccb={vnumX} /> : false}
+                                    {vspace ? <SetElement item={" مسافات "} itemNu={vspacemNu} itemNumP={vspacemNuP} cn={""} ccv={vspaceX} ccb={vspaceX} /> : false}
+                                    {vpm ? <SetElement item={" علامات ترقيم "} itemNu={vpmNu} itemNumP={vpmNuP} cn={""} ccv={vpmX} ccb={vpmX} /> : false}
+                                    {laChar[0].caseLan ? <SetElement item={" احرف " + laChar[0].lann} itemNu={laChar[0].n} itemNumP={laChar[0].np} cn={""} ccv={laChar[0].caseLann} ccb={laChar[0].caseLann} /> : false}
+                                    {laChar[1].caseLan ? <SetElement item={" احرف " + laChar[1].lann} itemNu={laChar[1].n} itemNumP={laChar[1].np} cn={""} ccv={laChar[1].caseLann} ccb={laChar[1].caseLann} /> : false}
+                                    {velse ? <SetElement item={" أخرى "} itemNu={velseNu} itemNumP={velseNup} cn={""} ccv={velseX} ccb={velseX} /> : false}
                                 </tbody>
                             </table>
                         </div>
@@ -224,7 +239,7 @@ export default class P___rps extends Component {
                     <td > {cx.item} </td>
                     <td > {cx.itemNu} </td>
                     <td > {cx.itemNumP} </td>
-                    {cx.ccv ? <td  className="faMinusDiv" onClick={()=>chxxc()}> <FontAwesomeIcon icon={faMinus} className="faMinusi"/> </td> : <td className="faPlusDiv" onClick={()=>chxxc()}> <FontAwesomeIcon icon={faPlus} className="faPlusi"/> </td>}
+                    {cx.ccv ? <td className="faMinusDiv" onClick={() => chxxc()}> <FontAwesomeIcon icon={faMinus} className="faMinusi" /> </td> : <td className="faPlusDiv" onClick={() => chxxc()}> <FontAwesomeIcon icon={faPlus} className="faPlusi" /> </td>}
                 </tr>
             )
         }

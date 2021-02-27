@@ -5,63 +5,58 @@
   padding: 10px;
   padding-top: 0;
 }
-.titleTextArea {
-  display: flex;
-  justify-content: space-between;
-}
 .titlePcs {
-  font-size: 18px;
-  padding: 10px;
-  font-family: sans-serif;
+  font-size: 17px;
   border: 0;
   margin-bottom: 10px;
   border-radius: 3px;
   display: flex;
-  justify-content: space-between;
+  margin-left: auto;
+  overflow: hidden;
 }
 .redeyTextArea{
   background-color:#e7e7de;
   color: #353027;
-  border-right: 5px solid #353027a4;
 }
-.icInfredeyTextArea {
-  color: #35302781;
-  cursor: pointer;
+.inforedeyTextArea {
+  padding: 10px;
+  width: 30%;
+  max-width: 6px;
+  background-color: #353027a4;
+  font-size: 14px;
 }
-.icInfredeyTextAreaV {
-  color: #35302781;
-  font-size: 16px;
-  padding-left: 5px;
+.titleTextArea {
+  padding: 10px;
 }
-.icInfredeyTextArea:hover {
-  color: #353027e5;
-  
+.titleTextArea a{
+  font-size: 13px;
 }
 .redeyTextAreaK{
-  background-color:#9fb8ad;
+  background-color:#bbd2d8dc;
   color: #2b2e2e;
-  border-right: 5px solid #5b6d5b;
 }
-.icInfredeyTextAreaK {
-  color: #2b2e2e8a;
-  cursor: pointer;
+.icInfredeyTextArea {
+  color: #d4d4d4;
 }
-.icInfredeyTextAreaKV {
-  color: #3e99a0;
-  padding-left: 10px;
-  font-size: 16px;
-}
-.icInfredeyTextAreaK:hover {
-  color: #2b2e2ee1;
-  
+.InfredeyTextAreaK {
+  padding: 10px;
+  width: 30%;
+  max-width: 6px;
+  background-color: #1687a7;
+  color: #dadbdb;
+  font-size: 14px;
 }
 .areaPcP:focus {
   outline: none;
 }
+.areaPlus {
+  font-size: 18px;
+  color: #383838;
+}
 .toolsMenuAreaPcs {
   border: 0;
   border-bottom: 1px solid rgba(204, 202, 202, 0.356);
-  padding: 4px 5px 14px 5px;
+  padding: 2px 0 8px 0;
   display: flex;
   justify-content: space-between
 }
@@ -199,6 +194,7 @@
 
 .secOntext {
   padding: 10px;
+  padding-top: 8px;
   padding-bottom: 0px;
 }
 
@@ -210,9 +206,13 @@
 }
 
 .headerTolsMain {
+  font-size: 18px;
+  font-family: sans-serif;
   background-color: #e8e8e8;
   padding: 5px;
   border-right: 4px solid #3b3b3b;
+  display: flex;
+  justify-content: space-between;
 }
 .redeyTextAreaInf {
   border-right: 4px solid #3b3b3b;
@@ -222,9 +222,10 @@
 }
 
 .redeyTextAreaInfTIT {
-  background-color: #e8e8e8;
-  padding: 10px;
   font-size: 18px;
+  font-family: sans-serif;
+  background-color: #e8e8e8;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
 }
@@ -233,32 +234,42 @@
   background-color: #ebe9e9;
 }
 .stolsCONTROL{
-  font-size: 18px;
-  font-family: sans-serif;
   padding: 5px;
 }
-.cotrolsTil__ {
-  display: flex;
-  justify-content: space-between;
-}
 .icTolsSett {
-  padding-left: 10px;
   font-size: 16px;
+}
+.csDataInfo {
 }
 .icInfPrcs {
-  padding-left: 10px;
+  border-radius: 4px;
+  padding: 5px;
   font-size: 16px;
+  transition: 0.5s;
+  color: #5a5a5a;
+  background-color: #ced1d356;
+}
+.icInfPrcsTrue {
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 16px;
+  transition: 0.5s;
+  color:#1687a7;
+  background-color: #c6d2dace;
 }
 .casSett {
-  padding: 6px;
-  border-radius: 50px;
+  padding: 5px 7px 5px 7px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: 0.5s;
 }
 .casSettHide {
-  color: #5992a3;
+  color: #1687a7;
+  background-color: #c6d2dace;
 }
 .casSettShow {
   color: #5a5a5a;
+  background-color: #ced1d356;
 }
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
 .textAreaBottomLogo , .textAreaBottom{
@@ -555,4 +566,72 @@
   color: #1a73e8;
   cursor: pointer;
 }
+.errRed {
+  color: red;
+  text-align: center;
+}
 
+/* ---- TOLS CHOOSE ---- */
+
+.tolsMainTextArea {
+  display: flex;
+}
+.tolsMainTextArea div{
+  padding-left: 10px;
+}
+
+.apiChose {
+  color : #1687a7;
+  font-size : 16px;
+  cursor : "pointer"
+}
+.apiChoseTrash {
+  padding: 5px;
+  border-radius: 4px;
+  color : #6a6c6d79;
+  font-size : 16px;
+  transition: 0.5s;
+}
+.apiChoseTrashT {
+  padding: 5px;
+  border-radius: 4px;
+  color : #6a6c6d;
+  font-size : 16px;
+  transition: 0.5s;
+  cursor : pointer;
+}
+.apiChoseTrashT:hover {
+  background-color: #999a9b65;
+  color : #3b3b3b;
+}
+.apiunChose {
+  padding: 5px;
+  border-radius: 4px;
+  color : #6a6c6d;
+  font-size : 16px;
+  cursor : pointer;
+  transition: 0.5s;
+}
+.apiunChose:hover {
+  background-color: #999a9b65;
+  color : #3b3b3b;
+}
+
+.apiMoon {
+  color: #1687a7;
+  font-size: 16px;
+  transition: 0.5s;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.apiMoonFoucs {
+  color:  rgb(223, 180, 39);
+  font-size: 16px;
+  transition: 0.5s;
+  padding: 5px;
+  cursor: pointer;
+}
+
+
+/* ---- END TOLS CHOOSE ---- */

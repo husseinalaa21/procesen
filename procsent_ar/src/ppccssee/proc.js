@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowDown, faArrowUp, faEye, faEyeSlash, faFeatherAlt, faInfoCircle, faMinus, faMoon, faPlus, faSlidersH, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown, faArrowUp, faBold, faCopy, faEye, faEyeSlash, faFeatherAlt, faInfo, faInfoCircle, faMinus, faMoon, faPaste, faPlus, faRedoAlt, faSlidersH, faSun, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import Cookies from 'universal-cookie';
 import TextareaAutosize from 'react-textarea-autosize';
 import P___rps from './sent';
@@ -39,6 +39,12 @@ export default class Proc extends Component {
         this.state.isShowMoreOpProcs = false
         this.cShowHide = this.thisShowHide.bind(this)
         this.caseSettingTols = false
+
+        // styleChose
+
+        this.apipast = false
+        this.apicopy = false
+        this.apiTrashAlt = false
 
         // < />
 
@@ -101,6 +107,12 @@ export default class Proc extends Component {
         if (wwords === -1) {
             wwords = wwords + 1
         }
+
+        if (x.target.value.length > 0) {
+            this.setState({apiTrashAlt : true})
+        } else {
+            this.setState({apiTrashAlt : false})
+        }
         this.setState({ xtex: x.target.value })
         this.setState({ words: wwords });
     }
@@ -120,15 +132,25 @@ export default class Proc extends Component {
                         <div className="ffPcs">
                             <label className="llPcs">
                                 <div className="titlePcs redeyTextArea">
-                                    <div className="titleTextArea "> <FontAwesomeIcon icon={faFeatherAlt} className="icInfredeyTextAreaV" /> ادخل النص المراد معالجته  </div>
-                                    <FontAwesomeIcon icon={faInfoCircle} className="icInfredeyTextArea" />
+                                    <div className="inforedeyTextArea"> <FontAwesomeIcon icon={faInfo} className="icInfredeyTextArea" /></div>
+                                    <div className="titleTextArea "> أدخل في هذا القسم النص الذي ترغب بمعالجته  . <a href="#"> معرفة المزيد </a> </div>
                                 </div>
                                 <div className="areaPcc" style={this.state.themProcs ? this.state.styleFormPrcsDark : this.state.styleFormPrcsLight}>
                                     <div className="secOntext">
                                         <div className="toolsMenuAreaPcs">
-                                            <div>تحضير النص</div>
+                                            <div className="tolsMainTextArea">
+                                                <div className="apiChoose">
+                                                    <FontAwesomeIcon icon={faPaste} className={this.state.apipast ? "apiChose" : "apiunChose"}/>
+                                                </div>
+                                                <div>
+                                                    <FontAwesomeIcon icon={faCopy} className={this.state.apicopy ? "apiChose" : "apiunChose"}/>
+                                                </div>
+                                                <div>
+                                                    <FontAwesomeIcon icon={faTrashAlt} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"}/>
+                                                </div>
+                                            </div>
                                             <div onClick={this.chThemProcsThat}>
-                                                {this.state.themProcs ? <FontAwesomeIcon icon={faSun} style={{ color: ' rgb(223, 180, 39)', fontSize: '16px', transition: '0.4s' }} /> : <FontAwesomeIcon icon={faMoon} style={{ color: ' #1687a7', fontSize: '16px', transition: '0.4s' }} />}
+                                                {this.state.themProcs ? <FontAwesomeIcon icon={faSun} className="apiMoonFoucs" /> : <FontAwesomeIcon icon={faMoon} className="apiMoon" />}
                                             </div>
                                         </div>
                                     </div>
@@ -153,18 +175,11 @@ export default class Proc extends Component {
 
                         <div className="mainTolsControl">
                             <div className="headerTolsMain">
-                                <div className="cotrolsTil__">
-                                    <div className="stolsCONTROL">
-                                        <FontAwesomeIcon icon={faSlidersH} className="icTolsSett" />
+                                <div className="stolsCONTROL">
                                         خيارات التحكم بمعالجة الكلمات
-                                    </div>
-                                    <div className={this.state.caseSettingTols ? "casSett casSettHide" : "casSett casSettShow"} onClick={this.changeTolsVis}>
-                                        {this.state.caseSettingTols ? <FontAwesomeIcon icon={faEyeSlash} />  : <FontAwesomeIcon icon={faEye} />}
-                                    </div>
                                 </div>
-
-                                <div className="shAnHideTols">
-
+                                <div className={this.state.caseSettingTols ? "casSett casSettHide" : "casSett casSettShow"} onClick={this.changeTolsVis}>
+                                    <FontAwesomeIcon icon={faSlidersH} className="icTolsSett" />
                                 </div>
                             </div>
                             <div className="chooseListProcs" style={this.state.caseSettingTols ? { display: 'block' } : { display: 'none' }}>

@@ -10,13 +10,15 @@ export default class ProcessFromUser extends Component {
             enterEditer: false,
             cancelSendQu: false,
             ccvv: true,
-            cannFromU : false,
+            cannFromU: false,
             perU: 0,
             thisAnsw: 0,
             cqthis: 911,
             dataBasse: [
-                { nameQuestion: ' مرادف كلمة ذكاء ؟ ', answers: [' مجرات ', ' انسان ', ' كوكب ', " لا شيء مما سبق "], another: false, idQ: 'dWc243df', },
-                { nameQuestion: ' كلمة بنفس معنى قام ', answers: [' انسان ', ' كوكب ', " لا شيء مما سبق "], another: true, idQ: 'dWc243df' }
+               { nameQuestion: ' مرادف كلمة ذكاء ؟ ', answers: [' مجرات ', ' انسان ', ' كوكب ', " لا شيء مما سبق "], another: false, idQ: 'dWc243df', },
+               { nameQuestion: ' كلمة بنفس معنى قام ', answers: [' انسان ', ' كوكب ', " لا شيء مما سبق "], another: true, idQ: 'dWc243df' },
+               { nameQuestion: ' كلمة بنفس معنى قام ', another: true, idQ: 'dWc243df' },
+               { nameQuestion: ' كلمة بنفس معنى قام ', another: false, idQ: 'dWc243df' }
             ],
             anThis: false,
             aun: {}
@@ -28,21 +30,21 @@ export default class ProcessFromUser extends Component {
                 var nnub = this.state.thisAnsw + 1
                 var nnux = this.state.perU + 1
                 this.setState({ thisAnsw: nnub })
-                this.setState({anThis : false})
-                this.setState({aun : {}})
-                this.setState({cqthis : 911})
-                this.setState({perU : nnux})
+                this.setState({ anThis: false })
+                this.setState({ aun: {} })
+                this.setState({ cqthis: 911 })
+                this.setState({ perU: nnux })
             } else {
-                this.setState({dataBasse : []})
+                this.setState({ dataBasse: [] })
             }
         } catch (err) {
-            this.setState({dataBasse : []})
+            this.setState({ dataBasse: [] })
         }
     }
     cchheecckkInput() {
         if (this.state.anThis == true) {
             return (
-                <div className="sendTureST" onClick={()=> this.__see_this()}> أرسال </div>
+                <div className="sendTureST" onClick={() => this.__see_this()}> أرسال </div>
             )
         } else {
             return (
@@ -51,12 +53,16 @@ export default class ProcessFromUser extends Component {
         }
     }
     ccbb() {
-        if (this.state.dataBasse.length == this.state.thisAnsw + 1) {
+        this.setState({ cqthis: 911 })
+        this.setState({ anThis: false })
+        this.setState({ aun: {} })
+        if (this.state.dataBasse.length == this.state.thisAnsw) {
             this.setState({ cannFromU: true })
         } else if (this.state.dataBasse.length > this.state.thisAnsw) {
-            this.setState({ thisAnsw: +1 })
+            var nnu = this.state.thisAnsw +1
+            this.setState({ thisAnsw: nnu })
         } else {
-            alert("p")
+            console.log("err")
         }
     }
     cchheecckkInputCncel() {
@@ -67,7 +73,7 @@ export default class ProcessFromUser extends Component {
     iIQq() {
         try {
             var data = this.state.dataBasse
-            if(data.length == this.state.thisAnsw){
+            if (data.length == this.state.thisAnsw) {
                 this.setState({ cannFromU: true })
             } else {
                 var cvAn = () => {
@@ -115,7 +121,7 @@ export default class ProcessFromUser extends Component {
             if (data.length > 0) {
                 for (var t = 0; t < data.length; t++) {
                     const tNew = 0 + t
-                    xc.push(<p className={this.cvCss(t)} id={t} key={t + "Qw"} onClick={(t) => { this.getThis(tNew, this.iIQq().idQ) }}><span className="nnQuto">{t + 1}  -  </span>  {data[t]} </p>)
+                    xc.push(<p className={this.cvCss(t)} id={t} key={t + "Qw"} onClick={(t) => { this.getThis(tNew, this.iIQq().idQ)}}><span className="nnQuto">{t + 1}  -  </span>  {data[t]} </p>)
                 }
                 return xc
             } else {
@@ -125,18 +131,18 @@ export default class ProcessFromUser extends Component {
             return data
         }
     }
-    IsQuAsk() {
-        var ssTitle = () => {
-            try {
-                if (this.iIQq().ssDataT > 0) {
-                    return true
-                } else {
-                    return false
-                }
-            } catch (err) {
+    ssTitle(){
+        try {
+            if (this.iIQq().ssDataT.length > 0) {
+                return true
+            } else {
                 return false
             }
+        } catch (err) {
+            return false
         }
+    }
+    IsQuAsk() {
         try {
             return (
                 <div>
@@ -158,9 +164,9 @@ export default class ProcessFromUser extends Component {
                                 </div>
                             </div>
                             <div className="_sectionQuAsk">
-                                {ssTitle ? <div className="ooppAns"> الاجابات المقترحة </div> : <div className="ooppAns"> اقترح اجابة </div>}
-                                {ssTitle ?
+                                {this.ssTitle() ?
                                     <div>
+                                        <div className="ooppAns"> الاجابات المقترحة </div>
                                         <div className="itemDis__l">
                                             {this.cconn()}
                                         </div>
@@ -174,12 +180,14 @@ export default class ProcessFromUser extends Component {
                                         }
                                     </div> :
                                     <div>
+                                        <div className="ooppAns"> اقترح اجابة </div>
                                         {this.iIQq().vAn ?
                                             <div className="itmeM__l">
+                                                <div className="itmeM__Title"> اقترح اجابة </div>
                                                 <div className="itmeM__lContainer">
-    
+                                                    <input type="text" />
                                                 </div>
-                                            </div> : " "}
+                                            </div> : <div className="errRed"> [حدث خطء - 230] </div>}
                                     </div>
                                 }
                                 <div className="contr__los_t__is">
@@ -197,17 +205,17 @@ export default class ProcessFromUser extends Component {
                                 </div>
                             </div>
                         </div> :
-                        <div>
-                            حدث خطء 
+                        <div className="errRed">
+                           [حدث خطء - 200911]
                         </div>
-    
+
                     }
                 </div>
             )
         } catch (err) {
-            return(
-                <div>
-                    حدث خطء 
+            return (
+                <div className="errRed">
+                   [حدث خطء - 110920]
                 </div>
             )
         }
@@ -234,24 +242,39 @@ export default class ProcessFromUser extends Component {
         }
     }
     render() {
+        var nbn = () => {
+            try {
+                if (this.state.dataBasse.length > 0) {
+                    return true
+                } else {
+                    return false
+                }
+            } catch (err) {
+                return false
+            }
+        }
         return (
             <>
-                { this.state.cannFromU ? this.ccv() :
-                    <div className="NotesInfoPage">
-                        <div className={this.state.enterEditer ? "editeSectionsTr " + this.props.className : "editeSections " + this.props.className}>
-                            <div className="sectionsProcss">
-                                {this.state.enterEditer ?
-                                    <div className="sectionEditeFromUserF" onClick={() => this.setState({ cannFromU: true })}> ألغاء </div> :
-                                    <div className="sectionEditeFromUser" onClick={() => this.setState({ enterEditer: true })}> بدء تعليم الموقع </div>
-                                }
+                {nbn() ?
+                    <div>
+                        {this.state.cannFromU ? this.ccv() :
+                            <div className="NotesInfoPage">
+                                <div className={this.state.enterEditer ? "editeSectionsTr " + this.props.className : "editeSections " + this.props.className}>
+                                    <div className="sectionsProcss">
+                                        {this.state.enterEditer ?
+                                            <div className="sectionEditeFromUserF" onClick={() => this.setState({ cannFromU: true })}> ألغاء </div> :
+                                            <div className="sectionEditeFromUser" onClick={() => this.setState({ enterEditer: true })}> بدء تعليم الموقع </div>
+                                        }
+                                    </div>
+                                    {this.state.enterEditer ?
+                                        <div className="textTUsers"><FontAwesomeIcon icon={faFire} style={{ color: '#eb561b', fontSize: '15px' }} />  &nbsp;   مرحباً بك في قسم تطوير الموقع . &nbsp; <a style={{ fontSize: '14px', color: '#1a73e8', cursor: 'pointer' }} href="#learnWebsite"> أعرف المزيد </a></div> :
+                                        <div className="textTUsers"> <FontAwesomeIcon icon={faLightbulb} style={{ color: '#ffd880', fontSize: '15px' }} />  &nbsp; يمكنك المبادرة بتعليم الموقع و المساهمة في تحسينه .</div>
+                                    }
+                                </div>
+                                {this.state.enterEditer ? this.IsQuAsk() : ''}
                             </div>
-                            {this.state.enterEditer ?
-                                <div className="textTUsers"><FontAwesomeIcon icon={faFire} style={{ color: '#eb561b', fontSize: '15px' }} />  &nbsp;   مرحباً بك في قسم تطوير الموقع . &nbsp; <a style={{ fontSize: '14px', color: '#1a73e8', cursor: 'pointer' }} href="#learnWebsite"> أعرف المزيد </a></div> :
-                                <div className="textTUsers"> <FontAwesomeIcon icon={faLightbulb} style={{ color: '#ffd880', fontSize: '15px' }} />  &nbsp; يمكنك المبادرة بتعليم الموقع و المساهمة في تحسينه .</div>
-                            }
-                        </div>
-                        {this.state.enterEditer ? this.IsQuAsk() : ''}
-                    </div>
+                        }
+                    </div> : ""
                 }
             </>
         )

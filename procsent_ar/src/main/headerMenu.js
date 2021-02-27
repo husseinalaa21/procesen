@@ -4,11 +4,21 @@ import { useState } from 'react'
 import TolsNavMain from '../joint/tolsNavMain'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLanguage, faMoon } from '@fortawesome/free-solid-svg-icons';
+import {
+    Link,
+    DirectLink,
+    Element,
+    Events,
+    animateScroll,
+    scrollSpy,
+    scroller
+  } from "react-scroll";
 
 export default function HeaderMenuEn() {
     const [clickNav, setClickNav] = useState(false)
     const [clickNavLang, setClickNavLang] = useState(false)
     const [isNight, isNightX] = useState(false)
+    const [srcc, setsrcc] = useState(false)
 
     function ItemListMain(x) {
         return (
@@ -43,10 +53,18 @@ export default function HeaderMenuEn() {
             )
         }
     }
+    window.onscroll = function() {scr()};
+    function scr() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            setsrcc(true)
+        } else {
+            setsrcc(false)
+        }
+    }
 
     return (
         <div className="headerMenu">
-            <div className="header">
+            <div className={srcc ? "header sha" : "header"}>
                 <div className="header_main">
                     <div className="sectionsNavFlex">
                         <div className="searchToggThem" onClick={() => { isNightX(!isNight) }}>

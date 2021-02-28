@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAlignLeft, faAtom, faBold, faCircle, faCopy, faInfo, faInfoCircle, faMinus, faPaste, faPlus, faRedoAlt, faStream, faUndoAlt } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize';
-
+import ContentEditable from 'react-contenteditable'
 export default class P___rps extends Component {
     constructor(props) {
         super(props);
@@ -77,10 +77,11 @@ export default class P___rps extends Component {
     checkEls() {
 
     }
-    careavsoldv(x){
-        alert( x.target.value)
-        if(this.props.caseXtex  == x.target.value){
-            alert("wtf")
+    careavsoldv(x) {
+        if (this.props.xtex != x.target.value) {
+            this.setState({apiUndoAlt : true})
+        } else {
+            this.setState({apiUndoAlt : false})
         }
     }
 
@@ -113,12 +114,16 @@ export default class P___rps extends Component {
         ]
 
         var xtexs = this.props.xtex
-        var n_NTes_ols = () =>{
-            if(this.props.caseXtex == true){
-                var tab = this.props.xtex.replace(/\n/g, '<br />')
-                return {
-                   __html: tab
-                };
+        var n_NTes_ols = () => {
+            if (this.props.caseXtex == true) {
+                if(this.props.xtex.length > 0){
+                    var tab = this.props.xtex.replace(/\n/g, "<br />")
+                    return tab;
+                } else {
+                    return "<i className='nullTextArea'> لا يوجد شيء بعد </i>"
+                }
+            } else {
+                return "<i className='nullTextArea'> لا يوجد شيء بعد <i>"
             }
         }
         if (this.props.caseXtex == true) {
@@ -142,6 +147,17 @@ export default class P___rps extends Component {
                 caseInfoPP = "casSettShow"
             }
         }
+        var n_NTos_ols = () =>{
+            if (this.props.caseXtex == true) {
+                if(this.props.xtex.length > 0){
+                    return false
+                } else {
+                    return true
+                }
+            } else {
+                return true
+            }
+        }
         var cct = []
         var ccm = -1;
         function chxxc(x) {
@@ -155,7 +171,7 @@ export default class P___rps extends Component {
                             <div className="stolsCONTROL">
                                 معلومات النص المدخل
                             </div>
-                            <div className={"casSett " + caseInfoPP }>
+                            <div className={"casSett " + caseInfoPP}>
                                 <FontAwesomeIcon icon={faAlignLeft} className="icTolsSett" />
                             </div>
                         </div>
@@ -181,11 +197,14 @@ export default class P___rps extends Component {
                             </div>
                         </div>
                         <div className="textArea">
-                            <div contenteditable="true" className="areaPcP areaPlus" onClick={this.careavsold}>
-                                <div dangerouslySetInnerHTML={n_NTes_ols()} /> 
-                            </div>
+                                <ContentEditable
+                                    html={'<p className="textareap">' + n_NTes_ols() + '</p>'}
+                                    disabled={n_NTos_ols()}
+                                    tagName='div'
+                                    className="areaPcP areaPlus"
+                                />
                         </div>
-                        <div className="toolsBottomAreaPcs">
+                        <div className="toolsBottomAreaPcs toolsBottomAreaPcsPro">
                             <div className="textAreaBottom">
                                 2000 / 0
                             </div>

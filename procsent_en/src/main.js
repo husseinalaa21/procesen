@@ -1,4 +1,5 @@
 import './design/style/main.css';
+import './design/style/header.css';
 import './design/style/end.css';
 import './design/style/procs.css';
 import Body from './main/body'
@@ -9,14 +10,12 @@ import Proc from './ppccssee/proc';
 
 
 function mainHome() {
-
   return (
     <>
       <HeaderMenu />
       <div className="bodyDivs">
-      <ProcessFromUser className = "messEn" 
-          learnWeb = " Website education "
-          messToApper = " You can use the site or you can take the initiative to improve the site ."/>        <Proc />
+        <ProcessFromUser className = "messArabic" useWeb = " استخدام الموقع " learnWeb = " تعليم الموقع " messToApper = " يمكنك استخدام الموقع أو يمكنك المبادرة في تحسين الموقع ."/>
+        <Proc />
         <Body />
         <EndPage />
       </div>

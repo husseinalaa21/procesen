@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowDown, faArrowUp, faEye, faEyeSlash, faFeatherAlt, faInfoCircle, faMinus, faMoon, faPlus, faSlidersH, faSun } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown, faArrowUp, faBold, faCopy, faEye, faEyeSlash, faFeatherAlt, faInfo, faInfoCircle, faMinus, faMoon, faPaste, faPlus, faRedoAlt, faSlidersH, faSun, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import Cookies from 'universal-cookie';
 import TextareaAutosize from 'react-textarea-autosize';
 import P___rps from './sent';
@@ -39,6 +39,12 @@ export default class Proc extends Component {
         this.state.isShowMoreOpProcs = false
         this.cShowHide = this.thisShowHide.bind(this)
         this.caseSettingTols = false
+
+        // styleChose
+
+        this.apipast = false
+        this.apicopy = false
+        this.apiTrashAlt = false
 
         // < />
 
@@ -101,6 +107,12 @@ export default class Proc extends Component {
         if (wwords === -1) {
             wwords = wwords + 1
         }
+
+        if (x.target.value.length > 0) {
+            this.setState({apiTrashAlt : true})
+        } else {
+            this.setState({apiTrashAlt : false})
+        }
         this.setState({ xtex: x.target.value })
         this.setState({ words: wwords });
     }
@@ -114,21 +126,31 @@ export default class Proc extends Component {
 
     render() {
         return (
-            <div className="MainProcsent infoStartP ar_text">
+            <div className="MainProcsent infoStartP">
                 <div className="MainProcsentSec">
                     <div className="sectionProcsent">
                         <div className="ffPcs">
                             <label className="llPcs">
                                 <div className="titlePcs redeyTextArea">
-                                    <div className="titleTextArea "> <FontAwesomeIcon icon={faFeatherAlt} className="icInfredeyTextAreaV" /> ادخل النص المراد معالجته  </div>
-                                    <FontAwesomeIcon icon={faInfoCircle} className="icInfredeyTextArea" />
+                                    <div className="inforedeyTextArea"> <FontAwesomeIcon icon={faInfo} className="icInfredeyTextArea" /></div>
+                                    <div className="titleTextArea "> Enter in this section the text you want to process . <a href="#"> Learn more </a> </div>
                                 </div>
                                 <div className="areaPcc" style={this.state.themProcs ? this.state.styleFormPrcsDark : this.state.styleFormPrcsLight}>
                                     <div className="secOntext">
                                         <div className="toolsMenuAreaPcs">
-                                            <div>تحضير النص</div>
+                                            <div className="tolsMainTextArea">
+                                                <div className="apiChoose">
+                                                    <FontAwesomeIcon icon={faPaste} className={this.state.apipast ? "apiChose" : "apiunChose"}/>
+                                                </div>
+                                                <div>
+                                                    <FontAwesomeIcon icon={faCopy} className={this.state.apicopy ? "apiChose" : "apiunChose"}/>
+                                                </div>
+                                                <div>
+                                                    <FontAwesomeIcon icon={faTrashAlt} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"}/>
+                                                </div>
+                                            </div>
                                             <div onClick={this.chThemProcsThat}>
-                                                {this.state.themProcs ? <FontAwesomeIcon icon={faSun} style={{ color: ' rgb(223, 180, 39)', fontSize: '16px', transition: '0.4s' }} /> : <FontAwesomeIcon icon={faMoon} style={{ color: ' #1687a7', fontSize: '16px', transition: '0.4s' }} />}
+                                                {this.state.themProcs ? <FontAwesomeIcon icon={faSun} className="apiMoonFoucs" /> : <FontAwesomeIcon icon={faMoon} className="apiMoon" />}
                                             </div>
                                         </div>
                                     </div>
@@ -136,7 +158,7 @@ export default class Proc extends Component {
                                         <TextareaAutosize className="areaPcP"
                                             style={this.state.themProcs ? this.state.styleFormPrcsTextAreaDark : this.state.styleFormPrcsTextAreaLight}
                                             rows="4"
-                                            placeholder=" اكتب هنا .."
+                                            placeholder=" write here .."
                                             onChange={this.wordsPcs} />
                                     </div>
                                     <div className="toolsBottomAreaPcs">
@@ -153,18 +175,11 @@ export default class Proc extends Component {
 
                         <div className="mainTolsControl">
                             <div className="headerTolsMain">
-                                <div className="cotrolsTil__">
-                                    <div className="stolsCONTROL">
-                                        <FontAwesomeIcon icon={faSlidersH} className="icTolsSett" />
-                                        خيارات التحكم بمعالجة الكلمات
-                                    </div>
-                                    <div className="casSett casSettT" onClick={this.changeTolsVis}>
-                                        {this.state.caseSettingTols ? <div> أخفاء  <FontAwesomeIcon icon={faEyeSlash} /> </div> : <div> أضهار  / <FontAwesomeIcon icon={faEye} /> </div>}
-                                    </div>
+                                <div className="stolsCONTROL">
+                                    Word processing control options
                                 </div>
-
-                                <div className="shAnHideTols">
-
+                                <div className={this.state.caseSettingTols ? "casSett casSettHide" : "casSett casSettShow"} onClick={this.changeTolsVis}>
+                                    <FontAwesomeIcon icon={faSlidersH} className="icTolsSett" />
                                 </div>
                             </div>
                             <div className="chooseListProcs" style={this.state.caseSettingTols ? { display: 'block' } : { display: 'none' }}>
@@ -173,39 +188,39 @@ export default class Proc extends Component {
                                         <div onClick={() => {
                                             this.setCo('removeX', this.state.removeX)
                                             this.state.removeX ? this.setState({ removeX: false }) : this.setState({ removeX: true })
-                                        }} className={this.state.removeX ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div> ازالة الفواصل </div> <FontAwesomeIcon icon={this.state.removeX ? faMinus : faPlus} style={this.state.removeX ? this.styleIconChooseTrue : this.styleIconChoose} /> </div>
+                                        }} className={this.state.removeX ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div> Remove spacers </div> <FontAwesomeIcon icon={this.state.removeX ? faMinus : faPlus} style={this.state.removeX ? this.styleIconChooseTrue : this.styleIconChoose} /> </div>
                                         <div onClick={() => {
                                             this.setCo('removeNuQu', this.state.removeNuQu)
                                             this.state.removeNuQu ? this.setState({ removeNuQu: false }) : this.setState({ removeNuQu: true })
-                                        }} className={this.state.removeNuQu ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>ازالة علامات الترقيم</div><FontAwesomeIcon icon={this.state.removeNuQu ? faMinus : faPlus} style={this.state.removeNuQu ? this.styleIconChooseTrue : this.styleIconChoose} /></div>
+                                        }} className={this.state.removeNuQu ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>Remove punctuation marks</div><FontAwesomeIcon icon={this.state.removeNuQu ? faMinus : faPlus} style={this.state.removeNuQu ? this.styleIconChooseTrue : this.styleIconChoose} /></div>
                                         <div onClick={() => {
                                             this.setCo('removeQu', this.state.removeQu)
                                             this.state.removeQu ? this.setState({ removeQu: false }) : this.setState({ removeQu: true })
-                                        }} className={this.state.removeQu ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}><div> ازالة علامات الاقتباس</div> <FontAwesomeIcon icon={this.state.removeQu ? faMinus : faPlus} style={this.state.removeQu ? this.styleIconChooseTrue : this.styleIconChoose} /></div>
+                                        }} className={this.state.removeQu ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}><div> Remove the quotes</div> <FontAwesomeIcon icon={this.state.removeQu ? faMinus : faPlus} style={this.state.removeQu ? this.styleIconChooseTrue : this.styleIconChoose} /></div>
                                         <div onClick={() => {
                                             this.setCo('removeNum', this.state.removeNum)
                                             this.state.removeNum ? this.setState({ removeNum: false }) : this.setState({ removeNum: true })
-                                        }} className={this.state.removeNum ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>ازالة الارقام</div>  <FontAwesomeIcon icon={this.state.removeNum ? faMinus : faPlus} style={this.state.removeNum ? this.styleIconChooseTrue : this.styleIconChoose} /></div>
+                                        }} className={this.state.removeNum ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>Remove numbers</div>  <FontAwesomeIcon icon={this.state.removeNum ? faMinus : faPlus} style={this.state.removeNum ? this.styleIconChooseTrue : this.styleIconChoose} /></div>
                                         <div onClick={() => {
                                             this.setCo('removeAR', this.state.removeAR)
                                             this.state.removeAR ? this.setState({ removeAR: false }) : this.setState({ removeAR: true })
-                                        }} className={this.state.removeAR ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>ازالة الاحرف العربية</div>  <FontAwesomeIcon icon={this.state.removeAR ? faMinus : faPlus} style={this.state.removeAR ? this.styleIconChooseTrue : this.styleIconChoose} /></div>
+                                        }} className={this.state.removeAR ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>Remove the Arabic letters</div>  <FontAwesomeIcon icon={this.state.removeAR ? faMinus : faPlus} style={this.state.removeAR ? this.styleIconChooseTrue : this.styleIconChoose} /></div>
                                         <div onClick={() => {
                                             this.setCo('removeEN', this.state.removeEN)
                                             this.state.removeEN ? this.setState({ removeEN: false }) : this.setState({ removeEN: true })
-                                        }} className={this.state.removeEN ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>ازالة الاحرف الانجليزية</div>  <FontAwesomeIcon icon={this.state.removeEN ? faMinus : faPlus} style={this.state.removeEN ? this.styleIconChooseTrue : this.styleIconChoose} /> </div>
+                                        }} className={this.state.removeEN ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>Remove the English letters</div>  <FontAwesomeIcon icon={this.state.removeEN ? faMinus : faPlus} style={this.state.removeEN ? this.styleIconChooseTrue : this.styleIconChoose} /> </div>
                                         <div onClick={() => {
                                             this.setCo('changetoEN', this.state.changetoEN)
                                             this.state.changetoEN ? this.setState({ changetoEN: false }) : this.setState({ changetoEN: true })
-                                        }} className={this.state.changetoEN ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>تحويل الارقام العربية الى ارقام انجليزية </div> <FontAwesomeIcon icon={this.state.changetoEN ? faMinus : faPlus} style={this.state.changetoEN ? this.styleIconChooseTrue : this.styleIconChoose} /> </div>
+                                        }} className={this.state.changetoEN ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>Converting Arabic numbers to English numbers</div> <FontAwesomeIcon icon={this.state.changetoEN ? faMinus : faPlus} style={this.state.changetoEN ? this.styleIconChooseTrue : this.styleIconChoose} /> </div>
                                         <div onClick={() => {
                                             this.setCo('changetoAR', this.state.changetoAR)
                                             this.state.changetoAR ? this.setState({ changetoAR: false }) : this.setState({ changetoAR: true })
-                                        }} className={this.state.changetoAR ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>تحويل الارقام الانجليزية الى ارقام عربية</div> <FontAwesomeIcon icon={this.state.changetoAR ? faMinus : faPlus} style={this.state.changetoAR ? this.styleIconChooseTrue : this.styleIconChoose} /> </div>
+                                        }} className={this.state.changetoAR ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div>Converting English numbers to Arabic numbers</div> <FontAwesomeIcon icon={this.state.changetoAR ? faMinus : faPlus} style={this.state.changetoAR ? this.styleIconChooseTrue : this.styleIconChoose} /> </div>
                                     </div>
                                 </div>
                                 <div>
-                                    {this.state.isShowMoreOpProcs ? <div className="showHideList" onClick={this.cShowHide}><div> عرض اقل </div><div> <FontAwesomeIcon icon={faArrowUp} style={{ fontSize: '16px', marginRight: '15px', color: '#1687a7' }} /> </div></div> : <div className="showHideList" onClick={this.cShowHide}><div > عرض المزيد </div><div> <FontAwesomeIcon icon={faArrowDown} style={{ fontSize: '16px', marginRight: '15px', color: '#1687a7' }} /> </div></div>}
+                                    {this.state.isShowMoreOpProcs ? <div className="showHideList" onClick={this.cShowHide}><div>Show less</div><div> <FontAwesomeIcon icon={faArrowUp} style={{ fontSize: '16px', marginLeft: '15px', color: '#1687a7' }} /> </div></div> : <div className="showHideList" onClick={this.cShowHide}><div > Show more </div><div> <FontAwesomeIcon icon={faArrowDown} style={{ fontSize: '16px', marginLeft: '15px', color: '#1687a7' }} /> </div></div>}
                                 </div>
                             </div>
                         </div>

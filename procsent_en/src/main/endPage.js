@@ -1,5 +1,4 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function endPage() {
     return (
@@ -7,24 +6,24 @@ export default function endPage() {
             <div className="about_info">
                 <div className="mainInfoAbout">
                     <div>
-                        <div className="infoDirPage"> call us </div>
-                        <div  className="infoDirPage"> support us </div>
+                        <a><div className="infoDirPage"> call us </div></a>
+                        <a><div  className="infoDirPage"> Our support </div></a>
                     </div>
                     <div>
-                        <div  className="infoDirPage"> developer </div>
-                        <div  className="infoDirPage"> Website usage policy </div>
+                        <a><div  className="infoDirPage"> The developer </div></a>
+                        <a><div  className="infoDirPage" > Website usage policy </div></a>
                     </div>
                 </div>
                 <div className="socialInfoAbout">
-                    <div> <FontAwesomeIcon icon={['fab', 'facebook-f']}  /> </div>
-                    <div> <i className="fab fa-facebook-f"></i> </div>
-                    <div> <i className="fas fa-envelope-open"></i> </div>
-                    <div> <i className="fas fa-paper-plane"></i> </div>
+                    <div> <a href="#" className="fa fa-facebook"></a> </div>
+                    <div> <a href="#" className="fa fa-twitter"></a> </div>
+                    <div> <a href="#" className="fa fa-linkedin"></a> </div>
+                    <div> <a href="#" className="fa fa-google"></a> </div>
                 </div>
             </div>
             <div className="prolognet_info">
-                <div className="logoInfoAr"> © all rights are save  </div>
-                <div> <mark className="prolog_about">P</mark>rologNet @ 2020 - 2021</div>
+                <div className="logoInfoAr"> © All rights reserved  </div>
+                <div className="logoInfoaa"> Prcosent @ 2020 - 2021 </div>
             </div>
         </div>
     )

@@ -8,14 +8,34 @@ export default function SendCommint(x) {
     const [isCancel, isCancelX] = useState(false)
     const [isCncelSend, isCncelSendX] = useState(false)
     const [isWrAll] = useState(false)
-
-    return (
-        <div className="sendCommitn" onClick={() => sendingco(true)}>
-           <FontAwesomeIcon icon={faQuestionCircle} style={{ fontSize: '11px', color: '#383838', marginLeft: '6px', marginTop : '2px' }} />
-
-           {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" Reporting . " classN={false} />}
-        </div>
-    )
+    try {
+        if(x.xc == true){
+            return (
+                
+                <div className="sendCommitn" onClick={() => sendingco(true)}>
+                    {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" Submit a report " classN={false} />}
+                </div>
+            )
+        } else {
+            return (
+                
+                <div className="sendCommitn" onClick={() => sendingco(true)}>
+                    <FontAwesomeIcon icon={faQuestionCircle} style={{ fontSize: '11px', color: '#383838', marginRight: '6px', marginTop : '2px' }} />
+        
+                    {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" report . " classN={false} />}
+                </div>
+            )
+        }
+    } catch (err) {
+        return (
+            
+            <div className="sendCommitn" onClick={() => sendingco(true)}>
+                <FontAwesomeIcon icon={faQuestionCircle} style={{ fontSize: '11px', color: '#383838', marginRight: '6px', marginTop : '2px' }} />
+    
+                {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type="report . " classN={false} />}
+            </div>
+        )
+    }
 
     function FormSend() {
         return (
@@ -38,7 +58,7 @@ export default function SendCommint(x) {
     function ThenSendThis(x) {
         return (
             <>
-                <div className="formSendNotes" style={isCancel ? {padding: '5px' , paddingTop : '0'}:{ padding: '10px', border: '0', borderLeft: ' 4px solid  #2682df', width: '80%', borderRadius: '2px', margin: 'auto', backgroundColor: ' rgb(245, 245, 245)', marginTop: '20px' }}>
+                <div className="formSendNotes" style={isCancel ? {padding: '5px' , paddingTop : '0'}:{ padding: '10px', border: '0', borderRight: ' 4px solid  #2682df', width: '80%', borderRadius: '2px', margin: 'auto', backgroundColor: ' rgb(245, 245, 245)', marginTop: '20px' }}>
                     {isCancel ? '' : <FormSend />}
                     <div onClick={() => {
                         isCancelX(true)

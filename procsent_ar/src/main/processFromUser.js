@@ -15,10 +15,7 @@ export default class ProcessFromUser extends Component {
             thisAnsw: 0,
             cqthis: 911,
             dataBasse: [
-               { nameQuestion: ' مرادف كلمة ذكاء ؟ ', answers: [' مجرات ', ' انسان ', ' كوكب ', " لا شيء مما سبق "], another: false, idQ: 'dWc243df', },
-               { nameQuestion: ' كلمة بنفس معنى قام ', answers: [' انسان ', ' كوكب ', " لا شيء مما سبق "], another: true, idQ: 'dWc243df' },
-               { nameQuestion: ' كلمة بنفس معنى قام ', another: true, idQ: 'dWc243df' },
-               { nameQuestion: ' كلمة بنفس معنى قام ', another: false, idQ: 'dWc243df' }
+              // { nameQuestion: ' مرادف كلمة ذكاء ؟ ', answers: [' مجرات ', ' انسان ', ' كوكب ', " لا شيء مما سبق "], another: false, idQ: 'dWc243df', }
             ],
             anThis: false,
             aun: {}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faAtom, faInfoCircle, faMinus, faPlus, faRedoAlt } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faAtom, faBold, faCircle, faCopy, faInfo, faInfoCircle, faMinus, faPaste, faPlus, faRedoAlt, faStream, faUndoAlt } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize';
-
+import ContentEditable from 'react-contenteditable'
 export default class P___rps extends Component {
     constructor(props) {
         super(props);
@@ -23,8 +23,11 @@ export default class P___rps extends Component {
         this.drThem = this.props.drThem
         this.lliThem = this.props.lliThem
         this.liThem = this.props.liThem
+
+        this.careavsold = this.careavsoldv.bind(this)
+        this.apiUndoAlt = false
     }
-    chxxc(){
+    chxxc() {
         alert("D")
     }
     checkN(xtexs) {
@@ -71,43 +74,17 @@ export default class P___rps extends Component {
             return [nis, nisp, ccs]
         }
     }
-    checkEls(){
-        
-    }
-    /*
-    CaseInfoThisP() {
-        var xtexs = this.props.xtex
-        try {
-            if (xtexs.length > 0) {
+    checkEls() {
 
-                function Ctisithis(){
-                    for(var it = 0 ; it < this.char.length ; it ++){
-                        var inLan = this.char[it].cv
-                        if (inLan.test(xtexs)) {
-                            var numithis = xtexs.length - xtexs.replace(inLan, "").length  
-                            this.char[it].num = numithis
-                            return (
-                                <>
-                                    <SetElement item={this.char[it].nv +" احرف "} itemNu = {this.char[it].num} itemNumP = {this.char[it].numP} cn={""}/>
-                                </>
-                            )
-                        }
-                    }
-                }
-            } else {
-                this.setState({ caseInfoProcs: " لا يوجد " })
-                return (
-                    <div>
-                    </div>
-                )
-            }
-        } catch (err) {
-            return (
-                <div>
-                </div>
-            )
+    }
+    careavsoldv(x) {
+        if (this.props.xtex != x.target.value) {
+            this.setState({apiUndoAlt : true})
+        } else {
+            this.setState({apiUndoAlt : false})
         }
-    }*/
+    }
+
     render() {
 
         var ccThem = this.props.ccThem,
@@ -124,7 +101,7 @@ export default class P___rps extends Component {
             vpmNuP = 0,
             velseNu = 0,
             velseNup = 0,
-            caseInfoPP = " لا يوجد ";
+            caseInfoPP = "casSettShow";
 
         var vnumX = false,
             vspaceX = false,
@@ -132,14 +109,26 @@ export default class P___rps extends Component {
             velseX = false;
 
         var laChar = [
-            { lan: "ar", caseLan: false, inputLan: /[\u0600-\u06FF]/g, n: 0, np: 0, lann: " عربية " , caseLann : false},
-            { lan: "en", caseLan: false, inputLan: /[a-zA-Z]/g, n: 0, np: 0, lann: " انجليزية " , caseLann : false}
+            { lan: "ar", caseLan: false, inputLan: /[\u0600-\u06FF]/g, n: 0, np: 0, lann: " Arabic  ", caseLann: false },
+            { lan: "en", caseLan: false, inputLan: /[a-zA-Z]/g, n: 0, np: 0, lann: " English ", caseLann: false }
         ]
 
         var xtexs = this.props.xtex
+        var n_NTes_ols = () => {
+            if (this.props.caseXtex == true) {
+                if(this.props.xtex.length > 0){
+                    var tab = this.props.xtex.replace(/\n/g, "<br />")
+                    return tab;
+                } else {
+                    return "<i className='nullTextArea'> There is nothing to display </i>"
+                }
+            } else {
+                return "<i className='nullTextArea'> There is nothing to display <i>"
+            }
+        }
         if (this.props.caseXtex == true) {
             if (xtexs.length > 0) {
-                caseInfoPP = " تمت المعالجة "
+                caseInfoPP = "casSettHide"
                 var ccss = this.checkN(xtexs)
                 var sspp = this.checkS(xtexs)
                 vnum = ccss[2]
@@ -155,7 +144,25 @@ export default class P___rps extends Component {
                     laChar[i].n = thisCx[0]
                 }
             } else {
-                caseInfoPP = " لا يوجد "
+                caseInfoPP = "casSettShow"
+            }
+        }
+        var n_NTos_ols = () =>{
+            if (this.props.caseXtex == true) {
+                if(this.props.xtex.length > 0){
+                    return false
+                } else {
+                    return true
+                }
+            } else {
+                return true
+            }
+        }
+        var nn_Na = (x) =>{
+            if (this.props.xtex != x) {
+                this.setState({apiUndoAlt : true})
+            } else {
+                this.setState({apiUndoAlt : false})
             }
         }
         var cct = []
@@ -168,42 +175,43 @@ export default class P___rps extends Component {
                 <label className="llPcsSec">
                     <div className="redeyTextAreaInf">
                         <div className="redeyTextAreaInfTIT">
-                            <div>
-                                <FontAwesomeIcon icon={faAlignLeft} className="icInfPrcs" />
-                                معلومات النص المدخل
+                            <div className="stolsCONTROL">
+                                Entered text information
                             </div>
-                            <div>
-                                {caseInfoPP}
+                            <div className={"casSett " + caseInfoPP}>
+                                <FontAwesomeIcon icon={faAlignLeft} className="icTolsSett" />
                             </div>
                         </div>
                         <CseInfoThisP />
                     </div>
                     <div className="titlePcs redeyTextAreaK">
-                        <div className="titleTextArea"> <FontAwesomeIcon icon={faAtom} className="icInfredeyTextAreaKV" />  النص بعد التعديل و المعالجة  </div>
-                        <FontAwesomeIcon icon={faInfoCircle} className="icInfredeyTextAreaK" />
+                        <div className="InfredeyTextAreaK"> <FontAwesomeIcon icon={faInfo} /> </div>
+                        <div className="titleTextArea"> In this section the text will appear after editing and processing . <a href="#"> Learn more </a></div>
                     </div>
                     <div className="areaPccSec" style={ccThem ? this.drThem : this.liThem}>
-                        <div className="toolsMenuAreaPcs">
-                            <div className="optionTolsJs" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <div style={{ paddingLeft: '10px', paddingRight: '5px', border: '0', borderLeft: '1.5px solid  #38383867' }}>
-                                    نسخ
-                               </div>
-                                <div style={{ paddingLeft: '5px', paddingRight: '10px', }}>
-                                    مسح
-                               </div>
-                            </div>
-                            <div >
-
+                        <div className="secOntext">
+                            <div className="toolsMenuAreaPcs">
+                                <div className="tolsMainTextArea">
+                                    <div className="apiChoose">
+                                        <FontAwesomeIcon icon={faCopy} className={this.state.apicopy ? "apiChose" : "apiunChose"} />
+                                    </div>
+                                    <div className="apiChoose">
+                                        <FontAwesomeIcon icon={faUndoAlt} className={this.state.apiUndoAlt ? "apiChose" : "apiunChose"} />
+                                    </div>
+                                </div>
+                                <div >
+                                </div>
                             </div>
                         </div>
                         <div className="textArea">
-                            <TextareaAutosize className="areaPcP"
-                                style={ccThem ? this.ddrThem : this.lliThem}
-                                rows="4"
-                                placeholder=" النص المستخرج "
-                                value={xtexs} />
+                                <ContentEditable
+                                    html={'<p className="textareap">' + n_NTes_ols() + '</p>'}
+                                    disabled={n_NTos_ols()}
+                                    tagName='div'
+                                    className="areaPcP areaPlus"
+                                />
                         </div>
-                        <div className="toolsBottomAreaPcs">
+                        <div className="toolsBottomAreaPcs toolsBottomAreaPcsPro">
                             <div className="textAreaBottom">
                                 2000 / 0
                             </div>
@@ -223,18 +231,18 @@ export default class P___rps extends Component {
                         <div className="ddTable">
                             <table className="_listInfo">
                                 <tbody>
-                                <tr>
-                                    <th> نوع العنصر </th>
-                                    <th> العدد </th>
-                                    <th> النسبة </th>
-                                    <th> حذف </th>
-                                </tr>
-                                {vnum ? <SetElement item={" ارقام "} itemNu={vnumNu} itemNumP={vnumNuP} cn={""} ccv={vnumX} ccb={vnumX}/> : false}
-                                {vspace ? <SetElement item={" مسافات "} itemNu={vspacemNu} itemNumP={vspacemNuP} cn={""} ccv={vspaceX} ccb={vspaceX}/> : false}
-                                {vpm ? <SetElement item={" علامات ترقيم "} itemNu={vpmNu} itemNumP={vpmNuP} cn={""} ccv={vpmX} ccb={vpmX}/> : false}
-                                {laChar[0].caseLan ? <SetElement item={" احرف " + laChar[0].lann} itemNu={laChar[0].n} itemNumP={laChar[0].np} cn={""} ccv={laChar[0].caseLann} ccb={laChar[0].caseLann}/> : false}
-                                {laChar[1].caseLan ? <SetElement item={" احرف " + laChar[1].lann} itemNu={laChar[1].n} itemNumP={laChar[1].np} cn={""} ccv={laChar[1].caseLann} ccb={laChar[1].caseLann}/> : false}
-                                {velse ? <SetElement item={" أخرى "} itemNu={velseNu} itemNumP={velseNup} cn={""} ccv={velseX} ccb={velseX}/> : false}
+                                    <tr>
+                                        <th> Item type </th>
+                                        <th> The number </th>
+                                        <th> Percentage </th>
+                                        <th> Delete </th>
+                                    </tr>
+                                    {vnum ? <SetElement item={" numbers "} itemNu={vnumNu} itemNumP={vnumNuP} cn={""} ccv={vnumX} ccb={vnumX} /> : false}
+                                    {vspace ? <SetElement item={" space "} itemNu={vspacemNu} itemNumP={vspacemNuP} cn={""} ccv={vspaceX} ccb={vspaceX} /> : false}
+                                    {vpm ? <SetElement item={" Punctuation "} itemNu={vpmNu} itemNumP={vpmNuP} cn={""} ccv={vpmX} ccb={vpmX} /> : false}
+                                    {laChar[0].caseLan ? <SetElement item={"letters " + laChar[0].lann} itemNu={laChar[0].n} itemNumP={laChar[0].np} cn={""} ccv={laChar[0].caseLann} ccb={laChar[0].caseLann} /> : false}
+                                    {laChar[1].caseLan ? <SetElement item={"letters  " + laChar[1].lann} itemNu={laChar[1].n} itemNumP={laChar[1].np} cn={""} ccv={laChar[1].caseLann} ccb={laChar[1].caseLann} /> : false}
+                                    {velse ? <SetElement item={" else "} itemNu={velseNu} itemNumP={velseNup} cn={""} ccv={velseX} ccb={velseX} /> : false}
                                 </tbody>
                             </table>
                         </div>
@@ -257,7 +265,7 @@ export default class P___rps extends Component {
                     <td > {cx.item} </td>
                     <td > {cx.itemNu} </td>
                     <td > {cx.itemNumP} </td>
-                    {cx.ccv ? <td  className="faMinusDiv" onClick={()=>chxxc()}> <FontAwesomeIcon icon={faMinus} className="faMinusi"/> </td> : <td className="faPlusDiv" onClick={()=>chxxc()}> <FontAwesomeIcon icon={faPlus} className="faPlusi"/> </td>}
+                    {cx.ccv ? <td className="faMinusDiv" onClick={() => chxxc()}> <FontAwesomeIcon icon={faMinus} className="faMinusi" /> </td> : <td className="faPlusDiv" onClick={() => chxxc()}> <FontAwesomeIcon icon={faPlus} className="faPlusi" /> </td>}
                 </tr>
             )
         }

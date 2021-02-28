@@ -49,7 +49,7 @@
 .areaPcP:focus {
   outline: none;
 }
-.areaPlus {
+.areaPlus{
   font-size: 18px;
   color: #383838;
 }
@@ -67,6 +67,9 @@
   display: flex;
   justify-content: space-between;
   padding: 5px;
+}
+.toolsBottomAreaPcsPro {
+  margin-top: 4px;
 }
 
 .toolsBottomAreaPcs div{
@@ -238,8 +241,6 @@
 }
 .icTolsSett {
   font-size: 16px;
-}
-.csDataInfo {
 }
 .icInfPrcs {
   border-radius: 4px;
@@ -581,9 +582,12 @@
 }
 
 .apiChose {
+  padding: 5px;
+  border-radius: 4px;
   color : #1687a7;
   font-size : 16px;
-  cursor : "pointer"
+  cursor : pointer;
+  transition: 0.5s;
 }
 .apiChoseTrash {
   padding: 5px;

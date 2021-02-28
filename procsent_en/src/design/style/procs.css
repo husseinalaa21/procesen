@@ -53,6 +53,9 @@
   font-size: 19px;
   color: #383838;
 }
+.areaPlus i {
+  font-size: 16px;
+}
 .toolsMenuAreaPcs {
   border: 0;
   border-bottom: 1px solid rgba(204, 202, 202, 0.356);

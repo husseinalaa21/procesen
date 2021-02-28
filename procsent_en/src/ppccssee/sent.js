@@ -240,8 +240,8 @@ export default class P___rps extends Component {
                                     {vnum ? <SetElement item={" numbers "} itemNu={vnumNu} itemNumP={vnumNuP} cn={""} ccv={vnumX} ccb={vnumX} /> : false}
                                     {vspace ? <SetElement item={" space "} itemNu={vspacemNu} itemNumP={vspacemNuP} cn={""} ccv={vspaceX} ccb={vspaceX} /> : false}
                                     {vpm ? <SetElement item={" Punctuation "} itemNu={vpmNu} itemNumP={vpmNuP} cn={""} ccv={vpmX} ccb={vpmX} /> : false}
-                                    {laChar[0].caseLan ? <SetElement item={"letters " + laChar[0].lann} itemNu={laChar[0].n} itemNumP={laChar[0].np} cn={""} ccv={laChar[0].caseLann} ccb={laChar[0].caseLann} /> : false}
-                                    {laChar[1].caseLan ? <SetElement item={"letters  " + laChar[1].lann} itemNu={laChar[1].n} itemNumP={laChar[1].np} cn={""} ccv={laChar[1].caseLann} ccb={laChar[1].caseLann} /> : false}
+                                    {laChar[0].caseLan ? <SetElement item={"Letters " + laChar[0].lann} itemNu={laChar[0].n} itemNumP={laChar[0].np} cn={""} ccv={laChar[0].caseLann} ccb={laChar[0].caseLann} /> : false}
+                                    {laChar[1].caseLan ? <SetElement item={"Letters  " + laChar[1].lann} itemNu={laChar[1].n} itemNumP={laChar[1].np} cn={""} ccv={laChar[1].caseLann} ccb={laChar[1].caseLann} /> : false}
                                     {velse ? <SetElement item={" else "} itemNu={velseNu} itemNumP={velseNup} cn={""} ccv={velseX} ccb={velseX} /> : false}
                                 </tbody>
                             </table>

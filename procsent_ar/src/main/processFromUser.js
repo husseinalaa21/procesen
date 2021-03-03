@@ -6,6 +6,8 @@ import SendCommint from '../joint/sendCommint';
 export default class ProcessFromUser extends Component {
     constructor(props) {
         super(props);
+        this.fontG = "GET"
+        this.fontQ = "https://procsent-server-husseinalaa.vercel.app/sendMeDataR"
         this.state = {
             enterEditer: false,
             cancelSendQu: false,
@@ -14,11 +16,20 @@ export default class ProcessFromUser extends Component {
             perU: 0,
             thisAnsw: 0,
             cqthis: 911,
-            dataBasse: [
-              // { nameQuestion: ' مرادف كلمة ذكاء ؟ ', answers: [' مجرات ', ' انسان ', ' كوكب ', " لا شيء مما سبق "], another: false, idQ: 'dWc243df', }
-            ],
+            dataBasse: [],
             anThis: false,
             aun: {}
+        }
+        this.saDay()
+    }
+    saDay() {
+        var hxc = new XMLHttpRequest();
+        hxc.open(this.fontG, this.fontQ , true);
+        hxc.send();
+        hxc.onreadystatechange = () => {
+            var edata = JSON.parse(hxc.responseText)
+            alert(edata)
+            this.setState({ dataBasse: edata })
         }
     }
     __see_this() {
@@ -56,7 +67,7 @@ export default class ProcessFromUser extends Component {
         if (this.state.dataBasse.length == this.state.thisAnsw) {
             this.setState({ cannFromU: true })
         } else if (this.state.dataBasse.length > this.state.thisAnsw) {
-            var nnu = this.state.thisAnsw +1
+            var nnu = this.state.thisAnsw + 1
             this.setState({ thisAnsw: nnu })
         } else {
             console.log("err")
@@ -118,7 +129,7 @@ export default class ProcessFromUser extends Component {
             if (data.length > 0) {
                 for (var t = 0; t < data.length; t++) {
                     const tNew = 0 + t
-                    xc.push(<p className={this.cvCss(t)} id={t} key={t + "Qw"} onClick={(t) => { this.getThis(tNew, this.iIQq().idQ)}}><span className="nnQuto">{t + 1}  -  </span>  {data[t]} </p>)
+                    xc.push(<p className={this.cvCss(t)} id={t} key={t + "Qw"} onClick={(t) => { this.getThis(tNew, this.iIQq().idQ) }}><span className="nnQuto">{t + 1}  -  </span>  {data[t]} </p>)
                 }
                 return xc
             } else {
@@ -128,7 +139,7 @@ export default class ProcessFromUser extends Component {
             return data
         }
     }
-    ssTitle(){
+    ssTitle() {
         try {
             if (this.iIQq().ssDataT.length > 0) {
                 return true
@@ -203,7 +214,7 @@ export default class ProcessFromUser extends Component {
                             </div>
                         </div> :
                         <div className="errRed">
-                           [حدث خطء - 200911]
+                            [حدث خطء - 200911]
                         </div>
 
                     }
@@ -212,7 +223,7 @@ export default class ProcessFromUser extends Component {
         } catch (err) {
             return (
                 <div className="errRed">
-                   [حدث خطء - 110920]
+                    [حدث خطء - 110920]
                 </div>
             )
         }

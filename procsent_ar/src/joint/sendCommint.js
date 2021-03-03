@@ -9,7 +9,7 @@ export default function SendCommint(x) {
     const [isCncelSend, isCncelSendX] = useState(false)
     const [isWrAll] = useState(false)
     try {
-        if(x.xc == true){
+        if(x.xc === true){
             return (
                 
                 <div className="sendCommitn" onClick={() => sendingco(true)}>

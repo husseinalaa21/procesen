@@ -5,7 +5,7 @@ import React from 'react'
 export default function NotesCon(x) {
     var caseDiv = x.cx
     function checkThat(s) {
-        if(caseDiv == "red"){
+        if(caseDiv === "red"){
             return { 
                 backgroundColor:' #fbeeac',
                 color: '#cc561e',
@@ -20,7 +20,7 @@ export default function NotesCon(x) {
         }
     }
     function checkThatLogo() {
-        if(caseDiv == "red"){
+        if(caseDiv === "red"){
             return ( 
                 <div  style={{
                     width : "20px",

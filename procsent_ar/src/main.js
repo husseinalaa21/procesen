@@ -8,13 +8,12 @@ import HeaderMenu from './main/headerMenu'
 import ProcessFromUser from './main/processFromUser'
 import Proc from './ppccssee/proc';
 
-
 function mainHome() {
   return (
     <>
       <HeaderMenu />
       <div className="bodyDivs">
-        <ProcessFromUser className = "messArabic" useWeb = " استخدام الموقع " learnWeb = " تعليم الموقع " messToApper = " يمكنك استخدام الموقع أو يمكنك المبادرة في تحسين الموقع ."/>
+        <ProcessFromUser className="messArabic" useWeb=" استخدام الموقع " learnWeb=" تعليم الموقع " messToApper=" يمكنك استخدام الموقع أو يمكنك المبادرة في تحسين الموقع ." />
         <Proc />
         <Body />
         <EndPage />

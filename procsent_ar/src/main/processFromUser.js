@@ -7,7 +7,7 @@ export default class ProcessFromUser extends Component {
     constructor(props) {
         super(props);
         this.fontG = "GET"
-        this.fontQ = "https://server.procsent.com/sendMeDataR"
+        this.fontQ = "https://server.procsent.com/pc/procsentArQues"
         this.state = {
             enterEditer: false,
             cancelSendQu: false,
@@ -20,7 +20,7 @@ export default class ProcessFromUser extends Component {
             anThis: false,
             aun: {}
         }
-        this.saDay()
+        //this.saDay()
     }
     saDay() {
         var hxc = new XMLHttpRequest();
@@ -28,7 +28,6 @@ export default class ProcessFromUser extends Component {
         hxc.send();
         hxc.onreadystatechange = () => {
             var edata = JSON.parse(hxc.responseText)
-            alert(edata)
             this.setState({ dataBasse: edata })
         }
     }

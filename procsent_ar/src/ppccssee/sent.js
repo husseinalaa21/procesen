@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faAtom, faBold, faCircle, faCopy, faInfo, faInfoCircle, faMinus, faPaste, faPlus, faRedoAlt, faStream, faUndoAlt } from '@fortawesome/free-solid-svg-icons'
-import TextareaAutosize from 'react-textarea-autosize';
+import { faAlignLeft,  faCopy, faInfo,  faMinus,  faPlus, faUndoAlt } from '@fortawesome/free-solid-svg-icons'
 import ContentEditable from 'react-contenteditable'
 export default class P___rps extends Component {
     constructor(props) {

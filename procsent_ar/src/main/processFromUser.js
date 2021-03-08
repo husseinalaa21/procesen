@@ -7,7 +7,7 @@ export default class ProcessFromUser extends Component {
     constructor(props) {
         super(props);
         this.fontG = "GET"
-        this.fontQ = "https://procsent-server-husseinalaa.vercel.app/sendMeDataR"
+        this.fontQ = "https://server.procsent.com/sendMeDataR"
         this.state = {
             enterEditer: false,
             cancelSendQu: false,
@@ -34,7 +34,7 @@ export default class ProcessFromUser extends Component {
     }
     __see_this() {
         try {
-            if (this.state.aun.dataCase == true) {
+            if (this.state.aun.dataCase === true) {
                 var nnub = this.state.thisAnsw + 1
                 var nnux = this.state.perU + 1
                 this.setState({ thisAnsw: nnub })
@@ -50,7 +50,7 @@ export default class ProcessFromUser extends Component {
         }
     }
     cchheecckkInput() {
-        if (this.state.anThis == true) {
+        if (this.state.anThis === true) {
             return (
                 <div className="sendTureST" onClick={() => this.__see_this()}> أرسال </div>
             )
@@ -64,7 +64,7 @@ export default class ProcessFromUser extends Component {
         this.setState({ cqthis: 911 })
         this.setState({ anThis: false })
         this.setState({ aun: {} })
-        if (this.state.dataBasse.length == this.state.thisAnsw) {
+        if (this.state.dataBasse.length === this.state.thisAnsw) {
             this.setState({ cannFromU: true })
         } else if (this.state.dataBasse.length > this.state.thisAnsw) {
             var nnu = this.state.thisAnsw + 1
@@ -81,12 +81,12 @@ export default class ProcessFromUser extends Component {
     iIQq() {
         try {
             var data = this.state.dataBasse
-            if (data.length == this.state.thisAnsw) {
+            if (data.length === this.state.thisAnsw) {
                 this.setState({ cannFromU: true })
             } else {
                 var cvAn = () => {
                     try {
-                        if (data[this.state.thisAnsw].another == true) {
+                        if (data[this.state.thisAnsw].another === true) {
                             return true
                         } else {
                             return false

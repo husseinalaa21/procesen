@@ -150,7 +150,16 @@ export default class P___rps extends Component {
             </tr>
         )
     }
+    seText(x){
+
+    }
     vxTextvx() {
+        if (this.props.caseXtex == true) {
+            var swp = this.props.xtex
+            if (swp.length > 0) {
+                this.seText(swp)
+            }
+        }
         return this.state.vnText
     }
     render() {

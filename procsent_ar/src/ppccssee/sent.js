@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt,faSlidersH } from '@fortawesome/free-solid-svg-icons'
 import ContentEditable from 'react-contenteditable'
+
 export default class P___rps extends Component {
     constructor(props) {
         super(props);
@@ -151,7 +152,7 @@ export default class P___rps extends Component {
         )
     }
     seText(x){
-
+        
     }
     vxTextvx() {
         if (this.props.caseXtex == true) {

@@ -115,7 +115,7 @@ export default class ProcessFromUser extends Component {
         this.setState({ aun: nnb })
     }
     cvCss(n) {
-        if (n == this.state.cqthis) {
+        if (n === this.state.cqthis) {
             return "itemDis__chor"
         } else {
             return "itemDis__nor"

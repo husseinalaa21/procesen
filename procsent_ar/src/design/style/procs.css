@@ -73,6 +73,15 @@
   margin-top: 4px;
 }
 
+@media screen and (min-width : 500px){
+  .redeyTextArea {
+    display: none;
+  }
+  .redeyTextAreaK {
+    display: none;
+  }
+}
+
 .toolsBottomAreaPcs div{
   border: 0;
   padding: 5px;
@@ -402,10 +411,63 @@
   transition: 0.4s;
 }
 .textAreaBottom {
+  display: flex;
   padding: 10px;
   padding-bottom: 2px;
 }
-
+.marNumEnMain {
+  color: #1c1c1dab;
+  background-color: #ffffff00;
+  padding-right: 4px;
+}
+.marNumN {
+  color: #1c1c1dab;
+}
+.marNumX {
+  color: rgb(199, 32, 32);
+}
+.titleOverText {
+  display: flex;
+}
+.oveTextWrong {
+  overflow: hidden;
+  border-radius: 4px;
+  width: 100%;
+}
+.icoTitleOverText {
+  background-color: rgb(197, 115, 115);
+  color: rgb(224, 200, 200);
+  padding: 8px;
+}
+.textTitleOverText {
+  background-color: rgb(224, 200, 200);
+  width: 100%;
+  padding: 8px;
+}
+.containerOverTextCovert {
+  background-color:rgb(230, 219, 219);
+  overflow-y: auto;
+  position: relative;
+  list-style-type: none;
+  word-wrap: break-word; 
+}
+.containerOverText {
+  padding : 10px;
+  margin: auto;
+  border: 5px;
+}
+.remoOveText {
+  background-color: #f0f0f0c9;
+  color: #cc1919;
+  cursor: pointer;
+  padding: 1px 2px 3px 2px;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+.remoOveText:hover {
+  background-color: #f0dbdbc9;
+  color:#ee2e2e;
+}
 .sectionQuAsk {
   background: rgba(204, 202, 202, 0.089);
   margin: 10px 0 0 0;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faArrowDown, faArrowUp, faSlidersH } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt,faSlidersH } from '@fortawesome/free-solid-svg-icons'
 import ContentEditable from 'react-contenteditable'
 export default class P___rps extends Component {
     constructor(props) {
@@ -85,7 +85,7 @@ export default class P___rps extends Component {
         this.setState({ obp: obpC })
     }
     infTextEnter() {
-        if (this.props.caseXtex == true) {
+        if (this.props.caseXtex === true) {
             var swp = this.props.xtex
             if (swp.length > 0) {
                 var obj = this.state.obp

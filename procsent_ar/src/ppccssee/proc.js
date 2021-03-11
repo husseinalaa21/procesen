@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowDown, faArrowUp, faBold, faCopy, faEye, faEyeSlash, faFeatherAlt, faInfo, faInfoCircle, faMinus, faMoon, faPaste, faPlus, faRedoAlt, faSlidersH, faSun, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCopy, faExclamationTriangle, faInfo, faMoon, faPaste, faSun, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import Cookies from 'universal-cookie';
 import TextareaAutosize from 'react-textarea-autosize';
 import P___rps from './sent';
 
 const cookies = new Cookies();
-
-var themProcs = false;
 
 const styleFormPrcsDarkV = { backgroundColor: '#02101f', color: '#eee', border: '1.4px solid rgb(204, 202, 202)', borderRadius: '9px' }
 const styleFormPrcsLightV = { border: '1.4px solid rgb(204, 202, 202)', borderRadius: '9px' }
@@ -20,7 +18,7 @@ export default class Proc extends Component {
         super(props);
         this.wordsPcs = this.tPcsWor.bind(this);
         this.chThemProcsThat = this.chThemProcs.bind(this);
-        this.state = { len: '0', words: '0' , TextPcs : ""};
+        this.state = { len: '0', words: '0', TextPcs: "", didOve: false, overTextNumX: '0' };
         this.state.themProcs = false
         this.state.styleFormPrcsDark = styleFormPrcsDarkV
         this.state.styleFormPrcsLight = styleFormPrcsLightV
@@ -29,8 +27,8 @@ export default class Proc extends Component {
 
         this.state.isStaProcs = false
         // < />
-        this.caseXtext = false
-        
+        this.state.caseXtext = false
+
         // tols state ..
         this.state.apiTrashAlt = false
     }
@@ -45,10 +43,8 @@ export default class Proc extends Component {
     chThemProcs(x) {
         if (this.state.themProcs === false) {
             this.setState({ themProcs: true })
-            themProcs = true
         } else {
             this.setState({ themProcs: false })
-            themProcs = false
         }
     }
 
@@ -71,28 +67,37 @@ export default class Proc extends Component {
             wwords = wwords + 1
         }
         if (x.target.value.length > 0) {
-            this.setState({apiTrashAlt : true})
-            this.setState({apiTrashAlt : true})
+            this.setState({ apiTrashAlt: true })
         } else {
-            this.setState({apiTrashAlt : false})
-            this.setState({apiTrashAlt : false})
+            this.setState({ apiTrashAlt: false })
+        }
+        if (x.target.value.length > 5000) {
+            var xNum = x.target.value.length - 5000
+            var ovText = x.target.value.slice(5000, x.target.value.length);
+            this.setState({ overTextNumX: xNum })
+            this.setState({overText : ovText})
+            this.setState({ didOve: true })
+        } else {
+            this.setState({ didOve: false })
         }
         this.setState({ words: wwords });
-        this.setState({TextPcs : x.target.value})
-    }
-    setCo(x, z) {
-        if (z === false) {
-            cookies.set(x, true, { path: '/' });
-        } else {
-            cookies.set(x, false, { path: '/' });
-        }
+        this.setState({ TextPcs: x.target.value })
     }
 
     // tols ..
-    doApiTrashAlt(){
-        if(this.state.apiTrashAlt === true){
-            this.setState({TextPcs : ""})
+    doApiTrashAlt() {
+        if (this.state.apiTrashAlt === true) {
+            this.setState({ apiTrashAlt: false })
+            this.setState({ TextPcs: "" })
         }
+    }
+    cOveText() {
+        this.setState({ didOve: false })
+        this.setState({ overTextNumX: 0 })
+        this.setState({overText : ''})
+        var orText = this.state.TextPcs
+        var onText = orText.slice(0, 5000);
+        this.setState({ TextPcs: onText })
     }
 
     render() {
@@ -104,20 +109,20 @@ export default class Proc extends Component {
                             <label className="llPcs">
                                 <div className="titlePcs redeyTextArea">
                                     <div className="inforedeyTextArea"> <FontAwesomeIcon icon={faInfo} className="icInfredeyTextArea" /></div>
-                                    <div className="titleTextArea "> أدخل في هذا القسم النص الذي ترغب بمعالجته  . <a href="#"> معرفة المزيد </a> </div>
+                                    <div className="titleTextArea "> أدخل في هذا القسم النص الذي ترغب بمعالجته  . <a href="#learnSectionOne"> معرفة المزيد </a> </div>
                                 </div>
                                 <div className="areaPcc" style={this.state.themProcs ? this.state.styleFormPrcsDark : this.state.styleFormPrcsLight}>
                                     <div className="secOntext">
                                         <div className="toolsMenuAreaPcs">
                                             <div className="tolsMainTextArea">
                                                 <div className="apiChoose">
-                                                    <FontAwesomeIcon icon={faPaste} className={this.state.apipast ? "apiChose" : "apiunChose"}/>
+                                                    <FontAwesomeIcon icon={faPaste} className={this.state.apipast ? "apiChose" : "apiunChose"} />
                                                 </div>
                                                 <div>
-                                                    <FontAwesomeIcon icon={faCopy} className={this.state.apicopy ? "apiChose" : "apiunChose"}/>
+                                                    <FontAwesomeIcon icon={faCopy} className={this.state.apicopy ? "apiChose" : "apiunChose"} />
                                                 </div>
-                                                <div onClick={()=> this.doApiTrashAlt() }>
-                                                    <FontAwesomeIcon icon={faTrashAlt} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"}/>
+                                                <div onClick={() => this.doApiTrashAlt()}>
+                                                    <FontAwesomeIcon icon={faTrashAlt} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"} />
                                                 </div>
                                             </div>
                                             <div onClick={this.chThemProcsThat}>
@@ -131,11 +136,21 @@ export default class Proc extends Component {
                                             rows="4"
                                             placeholder=" اكتب هنا .."
                                             onChange={this.wordsPcs}
-                                            value = {this.state.TextPcs}/>
+                                            value={this.state.TextPcs} />
+                                        {this.state.didOve ?
+                                            <div className="oveTextWrong">
+                                                <div className="titleOverText">
+                                                    <div className="icoTitleOverText"> <FontAwesomeIcon icon={faExclamationTriangle} /> </div>
+                                                    <div className="textTitleOverText"> تم تحاوز العدد المسموح به , ينبغي أزالة {this.state.overTextNumX} حرف </div>
+                                                </div>
+                                                <div className="containerOverTextCovert">
+                                                    <div className="containerOverText">{this.state.overText} <mark className="remoOveText" onClick={()=>this.cOveText()}>[-]</mark></div>
+                                                </div>
+                                            </div> : ""}
                                     </div>
                                     <div className="toolsBottomAreaPcs">
                                         <div className="textAreaBottom">
-                                            2000 / {this.state.len}
+                                            5000 /<mark className={this.state.didOve ? "marNumEnMain marNumX" : "marNumEnMain marNumN"}>{this.state.len}</mark>
                                         </div>
                                         <div className="textAreaBottomLogo">
                                             Powered by procsent
@@ -144,7 +159,7 @@ export default class Proc extends Component {
                                 </div>
                             </label>
                         </div>
-                        <P___rps ccThem={this.state.themProcs} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.TextPcs} caseXtex={this.state.caseXtex}/>
+                        <P___rps ccThem={this.state.themProcs} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.TextPcs} caseXtex={this.state.caseXtex} />
                     </div>
                 </div>
             </div>

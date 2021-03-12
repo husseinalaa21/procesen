@@ -15,15 +15,26 @@
   margin-left: auto;
   overflow: hidden;
 }
-.redeyTextArea{
+.redeyTextAreaLight {
   background-color:#e7e7de;
   color: #353027;
+}
+.redeyTextAreaDark {
+  background-color:rgb(22, 37, 51);
+  color: #d3d3d2;
 }
 .inforedeyTextArea {
   padding: 10px;
   width: 30%;
   max-width: 6px;
   background-color: #353027a4;
+  font-size: 14px;
+}
+.inforedeyTextAreaDr {
+  padding: 10px;
+  width: 30%;
+  max-width: 6px;
+  background-color: rgba(6, 51, 94, 0.863);
   font-size: 14px;
 }
 .titleTextArea {
@@ -35,6 +46,10 @@
 .redeyTextAreaK{
   background-color:#bbd2d8dc;
   color: #2b2e2e;
+}
+.redeyTextAreaKDr {
+  background-color: rgb(22, 37, 51);
+  color: whitesmoke;
 }
 .icInfredeyTextArea {
   color: #d4d4d4;
@@ -78,6 +93,9 @@
     display: none;
   }
   .redeyTextAreaK {
+    display: none;
+  }
+  .redeyTextAreaKDr {
     display: none;
   }
 }
@@ -212,32 +230,56 @@
 }
 
 .mainTolsControl {
-  background-color: #e8eae6;
   border-radius: 3px;
   margin-top: 10px;
   overflow: hidden;
+}
+.mainTolsControlLi {
+  background-color: #e8eae6;
+}
+.mainTolsControlDr {
+  background-color: rgb(17, 28, 39);
 }
 
 .headerTolsMain {
   font-size: 18px;
   font-family: sans-serif;
-  background-color: #e8e8e8;
   padding: 5px;
-  border-right: 4px solid #3b3b3b;
   display: flex;
   justify-content: space-between;
 }
-.redeyTextAreaInf {
+.heinLi {
+  background-color: #e8e8e8;
   border-right: 4px solid #3b3b3b;
+  
+}
+.heinDr {
+  background-color: rgb(17, 28, 39);
+  border-right: 4px solid rgb(22, 37, 51);
+  color: #f3f3f3;
+  
+}
+.redeyTextAreaInf {
   margin-bottom: 10px;
   border-radius: 3px;
   overflow: hidden;
 }
-
+.TextAreaSDr {
+  border-right: 4px solid rgb(22, 37, 51);
+}
+.TextAreaSLi {
+  border-right: 4px solid #3b3b3b;
+}
+.TextAreaLi {
+  background-color: #e8e8e8;
+}
+.TextAreaDr {
+  background-color: rgb(17, 28, 39);
+  color: #f3f3f3;
+}
 .redeyTextAreaInfTIT {
   font-size: 18px;
   font-family: sans-serif;
-  background-color: #e8e8e8;
   padding: 5px;
   display: flex;
   justify-content: space-between;
@@ -278,9 +320,17 @@
   color: #1687a7;
   background-color: #c6d2dace;
 }
+.casSettHideDr {
+  color: #39afcf;
+  background-color: #c6d2da2f;
+}
 .casSettShow {
   color: #5a5a5a;
   background-color: #ced1d356;
+}
+.casSettShowDr {
+  color: #eaecece3;
+  background-color: #ced1d328;
 }
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
 .textAreaBottomLogo , .textAreaBottom{
@@ -288,9 +338,41 @@
   font-size: 13px;
 }
 .ddTable {
-  background-color: #e8e8e886;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+.ddTableDr {
+  background-color: rgb(22, 37, 51);
+}
+.ddTableLi {
+  background-color: #e8e8e886;
+} 
+._listInfoDr {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 97%;
+  margin: auto;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+._listInfoDr td {
+  background-color: #344d5562;
+  color: #eee;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+._listInfoDr th {
+  background-color: #293a3fce;
+  color: #eee;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+._listInfoDr tr:nth-child(even) {
+  background-color: #293a3fce;
+  color: whitesmoke;
 }
 ._listInfo {
   font-family: arial, sans-serif;
@@ -308,7 +390,6 @@
   text-align: center;
 }
 ._listInfo th {
-  border: 1px solid #ddddddf1;
   background-color: #1688a7ce;
   color: #eee;
   text-align: left;
@@ -324,17 +405,35 @@
   background: #1687a7;
   cursor: pointer;
 }
+.faMinusDivDr {
+  min-width: 20%;
+  margin: auto;
+  background: #284c69 !important;
+  cursor: pointer;
+}
 .faPlusDiv {
   min-width: 20%;
   margin: auto;
   background: #e1e3e4ce;
   cursor: pointer;
 }
+.faPlusDivDr {
+  min-width: 20%;
+  margin: auto; 
+  background-color: #293a3fce !important;
+  cursor: pointer;
+}
 .faMinusDiv:hover {
   background: #1687a7;
 }
+.faMinusDivDr:hover {
+  background: #1687a7 !important;
+}
 .faPlusDiv:hover {
   background: #eaecec;
+}
+.faPlusDivDr:hover {
+  background: #1687a7 !important;
 }
 .faMinusi{
   font-size: 13px;
@@ -343,6 +442,14 @@
 .faPlusi{
   font-size: 13px;
   color: #3b3b3bd5;
+}
+.faMinusiDr{
+  font-size: 13px;
+  color: #d1dbdb;
+}
+.faPlusiDr{
+  font-size: 13px;
+  color: #d1dbdb;
 }
 
 /* --- AAA --- */

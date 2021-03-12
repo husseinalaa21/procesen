@@ -122,8 +122,8 @@ export default class P___rps extends Component {
                     }
                 }
                 return (
-                    <div className="ddTable">
-                        <table className="_listInfo">
+                    <div className={this.props.bThem ? "ddTable ddTableDr" : "ddTable ddTableLi"}>
+                        <table className={this.props.bThem ? "_listInfoDr" : "_listInfo"}>
                             <tbody>
                                 <tr>
                                     <th> نوع العنصر </th>
@@ -147,7 +147,8 @@ export default class P___rps extends Component {
                 <td > {cx.item} </td>
                 <td > {cx.itemNu} </td>
                 <td > {cx.itemNumP} </td>
-                <td onClick={() => this.childOppenProcessx(cx.nam)} className={cx.ccv ? "faMinusDiv" : "faPlusDiv"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusi" : "faPlusi"} /> </td>
+                {this.props.bThem ? <td onClick={() => this.childOppenProcessx(cx.nam)} className={cx.ccv ? "faMinusDivDr" : "faPlusDivDr"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusiDr" : "faPlusiDr"} /> </td>:
+                <td onClick={() => this.childOppenProcessx(cx.nam)} className={cx.ccv ? "faMinusDiv" : "faPlusDiv"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusi" : "faPlusi"} /> </td>}
             </tr>
         )
     }
@@ -187,10 +188,10 @@ export default class P___rps extends Component {
         }
         return (
             <>
-                <div className="mainTolsControl">
-                    <div className="headerTolsMain">
+                <div className={this.props.bThem ?"mainTolsControl mainTolsControlDr":"mainTolsControl mainTolsControlLi"}>
+                    <div className={this.props.bThem ? "headerTolsMain heinDr" : "headerTolsMain heinLi"}>
                         <div className="stolsCONTROL">خيارات التحكم بمعالجة الكلمات</div>
-                        <div className={this.state.caseSettingTols ? "casSett casSettHide" : "casSett casSettShow"} onClick={this.changeTolsVis}>
+                        <div className={this.state.caseSettingTols ? this.props.bThem ?"casSett casSettHideDr" : "casSett casSettHide" : this.props.bThem ? "casSett casSettShowDr" : "casSett casSettShow" } onClick={this.changeTolsVis}>
                             <FontAwesomeIcon icon={faSlidersH} className="icTolsSett" />
                         </div>
                     </div>
@@ -198,16 +199,16 @@ export default class P___rps extends Component {
                 </div>
                 <div className="ffPcsSec" style={{ paddingTop: '10px' }}>
                     <label className="llPcsSec">
-                        <div className="redeyTextAreaInf">
-                            <div className="redeyTextAreaInfTIT">
+                        <div className={this.props.bThem ?"redeyTextAreaInf TextAreaSDr":"redeyTextAreaInf TextAreaSLi"}>
+                            <div className={this.props.bThem ?"redeyTextAreaInfTIT TextAreaDr":"redeyTextAreaInfTIT TextAreaLi"}>
                                 <div className="stolsCONTROL">معلومات النص المدخل</div>
-                                <div className={"casSett " + caseInfoPP}>
+                                <div className={this.props.bThem? "casSett " + caseInfoPP + "Dr":"casSett " + caseInfoPP}>
                                     <FontAwesomeIcon icon={faAlignLeft} className="icTolsSett" />
                                 </div>
                             </div>
                             {this.infTextEnter()}
                         </div>
-                        <div className="titlePcs redeyTextAreaK">
+                        <div className={this.props.bThem ? "titlePcs redeyTextAreaKDr" : "titlePcs redeyTextAreaK"}>
                             <div className="InfredeyTextAreaK"> <FontAwesomeIcon icon={faInfo} /> </div>
                             <div className="titleTextArea"> في هذا القسم سيظهر النص بعد التعديل و المعالجة  . <a href="#"> معرفة المزيد </a></div>
                         </div>

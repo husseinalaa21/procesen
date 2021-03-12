@@ -7,8 +7,8 @@ import P___rps from './sent';
 
 const cookies = new Cookies();
 
-const styleFormPrcsDarkV = { backgroundColor: '#02101f', color: '#eee', border: '1.4px solid rgb(204, 202, 202)', borderRadius: '9px' }
-const styleFormPrcsLightV = { border: '1.4px solid rgb(204, 202, 202)', borderRadius: '9px' }
+const styleFormPrcsDarkV = { backgroundColor: '#02101f', color: '#eee', border: '1.4px solid #02101f', borderRadius: '9px' }
+const styleFormPrcsLightV = {backgroundColor: '#eeeeeef3', border: '1.4px solid rgb(204, 202, 202)', borderRadius: '9px' }
 
 const styleFormPrcsTextAreaLightV = { color: '#393e46', resize: 'none', backgroundColor: 'transparent', margin: 'auto', width: '100%', fontSize: '17px', overflow: "hidden", wordWrap: "break-word", resize: "none", height: "160px" }
 const styleFormPrcsTextAreaDarkV = { color: '#f7f7f7', resize: 'none', backgroundColor: 'transparent', margin: 'auto', width: '100%', fontSize: '17px', overflow: "hidden", wordWrap: "break-word", resize: "none", height: "160px" }
@@ -17,9 +17,7 @@ export default class Proc extends Component {
     constructor(props) {
         super(props);
         this.wordsPcs = this.tPcsWor.bind(this);
-        this.chThemProcsThat = this.chThemProcs.bind(this);
         this.state = { len: '0', words: '0', TextPcs: "", didOve: false, overTextNumX: '0' };
-        this.state.themProcs = false
         this.state.styleFormPrcsDark = styleFormPrcsDarkV
         this.state.styleFormPrcsLight = styleFormPrcsLightV
         this.state.styleFormPrcsTextAreaLight = styleFormPrcsTextAreaLightV
@@ -38,13 +36,6 @@ export default class Proc extends Component {
             return true
         } else {
             return false
-        }
-    }
-    chThemProcs(x) {
-        if (this.state.themProcs === false) {
-            this.setState({ themProcs: true })
-        } else {
-            this.setState({ themProcs: false })
         }
     }
 
@@ -89,6 +80,8 @@ export default class Proc extends Component {
         if (this.state.apiTrashAlt === true) {
             this.setState({ apiTrashAlt: false })
             this.setState({ TextPcs: "" })
+            this.setState({ didOve: false })
+            this.setState({ len: 0 });
         }
     }
     cOveText() {
@@ -107,11 +100,11 @@ export default class Proc extends Component {
                     <div className="sectionProcsent">
                         <div className="ffPcs">
                             <label className="llPcs">
-                                <div className="titlePcs redeyTextArea">
-                                    <div className="inforedeyTextArea"> <FontAwesomeIcon icon={faInfo} className="icInfredeyTextArea" /></div>
+                                <div className={this.props.them ? "titlePcs redeyTextArea redeyTextAreaDark" : "titlePcs redeyTextArea redeyTextAreaLight"}>
+                                    <div className={this.props.them ?"inforedeyTextAreaDr" :"inforedeyTextArea"}> <FontAwesomeIcon icon={faInfo} className="icInfredeyTextArea" /></div>
                                     <div className="titleTextArea "> أدخل في هذا القسم النص الذي ترغب بمعالجته  . <a href="#learnSectionOne"> معرفة المزيد </a> </div>
                                 </div>
-                                <div className="areaPcc" style={this.state.themProcs ? this.state.styleFormPrcsDark : this.state.styleFormPrcsLight}>
+                                <div className="areaPcc" style={this.props.them ? this.state.styleFormPrcsDark : this.state.styleFormPrcsLight}>
                                     <div className="secOntext">
                                         <div className="toolsMenuAreaPcs">
                                             <div className="tolsMainTextArea">
@@ -125,14 +118,14 @@ export default class Proc extends Component {
                                                     <FontAwesomeIcon icon={faTrashAlt} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"} />
                                                 </div>
                                             </div>
-                                            <div onClick={this.chThemProcsThat}>
-                                                {this.state.themProcs ? <FontAwesomeIcon icon={faSun} className="apiMoonFoucs" /> : <FontAwesomeIcon icon={faMoon} className="apiMoon" />}
+                                            <div>
+
                                             </div>
                                         </div>
                                     </div>
                                     <div className="textArea">
                                         <TextareaAutosize className="areaPcP"
-                                            style={this.state.themProcs ? this.state.styleFormPrcsTextAreaDark : this.state.styleFormPrcsTextAreaLight}
+                                            style={this.props.them ? this.state.styleFormPrcsTextAreaDark : this.state.styleFormPrcsTextAreaLight}
                                             rows="4"
                                             placeholder=" اكتب هنا .."
                                             onChange={this.wordsPcs}
@@ -159,7 +152,7 @@ export default class Proc extends Component {
                                 </div>
                             </label>
                         </div>
-                        <P___rps ccThem={this.state.themProcs} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.TextPcs} caseXtex={this.state.caseXtex} />
+                        <P___rps ccThem={this.props.them} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.TextPcs} caseXtex={this.state.caseXtex} bThem = {this.props.them}/>
                     </div>
                 </div>
             </div>

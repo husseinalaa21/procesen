@@ -82,11 +82,7 @@ export default function App() {
                                 <p className={isNight ? "net_logoD " : "net_logo"}>sen</p>
                                 <img src={Logo} width="35px" height="35px" alt="" style={{ marginTop: '1px' }}></img>
                             </div>
-                            <div className="info_about_logo">
-                                <p className="Pprocessing">Processing &nbsp;</p><p className="Psentence">Sentence .</p>
-                            </div>
                         </div>
-
 
                         <div id="toggleNavBar" className="container" onClick={() => {
                             setClickNav(!clickNav)
@@ -103,6 +99,12 @@ export default function App() {
 
                     {tolsMenu()}
 
+                </div>
+            </div>
+            <div className="conProcesen">
+                <div className="defProcesen">
+                    <img src={Logo} alt="def" width="25px" height="25px" className="defImgIco" />
+                    <p className="defText"> <b className="defTextProce"> Proce</b><b className="defTextSen">sen</b> is a site for <b className="defTextProce">processing</b> <b className="defTextSen">sentences</b> by artificial intelligence . for more information , <a href="#sec-definition-site" >click here </a> </p>
                 </div>
             </div>
             <Main themHeader={isNight} />

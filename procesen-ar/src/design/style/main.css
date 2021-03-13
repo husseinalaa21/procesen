@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
 .bodyDivs {
-  padding-top : 100px;
+  padding-top : 10px;
   transition: 0.3s;
 }
 .divsLight {
@@ -28,7 +28,6 @@
   .bodyRootDisplay {
     display: flex;
     justify-content: space-between;
-    padding-top: 10px;
   }
   .bodyDivs {
     width: 70%;
@@ -53,7 +52,6 @@
   .bodyRootDisplay {
     display: flex;
     justify-content: space-between;
-    padding-top: 10px;
   }
   .bodyDivs {
     width: 78%;
@@ -80,7 +78,7 @@
   overflow: hidden;
   max-width: 250px;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 25px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 }
@@ -181,14 +179,14 @@
   color: rgb(173, 203, 236);
 }
 .onePlus {
-  margin-top: 105px;
+  margin-top: 15px !important;
 }
 .webAd {
   overflow: hidden;
   max-width: 250px;
   margin: 10px 10px 10px 10px;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 25px;
   background-color: #f7f7f7;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);

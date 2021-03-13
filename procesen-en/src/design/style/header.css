@@ -46,13 +46,39 @@
   color: #1687a7;
 }
 
-.info_about_logo {
-  padding-top: 5px;
+.conProcesen {
+  padding-top: 90px;
+  padding-bottom: 10px;
+  background-color: #dddddd5d;
+}
+.defProcesen {
   display: flex;
-  justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  margin-left: -4px;
+  margin: 0 17px 0 17px;
+  border-radius: 2px;
+  padding: 0 10px 0 0;
+  background-color: #f6f6f6;
+}
+.defText {
+  padding: 10px 0 10px 10px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.defText b{
+  font-weight: 420;
+}
+.defText a{
+  color: #537ceb;
+}
+.defTextProce {
+  color: #2d8ba5;
+}
+.defTextSen {
+  color: #3ac2cc;
+}
+.defImgIco {
+  padding: 10px 10px 10px 10px;
+  background-color: #f6f6f6;
+  border: 0;
+  border-right: 1px solid #ecf0f1;
 }
 .Pprocessing{
   color: #1687a7;
@@ -109,7 +135,7 @@
   cursor: pointer;
 }
 .container_log {
-  margin-left: -30px;
+  margin-left: -40px;
 }
 .langChose {
   display: flex;

@@ -32,7 +32,7 @@ export default function main(x) {
           <Body them={x.themHeader} />
         </div>
       </div>
-      <EndPage />
+      <EndPage them={x.themHeader}/>
     </>
   );
 

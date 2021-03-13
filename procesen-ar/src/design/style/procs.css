@@ -88,7 +88,7 @@
   margin-top: 4px;
 }
 
-@media screen and (min-width : 700px){
+@media screen and (min-width : 730px){
   .redeyTextArea {
     display: none;
   }
@@ -384,7 +384,7 @@
 }
 
 ._listInfo td {
-  border: 1px solid #dddddd;
+  background-color: #d9dcdfce;
   text-align: left;
   padding: 8px;
   text-align: center;
@@ -397,12 +397,12 @@
   text-align: center;
 }
 ._listInfo tr:nth-child(even) {
-  background-color: #eee;
+  background-color: rgb(221, 221, 221);
 }
 .faMinusDiv {
   min-width: 20%;
   margin: auto;
-  background: #1687a7;
+  background: #1687a7 !important;
   cursor: pointer;
 }
 .faMinusDivDr {
@@ -414,7 +414,7 @@
 .faPlusDiv {
   min-width: 20%;
   margin: auto;
-  background: #e1e3e4ce;
+  background: #d8d9dace !important;
   cursor: pointer;
 }
 .faPlusDivDr {
@@ -424,7 +424,7 @@
   cursor: pointer;
 }
 .faMinusDiv:hover {
-  background: #1687a7;
+  background: #1687a7 !important;
 }
 .faMinusDivDr:hover {
   background: #1687a7 !important;

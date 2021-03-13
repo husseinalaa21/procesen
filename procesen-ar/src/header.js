@@ -78,7 +78,7 @@ export default function App() {
 
           <div className="container_log">
             <div className={isNight ? "logo_text logo_textD" : "logo_text logo_textN"}>
-              <p className={"prolog_logo "}>Proc</p>
+              <p className={"prolog_logo "}>Proce</p>
               <p className={isNight ? "net_logoD " : "net_logo"}>sen</p>
               <img src={Logo} width="35px" height="35px" alt="" style={{ marginTop: '1px' }}></img>
             </div>

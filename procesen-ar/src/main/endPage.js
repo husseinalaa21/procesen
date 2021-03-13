@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function endPage() {
+export default function endPage(x) {
     return (
-        <div className="information">
+        <div className={x.them ? "informationDr" : "information"}>
             <div className="about_info">
                 <div className="mainInfoAbout">
                     <div>

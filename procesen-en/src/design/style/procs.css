@@ -384,20 +384,20 @@
 }
 
 ._listInfo td {
-  background-color: #d9dcdfce;
+  background-color: #f5f5f58e;
   text-align: left;
   padding: 8px;
   text-align: center;
 }
 ._listInfo th {
-  background-color: #1688a7ce;
+  background-color: #037696;
   color: #eee;
   text-align: left;
   padding: 8px;
   text-align: center;
 }
 ._listInfo tr:nth-child(even) {
-  background-color: rgb(221, 221, 221);
+  background-color: rgb(255, 255, 255);
 }
 .faMinusDiv {
   min-width: 20%;
@@ -414,7 +414,7 @@
 .faPlusDiv {
   min-width: 20%;
   margin: auto;
-  background: #d8d9dace !important;
+  background: #f2f3f3f5 !important;
   cursor: pointer;
 }
 .faPlusDivDr {
@@ -424,13 +424,13 @@
   cursor: pointer;
 }
 .faMinusDiv:hover {
-  background: #1687a7 !important;
+  background: #379db9 !important;
 }
 .faMinusDivDr:hover {
   background: #1687a7 !important;
 }
 .faPlusDiv:hover {
-  background: #eaecec;
+  background: #dedfdf !important;
 }
 .faPlusDivDr:hover {
   background: #1687a7 !important;

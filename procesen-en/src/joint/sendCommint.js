@@ -11,16 +11,14 @@ export default function SendCommint(x) {
     try {
         if(x.xc === true){
             return (
-                
-                <div className="sendCommitn" onClick={() => sendingco(true)}>
-                    {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" Submit a report " classN={false} />}
+                <div className={x.them ? "sendCommitnDark" : "sendCommitnLight"} onClick={() => sendingco(true)}>
+                    {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" Submit a report  " classN={false} />}
                 </div>
             )
         } else {
             return (
-                
-                <div className="sendCommitn" onClick={() => sendingco(true)}>
-                    <FontAwesomeIcon icon={faQuestionCircle} style={{ fontSize: '11px', color: '#383838', marginRight: '6px', marginTop : '2px' }} />
+                <div className={x.them ? "sendCommitnDark" : "sendCommitnLight"} onClick={() => sendingco(true)}>
+                    <FontAwesomeIcon icon={faQuestionCircle} style={{ fontSize: '11px', marginRight: '6px', marginTop : '2px' }} />
         
                     {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type=" report . " classN={false} />}
                 </div>
@@ -28,9 +26,8 @@ export default function SendCommint(x) {
         }
     } catch (err) {
         return (
-            
-            <div className="sendCommitn" onClick={() => sendingco(true)}>
-                <FontAwesomeIcon icon={faQuestionCircle} style={{ fontSize: '11px', color: '#383838', marginRight: '6px', marginTop : '2px' }} />
+            <div className={x.them ? "sendCommitnDark" : "sendCommitnLight"} onClick={() => sendingco(true)}>
+                <FontAwesomeIcon icon={faQuestionCircle} style={{ fontSize: '11px', marginRight: '6px', marginTop : '2px' }} />
     
                 {isSendCo ? <ThenSendThis sec={x.sec} /> : <TextSendHere type="report . " classN={false} />}
             </div>

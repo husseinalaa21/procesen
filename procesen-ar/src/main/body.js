@@ -28,10 +28,10 @@ export default function BodyEn(params) {
         <div className="infoStart ar_text">
             <ContainerBody
                 them={params.them}
-                title={'تعريف بالموقع |  محلل الجمل "Procsent"'}
+                title={'تعريف بالموقع |  محلل الجمل "Procesen"'}
                 idTi="sec-definition-site"
                 keyTitle={<TitleIcK case={true} link={"#sec-definition-site"} />}
-                container={<><Textsp type="container_sp_ar" text=" بروكسين هو برنامج لمعالجة الجمل و التعديل عليها ." />
+                container={<><Textsp type="container_sp_ar" text=" بروسيسن هو برنامج لمعالجة الجمل و التعديل عليها ." />
                     <NotesCon cx="red" type="containerNotes_ar" textTitle=" تنويه :  " textCon="الموقع قيد التطوير " />
                     <TextCon type="container_ar" text=" قم بأدخال العبارة أو الجملة التي ترغب في تغييرها و التعديل عليها , وسيتم معالجتها تلقائياً بواسطة الذاكاء الاصطناعي . " />
                 </>}
@@ -65,7 +65,7 @@ export default function BodyEn(params) {
             />
             <ContainerBody
                 them={params.them}
-                title={' المساهمة بتطوير موقع بروكسين'}
+                title={' المساهمة بتطوير موقع بروسيسن'}
                 idTi="sec-improve-site"
                 keyTitle={<TitleIcK case={true} link={"#sec-improve-site"} />}
                 container={<>

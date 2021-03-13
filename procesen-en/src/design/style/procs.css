@@ -15,15 +15,26 @@
   margin-left: auto;
   overflow: hidden;
 }
-.redeyTextArea{
+.redeyTextAreaLight {
   background-color:#e7e7de;
   color: #353027;
+}
+.redeyTextAreaDark {
+  background-color:rgb(22, 37, 51);
+  color: #d3d3d2;
 }
 .inforedeyTextArea {
   padding: 10px;
   width: 30%;
   max-width: 6px;
   background-color: #353027a4;
+  font-size: 14px;
+}
+.inforedeyTextAreaDr {
+  padding: 10px;
+  width: 30%;
+  max-width: 6px;
+  background-color: rgba(6, 51, 94, 0.863);
   font-size: 14px;
 }
 .titleTextArea {
@@ -35,6 +46,10 @@
 .redeyTextAreaK{
   background-color:#bbd2d8dc;
   color: #2b2e2e;
+}
+.redeyTextAreaKDr {
+  background-color: rgb(22, 37, 51);
+  color: whitesmoke;
 }
 .icInfredeyTextArea {
   color: #d4d4d4;
@@ -54,9 +69,6 @@
   font-size: 18px;
   color: #383838;
 }
-.areaPlus i {
-  font-size: 16px;
-}
 .toolsMenuAreaPcs {
   border: 0;
   border-bottom: 1px solid rgba(204, 202, 202, 0.356);
@@ -74,6 +86,18 @@
 }
 .toolsBottomAreaPcsPro {
   margin-top: 4px;
+}
+
+@media screen and (min-width : 730px){
+  .redeyTextArea {
+    display: none;
+  }
+  .redeyTextAreaK {
+    display: none;
+  }
+  .redeyTextAreaKDr {
+    display: none;
+  }
 }
 
 .toolsBottomAreaPcs div{
@@ -206,32 +230,56 @@
 }
 
 .mainTolsControl {
-  background-color: #e8eae6;
   border-radius: 3px;
   margin-top: 10px;
   overflow: hidden;
 }
+.mainTolsControlLi {
+  background-color: #e8eae6;
+}
+.mainTolsControlDr {
+  background-color: rgb(17, 28, 39);
+}
 
 .headerTolsMain {
-  font-size: 17px;
+  font-size: 18px;
   font-family: sans-serif;
-  background-color: #e8e8e8;
   padding: 5px;
-  border-right: 4px solid #3b3b3b;
   display: flex;
   justify-content: space-between;
 }
+.heinLi {
+  background-color: #e8e8e8;
+  border-left: 4px solid #3b3b3b;
+  
+}
+.heinDr {
+  background-color: rgb(17, 28, 39);
+  border-left: 4px solid rgb(22, 37, 51);
+  color: #f3f3f3;
+  
+}
 .redeyTextAreaInf {
-  border-right: 4px solid #3b3b3b;
   margin-bottom: 10px;
   border-radius: 3px;
   overflow: hidden;
 }
-
-.redeyTextAreaInfTIT {
-  font-size: 17px;
-  font-family: sans-serif;
+.TextAreaSDr {
+  border-left: 4px solid rgb(22, 37, 51);
+}
+.TextAreaSLi {
+  border-left: 4px solid #3b3b3b;
+}
+.TextAreaLi {
   background-color: #e8e8e8;
+}
+.TextAreaDr {
+  background-color: rgb(17, 28, 39);
+  color: #f3f3f3;
+}
+.redeyTextAreaInfTIT {
+  font-size: 18px;
+  font-family: sans-serif;
   padding: 5px;
   display: flex;
   justify-content: space-between;
@@ -272,9 +320,17 @@
   color: #1687a7;
   background-color: #c6d2dace;
 }
+.casSettHideDr {
+  color: #39afcf;
+  background-color: #c6d2da2f;
+}
 .casSettShow {
   color: #5a5a5a;
   background-color: #ced1d356;
+}
+.casSettShowDr {
+  color: #eaecece3;
+  background-color: #ced1d328;
 }
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
 .textAreaBottomLogo , .textAreaBottom{
@@ -282,9 +338,41 @@
   font-size: 13px;
 }
 .ddTable {
-  background-color: #e8e8e886;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+.ddTableDr {
+  background-color: rgb(22, 37, 51);
+}
+.ddTableLi {
+  background-color: #e8e8e886;
+} 
+._listInfoDr {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 97%;
+  margin: auto;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+._listInfoDr td {
+  background-color: #344d5562;
+  color: #eee;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+._listInfoDr th {
+  background-color: #293a3fce;
+  color: #eee;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+}
+._listInfoDr tr:nth-child(even) {
+  background-color: #293a3fce;
+  color: whitesmoke;
 }
 ._listInfo {
   font-family: arial, sans-serif;
@@ -296,13 +384,12 @@
 }
 
 ._listInfo td {
-  border: 1px solid #dddddd;
+  background-color: #d9dcdfce;
   text-align: left;
   padding: 8px;
   text-align: center;
 }
 ._listInfo th {
-  border: 1px solid #ddddddf1;
   background-color: #1688a7ce;
   color: #eee;
   text-align: left;
@@ -310,25 +397,43 @@
   text-align: center;
 }
 ._listInfo tr:nth-child(even) {
-  background-color: #eee;
+  background-color: rgb(221, 221, 221);
 }
 .faMinusDiv {
   min-width: 20%;
   margin: auto;
-  background: #1687a7;
+  background: #1687a7 !important;
+  cursor: pointer;
+}
+.faMinusDivDr {
+  min-width: 20%;
+  margin: auto;
+  background: #284c69 !important;
   cursor: pointer;
 }
 .faPlusDiv {
   min-width: 20%;
   margin: auto;
-  background: #e1e3e4ce;
+  background: #d8d9dace !important;
+  cursor: pointer;
+}
+.faPlusDivDr {
+  min-width: 20%;
+  margin: auto; 
+  background-color: #293a3fce !important;
   cursor: pointer;
 }
 .faMinusDiv:hover {
-  background: #1687a7;
+  background: #1687a7 !important;
+}
+.faMinusDivDr:hover {
+  background: #1687a7 !important;
 }
 .faPlusDiv:hover {
   background: #eaecec;
+}
+.faPlusDivDr:hover {
+  background: #1687a7 !important;
 }
 .faMinusi{
   font-size: 13px;
@@ -337,6 +442,14 @@
 .faPlusi{
   font-size: 13px;
   color: #3b3b3bd5;
+}
+.faMinusiDr{
+  font-size: 13px;
+  color: #d1dbdb;
+}
+.faPlusiDr{
+  font-size: 13px;
+  color: #d1dbdb;
 }
 
 /* --- AAA --- */
@@ -357,6 +470,7 @@
   border-radius: 2px;
   display: flex;
   justify-content: space-between;
+  direction: rtl;
 }
 
 .editeSections {
@@ -381,6 +495,7 @@
 .textTUsers {
   margin: 10px;
   margin-right: 2px;
+  direction: rtl;
 }
 .sectionEditeFromUser {
   background-color: #a1c7ca;
@@ -389,7 +504,6 @@
   cursor: pointer;
   color: #494a4b;
   transition: 0.4s;
-  text-align: center;
 }
 .sectionEditeFromUserF {
   background-color: #dfdfdf96;
@@ -404,10 +518,63 @@
   transition: 0.4s;
 }
 .textAreaBottom {
+  display: flex;
   padding: 10px;
   padding-bottom: 2px;
 }
-
+.marNumEnMain {
+  color: #1c1c1dab;
+  background-color: #ffffff00;
+  padding-right: 4px;
+}
+.marNumN {
+  color: #1c1c1dab;
+}
+.marNumX {
+  color: rgb(199, 32, 32);
+}
+.titleOverText {
+  display: flex;
+}
+.oveTextWrong {
+  overflow: hidden;
+  border-radius: 4px;
+  width: 100%;
+}
+.icoTitleOverText {
+  background-color: rgb(197, 115, 115);
+  color: rgb(224, 200, 200);
+  padding: 8px;
+}
+.textTitleOverText {
+  background-color: rgb(224, 200, 200);
+  width: 100%;
+  padding: 8px;
+}
+.containerOverTextCovert {
+  background-color:rgb(230, 219, 219);
+  overflow-y: auto;
+  position: relative;
+  list-style-type: none;
+  word-wrap: break-word; 
+}
+.containerOverText {
+  padding : 10px;
+  margin: auto;
+  border: 5px;
+}
+.remoOveText {
+  background-color: #f0f0f0c9;
+  color: #cc1919;
+  cursor: pointer;
+  padding: 1px 2px 3px 2px;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+.remoOveText:hover {
+  background-color: #f0dbdbc9;
+  color:#ee2e2e;
+}
 .sectionQuAsk {
   background: rgba(204, 202, 202, 0.089);
   margin: 10px 0 0 0;
@@ -420,7 +587,7 @@
   background: rgba(204, 202, 202, 0.089);
 }
 .titleQuestions {
-  text-align: left;
+  text-align: right;
   display: flex;
   justify-content: space-between;
 }
@@ -581,7 +748,7 @@
   display: flex;
 }
 .tolsMainTextArea div{
-  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .apiChose {

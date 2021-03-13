@@ -66,7 +66,7 @@ export default function main(x) {
     return (
       <div className={x.themHeader ? "webAdDark" : "webAd"}>
         <div className={x.themHeader ?"titleWebAdDark":"titleWebAd"}>
-          Ads
+          Ad
           </div>
         <div className="containerAd">
           {params.ad}

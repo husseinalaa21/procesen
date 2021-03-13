@@ -1,4 +1,4 @@
-import { faExclamationTriangle, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { faBolt, faBullhorn } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
@@ -7,13 +7,13 @@ export default function NotesCon(x) {
     function checkThat(s) {
         if(caseDiv === "red"){
             return { 
-                backgroundColor:' #fbeeac',
+                backgroundColor:' #f9f7cf',
                 color: '#cc561e',
                 border: '0'
             }
         }else{
             return { 
-                backgroundColor:' #eee',
+                backgroundColor:' #d3e0ea',
                 color: '#383838',
                 border: '0'
             }
@@ -24,18 +24,20 @@ export default function NotesCon(x) {
             return ( 
                 <div  style={{
                     width : "20px",
-                    backgroundColor : "#cc561e"
+                    backgroundColor : "#da723c",
+                    textAlign: "center"
                 }}>
-                <FontAwesomeIcon icon={faExclamationTriangle} style={{ fontSize : '15px' , color : "#fbeeac"}}/>
+                <FontAwesomeIcon icon={faBullhorn} style={{ fontSize : '15px' , color : "#fbeeac"}}/>
                 </div>
              )
         }else{
             return (
                 <div  style={{
                     width : "20px",
-                    backgroundColor : "#00458b"
+                    backgroundColor : "#23689b",
+                    textAlign: "center"
                 }}>
-                <FontAwesomeIcon icon={faInfoCircle}  style={{ fontSize : '15px' , color : "#eee"}}/>
+                <FontAwesomeIcon icon={faBolt}  style={{ fontSize : '15px' , color : "#eee"}}/>
                 </div>
             )
         }

@@ -1,6 +1,6 @@
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
+import { faQuoteLeft, faRemoveFormat  } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 import NotesCon from '../joint/notesCon'
 import SendCommint from '../joint/sendCommint'
@@ -80,7 +80,7 @@ export default function BodyEn(params) {
 
     function TitleIcK(x) {
         return (
-            <> {x.case ? <div className="titleKic"><a className={params.them ?"atitleKicDark" : "atitleKic"} href={x.link}><FontAwesomeIcon icon={faLink} /> </a></div> : ""} </>
+            <> {x.case ? <div className="titleKic"><a className={params.them ?"atitleKicDark" : "atitleKic"} href={x.link}><FontAwesomeIcon icon={faRemoveFormat } /> </a></div> : ""} </>
         )
     }
 }

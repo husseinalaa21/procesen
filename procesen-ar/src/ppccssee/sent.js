@@ -41,6 +41,26 @@ export default class P___rps extends Component {
             "processAr": false,
             "processEn": false
         }
+        this.xs_ert()
+    }
+    xs_ert(){
+        fetch("https://server.procesen.com/pc/procsentAr")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({
+                vnText: result
+              });
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+              this.setState({
+                vnText : error
+              });
+            }
+          )
     }
 
     changevis(x) {
@@ -153,7 +173,6 @@ export default class P___rps extends Component {
         )
     }
     seText(x){
-        
     }
     vxTextvx() {
         if (this.props.caseXtex == true) {

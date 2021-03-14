@@ -41,6 +41,7 @@ export default class P___rps extends Component {
             "processAr": false,
             "processEn": false
         }
+        this.xs_ert()
     }
 
     changevis(x) {
@@ -151,6 +152,25 @@ export default class P___rps extends Component {
                 <td onClick={() => this.childOppenProcessx(cx.nam)} className={cx.ccv ? "faMinusDiv" : "faPlusDiv"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusi" : "faPlusi"} /> </td>}
             </tr>
         )
+    }
+    xs_ert(){
+        fetch("https://server.procesen.com/pc/procsentAr")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({
+                vnText: result
+              });
+            },
+            // Note: it's important to handle errors here
+            // instead of a catch() block so that we don't swallow
+            // exceptions from actual bugs in components.
+            (error) => {
+              this.setState({
+                vnText : error
+              });
+            }
+          )
     }
     seText(x){
         

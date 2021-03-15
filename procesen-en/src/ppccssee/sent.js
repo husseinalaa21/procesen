@@ -35,7 +35,7 @@ export default class P___rps extends Component {
         this.xs_ert()
     }
     xs_ert(){
-        fetch("http://localhost:4200/pc/procsentEn")
+        fetch("https://server.procesen.com/pc/procsentEn")
           .then(res => res.json())
           .then(
             (result) => {

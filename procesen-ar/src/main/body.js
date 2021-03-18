@@ -34,7 +34,12 @@ export default function BodyEn(params) {
     }
     useEffect(() => {
         var wue = window.location.href
-        var twq = wue.replace("http://localhost:3000/","")
+        if(window.location.port === "3000"){
+            var tue = window.location.protocol+"//"+window.location.hostname+":"+window.location.port+"/"
+        } else {
+            var tue = window.location.protocol+"//"+window.location.hostname+"/"
+        }
+        var twq = wue.replace(tue,"")
         if(idwa.includes(twq) === true){
             var ex = idwa.indexOf(twq)
             setnumbol(idna[ex])

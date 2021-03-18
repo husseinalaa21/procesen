@@ -59,7 +59,7 @@ export default class P___rps extends Component {
                 },
                 (error) => {
                     this.setState({
-                        vnText: error
+                        vnText: " يبدو أن هنالك مشكلة بالخادم [ 002 ] , يرجى الانتضار قليلاً ثم أعادة المحاولة "
                     });
                 }
             )

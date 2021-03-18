@@ -59,7 +59,7 @@ export default class P___rps extends Component {
                 },
                 (error) => {
                     this.setState({
-                        vnText: error
+                        vnText: "There appears to be a problem with the server [002]. Please wait a while and try again ."
                     });
                 }
             )

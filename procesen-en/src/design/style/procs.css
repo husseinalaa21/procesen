@@ -862,7 +862,7 @@ font-size: 16px;
   display: flex;
 }
 .tolsMainTextArea div{
-  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .apiChose {

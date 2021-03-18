@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCopy, faExclamationTriangle, faInfo, faPaste, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCopy, faExclamationTriangle, faInfo,faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import Cookies from 'universal-cookie';
 import TextareaAutosize from 'react-textarea-autosize';
 import P___rps from './sent';
@@ -108,13 +108,7 @@ export default class Proc extends Component {
                                     <div className="secOntext">
                                         <div className="toolsMenuAreaPcs">
                                             <div className="tolsMainTextArea">
-                                                <div className="apiChoose" onClick={() => {
-                                                    navigator.clipboard.readText().then(
-                                                        clipText => this.setState({ TextPcs: clipText }));
-                                                }}>
-                                                    <FontAwesomeIcon icon={faPaste} className={this.state.apipast ? "apiChose" : "apiunChose"} />
-                                                </div>
-                                                <div>
+                                                <div onClick={() => { navigator.clipboard.writeText(this.state.TextPcs) }}>
                                                     <FontAwesomeIcon icon={faCopy} className={this.state.apicopy ? "apiChose" : "apiunChose"} />
                                                 </div>
                                                 <div onClick={() => this.doApiTrashAlt()}>

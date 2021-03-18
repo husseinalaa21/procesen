@@ -21,7 +21,7 @@ export default function endPage(x) {
             </div>
             <div className="prolognet_info">
                 <div className="logoInfoAr"> All rights reserved  </div>
-                <div className="logoInfoaa"> Prcosent © 2020 - 2021 </div>
+                <div className="logoInfoaa"> Procesen © 2020 - 2021 </div>
             </div>
         </div>
     )

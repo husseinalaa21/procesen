@@ -108,7 +108,10 @@ export default class Proc extends Component {
                                     <div className="secOntext">
                                         <div className="toolsMenuAreaPcs">
                                             <div className="tolsMainTextArea">
-                                                <div className="apiChoose">
+                                                <div className="apiChoose" onClick={()=>{
+                                                    navigator.clipboard.readText().then(
+                                                        clipText => this.setState({TextPcs : clipText}));
+                                                        }}>
                                                     <FontAwesomeIcon icon={faPaste} className={this.state.apipast ? "apiChose" : "apiunChose"} />
                                                 </div>
                                                 <div>
@@ -129,6 +132,7 @@ export default class Proc extends Component {
                                             rows="4"
                                             placeholder=" اكتب هنا .."
                                             onChange={this.wordsPcs}
+                                            onPaste={this.wordsPcs}
                                             value={this.state.TextPcs} />
                                         {this.state.didOve ?
                                             <div className="oveTextWrong">

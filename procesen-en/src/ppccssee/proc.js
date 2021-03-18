@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCopy, faExclamationTriangle, faInfo, faPaste,  faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCopy, faExclamationTriangle, faInfo, faPaste, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import Cookies from 'universal-cookie';
 import TextareaAutosize from 'react-textarea-autosize';
 import P___rps from './sent';
@@ -8,7 +8,7 @@ import P___rps from './sent';
 const cookies = new Cookies();
 
 const styleFormPrcsDarkV = { backgroundColor: '#02101f', color: '#eee', border: '1.4px solid #02101f', borderRadius: '9px' }
-const styleFormPrcsLightV = {backgroundColor: 'rgb(243, 243, 243)', border: '1.4px solid rgb(204, 202, 202)', borderRadius: '9px' }
+const styleFormPrcsLightV = { backgroundColor: 'rgb(243, 243, 243)', border: '1.4px solid rgb(204, 202, 202)', borderRadius: '9px' }
 
 const styleFormPrcsTextAreaLightV = { color: '#393e46', resize: 'none', backgroundColor: 'transparent', margin: 'auto', width: '100%', fontSize: '17px', overflow: "hidden", wordWrap: "break-word", resize: "none", height: "160px" }
 const styleFormPrcsTextAreaDarkV = { color: '#f7f7f7', resize: 'none', backgroundColor: 'transparent', margin: 'auto', width: '100%', fontSize: '17px', overflow: "hidden", wordWrap: "break-word", resize: "none", height: "160px" }
@@ -66,7 +66,7 @@ export default class Proc extends Component {
             var xNum = x.target.value.length - 5000
             var ovText = x.target.value.slice(5000, x.target.value.length);
             this.setState({ overTextNumX: xNum })
-            this.setState({overText : ovText})
+            this.setState({ overText: ovText })
             this.setState({ didOve: true })
         } else {
             this.setState({ didOve: false })
@@ -87,7 +87,7 @@ export default class Proc extends Component {
     cOveText() {
         this.setState({ didOve: false })
         this.setState({ overTextNumX: 0 })
-        this.setState({overText : ''})
+        this.setState({ overText: '' })
         var orText = this.state.TextPcs
         var onText = orText.slice(0, 5000);
         this.setState({ TextPcs: onText })
@@ -101,14 +101,17 @@ export default class Proc extends Component {
                         <div className="ffPcs">
                             <label className="llPcs">
                                 <div className={this.props.them ? "titlePcs redeyTextArea redeyTextAreaDark" : "titlePcs redeyTextArea redeyTextAreaLight"}>
-                                    <div className={this.props.them ?"inforedeyTextAreaDr" :"inforedeyTextArea"}> <FontAwesomeIcon icon={faInfo} className="icInfredeyTextArea" /></div>
+                                    <div className={this.props.them ? "inforedeyTextAreaDr" : "inforedeyTextArea"}> <FontAwesomeIcon icon={faInfo} className="icInfredeyTextArea" /></div>
                                     <div className="titleTextArea "> Enter in this section the text you want to process . <a href="#"> Learn more </a> </div>
                                 </div>
                                 <div className="areaPcc" style={this.props.them ? this.state.styleFormPrcsDark : this.state.styleFormPrcsLight}>
                                     <div className="secOntext">
                                         <div className="toolsMenuAreaPcs">
                                             <div className="tolsMainTextArea">
-                                                <div className="apiChoose">
+                                                <div className="apiChoose" onClick={() => {
+                                                    navigator.clipboard.readText().then(
+                                                        clipText => this.setState({ TextPcs: clipText }));
+                                                }}>
                                                     <FontAwesomeIcon icon={faPaste} className={this.state.apipast ? "apiChose" : "apiunChose"} />
                                                 </div>
                                                 <div>
@@ -129,6 +132,7 @@ export default class Proc extends Component {
                                             rows="4"
                                             placeholder=" write here .. "
                                             onChange={this.wordsPcs}
+                                            onPaste={this.wordsPcs}
                                             value={this.state.TextPcs} />
                                         {this.state.didOve ?
                                             <div className="oveTextWrong">
@@ -137,7 +141,7 @@ export default class Proc extends Component {
                                                     <div className="textTitleOverText"> تم تحاوز العدد المسموح به , ينبغي أزالة {this.state.overTextNumX} حرف </div>
                                                 </div>
                                                 <div className="containerOverTextCovert">
-                                                    <div className="containerOverText">{this.state.overText} <mark className="remoOveText" onClick={()=>this.cOveText()}>[-]</mark></div>
+                                                    <div className="containerOverText">{this.state.overText} <mark className="remoOveText" onClick={() => this.cOveText()}>[-]</mark></div>
                                                 </div>
                                             </div> : ""}
                                     </div>
@@ -152,7 +156,7 @@ export default class Proc extends Component {
                                 </div>
                             </label>
                         </div>
-                        <P___rps ccThem={this.props.them} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.TextPcs} caseXtex={this.state.caseXtex} bThem = {this.props.them}/>
+                        <P___rps ccThem={this.props.them} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.TextPcs} caseXtex={this.state.caseXtex} bThem={this.props.them} />
                     </div>
                 </div>
             </div>

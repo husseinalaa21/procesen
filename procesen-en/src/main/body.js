@@ -1,12 +1,20 @@
-import { faLink } from '@fortawesome/free-solid-svg-icons'
+import {faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
-import React from 'react'
+import React , { useState, useEffect} from 'react'
 import NotesCon from '../joint/notesCon'
 import SendCommint from '../joint/sendCommint'
+import { useLocation, Switch } from 'react-router-dom'; 
 
-let numCommint = 0
 export default function BodyEn(params) {
+    const location = useLocation();
+    var idw = []
+    var idn = []
+    const [idwa, setidwa] = useState(idw)
+    const [idna, setidna] = useState(idn)
+    const [numbol, setnumbol] = useState(0)
+    var numCommint = 0
+
     function TextCon(x) {
         return (
             <p className={params.them ? "textConDark " + x.type : "textConLight " + x.type}> {x.text} </p>
@@ -24,22 +32,32 @@ export default function BodyEn(params) {
             </div>
         )
     }
+    useEffect(() => {
+        var wue = window.location.href
+        var twq = wue.replace("http://localhost:3000/","")
+        if(idwa.includes(twq) === true){
+            var ex = idwa.indexOf(twq)
+            setnumbol(idna[ex])
+        } else {
+            setnumbol(0)
+        }
+    }, [location]);
     return (
         <div className="infoStart ar_text">
             <ContainerBody
+                link={"#sec-definition-site"}
                 them={params.them}
                 title={'Definition of the site | Procesen '}
                 idTi="sec-definition-site"
-                keyTitle={<TitleIcK case={true} link={"#sec-definition-site"} />}
                 container={<><Textsp type="container_sp_ar" text=" Procsent is a program for processing sentences ." />
                     <NotesCon cx="red" type="containerNotes_ar" textTitle=" Note :  " textCon=" The website is under development " />
                     <TextCon type="container_ar" text=" Enter the phrase or sentence that you want to change and amend, and it will be processed automatically by the artificial intelligence. " />
                 </>}
             />
             <ContainerBody
+                link={"#sec-how-use"} 
                 them={params.them}
                 title={'How to use '}
-                keyTitle={<TitleIcK case={true} link={"#sec-how-use"} />}
                 idTi="sec-how-use"
                 container={<>
                     <TextCon text='' type='container_ar' />
@@ -51,10 +69,10 @@ export default function BodyEn(params) {
                     <NotesCon cx="red" type="containerNotes_ar" textTitle=" Note :   " textCon=" This section is being worked on and developed, and once it is modified, you will be able to use it " /></>}
             />
             <ContainerBody
+                link={"#sec-policy-site"} 
                 them={params.them}
                 title={' Usage Policy '}
                 idTi="sec-policy-site"
-                keyTitle={<TitleIcK case={true} link={"#sec-policy-site"} />}
                 container={<>
                     <NotesCon cx="blue" type="containerNotes_ar" textTitle=" " textCon="Some of the conditions below may change over time. " />
                     <TextCon text=' The above artificial intelligence modified expressions are not copyrighted, and anyone can use and modify them .' type='container_ar' />
@@ -64,10 +82,10 @@ export default function BodyEn(params) {
                 </>}
             />
             <ContainerBody
+                link={"#sec-improve-site"}
                 them={params.them}
                 title={' Contribute to the development of the Procesen website'}
                 idTi="sec-improve-site"
-                keyTitle={<TitleIcK case={true} link={"#sec-improve-site"} />}
                 container={<>
                     <TextCon text=' You can contribute to the improvement of the site by: ' type='container_ar' />
                     <TextCon text='1 - Contributing to submitting notes to the site or emailing us and suggesting modifications to the site' type='container_ar' />
@@ -77,29 +95,41 @@ export default function BodyEn(params) {
             />
         </div>
     )
-
-    function TitleIcK(x) {
-        return (
-            <> {x.case ? <div className="titleKic"><a className={params.them ?"atitleKicDark" : "atitleKic"} href={x.link}><FontAwesomeIcon icon={faLink} /> </a></div> : ""} </>
-        )
+    function xcsd(xy) {
+        if(xy === numbol){
+            setnumbol(0)
+        } else {
+            setnumbol(xy)
+        }
     }
-}
-function ContainerBody(params) {
-    numCommint++;
-    return (
-        <div className={params.them ? "titleThisPage titleThisPageDark" : "titleThisPage titleThisPageLight"}>
-            <div className={params.them ? "thisTitlePage_first thisTitlePage_firstDark title_ar" : "thisTitlePage_first thisTitlePage_firstLight title_ar"}>
-                <div className="titleMain">
-                    <div className="titleMainText" id={params.idTi}>
-                        {params.title}
+    function casexsec (x) {
+        if(x === numbol){
+            return true
+        } else {
+            return false
+        }
+    }
+    function ContainerBody(params) {
+        numCommint++;
+        const lib = params.link
+        idw.push(lib)
+        const cnm = numCommint
+        idn.push(cnm)
+        return (
+            <div className={params.them ? "titleThisPage titleThisPageDark" : "titleThisPage titleThisPageLight"} id={params.link}>
+                <div className={params.them ? "thisTitlePage_first thisTitlePage_firstDark title_ar" : "thisTitlePage_first thisTitlePage_firstLight title_ar"}>
+                    <div className={casexsec(cnm) ?"titleMain tiMaT" : "titleMain"}>
+                        <div className="titleMainText" id={params.idTi}>
+                            {params.title}
+                        </div>
+                        <div className={casexsec(cnm) ?"titleKic tickT":"titleKic tickF"} onClick={()=>xcsd(cnm)}>{casexsec(cnm) ? <FontAwesomeIcon icon={faSortDown } />: <FontAwesomeIcon icon={faSortUp } className="sorUp"/>}</div>
                     </div>
-                    {params.keyTitle}
+                </div>
+                <div className={params.them ? "thisTitlePage_seconedDark" : "thisTitlePage_seconedLight"} style={casexsec(cnm) ? {display : "block"} : {display : "none"}}>
+                    {params.container}
+                    <SendCommint sec={cnm} them={params.them} />
                 </div>
             </div>
-            <div className={params.them ? "thisTitlePage_seconedDark" : "thisTitlePage_seconedLight"}>
-                {params.container}
-                <SendCommint sec={numCommint} them={params.them} />
-            </div>
-        </div>
-    )
+        )
+    }
 }

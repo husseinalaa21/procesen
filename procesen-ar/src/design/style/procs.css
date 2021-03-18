@@ -68,6 +68,15 @@
 .areaPlus{
   font-size: 18px;
   color: #383838;
+  overflow: hidden;
+  width: max-content;
+  max-width: 100%;
+  word-wrap: break-word; 
+}
+.areaPlus div{
+  height: 100%;
+  width: max-content;
+  max-width: 100%;
 }
 .toolsMenuAreaPcs {
   border: 0;
@@ -253,6 +262,26 @@
   border-right: 4px solid #3b3b3b;
   
 }
+.rtaWait {
+  text-align: center;
+  padding: 10px;
+}
+.rtaWaitLi {
+  background-color: #eeeeee;
+  color: #6b6966;
+}
+.rtaWaitDr {
+  background-color: rgba(17, 28, 39, 0.658);
+  color: #f1f1f1;
+}
+.rtaTitle {
+  padding: 6px;
+  font-size: 20px;
+}
+.rtaCon {
+  font-size: 25px;
+  padding-top: 7px;
+}
 .heinDr {
   background-color: rgb(17, 28, 39);
   border-right: 4px solid rgb(22, 37, 51);
@@ -260,15 +289,12 @@
   
 }
 .redeyTextAreaInf {
-  margin-bottom: 10px;
+  margin-top: 10px;
   border-radius: 3px;
   overflow: hidden;
 }
-.TextAreaSDr {
-  border-right: 4px solid rgb(22, 37, 51);
-}
-.TextAreaSLi {
-  border-right: 4px solid #3b3b3b;
+.stolsConSec {
+  display: flex;
 }
 .TextAreaLi {
   background-color: #e8e8e8;
@@ -284,7 +310,10 @@
   display: flex;
   justify-content: space-between;
 }
-
+.stolsCONTROLX{
+  padding: 5px;
+  padding-right: 8px;
+}
 .redeyTextAreaInfbody {
   background-color: #ebe9e9;
 }
@@ -337,9 +366,37 @@
   font-family: 'Comfortaa', cursive;
   font-size: 13px;
 }
-.ddTable {
-  padding-top: 10px;
-  padding-bottom: 10px;
+.seInfCurTable {
+  display: flex;
+}
+.sictLi {
+  padding: 10px;
+  background-color: #a7c5eb5b;
+  color: #3b3b3b;
+  width: 100%;
+  font-size: 17px;
+}
+._scsinf {
+  padding: 4px;
+}
+.tcontaorTabDr {
+  padding: 1px;
+  margin: 2px;
+  border: 1px solid #313d47b9;
+  border-radius:3px;
+  overflow: hidden;
+}
+.tcontaorTab {
+  padding: 1px;
+  margin: 2px;
+  border: 1px solid #cfd1d1b9;
+  border-radius:3px;
+  overflow: hidden;
+}
+.sictLiIc {
+  padding: 10px;
+  background-color: #bad1ee;
+  color: #054f64;
 }
 .ddTableDr {
   background-color: rgb(22, 37, 51);
@@ -350,12 +407,57 @@
 ._listInfoDr {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 97%;
+  width: 100%;
   margin: auto;
-  border-radius: 6px;
   overflow: hidden;
 }
-
+.shMoTo {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: #39afcf;
+  border: 4px solid #8ac4d0;
+  cursor: pointer;
+  color: whitesmoke;
+}
+.shMoToTit {
+  padding-left: 12px;
+}
+.nitfRen {
+  display: flex;
+  padding: 13px;
+}
+.powerPointBlue {
+  background-color: #1ab8e8;
+}
+.powerPointBlueLi {
+  background-color: #c3d3d8;
+}
+.powerPoint {
+  border-radius: 1px;
+  height: 6px;
+  margin: 1px;
+  width: 7px;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-indent: initial;
+  -webkit-font-smoothing: antialiased;
+  color: rgba(0,0,0,0.87);
+  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+  text-size-adjust: 100%;
+}
+.niftT {
+padding: 10px 4px 8px 10px;
+font-size: 16px;
+}
+.noteWeInf {
+  display: flex;
+  padding: 4px;
+  background-color: #e1e7e9ec;
+  border-radius: 4px;
+}
 ._listInfoDr td {
   background-color: #344d5562;
   color: #eee;
@@ -377,32 +479,50 @@
 ._listInfo {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 97%;
+  width: 100%;
   margin: auto;
-  border-radius: 6px;
   overflow: hidden;
 }
-
+.infTableXDr {
+  padding: 0 6px 2px 6px;
+  background-color: #344d5536;
+}
+.infTableX {
+  padding: 0 6px 2px 6px;
+  background-color: rgba(228, 228, 228, 0.466);
+}
+.infTableDr {
+  padding: 7px;
+  border: 0;
+  border-top: 1px solid #8586885d;
+  color: #aaaaaa;
+}
+.infTable {
+  padding: 7px;
+  border: 0;
+  border-top: 1px solid #cfd1d1b9;
+  color: #505050;
+}
 ._listInfo td {
-  background-color: #f5f5f58e;
+  background-color: #d6d6d685;
   text-align: left;
   padding: 8px;
   text-align: center;
 }
 ._listInfo th {
-  background-color: #037696;
-  color: #eee;
+  background-color: #0b657e27;
+  color: rgb(53, 55, 56);
   text-align: left;
   padding: 8px;
   text-align: center;
 }
 ._listInfo tr:nth-child(even) {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255)
 }
 .faMinusDiv {
   min-width: 20%;
   margin: auto;
-  background: #1687a7 !important;
+  background: #1190b3f5 !important;
   cursor: pointer;
 }
 .faMinusDivDr {
@@ -414,17 +534,15 @@
 .faPlusDiv {
   min-width: 20%;
   margin: auto;
-  background: #f2f3f3f5 !important;
   cursor: pointer;
 }
 .faPlusDivDr {
   min-width: 20%;
   margin: auto; 
-  background-color: #293a3fce !important;
   cursor: pointer;
 }
 .faMinusDiv:hover {
-  background: #379db9 !important;
+  background: #3ca9c7  !important;
 }
 .faMinusDivDr:hover {
   background: #1687a7 !important;
@@ -759,6 +877,19 @@
   cursor : pointer;
   transition: 0.5s;
 }
+.apiChoseUndo {
+  padding: 5px;
+  border-radius: 4px;
+  color : #1687a7;
+  font-size : 16px;
+  cursor : pointer;
+  transition: 0.5s;
+  background-color: #a8b6cc18;
+}
+.apiChoseUndo:hover {
+  color : #1588d4;
+  background-color: #a8b6cc52;
+}
 .apiChoseTrash {
   padding: 5px;
   border-radius: 4px;
@@ -790,22 +921,287 @@
   background-color: #999a9b65;
   color : #3b3b3b;
 }
-
-.apiMoon {
-  color: #1687a7;
-  font-size: 16px;
-  transition: 0.5s;
+.apiunChoseQ {
   padding: 5px;
+  border-radius: 4px;
+  color : #6a6c6d5b;
+  font-size : 16px;
+  transition: 0.5s;
+}
+.apiBookMark {
+  padding: 5px;
+  border-radius: 4px;
+  color : rgba(255, 187, 0, 0.705);
+  font-size : 16px;
+  transition: 0.5s;
   cursor: pointer;
 }
-
-.apiMoonFoucs {
-  color:  rgb(223, 180, 39);
-  font-size: 16px;
-  transition: 0.5s;
-  padding: 5px;
-  cursor: pointer;
+.apiBookMark:hover{
+  color : rgba(216, 159, 4, 0.705);
+  background-color: #999a9b65;
 }
-
+.unapiBookMark {
+  padding: 5px;
+  border-radius: 4px;
+  color : #6a6c6d;
+  font-size : 16px;
+  cursor : pointer;
+  transition: 0.5s;
+}
+.unapiBookMark:hover{
+  background-color: #999a9b65;
+  color : #3b3b3b;
+}
+.lixs {
+  padding: 5px;
+  border-radius: 4px;
+  font-size : 16px;
+  color : #949494;
+  background-color: #cecece5b;
+  cursor : pointer;
+  transition: 0.5s;
+}
+.lixsT {
+  color : #1a73e8 !important;
+  background-color: #dce0e49c;
+}
+.lixs:hover{
+  background-color: #999a9b65;
+  color : #3b3b3b;
+}
 
 /* ---- END TOLS CHOOSE ---- */
+
+.isWiteTextControal {
+  position: absolute;
+  background-color: #f0f0f0;
+  padding: 10px;
+  min-width: 100px;
+  border-radius: 4px;
+}
+.isWiteTextInput {
+  position: relative;
+  background-color: #e6e6e6;
+  height: 20px;
+  max-width: 170px;
+  border-radius: 4px;
+  text-align: center;
+  color: #037696;
+}
+
+/*  ____ psh ____ */
+
+.psh {
+  margin-top: 15px;
+  border-radius: 4px;
+  padding: 7px;
+  transition: 0.6s;
+}
+.pshH {
+  background-color: #fdfdfd91;
+}
+.pshS {
+  background-color: #fdfdfd6e;
+}
+.psEcTitle {
+  display: flex;
+}
+.pshContainer {
+  border-top: 2px solid #f3f3f3;
+  margin-top: 10px;
+}
+.psht_t {
+  display: flex;
+  padding: 6px;
+  padding-top: 7px;
+  border: 0;
+  width: 100%;
+  background-color: #fafafa;
+  border-radius: 3px;
+}
+.pshHS {
+  padding: 6px;
+  font-size: 18px;
+  text-align: center;
+  justify-content: center;
+  width: 10%;
+  max-width: 30px;
+  border-radius: 4px;
+  background-color: #fafafa;
+  color: #9c9c9c;
+  margin-right: 10px;
+  padding-left: 16px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.pshHS:hover {
+  background-color: #e7e7e7;
+  color: #4d4d4d;
+}
+.pshHSP {
+  position: absolute;
+  padding-top: 5px;
+}
+.pshHSD {
+  position: absolute;
+  margin-top: -3px;
+}
+.pshTitle {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-right: 10px;
+}
+.clipboard {
+  font-size: 17px;
+  color: #595a5a;
+  padding-right: 3px;
+}
+.pshCon {
+  text-align: center;
+  padding: 10px;
+}
+.nPshOn {
+  font-size: 18px;
+  padding-top: 6px;
+  color: rgb(110, 110, 110);
+}
+.nPshOnLogo {
+  font-size: 27px;
+  color: rgba(41, 41, 41, 0.527);
+  padding-top: 15px;
+}
+
+.hisSec {
+  margin: 10px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%), 0 8px 16px rgb(0 0 0 / 4%);
+  border-radius: 4px;
+  margin-top: 17px;
+}
+.hisTxo {
+  display: flex;
+}
+.hisT {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: rgb(243, 243, 243);
+}
+.hisTx {
+  color: rgb(131, 131, 131);
+  padding: 6px;
+  font-size: 16px;
+  transition: 0.4s;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.hisTx:hover {
+  color: rgb(98, 163, 189);
+  background-color: #cbcece;
+}
+.hisTn {
+  font-size: 18px;
+  padding: 4px;
+  color: #1a73e8;
+}
+.hisCon {
+  display: flex;
+  justify-content: space-between;
+}
+.hisCon div{
+  text-align: right;
+  direction: rtl;
+  width: 50%;
+  padding: 13px;
+  overflow-y: auto;
+  position: relative;
+  list-style-type: none;
+  word-wrap: break-word; 
+}
+.hisOrg {
+  border: 0;
+  border-left: 2px solid rgb(243, 243, 243);
+}
+.laHisIn {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+}
+.dLaHisIn {
+  padding: 8px;
+  background-color: #e2e2e2;
+  font-size: 22px;
+  border-radius: 0 5px 5px 0;
+  color: rgb(5, 71, 109);
+  width: 20px;
+  text-align: center;
+}
+.dLaHisInp {
+  background-color: #f1f1f1;
+  font-size: 17px;
+  border-radius: 5px 0  0 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 100%;
+}
+.dLaHisInp:focus{
+  outline: none;
+  border: 3px solid #3993cf7c;
+}
+.infPsh {
+  padding: 8px;
+  margin: 5px;
+  background-color: #f4f9f9;
+  border-radius: 3px;
+  font-size: 16px;
+  width: fit-content;
+}
+
+/* listSwi */
+.listSwiDiv {
+  position: relative;
+  top: -6px;
+  left: -6px;
+  direction: ltr;
+}
+.listSwi {
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  padding: 5px;
+  position: absolute;
+  margin-right: auto;
+  width: 50%;
+  max-width: 110px;
+  color: #949494;
+  background-color: #ecebebf6;
+  direction: rtl;
+}
+.listSwiEnd {
+  border: 0;
+  border-top: 1px solid #cecece;
+}
+.listSwiBack {
+  margin-top: 4px;
+  text-align: center;
+  background: #e6e6e6;
+  border-radius: 4px;
+  padding: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.listSwiBack:hover{
+  background: #f0f0f0;
+  color: #1588d4;
+}
+.listSwiCon {
+  padding: 3px;
+  padding-bottom: 6px;
+}
+.lswItem {
+  padding: 6px;
+ border-bottom:2px solid #9abff0;
+}

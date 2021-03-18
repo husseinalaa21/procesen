@@ -8,7 +8,7 @@ import P___rps from './sent';
 const cookies = new Cookies();
 
 const styleFormPrcsDarkV = { backgroundColor: '#02101f', color: '#eee', border: '1.4px solid #02101f', borderRadius: '9px' }
-const styleFormPrcsLightV = {backgroundColor: '#eeeeeef3', border: '1.4px solid rgb(204, 202, 202)', borderRadius: '9px' }
+const styleFormPrcsLightV = {backgroundColor: 'rgb(243, 243, 243)', border: '1.4px solid rgb(204, 202, 202)', borderRadius: '9px' }
 
 const styleFormPrcsTextAreaLightV = { color: '#393e46', resize: 'none', backgroundColor: 'transparent', margin: 'auto', width: '100%', fontSize: '17px', overflow: "hidden", wordWrap: "break-word", resize: "none", height: "160px" }
 const styleFormPrcsTextAreaDarkV = { color: '#f7f7f7', resize: 'none', backgroundColor: 'transparent', margin: 'auto', width: '100%', fontSize: '17px', overflow: "hidden", wordWrap: "break-word", resize: "none", height: "160px" }

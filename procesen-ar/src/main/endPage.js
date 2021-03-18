@@ -10,7 +10,7 @@ export default function endPage(x) {
                         <a><div  className="infoDirPage"> Our support </div></a>
                     </div>
                     <div>
-                        <a><div  className="infoDirPage"> About </div></a>
+                        <a href="#sec-definition-site"><div  className="infoDirPage"> About </div></a>
                         <a href="#sec-policy-site"><div  className="infoDirPage" > Website usage policy </div></a>
                     </div>
                 </div>

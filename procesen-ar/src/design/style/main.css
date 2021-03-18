@@ -244,40 +244,16 @@
   color: #f7f7f7;
 }
 .titleMain {
-  border: 0;
   padding: 5px 5px 7px 5px;
-  border-bottom: 1px solid #494a4b65;
   display: flex;
   justify-content: space-between;
 }
+.tiMaT {
+  border: 0;
+  border-bottom: 1px solid #494a4b65;
+}
 .titleKic {
   padding-top: 4px;
-}
-.atitleKic {
-  transition: 0.6s;
-  color: #77bbcf;
-  padding: 8px;
-  border-radius: 6px;
-  background-color: #eeeeee;
-  font-size: 17px;
-  cursor: pointer;
-}
-.atitleKicDark {
-  transition: 0.6s;
-  color: #77bbcf;
-  padding: 8px;
-  border-radius: 6px;
-  background-color: rgb(22, 37, 51);
-  font-size: 17px;
-  cursor: pointer;
-}
-.atitleKicDark:hover {
-  color: #38bee7;
-  background-color: rgb(43, 61, 78);
-}
-.atitleKic:hover {
-  color: #38bee7;
-  background-color: #fcfcfcbe;
 }
 .titleMainText {
   padding: 6px 6px 6px 6px;
@@ -289,6 +265,36 @@
 .thisTitlePage_seconedDark {
   background-color: rgb(17, 28, 39);
   padding: 10px;
+}
+.titleKic {
+  width: 20%;
+  max-width: 40px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.4s;
+  font-size: 18px;
+}
+.tickF {
+  background-color: #f1f1f1;
+  color: #686868;
+}
+.tickT {
+  color:#1687a7;
+  background-color: #c6d2dace;
+}
+.tickF:hover{
+  background-color: #e6eaeb;
+  color: #727272;
+}
+.tickT:hover{
+  color:#1a9cc0;
+  background-color: #dee3e7ce;
+}
+.sorUp {
+  position: absolute;
+  margin-right: -5px;
+  margin-top: 5px;
 }
 
 .socialInfoAbout {

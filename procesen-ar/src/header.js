@@ -104,7 +104,7 @@ export default function App() {
       <div className="conProcesen">
         <div className="defProcesen">
           <img src={Logo} alt="def" width="25px" height="25px" className="defImgIco" />
-          <p className="defText"> <b className="defTextProce"> Proce</b><b className="defTextSen">sen</b> is a site for <b className="defTextProce">processing</b> <b className="defTextSen">sentences</b> by artificial intelligence . for more information , <a href="#sec-definition-site" >click here </a> </p>
+          <p className="defText"> بروسيسن هو أختصال : <b className="defTextProce"> Proce</b><b className="defTextSen">sen</b> is a site for <b className="defTextProce">processing</b> <b className="defTextSen">sentences</b> by artificial intelligence . for more information , <a href="#sec-definition-site" >click here </a> </p>
         </div>
       </div>
       <Main themHeader={isNight} />

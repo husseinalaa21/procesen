@@ -1,0 +1,167 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: #fafafa;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    border: 0;
+    border-bottom: 10px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #a7c5eb, #a3d2ca);
+}
+.med {
+    display: flex;
+    margin-left: -95px;
+    position: relative;
+}
+.proceseen {
+    font-size: 26px;
+    padding: 15px 0px 15px 0px;
+    color: #146b7a;
+}
+.logoProcess {
+    padding: 9px 0 9px 0;
+}
+.back {
+    padding: 26px;
+}
+.icoBackk {
+    padding: 10px;
+    background-color: #f6f6f6;
+    border-radius: 4px;
+    color: rgb(119, 119, 119);
+}
+.rootMain {
+    background-color: #f6f6f6;
+    padding: 10px;
+    border-radius: 6px;
+    width: 80%;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 10px;
+}
+.gmails {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+}
+.gmails div{
+    width: 50%;
+    max-width: 330px;
+    text-align: center;
+    font-size: 18px;
+}
+.gmail {
+    padding: 10px;
+    margin: 7px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+.bodyMed {
+    width: 80%;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+.callUsWith {
+    background-color: #ffffff;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.message {
+    text-align: center;
+    margin-top: 20px;
+}
+.btnusername {
+    width: 76%;
+    background-color: #ffffff;
+    border: 0;
+    padding: 14px;
+    border-radius: 5px;
+}
+.btnusername:focus{
+    outline: none;
+}
+.textArea {
+    padding: 10px;
+    width: 80% !important;
+    min-height: 100px !important;
+    border: 0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.textArea:focus{
+    outline: none;
+}
+.btnSend {
+    width: 80%;
+    padding: 10px;
+    border: 0;
+    background-color: #fed049;
+    border: 2px solid #f0c929;
+    margin-top: 7px;
+    color: #ffffff;
+    font-size: 15px;
+}
+.inptE {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.aEmail {
+    margin-top: 16px;
+    text-align: center;
+}
+.aFacebock {
+    color: blue;
+}
+.aTeitter {
+    color: cornflowerblue;
+}
+.messageGre {
+    border-radius: 5px;
+    padding: 10px;
+    max-width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+}
+.greM {
+    background-color: #ccf2f4;
+    color: #28527a;
+    border: 1px solid #28527a5d;
+}
+.greG {
+    background-color: #cee6b4;
+    color: #1f441e;
+    border: 1px solid #1f441e6c;
+}
+.redM {
+    background-color: #f8e6e6;
+    color: #550909;
+    padding: 15px;
+}
+.rootGreen {
+    background-color: #cee6b4ad;
+    width: auto;
+    max-width: 300px;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+}
+.rootMess {
+    font-size: 20px;
+    margin: 10px;
+}

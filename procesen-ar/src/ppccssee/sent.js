@@ -134,10 +134,10 @@ export default class P___rps extends Component {
                         var XswpS = Math.round(Xswp / swp.length * 100)
                         var item = this.infItems({ item: num, itemNu: Xswp, itemNumP: XswpS + "%", key: tNumber, ccv: ccv, nm: tNumber })
                         containerItems.push(item)
-                        if(Xswp > nifn){
+                        if (Xswp > nifn) {
                             nifn = XswpS
                             nift = num
-                            if(nifb === false){
+                            if (nifb === false) {
                                 nifb = true
                             }
                         }
@@ -164,12 +164,12 @@ export default class P___rps extends Component {
                         </div>
                     )
                 }
-                var ePoin = (x) =>{
-                    if(x >= 50 && x < 95){
+                var ePoin = (x) => {
+                    if (x >= 50 && x < 95) {
                         return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlueLi"></div></div>)
-                    }if(x < 50){
+                    } if (x < 50) {
                         return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlueLi"></div><div class="powerPoint powerPointBlueLi"></div></div>)
-                    } if(x == 100 || x >= 95){
+                    } if (x == 100 || x >= 95) {
                         return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div></div>)
                     }
                 }
@@ -187,14 +187,14 @@ export default class P___rps extends Component {
                                     {containerItems}
                                 </tbody>
                             </table>
-                            <div className={this.props.bThem ? "infTableXDr" : "infTableX"}><div className={this.props.bThem ? "infTableDr" : "infTable"}> عدد المصفوفات : {wasw} </div> </div></div>}
+                                <div className={this.props.bThem ? "infTableXDr" : "infTableX"}><div className={this.props.bThem ? "infTableDr" : "infTable"}> عدد المصفوفات : {wasw} </div> </div></div>}
                         />
-                        <div className="secTwSitc" style={this.state.shMoTo ? {display : "block" }: {display : "none"} }>
-                            <TabIbfU tit=" معلومات النص " log={<FontAwesomeIcon icon={faUnderline} />} th={this.props.bThem} con={ 
+                        <div className="secTwSitc" style={this.state.shMoTo ? { display: "block" } : { display: "none" }}>
+                            <TabIbfU tit=" معلومات النص " log={<FontAwesomeIcon icon={faUnderline} />} th={this.props.bThem} con={
                                 <div className="noteWeInf nift">
                                     {ePoin(nifn)}
                                     <div className="niftT"> اعلى عنصر في الجملة هو {nift} , حيث يشكل {nifn} % من الجملة . </div>
-                                </div> 
+                                </div>
                             }
                             />
                         </div>
@@ -231,7 +231,8 @@ export default class P___rps extends Component {
                 }
             }
         }
-        return tezx
+        var ttezx = tezx.replace(/\n/g, "<br />")
+        return ttezx
     }
     vxTextvx() {
         var texUpStr = ""
@@ -368,7 +369,7 @@ export default class P___rps extends Component {
                             <FontAwesomeIcon icon={faLongArrowAltLeft} />
                         </div>
                     </div>
-                </div> 
+                    </div>
                 </div>
             )
         }
@@ -476,7 +477,7 @@ export default class P___rps extends Component {
                                         </div>
                                         {cheq() ? <div className="apiChoose" onClick={() => this.clenEd()}><FontAwesomeIcon icon={faUndoAlt} className="apiChoseUndo" /></div> : ""}
                                     </div>
-                                    <div className={this.state.classDivWait} onClick={()=> {this.setState({swli : !this.state.swli})}}>
+                                    <div className={this.state.classDivWait} onClick={() => { this.setState({ swli: !this.state.swli }) }}>
                                         <FontAwesomeIcon icon={faEllipsisH} className={this.state.swli ? "lixs lixsT" : "lixs"} />
                                     </div>
                                 </div>

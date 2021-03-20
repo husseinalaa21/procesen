@@ -232,7 +232,8 @@ export default class P___rps extends Component {
                 }
             }
         }
-        return tezx
+        var ttezx = tezx.replace(/\n/g, "<br />")
+        return ttezx
     }
     vxTextvx() {
         var texUpStr = ""

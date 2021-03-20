@@ -1205,3 +1205,7 @@ font-size: 16px;
   padding: 6px;
  border-bottom:2px solid #9abff0;
 }
+._bRed {
+  background-color: rgba(245, 167, 153, 0.863);
+  color: brown;
+}

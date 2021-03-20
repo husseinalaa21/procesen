@@ -6,12 +6,12 @@ export default function endPage(x) {
             <div className="about_info">
                 <div className="mainInfoAbout">
                     <div>
-                        <a><div className="infoDirPage"  href="https://callus.procesen.com/callus-en/index.html"> call us </div></a>
-                        <a><div  className="infoDirPage" href="https://paypal.me/husseinalaa2000?locale.x=ar_EG"> Our support </div></a>
+                        <a href="https://callus.procesen.com/callus-en/index.html"><div className="infoDirPage"> call us </div></a>
+                        <a href="https://paypal.me/husseinalaa2000?locale.x=ar_EG"><div className="infoDirPage"> Our support </div></a>
                     </div>
                     <div>
-                        <a href="#sec-definition-site"><div  className="infoDirPage"> About </div></a>
-                        <a href="#sec-policy-site"><div  className="infoDirPage" > Website usage policy </div></a>
+                        <a href="#sec-definition-site"><div className="infoDirPage"> About </div></a>
+                        <a href="#sec-policy-site"><div className="infoDirPage" > Website usage policy </div></a>
                     </div>
                 </div>
                 <div className="socialInfoAbout">

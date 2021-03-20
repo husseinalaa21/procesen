@@ -15,8 +15,8 @@ export default function endPage(x) {
                     </div>
                 </div>
                 <div className="socialInfoAbout">
-                    <div> <a href="#" className="fa fa-facebook facebookDiv"></a> </div>
-                    <div> <a href="#" className="fa fa-twitter twitterDiv"></a> </div>
+                    <div> <a href="https://web.facebook.com/procesens" className="fa fa-facebook facebookDiv"></a> </div>
+                    <div> <a href="https://twitter.com/procesen_" className="fa fa-twitter twitterDiv"></a> </div>
                 </div>
             </div>
             <div className="prolognet_info">

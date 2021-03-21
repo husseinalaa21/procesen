@@ -232,29 +232,39 @@ export default class P___rps extends Component {
             }
         }
         var ttezx = tezx.replace(/\n/g, "<br />")
-        return ttezx
+        return [ttezx , tezx]
+        // 0 === <br />
+        // 1 === \n
     }
     vxTextvx() {
         var texUpStr = ""
+        var coText = ""
         if (this.props.caseXtex == true) {
             var swp = this.props.xtex
             if (swp.length > 0) {
                 if (this.state.isW === true) {
-                    if (this.seText(swp).length > 0) {
-                        texUpStr = this.seText(swp)
+                    if (this.seText(swp)[1].length > 0) {
+                        texUpStr = this.seText(swp)[1]
+                        coText = this.seText(swp)[0]
                     } else {
                         texUpStr = this.state.vnText
+                        coText = this.state.vnText
                     }
                 } else {
                     texUpStr = " ... "
+                    coText = " ... "
                 }
             } else {
                 texUpStr = this.state.vnText
+                coText = this.state.vnText
             }
         } else {
             texUpStr = this.state.vnText
+            coText = this.state.vnText
         }
-        return texUpStr
+        return [texUpStr,coText]
+        // 0 === \n
+        // 1 === <br />
     }
     _ctxvnr(x) {
         var xcd = x.target.value
@@ -267,33 +277,42 @@ export default class P___rps extends Component {
         } else {
             this.setState({ disVew: false })
         }
-        this.setState({ valTex: this.tekal() })
+        this.setState({ valTex: this.tekal(true) })
     }
-    tekal() {
-        var ntne = this.vxTextvx()
+    tekal(b) {
+        var ntne = this.vxTextvx()[1]
+        var ntnea = this.vxTextvx()[0]
         var teEd = this.state.valTex
-        if (this.props.xtex === this.state.lValEn) {
+        if (this.vxTextvx()[0] === this.state.lValEn) {
             if (teEd.length > 0) {
-                return teEd
+                if(b === false){
+                    return teEd.replace(/\n/g,"<br />")
+                } else {
+                    return teEd
+                }
             } else {
                 return this.state.vnText
             }
         } else {
-            return ntne
+            if(b === false){
+                return ntne
+            } else {
+                return ntnea
+            }
         }
     }
     tdech() {
-        if (this.props.xtex === this.state.lValEn) {
+        if (this.vxTextvx()[0] === this.state.lValEn) {
             return true
         } else {
             return false
         }
     }
     clenEd() {
-        this.setState({ valTex: this.vxTextvx() })
+        this.setState({ valTex: this.vxTextvx()[0]})
     }
     marba() {
-        var vta = this.tekal()
+        var vta = this.tekal(true)
         var hisV = this.state.his
         var isW = false
         if (vta !== this.state.vnText) {
@@ -398,10 +417,10 @@ export default class P___rps extends Component {
                     }
                 }
             } else {
-                if (this.vxTextvx() === this.state.vnText) {
+                if (this.vxTextvx()[0] === this.state.vnText) {
                     return false
                 } else {
-                    if (this.vxTextvx().length > 0) {
+                    if (this.vxTextvx()[0].length > 0) {
                         return true
                     } else {
                         return false
@@ -411,7 +430,7 @@ export default class P___rps extends Component {
         }
         var cheq = () => {
             if (this.tdech() === true) {
-                if (this.state.valTex !== this.vxTextvx()) {
+                if (this.state.valTex !== this.vxTextvx()[0]) {
                     return true
                 } else {
                     return false
@@ -426,7 +445,7 @@ export default class P___rps extends Component {
                 var diFi = false
                 for (var om = 0; om < his.length; om++) {
                     var moragen = his[om].corg
-                    if (this.tekal() === moragen) {
+                    if (this.tekal(true) === moragen) {
                         diFi = true
                     }
                 }
@@ -492,7 +511,7 @@ export default class P___rps extends Component {
                                         onChange={this._ctxvcr}
                                         value={this.state.valTex} />
                                     : <ContentEditable
-                                        html={'<p className="textareap">' + this.tekal() + '</p>'}
+                                        html={'<p className="textareap">' + this.tekal(false) + '</p>'}
                                         disabled={true}
                                         tagName='div'
                                         className="areaPcP areaPlus"

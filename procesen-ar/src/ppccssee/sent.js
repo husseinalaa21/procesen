@@ -236,7 +236,7 @@ export default class P___rps extends Component {
                                     <tr className="edvEx">
                                         <th className="trfEx"> الأسم </th>
                                         <th> النوع </th>
-                                        <th> تفعيل </th>
+                                        <th className="actEFe"> تفعيل </th>
                                         <th className="trdEx"> حذف </th>
                                     </tr>
                                     {containerItemsSp}
@@ -322,10 +322,10 @@ export default class P___rps extends Component {
         if (this.state.isclc === true) {
             if (x.length > 0 && y.length > 0) {
                 var ise = false
-                var arx = [x, y]
+                var arx = [[x, y]]
                 uez.forEach(ui => {
-                    if (ui.ex === true) {
-                        if (arx === ui.eo || x.length === 0) {
+                    if (ui.ex === false) {
+                        if (arx.toString() === ui.eo.toString() || x.length === 0 || ui.nam === u) {
                             ise = true
                         }
                     }
@@ -343,7 +343,7 @@ export default class P___rps extends Component {
                 var ise = false
                 uez.forEach(ui => {
                     if (ui.ex === true) {
-                        if (x === ui.eo || x.length === 0) {
+                        if (x === ui.eo || x.length === 0|| ui.nam === u) {
                             ise = true
                         }
                     }
@@ -364,8 +364,8 @@ export default class P___rps extends Component {
                 <tr className="edExcon" key={18 + ax.nu}>
                     <td className="trfEx edExTf">{ax.n}</td >
                     <td className="edExTu"> تعديل </td >
-                    <td className="edExC" onClick={() => this.szAvd(ax.nu)}>
-                        {ax.c ? <div className="edExCt"> <FontAwesomeIcon icon={faPlus} /> </div> : <div className="edExCf"><FontAwesomeIcon icon={faMinus} /> </div>}
+                    <td className={ax.c ? "edExCf": "edExC"} onClick={() => this.szAvd(ax.nu)}>
+                        {ax.c ?<FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faMinus} />}
                     </td >
                     {ax.fu ?
                         <td className="trdEx" onClick={() => this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash} /> </td > :
@@ -377,8 +377,8 @@ export default class P___rps extends Component {
                 <tr className="deExcon" key={18 + ax.nu}>
                     <td className="trfEx deExTf"> {ax.n} </td >
                     <td> حذف </td >
-                    <td className="edExC" onClick={() => this.szAvd(ax.nu)}>
-                        {ax.c ? <div className="edExCt"> <FontAwesomeIcon icon={faPlus} /> </div> : <div className="edExCf"><FontAwesomeIcon icon={faMinus} /> </div>}
+                    <td className={ax.c ? "edExCf": "edExC"} onClick={() => this.szAvd(ax.nu)}>
+                        {ax.c ?<FontAwesomeIcon icon={faPlus} />:<FontAwesomeIcon icon={faMinus} />}
                     </td >
                     {ax.fu ?
                         <td className="trdEx" onClick={() => this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash} /> </td > :
@@ -440,6 +440,15 @@ export default class P___rps extends Component {
                 const vdv = new RegExp(erv[rn].eo, 'g');
                 //const thTy = x.length - x.replace(vdv, "").length
                 tezx = tezx.replace(vdv, "")
+            } else if(erv[rn].ex === false && rv[rn] === true){
+                for(var wd = 0 ;wd < erv[rn].eo.length; wd ++){
+                    const wr = wd
+                    var wx = erv[rn].eo[wr]
+                    var ao = new RegExp(wx[0], 'g');
+                    if((ao.test(tezx)) === true){
+                        tezx = tezx.replace(ao,wx[1])
+                    }
+                }
             }
         }
         var ttezx = tezx.replace(/\n/g, "<br />")
@@ -584,12 +593,6 @@ export default class P___rps extends Component {
             })
             return (
                 <>
-                    { /*<div className="searchHis">
-                        <label className="laHisIn">
-                            <div className="dLaHisIn"> # </div>
-                            <input className="dLaHisInp" type="search" placeholder=" أدخل رقم العنصر " max="10"/>
-                        </label>
-                    </div>*/}
                     {ritOrg}
                 </>
             )

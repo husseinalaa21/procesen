@@ -982,6 +982,19 @@ td.trdExX ,th.trdExX{
   text-align: center;
   color: #cfd3d4;
 }
+th.actEFe {
+  text-align: center 
+}
+td.edExC {
+  text-align: center ;
+  cursor: pointer;
+  color: rgb(29, 102, 124);
+}
+td.edExCf {
+  text-align: center ;
+  cursor: pointer;
+  color: rgb(82, 190, 219);
+}
 /* ---- TOLS CHOOSE ---- */
 
 .tolsMainTextArea {

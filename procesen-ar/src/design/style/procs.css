@@ -971,6 +971,9 @@ tr.edExcon{
 tr.deExcon{
   background-color: #e9e3e3;
 }
+th.actEFe {
+  text-align: center 
+}
 tr.edvEx {
   background-color: #f4f4f4;
   text-align: right;

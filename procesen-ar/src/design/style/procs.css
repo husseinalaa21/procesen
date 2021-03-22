@@ -808,7 +808,7 @@ font-size: 16px;
   width: fit-content;
   border-radius: 0 3px 0 0;
   background-color: #f0f0f0;
-  font-size: 17px;
+  font-size: 16px;
   color: #3b3b3b;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -818,7 +818,7 @@ font-size: 16px;
   width: fit-content;
   border-radius: 3px 0 0 0;
   background-color: #f0f0f0;
-  font-size: 17px;
+  font-size: 16px;
   color: #3b3b3b;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -839,6 +839,7 @@ font-size: 16px;
   width: auto;
   margin-top: 8px;
   display: flex;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .zWtext {
   margin: auto;
@@ -947,6 +948,7 @@ font-size: 16px;
 }
 .xTbo th{
   padding: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 td.trdEx ,th.trdEx{
   border-radius: 3px 0 0 3px !important ;

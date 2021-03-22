@@ -801,18 +801,30 @@ font-size: 16px;
 .conLisCr{
   padding: 6px;
 }
-.conLisCrTi {
+.conLisCrTiB {
   cursor: pointer;
   padding: 10px;
   width: fit-content;
-  border-radius: 3px 3px 0 0;
+  border-radius: 0 3px 0 0;
+  background-color: #f0f0f0;
+  font-size: 17px;
+  color: #3b3b3b;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.conLisCrTiA {
+  cursor: pointer;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 3px 0 0 0;
   background-color: #f0f0f0;
   font-size: 17px;
   color: #3b3b3b;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .conLisCrTiT {
-  background-color: #e8e8e8;
+  background-color: #e7dec8;
+  border: 1px solid #e7dec8;
+  border-bottom: 0;
 }
 .conLisCrCon {
   background-color: #e8e8e8;
@@ -820,6 +832,7 @@ font-size: 16px;
   border-radius:0 0 3px 3px;
   width: auto;
   max-width: 500px;
+  border: 1px solid #e7dec8;
 }
 .zxzWtext {
   width: auto;
@@ -897,7 +910,7 @@ font-size: 16px;
   outline: none;
 }
 .itpButom {
-  background-color: #ffc75f;
+  background-color: #f2d974;
   color: whitesmoke;
   padding: 8px;
   width: 100%;

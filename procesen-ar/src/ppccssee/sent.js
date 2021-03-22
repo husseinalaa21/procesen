@@ -245,12 +245,8 @@ export default class P___rps extends Component {
                         </div>
                         <div className="conLisCr">
                             <div className="conLisCrSxTi">
-                                <div className={this.state.isclc ? "conLisCrTi conLisCrTiT" : "conLisCrTi conLisCrTiFalse"} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}>
-                                    أستبدال عنصر بعنصر
-                            </div>
-                                <div className={this.state.isclc ? "conLisCrTi conLisCrTiFalse" : "conLisCrTi conLisCrTiT"} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}>
-                                    حذف عنصر
-                            </div>
+                                <div className={this.state.isclc ? "conLisCrTiA conLisCrTiT" : "conLisCrTiA conLisCrTiFalse"} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}> أستبدال عنصر بعنصر </div>
+                                <div className={this.state.isclc ? "conLisCrTiB conLisCrTiFalse" : "conLisCrTiB conLisCrTiT"} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}> حذف عنصر </div>
                             </div>
                             <div className="conLisCrCon">
                                 {this.state.isclc ?

@@ -47,8 +47,8 @@ export default class P___rps extends Component {
                     var dz = []
                     var ez = []
                     var _ev_ = []
-                    for(var e = 0; e < result["_dvBn"].length; e++){
-                        if(result["_dvBn"][e].exdz !== false){
+                    for (var e = 0; e < result["_dvBn"].length; e++) {
+                        if (result["_dvBn"][e].exdz !== false) {
                             dz.push(result["_dvBn"][e])
                             _obp_.push(false)
                         } else {
@@ -60,8 +60,8 @@ export default class P___rps extends Component {
                         isW: true,
                         obp: _obp_,
                         dzVbn: dz,
-                        ezVbn : ez,
-                        ev : _ev_,
+                        ezVbn: ez,
+                        ev: _ev_,
                         vnText: "<i className='nullTextArea'> There is nothing yet .. </i>"
                     });
                 },
@@ -109,29 +109,29 @@ export default class P___rps extends Component {
         var ez = this.state.ezVbn
         var ev = this.state.ev
         // ...
+        // arr sec ed
+        var oj = []
+        var avd = []
+        // ...
+        for (var v = 0; v < ez.length; v++) {
+            const eznu = v
+            if ((ez[eznu].hasOwnProperty('exs')) === true) {
+                var xsz = ez[eznu].exs
+            } else {
+                var xsz = false
+            }
+            var ze = { caseP: ev[eznu], num: ez[eznu].nam, ex: ez[eznu].ex, eo: ez[eznu].eo, exs: xsz, nr: eznu }
+            avd.push(ze)
+        }
+        var containerItems = []
+        var containerItemsSp = []
         if (this.props.caseXtex === true) {
             if (swp.length > 0) {
-                // arr sec ed
-                var oj = []
-                var avd = []
-                // ...
                 for (var t = 0; t < vbn.length; t++) {
                     const namb = t
                     var oi = { caseP: obj[namb], num: vbn[namb].nam, dz: vbn[namb].exdz }
                     oj.push(oi)
                 }
-                for(var v = 0; v < ez.length; v ++){
-                    const eznu = v
-                    if((ez[eznu].hasOwnProperty('exs')) === true){
-                        var xsz = ez[eznu].exs
-                    } else {
-                        var xsz = false
-                    }
-                    var ze = {caseP : ev[eznu], num : ez[eznu].nam, ex : ez[eznu].ex , eo : ez[eznu].eo , exs : xsz , nr : eznu}
-                    avd.push(ze)
-                }
-                var containerItems = []
-                var containerItemsSp = []
                 var nifn = 0
                 var nift = ""
                 var nifb = false
@@ -167,54 +167,70 @@ export default class P___rps extends Component {
                         }
                     }
                 }
-                for(var fe = 0; fe < avd.length; fe++){
-                    const nb = fe
-                    if(avd[nb].exs === true){
-                        var zEz = this.setAvd({n : avd[nb].num , c : avd[nb].caseP , nu : avd[nb].nr , tn : avd[nb].ex , fu : true})
-                        containerItemsSp.push(zEz)
-                    } else {
-                        var zEz = this.setAvd({n : avd[nb].num , c : avd[nb].caseP , nu : avd[nb].nr , tn : avd[nb].ex , fu : false})
-                        containerItemsSp.push(zEz)
+            }
+        }
+        for (var fe = 0; fe < avd.length; fe++) {
+            const nb = fe
+            if (avd[nb].exs === true) {
+                var zEz = this.setAvd({ n: avd[nb].num, c: avd[nb].caseP, nu: avd[nb].nr, tn: avd[nb].ex, fu: true })
+                containerItemsSp.push(zEz)
+            } else {
+                var zEz = this.setAvd({ n: avd[nb].num, c: avd[nb].caseP, nu: avd[nb].nr, tn: avd[nb].ex, fu: false })
+                containerItemsSp.push(zEz)
+            }
+        }
+        var salaD = () => {
+            var ads = this.vxTextvx()[4]
+            if (ads.length > 0) {
+                var xRet = []
+                for (var eq = 0; eq < ads.length; eq++) {
+                    if (ads[eq].con > 0) {
+                        xRet.push(<div className="coNads" key={911 + eq}> from  {ads[eq].ty} Has been deleted ( {ads[eq].con} )  .</div>)
+                    }
+                    if (ads.length - 1 === eq) {
+                        return xRet
                     }
                 }
-                var salaD = () =>{
-                    var ads = this.vxTextvx()[4]
-                    if(ads.length > 0){
-                        var xRet = []
-                        for(var eq = 0; eq < ads.length; eq++){
-                            if(ads[eq].con > 0){
-                                xRet.push(<div className="coNads" key={911+eq}> from  {ads[eq].ty} Has been deleted ( {ads[eq].con} )  .</div>)
-                            }
-                            if(ads.length -1 === eq){
-                                return xRet
-                            }
-                        }
-                    }
-                }
-                var chnNewNum =  Math.round(((this.vxTextvx()[3] - this.vxTextvx()[2]) / this.vxTextvx()[3]) * 100)
-                var onAdv = "",
-                twAdv = "",
-                namAdv = ""
-                return (
-                    <>
-                        <TabIbfU tit=" Current text control options" log={<FontAwesomeIcon icon={faEraser} />} th={this.props.bThem} con={
-                            <div className={this.props.bThem ? "tcontaorTabDr" : "tcontaorTab"}><table className={this.props.bThem ? "_listInfoDr" : "_listInfo"}>
-                                <tbody>
-                                    <tr>
-                                        <th> Item type </th>
-                                        <th> The number </th>
-                                        <th> Percentage	 </th>
-                                        <th> Delete </th>
-                                    </tr>
-                                    {containerItems}
-                                </tbody>
-                            </table>
-                                <div className={this.props.bThem ? "infTableXDr" : "infTableX"}><div className={this.props.bThem ? "infTableDr" : "infTable"}> The number of matrices : {wasw} </div> </div></div>}
-                        />
-                        <TabIbfU tit=" Advanced text control options . " log={<FontAwesomeIcon icon={faEraser} />} th={this.props.bThem} con={
-                            <div className="conLisSp">
-                                <div className="conLisCon conLisConLi">
-                                    <table  className="xTbo">
+            }
+        }
+        var cotait = () => {
+            if (this.props.caseXtex === true && swp.length > 0) {
+                return true
+            } else {
+                return false
+            }
+        }
+        var chnNewNum = Math.round(((this.vxTextvx()[3] - this.vxTextvx()[2]) / this.vxTextvx()[3]) * 100)
+        var onAdv = "",
+            twAdv = "",
+            namAdv = ""
+        return (
+            <>
+                <TabIbfU tit=" Current text control options" log={<FontAwesomeIcon icon={faEraser} />} th={this.props.bThem} con={
+                    cotait() ?
+                        <div className={this.props.bThem ? "tcontaorTabDr" : "tcontaorTab"}><table className={this.props.bThem ? "_listInfoDr" : "_listInfo"}>
+                            <tbody>
+                                <tr>
+                                    <th> Item type </th>
+                                    <th> The number </th>
+                                    <th> Percentage	 </th>
+                                    <th> Delete </th>
+                                </tr>
+                                {containerItems}
+                            </tbody>
+                        </table>
+                            <div className={this.props.bThem ? "infTableXDr" : "infTableX"}><div className={this.props.bThem ? "infTableDr" : "infTable"}> The number of matrices : {wasw} </div> </div></div> :
+                        <div className={this.props.bThem ? "rtaWait rtaWaitDr" : "rtaWait rtaWaitLi"}>
+                            <div className="rtaTitle">There is nothing yet ..</div>
+                            <div className="rtaCon">
+                                <FontAwesomeIcon icon={faRocket} />
+                            </div>
+                        </div>}
+                />
+                <TabIbfU tit=" Advanced text control options . " log={<FontAwesomeIcon icon={faEraser} />} th={this.props.bThem} con={
+                    <div className="conLisSp">
+                        <div className="conLisCon conLisConLi">
+                            <table className="xTbo">
                                 <tbody>
                                     <tr className="edvEx">
                                         <th className="trfEx"> Name </th>
@@ -224,173 +240,169 @@ export default class P___rps extends Component {
                                     </tr>
                                     {containerItemsSp}
                                 </tbody>
-                                    </table>
-                                </div>
-                                <div className="conLisCr">
-                                    <div className="conLisCrSxTi">
-                                    <div className={this.state.isclc ? "conLisCrTi conLisCrTiT" : "conLisCrTi conLisCrTiFalse" } onClick={()=>{this.setState({isclc : !this.state.isclc })}}>
+                            </table>
+                        </div>
+                        <div className="conLisCr">
+                            <div className="conLisCrSxTi">
+                                <div className={this.state.isclc ? "conLisCrTi conLisCrTiT" : "conLisCrTi conLisCrTiFalse"} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}>
                                     Replace element with element
-                                    </div>
-                                    <div className={this.state.isclc ? "conLisCrTi conLisCrTiFalse" : "conLisCrTi conLisCrTiT"} onClick={()=>{this.setState({isclc : !this.state.isclc })}}>
+                            </div>
+                                <div className={this.state.isclc ? "conLisCrTi conLisCrTiFalse" : "conLisCrTi conLisCrTiT"} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}>
                                     Delete an item
-                                    </div>
-                                    </div>
-                                    <div className="conLisCrCon">
-                                        {this.state.isclc ? 
-                                        <div>
+                            </div>
+                            </div>
+                            <div className="conLisCrCon">
+                                {this.state.isclc ?
+                                    <div>
                                         <div className="zWtext">
                                             <div className="inptText">
                                                 <div className="titleInpY"> Name of the element </div>
                                                 <div className="borInptY">
-                                                    <input type="text" placeholder="write here " onChange={(x)=>{ namAdv =  x.target.value}}/>
+                                                    <input type="text" placeholder="write here " onChange={(x) => { namAdv = x.target.value }} />
                                                 </div>
                                             </div>
-                                        </div> 
+                                        </div>
                                         <div className="zxzWtext">
                                             <div className="inptText">
                                                 <div className="titleInp"> Word </div>
                                                 <div className="borInpt">
-                                                    <input type="text" placeholder="write here " onChange={(x)=>{ onAdv =  x.target.value}}/>
+                                                    <input type="text" placeholder="write here " onChange={(x) => { onAdv = x.target.value }} />
                                                 </div>
                                             </div>
                                             <div className="inptText">
                                                 <div className="titleInp"> Reversible </div>
                                                 <div className="borInpt">
-                                                    <input type="text" placeholder="write here " onChange={(x)=>{ twAdv =  x.target.value}}/>
+                                                    <input type="text" placeholder="write here " onChange={(x) => { twAdv = x.target.value }} />
                                                 </div>
                                             </div>
-                                        </div> 
-                                        </div>: 
-                                        <div className="zxzWtext">
-                                            <div className="inptText">
-                                                <div className="titleInpY"> Name of the element </div>
-                                                <div className="borInptY">
-                                                    <input type="text" placeholder="write here" onChange={(x)=>{ namAdv =  x.target.value}}/>
-                                                </div>
-                                            </div>
-                                            <div className="inptText">
-                                                <div className="titleInp"> Word </div>
-                                                <div className="borInpt">
-                                                    <input type="text" placeholder="write here" onChange={(x)=>{ onAdv =  x.target.value}}/>
-                                                </div>
-                                            </div>
-                                        </div> }
-                                        <div className="itpButomN">
-                                            <button className="itpButom" onClick={()=>this.adAdvSet(onAdv,twAdv,namAdv)}> <FontAwesomeIcon icon={faArrowRight} /> </button>
                                         </div>
-                                    </div>
+                                    </div> :
+                                    <div className="zxzWtext">
+                                        <div className="inptText">
+                                            <div className="titleInpY"> Name of the element </div>
+                                            <div className="borInptY">
+                                                <input type="text" placeholder="write here" onChange={(x) => { namAdv = x.target.value }} />
+                                            </div>
+                                        </div>
+                                        <div className="inptText">
+                                            <div className="titleInp"> Word </div>
+                                            <div className="borInpt">
+                                                <input type="text" placeholder="write here" onChange={(x) => { onAdv = x.target.value }} />
+                                            </div>
+                                        </div>
+                                    </div>}
+                                <div className="itpButomN">
+                                    <button className="itpButom" onClick={() => this.adAdvSet(onAdv, twAdv, namAdv)}> <FontAwesomeIcon icon={faArrowRight} /> </button>
                                 </div>
                             </div>
-                        }
-                        />
-                        <div className="secTwSitc" style={this.state.shMoTo ? { display: "block" } : { display: "none" }}>
-                            <TabIbfU tit=" Text information " log={<FontAwesomeIcon icon={faUnderline} />} th={this.props.bThem} con={
-                                <div>
-                                <div className="noteWeInf nift">
-                                    {ePoin(nifn)}
-                                    <div className="niftT"> The highest element of the sentence is {nift} , Where it poses {nifn} % Of the sentence . </div>
-                                </div>
-                                <div className="noteWeInf nift">
-                                    {ePoin(chnNewNum)}
-                                    <div className="niftT"> The percentage change in the text is {chnNewNum} % .</div>
-                                </div>
-                                {salaD()}
-                                </div>
-                            }
-                            />
                         </div>
-                        <div className="shMoTo" onClick={() => { this.setState({ shMoTo: !this.state.shMoTo }) }}> <div className="shMoToTit"> {this.state.shMoTo ? " Show more " : " Show less "} </div> <div className="shMoToLo"> {this.state.shMoTo ? <FontAwesomeIcon icon={faArrowCircleUp} /> : <FontAwesomeIcon icon={faArrowAltCircleDown} />} </div> </div>
-                    </>
-                )
-            } else {
-                return ""
-            }
-        }
+                    </div>
+                }
+                />
+                <div className="secTwSitc" style={this.state.shMoTo ? { display: "block" } : { display: "none" }}>
+                    <TabIbfU tit=" Text information " log={<FontAwesomeIcon icon={faUnderline} />} th={this.props.bThem} con={
+                        <div>
+                            <div className="noteWeInf nift">
+                                {ePoin(nifn)}
+                                <div className="niftT"> The highest element of the sentence is {nift} , Where it poses {nifn} % Of the sentence . </div>
+                            </div>
+                            <div className="noteWeInf nift">
+                                {ePoin(chnNewNum)}
+                                <div className="niftT"> The percentage change in the text is {chnNewNum} % .</div>
+                            </div>
+                            {salaD()}
+                        </div>
+                    }
+                    />
+                </div>
+                <div className="shMoTo" onClick={() => { this.setState({ shMoTo: !this.state.shMoTo }) }}> <div className="shMoToTit"> {this.state.shMoTo ? " Show more " : " Show less "} </div> <div className="shMoToLo"> {this.state.shMoTo ? <FontAwesomeIcon icon={faArrowCircleUp} /> : <FontAwesomeIcon icon={faArrowAltCircleDown} />} </div> </div>
+            </>
+        )
     }
-    adAdvSet(x,y,u){
+    adAdvSet(x, y, u) {
         var uez = this.state.ezVbn
         var iez = this.state.ev
-        if(this.state.isclc  === true){
-            if(x.length > 0 && y.length > 0){
+        if (this.state.isclc === true) {
+            if (x.length > 0 && y.length > 0) {
                 var ise = false
-                var arx = [x,y] 
-                uez.forEach(ui=>{
-                    if(ui.ex === true){
-                        if(arx === ui.eo || x.length === 0){
+                var arx = [x, y]
+                uez.forEach(ui => {
+                    if (ui.ex === true) {
+                        if (arx === ui.eo || x.length === 0) {
                             ise = true
                         }
                     }
                 })
-                if(ise === false){
-                    var eqa = {nam : u , ex : false , eo : arx , exs : true}
+                if (ise === false) {
+                    var eqa = { nam: u, ex: false, eo: arx, exs: true }
                     uez.push(eqa)
                     iez.push(false)
-                    this.setState({ezVbn : uez})
-                    this.setState({ev : iez})
+                    this.setState({ ezVbn: uez })
+                    this.setState({ ev: iez })
                 }
             }
         } else {
-            if(x.length > 0){
+            if (x.length > 0) {
                 var ise = false
-                uez.forEach(ui=>{
-                    if(ui.ex === true){
-                        if(x === ui.eo ||x.length === 0){
+                uez.forEach(ui => {
+                    if (ui.ex === true) {
+                        if (x === ui.eo || x.length === 0) {
                             ise = true
                         }
                     }
                 })
-                if(ise === false){
-                    var eqa = {nam : u , ex : true , eo : x , exs : true}
+                if (ise === false) {
+                    var eqa = { nam: u, ex: true, eo: x, exs: true }
                     uez.push(eqa)
                     iez.push(false)
-                    this.setState({ezVbn : uez})
-                    this.setState({ev : iez})
+                    this.setState({ ezVbn: uez })
+                    this.setState({ ev: iez })
                 }
             }
         }
     }
-    setAvd(ax){
-        if(ax.tn === false){
+    setAvd(ax) {
+        if (ax.tn === false) {
             return (
-                <tr className="edExcon" key={18+ax.nu}>
-                        <td className="trfEx edExTf">{ax.n}</td >
-                        <td  className="edExTu"> Modification </td >
-                        <td  className="edExC" onClick={()=>this.szAvd(ax.nu)}>
-                            {ax.c ? <div className="edExCt"> <FontAwesomeIcon icon={faPlus} /> </div> : <div className="edExCf"><FontAwesomeIcon icon={faMinus} /> </div>}
-                        </td >
-                        {ax.fu ?
-                        <td className="trdEx" onClick={()=>this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash}/> </td >: 
-                        <td className="trdExX"> <FontAwesomeIcon icon={faTrash}/> </td >}
-                </tr>
-            )
-        } else {
-            return (
-                <tr className="deExcon" key={18+ax.nu}>
-                    <td className="trfEx deExTf"> {ax.n} </td >
-                    <td> delete </td >
-                    <td  className="edExC" onClick={()=>this.szAvd(ax.nu)}>
+                <tr className="edExcon" key={18 + ax.nu}>
+                    <td className="trfEx edExTf">{ax.n}</td >
+                    <td className="edExTu"> Modification </td >
+                    <td className="edExC" onClick={() => this.szAvd(ax.nu)}>
                         {ax.c ? <div className="edExCt"> <FontAwesomeIcon icon={faPlus} /> </div> : <div className="edExCf"><FontAwesomeIcon icon={faMinus} /> </div>}
                     </td >
                     {ax.fu ?
-                    <td className="trdEx" onClick={()=>this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash}/> </td >: 
-                    <td className="trdExX"> <FontAwesomeIcon icon={faTrash}/> </td >}
+                        <td className="trdEx" onClick={() => this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash} /> </td > :
+                        <td className="trdExX"> <FontAwesomeIcon icon={faTrash} /> </td >}
+                </tr>
+            )
+        } else {
+            return (
+                <tr className="deExcon" key={18 + ax.nu}>
+                    <td className="trfEx deExTf"> {ax.n} </td >
+                    <td> delete </td >
+                    <td className="edExC" onClick={() => this.szAvd(ax.nu)}>
+                        {ax.c ? <div className="edExCt"> <FontAwesomeIcon icon={faPlus} /> </div> : <div className="edExCf"><FontAwesomeIcon icon={faMinus} /> </div>}
+                    </td >
+                    {ax.fu ?
+                        <td className="trdEx" onClick={() => this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash} /> </td > :
+                        <td className="trdExX"> <FontAwesomeIcon icon={faTrash} /> </td >}
                 </tr>
             )
         }
     }
-    deItAdv(x){
+    deItAdv(x) {
         var uez = this.state.ezVbn
         var iez = this.state.ev
-        if(uez[x].exs === true){
+        if (uez[x].exs === true) {
             uez.splice(x, 1)
             iez.splice(x, 1)
-            this.setState({ezVbn : uez})
-            this.setState({ev : iez})
+            this.setState({ ezVbn: uez })
+            this.setState({ ev: iez })
         } else {
             console.log("false")
         }
     }
-    szAvd(x){
+    szAvd(x) {
         let ecC = this.state.ev
         ecC[x] = !ecC[x]
         this.setState({ ev: ecC })
@@ -402,7 +414,7 @@ export default class P___rps extends Component {
                 <td > {cx.itemNu} </td>
                 <td > {cx.itemNumP} </td>
                 {this.props.bThem ? <td onClick={() => this.childOppenProcessx(cx.nam)} className={cx.ccv ? "faMinusDivDr" : "faPlusDivDr"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusiDr" : "faPlusiDr"} /> </td> :
-                <td onClick={() => this.childOppenProcessx(cx.nm)} className={cx.ccv ? "faMinusDiv" : "faPlusDiv"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusi" : "faPlusi"} /> </td>}
+                    <td onClick={() => this.childOppenProcessx(cx.nm)} className={cx.ccv ? "faMinusDiv" : "faPlusDiv"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusi" : "faPlusi"} /> </td>}
             </tr>
         )
     }
@@ -422,20 +434,20 @@ export default class P___rps extends Component {
                 //const thTy = x.length - x.replace(vdv, "").length
                 //var deSa = {ty : tvp[na].nam , con : thTy}
                 //ty.push(deSa)
-                tezx = tezx.replace(vdv,"")
+                tezx = tezx.replace(vdv, "")
             }
         }
-        for(var s = 0; s < erv.length; s++){
+        for (var s = 0; s < erv.length; s++) {
             const rn = s
-            if(erv[rn].ex === true && rv[rn] === true){
+            if (erv[rn].ex === true && rv[rn] === true) {
                 const vdv = new RegExp(erv[rn].eo, 'g');
                 //const thTy = x.length - x.replace(vdv, "").length
-                tezx = tezx.replace(vdv,"")
+                tezx = tezx.replace(vdv, "")
             }
         }
         var ttezx = tezx.replace(/\n/g, "<br />")
         var el = tezx.length
-        return [ttezx , tezx ,el ,ty]
+        return [ttezx, tezx, el, ty]
         // 0 === <br />
         // 1 === \n
     }
@@ -444,7 +456,7 @@ export default class P___rps extends Component {
         var coText = ""
         var le = 0
         var led = 0
-        var ty =[]
+        var ty = []
         if (this.props.caseXtex == true) {
             var swp = this.props.xtex
             if (swp.length > 0) {
@@ -481,7 +493,7 @@ export default class P___rps extends Component {
             le = 0
             led = 0
         }
-        return [texUpStr,coText , le , led , ty]
+        return [texUpStr, coText, le, led, ty]
         // 0 === \n
         // 1 === <br />
     }
@@ -504,8 +516,8 @@ export default class P___rps extends Component {
         var teEd = this.state.valTex
         if (this.vxTextvx()[0] === this.state.lValEn) {
             if (teEd.length > 0) {
-                if(b === false){
-                    return teEd.replace(/\n/g,"<br />")
+                if (b === false) {
+                    return teEd.replace(/\n/g, "<br />")
                 } else {
                     return teEd
                 }
@@ -513,7 +525,7 @@ export default class P___rps extends Component {
                 return this.state.vnText
             }
         } else {
-            if(b === false){
+            if (b === false) {
                 return ntne
             } else {
                 return ntnea
@@ -529,8 +541,8 @@ export default class P___rps extends Component {
     }
     clenEd() {
         // if any error in text ( check this code ! )
-        this.setState({ lValEn: " "})
-        this.setState({ valTex: " "})
+        this.setState({ lValEn: " " })
+        this.setState({ valTex: " " })
     }
     marba() {
         var vta = this.tekal(true)
@@ -569,8 +581,8 @@ export default class P___rps extends Component {
                 const corg = el.corg
                 const org = el.org
                 const indx = arHis.indexOf(el)
-                var brt =' <br />'
-                var itOrg = <div className="hisSec"> <div className="hisT"><div className="hisTn"> {ogn}# </div> <div className="hisTxo"> <FontAwesomeIcon icon={faTrash} className="hisTx" onClick={() => this.deIlm(indx)} /> <FontAwesomeIcon icon={faCopy} className="hisTx" onClick={() => { navigator.clipboard.writeText(corg) }} /> </div> </div> <div className="hisCon"> <div className="hisOrg"> {org.replace(/\n/g,brt)} </div> <div className="hisCorg"> {corg.replace(/\n/g,brt)} </div> </div> </div>
+                var brt = ' <br />'
+                var itOrg = <div className="hisSec"> <div className="hisT"><div className="hisTn"> {ogn}# </div> <div className="hisTxo"> <FontAwesomeIcon icon={faTrash} className="hisTx" onClick={() => this.deIlm(indx)} /> <FontAwesomeIcon icon={faCopy} className="hisTx" onClick={() => { navigator.clipboard.writeText(corg) }} /> </div> </div> <div className="hisCon"> <div className="hisOrg"> {org.replace(/\n/g, brt)} </div> <div className="hisCorg"> {corg.replace(/\n/g, brt)} </div> </div> </div>
                 ritOrg.push(itOrg)
             })
             return (
@@ -729,10 +741,10 @@ export default class P___rps extends Component {
                             <div className="toolsBottomAreaPcs toolsBottomAreaPcsPro">
                                 <div className="textAreaBottom">
                                     {this.vxTextvx()[2]} Out of {this.vxTextvx()[3]} , The difference {this.vxTextvx()[3] - this.vxTextvx()[2]}
-                            </div>
+                                </div>
                                 <div className="textAreaBottomLogo">
-                                <div className="textAreaBottomLogo"> Percentage change  { Math.round(((this.vxTextvx()[3] - this.vxTextvx()[2]) / this.vxTextvx()[3]) * 100)} %</div>
-                            </div>
+                                    Percentage change  {Math.round(((this.vxTextvx()[3] - this.vxTextvx()[2]) / this.vxTextvx()[3]) * 100)} %
+                                </div>
                             </div>
                         </div>
                     </label>
@@ -744,14 +756,6 @@ export default class P___rps extends Component {
                                 <FontAwesomeIcon icon={faAlignLeft} className="icTolsSett" />
                             </div>
                             <div className="stolsCONTROLX">{this.state.isW ? " Input text information and control options. " : <div className="isWiteTextControal"></div>}</div>
-                        </div>
-                    </div>
-                    <div className={this.props.bThem ? "rtaWait rtaWaitDr" : "rtaWait rtaWaitLi"} style={caseInfoPP() ? { display: "none" } : { display: "block" }}>
-                        <div className="rtaTitle">
-                            There is nothing yet ..
-                        </div>
-                        <div className="rtaCon">
-                            <FontAwesomeIcon icon={faRocket} />
                         </div>
                     </div>
                     {this.infTextEnter()}

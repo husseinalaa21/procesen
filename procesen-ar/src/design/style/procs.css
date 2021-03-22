@@ -895,7 +895,7 @@ font-size: 16px;
   outline: none;
 }
 .itpButom {
-  background-color: #bbbfca;
+  background-color: #ffc75f;
   color: whitesmoke;
   padding: 8px;
   width: 100%;
@@ -903,12 +903,24 @@ font-size: 16px;
   margin: auto;
   justify-content: center;
   text-align: center;
-  border: 2px solid #b5bccf;
+  border: 2px solid #f1d6a0;
   cursor: pointer;
 }
 .itpButom:focus {
   outline: none;
-  background-color: #b5bccf;
+  background-color:#f1d6a0;
+}
+
+@media screen and (max-width : 600px){
+  .zxzWtext{
+    display: block;
+    width: fit-content;
+    margin: auto;
+  }
+  .inptText {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
 }
 /* -- Sec -- */
 .xTbo {

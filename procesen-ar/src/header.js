@@ -6,6 +6,7 @@ import { useState } from 'react'
 import TolsNavMain from './joint/tolsNavMain'
 import { faLanguage, faMoon } from '@fortawesome/free-solid-svg-icons';
 import Main from './main'
+import NotesCon from './joint/notesCon';
 
 export default function App() {
   const [clickNav, setClickNav] = useState(false)
@@ -106,6 +107,7 @@ export default function App() {
           <img src={Logo} alt="def" width="25px" height="25px" className="defImgIco" />
           <p className="defText"> بروسيسن هو أختصار : ( <b className="defTextProce"> Proce</b><b className="defTextSen">sen</b> ) أي <b className="defTextProce">processing</b> <b className="defTextSen">sentences</b> by artificial intelligence . " و التي تعني معالجة الجُمل بواسطة الذكاء الاصطناعي " , <a href="#sec-definition-site" > معرفة المزيد </a> </p>
         </div>
+      {isNight ? <div className="noDiv"> <NotesCon cx="blue" type="noMo" textTitle=" ملاحضة : " textCon=" لايزال الوضع الليلي قيد التطوير و سيتم الانتهاء من تطويره قريباً . " /></div> : "" }
       </div>
       <Main themHeader={isNight} />
     </>

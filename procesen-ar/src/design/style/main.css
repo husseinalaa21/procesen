@@ -440,3 +440,9 @@ input.inputInf:focus {
 .__desInfoContainerMAin div{
   padding: 13px 10px 13px 10px;
 }
+.noMo {
+  font-size: 17px;
+}
+.noDiv {
+  direction: rtl;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faSlidersH, faPenAlt, faThumbtack, faEllipsisH, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faEdit, faEraser, faUnderline, faNewspaper, faSatellite, faArrowsAltH, faArrowAltCircleDown, faArrowCircleUp, faLongArrowAltLeft, faRocket } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faSlidersH, faPenAlt, faThumbtack, faEllipsisH, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faEdit, faEraser, faUnderline, faNewspaper, faSatellite, faArrowsAltH, faArrowAltCircleDown, faArrowCircleUp, faLongArrowAltLeft, faRocket, faArrowRight, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 import ContentEditable from 'react-contenteditable'
 import TextareaAutosize from 'react-textarea-autosize';
 
@@ -28,18 +28,15 @@ export default class P___rps extends Component {
         this.state.swli = false
         // ...
 
-        this.styleIconChoose = { color: '#1687a7', marginRight: '6px' }
-        this.styleIconChooseTrue = { color: '#383838c4', marginRight: '6px' }
-
-        this.changeTolsVis = this.changevis.bind(this)
-        this.caseSettingTols = false
-
         this.state.obp = []
+        this.state.ev = []
         this.state.dzVbn = []
+        this.state.ezVbn = []
         this.xs_ert()
 
         // To
         this.state.shMoTo = false
+        this.state.isclc = false
     }
     xs_ert() {
         fetch("https://server.procesen.com/pc/procsentAr")
@@ -47,13 +44,24 @@ export default class P___rps extends Component {
             .then(
                 (result) => {
                     var _obp_ = []
-                    for (var i = 0; i < result["_dvBn"].length; i++) {
-                        _obp_.push(false)
+                    var dz = []
+                    var ez = []
+                    var _ev_ = []
+                    for(var e = 0; e < result["_dvBn"].length; e++){
+                        if(result["_dvBn"][e].exdz !== false){
+                            dz.push(result["_dvBn"][e])
+                            _obp_.push(false)
+                        } else {
+                            ez.push(result["_dvBn"][e])
+                            _ev_.push(false)
+                        }
                     }
                     this.setState({
                         isW: true,
                         obp: _obp_,
-                        dzVbn: result["_dvBn"],
+                        dzVbn: dz,
+                        ezVbn : ez,
+                        ev : _ev_,
                         vnText: "<i className='nullTextArea'> لا يوجد شيء بعد </i>"
                     });
                 },
@@ -64,58 +72,66 @@ export default class P___rps extends Component {
                 }
             )
     }
-
-    changevis(x) {
-        if (this.state.caseSettingTols === true) {
-            this.setState({ caseSettingTols: false })
-        } else {
-            this.setState({ caseSettingTols: true })
-        }
-    }
-    childOppenProcess() {
-        var obj = this.state.obp
-        var dOi = this.state.dzVbn
-        var oj = []
-        for (var y = 0; y < dOi.length; y++) {
-            const un = y
-            var ov = { case: obj[un], num: dOi[un].nam }
-            oj.push(ov)
-        }
-        var areObjProcess = []
-        for (var ch = 0; ch < oj.length; ch++) {
-            const num = oj[ch].num
-            const cs = ch
-            var item = <div key={cs} onClick={() => this.childOppenProcessx(cs)} className={oj[cs].case ? "checkBoxLestChooTrue" : "checkBoxLestChoo"}> <div> {num} </div> <FontAwesomeIcon icon={oj[cs].case ? faMinus : faPlus} style={oj[cs].case ? this.styleIconChooseTrue : this.styleIconChoose} /> </div>
-            areObjProcess.push(item)
-        }
-        return (
-            <div className="chooseListProcs" style={this.state.caseSettingTols ? { display: 'block' } : { display: 'none' }}>
-                <div className="listProcs">
-                    {areObjProcess}
-                </div>
-            </div>
-        )
-    }
     childOppenProcessx(x) {
         let obpC = this.state.obp
         obpC[x] = !obpC[x]
         this.setState({ obp: obpC })
     }
     infTextEnter() {
+        // tol ingTextEnter
+        function TabIbfU(params) {
+            return (
+                <div className={params.th ? "ddTable ddTableDr" : "ddTable ddTableLi"}>
+                    <div className="seInfCurTable">
+                        <div className="sict_logo sictLiIc"> {params.log} </div>
+                        <div className="sict_text sictLi"> {params.tit} </div>
+                    </div>
+                    <div className="_scsinf">
+                        {params.con}
+                    </div>
+                </div>
+            )
+        }
+        var ePoin = (x) => {
+            if (x >= 50 && x < 95) {
+                return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlueLi"></div></div>)
+            } if (x < 50) {
+                return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlueLi"></div><div class="powerPoint powerPointBlueLi"></div></div>)
+            } if (x == 100 || x >= 95) {
+                return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div></div>)
+            }
+        }
+        // tex
+        var swp = this.props.xtex
+        // to set
+        var obj = this.state.obp
+        var vbn = this.state.dzVbn
+        var ez = this.state.ezVbn
+        var ev = this.state.ev
+        // ...
         if (this.props.caseXtex === true) {
-            var swp = this.props.xtex
             if (swp.length > 0) {
-                var obj = this.state.obp
-                var vbn = this.state.dzVbn
+                // arr sec ed
                 var oj = []
+                var avd = []
+                // ...
                 for (var t = 0; t < vbn.length; t++) {
                     const namb = t
-                    if (vbn[namb].exdz !== false) {
-                        var oi = { caseP: obj[namb], num: vbn[namb].nam, dz: vbn[namb].exdz }
-                        oj.push(oi)
+                    var oi = { caseP: obj[namb], num: vbn[namb].nam, dz: vbn[namb].exdz }
+                    oj.push(oi)
+                }
+                for(var v = 0; v < ez.length; v ++){
+                    const eznu = v
+                    if((ez[eznu].hasOwnProperty('exs')) === true){
+                        var xsz = ez[eznu].exs
+                    } else {
+                        var xsz = false
                     }
+                    var ze = {caseP : ev[eznu], num : ez[eznu].nam, ex : ez[eznu].ex , eo : ez[eznu].eo , exs : xsz , nr : eznu}
+                    avd.push(ze)
                 }
                 var containerItems = []
+                var containerItemsSp = []
                 var nifn = 0
                 var nift = ""
                 var nifb = false
@@ -151,31 +167,37 @@ export default class P___rps extends Component {
                         }
                     }
                 }
-                function TabIbfU(params) {
-                    return (
-                        <div className={params.th ? "ddTable ddTableDr" : "ddTable ddTableLi"}>
-                            <div className="seInfCurTable">
-                                <div className="sict_logo sictLiIc"> {params.log} </div>
-                                <div className="sict_text sictLi"> {params.tit} </div>
-                            </div>
-                            <div className="_scsinf">
-                                {params.con}
-                            </div>
-                        </div>
-                    )
-                }
-                var ePoin = (x) => {
-                    if (x >= 50 && x < 95) {
-                        return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlueLi"></div></div>)
-                    } if (x < 50) {
-                        return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlueLi"></div><div class="powerPoint powerPointBlueLi"></div></div>)
-                    } if (x == 100 || x >= 95) {
-                        return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div></div>)
+                for(var fe = 0; fe < avd.length; fe++){
+                    const nb = fe
+                    if(avd[nb].exs === true){
+                        var zEz = this.setAvd({n : avd[nb].num , c : avd[nb].caseP , nu : avd[nb].nr , tn : avd[nb].ex , fu : true})
+                        containerItemsSp.push(zEz)
+                    } else {
+                        var zEz = this.setAvd({n : avd[nb].num , c : avd[nb].caseP , nu : avd[nb].nr , tn : avd[nb].ex , fu : false})
+                        containerItemsSp.push(zEz)
                     }
                 }
+                var salaD = () =>{
+                    var ads = this.vxTextvx()[4]
+                    if(ads.length > 0){
+                        var xRet = []
+                        for(var eq = 0; eq < ads.length; eq++){
+                            if(ads[eq].con > 0){
+                                xRet.push(<div className="coNads" key={911+eq}>  تم حذف ( {ads[eq].con} ) من {ads[eq].ty} .</div>)
+                            }
+                            if(ads.length -1 === eq){
+                                return xRet
+                            }
+                        }
+                    }
+                }
+                var chnNewNum =  Math.round(((this.vxTextvx()[3] - this.vxTextvx()[2]) / this.vxTextvx()[3]) * 100)
+                var onAdv = "",
+                twAdv = "",
+                namAdv = ""
                 return (
                     <>
-                        <TabIbfU tit=" خيارات التحكم بالنص الحالي" log={<FontAwesomeIcon icon={faEraser} />} th={this.props.bThem} con={
+                        <TabIbfU tit=" الخيارات الاساسية للتحكم بالنص ." log={<FontAwesomeIcon icon={faEraser} />} th={this.props.bThem} con={
                             <div className={this.props.bThem ? "tcontaorTabDr" : "tcontaorTab"}><table className={this.props.bThem ? "_listInfoDr" : "_listInfo"}>
                                 <tbody>
                                     <tr>
@@ -187,13 +209,92 @@ export default class P___rps extends Component {
                                     {containerItems}
                                 </tbody>
                             </table>
-                                <div className={this.props.bThem ? "infTableXDr" : "infTableX"}><div className={this.props.bThem ? "infTableDr" : "infTable"}> عدد المصفوفات : {wasw} </div> </div></div>}
+                            <div className={this.props.bThem ? "infTableXDr" : "infTableX"}><div className={this.props.bThem ? "infTableDr" : "infTable"}> عدد المصفوفات : {wasw} </div> </div></div>}
+                        />
+                        <TabIbfU tit=" الخيارت المتقدمة للتحكم بالنص . " log={<FontAwesomeIcon icon={faEraser} />} th={this.props.bThem} con={
+                            <div className="conLisSp">
+                                <div className="conLisCon conLisConLi">
+                                    <table  className="xTbo">
+                                <tbody>
+                                    <tr className="edvEx">
+                                        <th className="trfEx"> الأسم </th>
+                                        <th> النوع </th>
+                                        <th> تفعيل </th>
+                                        <th className="trdEx"> حذف </th>
+                                    </tr>
+                                    {containerItemsSp}
+                                </tbody>
+                                    </table>
+                                </div>
+                                <div className="conLisCr">
+                                    <div className="conLisCrSxTi">
+                                    <div className={this.state.isclc ? "conLisCrTi conLisCrTiT" : "conLisCrTi conLisCrTiFalse" } onClick={()=>{this.setState({isclc : !this.state.isclc })}}>
+                                    أستبدال عنصر بعنصر
+                                    </div>
+                                    <div className={this.state.isclc ? "conLisCrTi conLisCrTiFalse" : "conLisCrTi conLisCrTiT"} onClick={()=>{this.setState({isclc : !this.state.isclc })}}>
+                                    حذف عنصر
+                                    </div>
+                                    </div>
+                                    <div className="conLisCrCon">
+                                        {this.state.isclc ? 
+                                        <div>
+                                        <div className="zWtext">
+                                            <div className="inptText">
+                                                <div className="titleInpY"> اسم العنصر </div>
+                                                <div className="borInptY">
+                                                    <input type="text" placeholder="أكتب هنا" onChange={(x)=>{ namAdv =  x.target.value}}/>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div className="zxzWtext">
+                                            <div className="inptText">
+                                                <div className="titleInp"> الكلمة </div>
+                                                <div className="borInpt">
+                                                    <input type="text" placeholder="أكتب هنا" onChange={(x)=>{ onAdv =  x.target.value}}/>
+                                                </div>
+                                            </div>
+                                            <div className="inptText">
+                                                <div className="titleInp"> عكسها </div>
+                                                <div className="borInpt">
+                                                    <input type="text" placeholder="أكتب هنا" onChange={(x)=>{ twAdv =  x.target.value}}/>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        </div>: 
+                                        <div className="zxzWtext">
+                                            <div className="inptText">
+                                                <div className="titleInpY"> اسم العنصر </div>
+                                                <div className="borInptY">
+                                                    <input type="text" placeholder="أكتب هنا" onChange={(x)=>{ namAdv =  x.target.value}}/>
+                                                </div>
+                                            </div>
+                                            <div className="inptText">
+                                                <div className="titleInp"> الكلمة </div>
+                                                <div className="borInpt">
+                                                    <input type="text" placeholder="أكتب هنا" onChange={(x)=>{ onAdv =  x.target.value}}/>
+                                                </div>
+                                            </div>
+                                        </div> }
+                                        <div className="itpButomN">
+                                            <button className="itpButom" onClick={()=>this.adAdvSet(onAdv,twAdv,namAdv)}> <FontAwesomeIcon icon={faArrowRight} /> </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                         />
                         <div className="secTwSitc" style={this.state.shMoTo ? { display: "block" } : { display: "none" }}>
                             <TabIbfU tit=" معلومات النص " log={<FontAwesomeIcon icon={faUnderline} />} th={this.props.bThem} con={
+                                <div>
                                 <div className="noteWeInf nift">
                                     {ePoin(nifn)}
                                     <div className="niftT"> اعلى عنصر في الجملة هو {nift} , حيث يشكل {nifn} % من الجملة . </div>
+                                </div>
+                                <div className="noteWeInf nift">
+                                    {ePoin(chnNewNum)}
+                                    <div className="niftT"> نسبة التغيير في النص هي {chnNewNum} % .</div>
+                                </div>
+                                {salaD()}
                                 </div>
                             }
                             />
@@ -206,6 +307,94 @@ export default class P___rps extends Component {
             }
         }
     }
+    adAdvSet(x,y,u){
+        var uez = this.state.ezVbn
+        var iez = this.state.ev
+        if(this.state.isclc  === true){
+            if(x.length > 0 && y.length > 0){
+                var ise = false
+                var arx = [x,y] 
+                uez.forEach(ui=>{
+                    if(ui.ex === true){
+                        if(arx === ui.eo || x.length === 0){
+                            ise = true
+                        }
+                    }
+                })
+                if(ise === false){
+                    var eqa = {nam : u , ex : false , eo : arx , exs : true}
+                    uez.push(eqa)
+                    iez.push(false)
+                    this.setState({ezVbn : uez})
+                    this.setState({ev : iez})
+                }
+            }
+        } else {
+            if(x.length > 0){
+                var ise = false
+                uez.forEach(ui=>{
+                    if(ui.ex === true){
+                        if(x === ui.eo ||x.length === 0){
+                            ise = true
+                        }
+                    }
+                })
+                if(ise === false){
+                    var eqa = {nam : u , ex : true , eo : x , exs : true}
+                    uez.push(eqa)
+                    iez.push(false)
+                    this.setState({ezVbn : uez})
+                    this.setState({ev : iez})
+                }
+            }
+        }
+    }
+    setAvd(ax){
+        if(ax.tn === false){
+            return (
+                <tr className="edExcon" key={18+ax.nu}>
+                        <td className="trfEx edExTf">{ax.n}</td >
+                        <td  className="edExTu"> تعديل </td >
+                        <td  className="edExC" onClick={()=>this.szAvd(ax.nu)}>
+                            {ax.c ? <div className="edExCt"> <FontAwesomeIcon icon={faPlus} /> </div> : <div className="edExCf"><FontAwesomeIcon icon={faMinus} /> </div>}
+                        </td >
+                        {ax.fu ?
+                        <td className="trdEx" onClick={()=>this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash}/> </td >: 
+                        <td className="trdExX"> <FontAwesomeIcon icon={faTrash}/> </td >}
+                </tr>
+            )
+        } else {
+            return (
+                <tr className="deExcon" key={18+ax.nu}>
+                    <td className="trfEx deExTf"> {ax.n} </td >
+                    <td> حذف </td >
+                    <td  className="edExC" onClick={()=>this.szAvd(ax.nu)}>
+                        {ax.c ? <div className="edExCt"> <FontAwesomeIcon icon={faPlus} /> </div> : <div className="edExCf"><FontAwesomeIcon icon={faMinus} /> </div>}
+                    </td >
+                    {ax.fu ?
+                    <td className="trdEx" onClick={()=>this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash}/> </td >: 
+                    <td className="trdExX"> <FontAwesomeIcon icon={faTrash}/> </td >}
+                </tr>
+            )
+        }
+    }
+    deItAdv(x){
+        var uez = this.state.ezVbn
+        var iez = this.state.ev
+        if(uez[x].exs === true){
+            uez.splice(x, 1)
+            iez.splice(x, 1)
+            this.setState({ezVbn : uez})
+            this.setState({ev : iez})
+        } else {
+            console.log("false")
+        }
+    }
+    szAvd(x){
+        let ecC = this.state.ev
+        ecC[x] = !ecC[x]
+        this.setState({ ev: ecC })
+    }
     infItems(cx) {
         return (
             <tr key={cx.key}>
@@ -213,56 +402,86 @@ export default class P___rps extends Component {
                 <td > {cx.itemNu} </td>
                 <td > {cx.itemNumP} </td>
                 {this.props.bThem ? <td onClick={() => this.childOppenProcessx(cx.nam)} className={cx.ccv ? "faMinusDivDr" : "faPlusDivDr"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusiDr" : "faPlusiDr"} /> </td> :
-                    <td onClick={() => this.childOppenProcessx(cx.nm)} className={cx.ccv ? "faMinusDiv" : "faPlusDiv"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusi" : "faPlusi"} /> </td>}
+                <td onClick={() => this.childOppenProcessx(cx.nm)} className={cx.ccv ? "faMinusDiv" : "faPlusDiv"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusi" : "faPlusi"} /> </td>}
             </tr>
         )
     }
     seText(x) {
         var tvp = this.state.dzVbn
         var tbo = this.state.obp
+        var rv = this.state.ev
+        var erv = this.state.ezVbn
+
         let tezx = x
+        var ty = []
         for (var a = 0; a < tvp.length; a++) {
             const na = a
-            if (tvp[na].exdz !== false) {
-                if (tbo[na] === true) {
-                    const ew = tvp[na].exdz
-                    const vdv = new RegExp(ew, 'g');
-                    tezx = tezx.replace(vdv, "")
-                }
+            if (tbo[na] === true) {
+                const vdv = new RegExp(tvp[na].exdz, 'g');
+                //var thTy = tezx.match(vdv)
+                //const thTy = x.length - x.replace(vdv, "").length
+                //var deSa = {ty : tvp[na].nam , con : thTy}
+                //ty.push(deSa)
+                tezx = tezx.replace(vdv,"")
+            }
+        }
+        for(var s = 0; s < erv.length; s++){
+            const rn = s
+            if(erv[rn].ex === true && rv[rn] === true){
+                const vdv = new RegExp(erv[rn].eo, 'g');
+                //const thTy = x.length - x.replace(vdv, "").length
+                tezx = tezx.replace(vdv,"")
             }
         }
         var ttezx = tezx.replace(/\n/g, "<br />")
-        return [ttezx , tezx]
+        var el = tezx.length
+        return [ttezx , tezx ,el ,ty]
         // 0 === <br />
         // 1 === \n
     }
     vxTextvx() {
         var texUpStr = ""
         var coText = ""
+        var le = 0
+        var led = 0
+        var ty =[]
         if (this.props.caseXtex == true) {
             var swp = this.props.xtex
             if (swp.length > 0) {
                 if (this.state.isW === true) {
-                    if (this.seText(swp)[1].length > 0) {
-                        texUpStr = this.seText(swp)[1]
-                        coText = this.seText(swp)[0]
+                    var ets = this.seText(swp)
+                    if (ets[1].length > 0) {
+                        texUpStr = ets[1]
+                        coText = ets[0]
+                        le = ets[2]
+                        ty = ets[3]
+                        led = swp.length
                     } else {
                         texUpStr = this.state.vnText
                         coText = this.state.vnText
+                        le = 0
+                        led = swp.length
+                        ty = ets[3]
                     }
                 } else {
                     texUpStr = " ... "
                     coText = " ... "
+                    le = 0
+                    led = 0
                 }
             } else {
                 texUpStr = this.state.vnText
                 coText = this.state.vnText
+                le = 0
+                led = swp.length
             }
         } else {
             texUpStr = this.state.vnText
             coText = this.state.vnText
+            le = 0
+            led = 0
         }
-        return [texUpStr,coText]
+        return [texUpStr,coText , le , led , ty]
         // 0 === \n
         // 1 === <br />
     }
@@ -273,7 +492,7 @@ export default class P___rps extends Component {
     chanDis() {
         if (this.state.disVew === false) {
             this.setState({ disVew: true })
-            this.setState({ lValEn: this.props.xtex })
+            this.setState({ lValEn: this.vxTextvx()[0] })
         } else {
             this.setState({ disVew: false })
         }
@@ -309,7 +528,9 @@ export default class P___rps extends Component {
         }
     }
     clenEd() {
-        this.setState({ valTex: this.vxTextvx()[0]})
+        // if any error in text ( check this code ! )
+        this.setState({ lValEn: " "})
+        this.setState({ valTex: " "})
     }
     marba() {
         var vta = this.tekal(true)
@@ -348,7 +569,8 @@ export default class P___rps extends Component {
                 const corg = el.corg
                 const org = el.org
                 const indx = arHis.indexOf(el)
-                var itOrg = <div className="hisSec"> <div className="hisT"><div className="hisTn"> {ogn}# </div> <div className="hisTxo"> <FontAwesomeIcon icon={faTrash} className="hisTx" onClick={() => this.deIlm(indx)} /> <FontAwesomeIcon icon={faCopy} className="hisTx" onClick={() => { navigator.clipboard.writeText(corg) }} /> </div> </div> <div className="hisCon"> <div className="hisOrg"> {org} </div> <div className="hisCorg"> {corg} </div> </div> </div>
+                var brt =' <br />'
+                var itOrg = <div className="hisSec"> <div className="hisT"><div className="hisTn"> {ogn}# </div> <div className="hisTxo"> <FontAwesomeIcon icon={faTrash} className="hisTx" onClick={() => this.deIlm(indx)} /> <FontAwesomeIcon icon={faCopy} className="hisTx" onClick={() => { navigator.clipboard.writeText(corg) }} /> </div> </div> <div className="hisCon"> <div className="hisOrg"> {org.replace(/\n/g,brt)} </div> <div className="hisCorg"> {corg.replace(/\n/g,brt)} </div> </div> </div>
                 ritOrg.push(itOrg)
             })
             return (
@@ -459,19 +681,6 @@ export default class P___rps extends Component {
         }
         return (
             <>
-                <div className={this.props.bThem ? "mainTolsControl mainTolsControlDr" : "mainTolsControl mainTolsControlLi"}>
-                    <div className={this.props.bThem ? "headerTolsMain heinDr" : "headerTolsMain heinLi"}>
-                        <div className="stolsCONTROL">{this.state.isW ? "خيارات التحكم بمعالجة الكلمات" : <div className="isWiteTextControal"></div>} </div>
-                        {this.state.isW ?
-                            <div className={this.state.caseSettingTols ? this.props.bThem ? "casSett casSettHideDr" : "casSett casSettHide" : this.props.bThem ? "casSett casSettShowDr" : "casSett casSettShow"} onClick={this.changeTolsVis}>
-                                <FontAwesomeIcon icon={faSlidersH} className="icTolsSett" />
-                            </div> :
-                            <div className={this.state.caseSettingTols ? this.props.bThem ? "casSett casSettHideDr" : "casSett casSettHide" : this.props.bThem ? "casSett casSettShowDr" : "casSett casSettShow"}>
-                                <FontAwesomeIcon icon={faSlidersH} className="icTolsSett" />
-                            </div>}
-                    </div>
-                    {this.childOppenProcess()}
-                </div>
                 <div className="ffPcsSec" style={{ paddingTop: '10px' }}>
                     <label className="llPcsSec">
                         <div className={this.props.bThem ? "titlePcs redeyTextAreaKDr" : "titlePcs redeyTextAreaK"}>
@@ -519,9 +728,9 @@ export default class P___rps extends Component {
                             </div>
                             <div className="toolsBottomAreaPcs toolsBottomAreaPcsPro">
                                 <div className="textAreaBottom">
-                                    2000 / 0
+                                    {this.vxTextvx()[2]} من أصل {this.vxTextvx()[3]} الفرق {this.vxTextvx()[3] - this.vxTextvx()[2]}
                             </div>
-                                <div className="textAreaBottomLogo"> Powered by procesen </div>
+                                <div className="textAreaBottomLogo"> نسبة التغيير  { Math.round(((this.vxTextvx()[3] - this.vxTextvx()[2]) / this.vxTextvx()[3]) * 100)} %</div>
                             </div>
                         </div>
                     </label>
@@ -532,7 +741,7 @@ export default class P___rps extends Component {
                             <div className={this.props.bThem ? caseInfoPP() ? "casSett casSettHide" : "casSettShow" + "Dr" : caseInfoPP() ? "casSett casSettHide" : "casSett casSettShow"}>
                                 <FontAwesomeIcon icon={faAlignLeft} className="icTolsSett" />
                             </div>
-                            <div className="stolsCONTROLX">{this.state.isW ? " معلومات النص المدخل" : <div className="isWiteTextControal"></div>}</div>
+                            <div className="stolsCONTROLX">{this.state.isW ? "  معلومات النص المدخل و خيارات التحكم ." : <div className="isWiteTextControal"></div>}</div>
                         </div>
                     </div>
                     <div className={this.props.bThem ? "rtaWait rtaWaitDr" : "rtaWait rtaWaitLi"} style={caseInfoPP() ? { display: "none" } : { display: "block" }}>

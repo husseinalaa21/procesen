@@ -156,37 +156,10 @@
   display: flex;
   justify-content: center;
 }
-.chooseListProcs {
-  padding: 15px;
-  border-radius: 5px;
-  grid-column: auto auto;
-}
 .titleNameList {
   font-size: 20px;
   text-align: center;
   color: #3b3b3b;
-}
-.listProcs {
-  display: grid;
-  grid-template-columns:  auto auto;
-  justify-content: space-around;
-  margin-top: 10px;
-}
-@media screen and (min-width: 800px) {
-  .listProcs {
-    display: grid;
-    grid-template-columns:  auto auto auto auto;
-    justify-content: space-around;
-    margin-top: 10px;
-  }
-}
-@media screen and (max-width: 340px) {
-  .listProcs {
-    display: grid;
-    grid-template-columns:  auto;
-    justify-content: space-around;
-    margin-top: 10px;
-  }
 }
 .showHideList {
   display: flex;
@@ -197,31 +170,6 @@
   margin-top: 10px;
   border-radius: 5px;
   cursor: pointer;
-}
-.checkBoxLestChoo {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #ffffff59;
-  margin: 10px;
-  border-radius: 20px;
-  max-width: 150px;
-  font-size: 17px;
-  color: #3b3b3b;
-  cursor: pointer;
-}
-.checkBoxLestChooTrue {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #105ceb59;
-  margin: 10px;
-  border-radius: 20px;
-  max-width: 150px;
-  font-size: 17px;
-  color: #383838;
-  cursor: pointer;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.068), 0 6px 20px 0 rgba(0, 0, 0, 0.062);
 }
 .inputCheck {
   margin-right: 10px;
@@ -249,19 +197,6 @@
 .mainTolsControlDr {
   background-color: rgb(17, 28, 39);
 }
-
-.headerTolsMain {
-  font-size: 18px;
-  font-family: sans-serif;
-  padding: 5px;
-  display: flex;
-  justify-content: space-between;
-}
-.heinLi {
-  background-color: #e8e8e8;
-  border-left: 4px solid #3b3b3b;
-  
-}
 .rtaWait {
   text-align: center;
   padding: 10px;
@@ -281,12 +216,6 @@
 .rtaCon {
   font-size: 25px;
   padding-top: 7px;
-}
-.heinDr {
-  background-color: rgb(17, 28, 39);
-  border-right: 4px solid rgb(22, 37, 51);
-  color: #f3f3f3;
-  
 }
 .redeyTextAreaInf {
   margin-top: 10px;
@@ -316,12 +245,6 @@
 }
 .redeyTextAreaInfbody {
   background-color: #ebe9e9;
-}
-.stolsCONTROL{
-  padding: 5px;
-}
-.icTolsSett {
-  font-size: 16px;
 }
 .icInfPrcs {
   border-radius: 4px;
@@ -419,6 +342,7 @@
   border: 4px solid #8ac4d0;
   cursor: pointer;
   color: whitesmoke;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .shMoToTit {
   padding-right: 12px;
@@ -457,6 +381,7 @@ font-size: 16px;
   padding: 4px;
   background-color: #e1e7e9ec;
   border-radius: 4px;
+  margin-bottom: 5px;
 }
 ._listInfoDr td {
   background-color: #344d5562;
@@ -856,6 +781,182 @@ font-size: 16px;
   text-align: center;
 }
 
+.conLisSp {
+  margin: 6px;
+}
+.conLisCon {
+  padding: 6px;
+  border-radius: 4px;
+  margin-bottom: 6px;;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.conLisConLi {
+  background-color: #ebecee;
+  border: 1px solid #e7e7e7;
+}
+.conLisCrSxTi {
+  display: flex;
+}
+.conLisCr{
+  padding: 6px;
+}
+.conLisCrTi {
+  cursor: pointer;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 3px 3px 0 0;
+  background-color: #f0f0f0;
+  font-size: 17px;
+  color: #3b3b3b;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.conLisCrTiT {
+  background-color: #e8e8e8;
+}
+.conLisCrCon {
+  background-color: #e8e8e8;
+  padding: 6px;
+  border-radius:0 0 3px 3px;
+  width: auto;
+  max-width: 500px;
+}
+.zxzWtext {
+  width: auto;
+  margin-top: 8px;
+  display: flex;
+}
+.zWtext {
+  margin: auto;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  width: fit-content;
+  display: flex;
+}
+.exchangeD {
+  text-align: center;
+  margin: auto;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  background-color: #eeeeee;
+  padding: 8px;
+  color: #1588d4;
+  border-radius: 2px;
+}
+.itpButomN {
+  width: 96%;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10px;
+}
+.titleInp {
+  text-align:left;
+  padding: 7px;
+  background-color: #f1f1f1;
+  width: fit-content;
+  min-width: 37%;
+  margin-left: 0px;
+  border-radius: 4px 4px 0 0;
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.titleInpY {
+  text-align:left;
+  padding: 7px;
+  background-color: #f9f7cf;
+  width: fit-content;
+  min-width: 37%;
+  margin-right: 0px;
+  border-radius: 4px 4px 0 0;
+  font-size: 15px;
+  color: #3b3b3b;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.borInpt {
+  padding: 5px;
+  background-color: #f1f1f1;
+  border-radius: 2px 0 2px 2px;
+}
+.borInptY {
+  padding: 5px;
+  background-color: #f9f7cf;
+  border-radius: 2px 0 2px 2px;
+}
+.inptText{
+  margin: auto;
+  justify-content: space-between;
+  text-align: center;
+}
+.inptText input{
+  padding: 10px;
+  width: auto;
+  background-color: #f6f5f5;
+}
+.inptText input:focus{
+  outline: none;
+}
+.itpButom {
+  background-color: #bbbfca;
+  color: whitesmoke;
+  padding: 8px;
+  width: 100%;
+  border-radius: 3px;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid #b5bccf;
+  cursor: pointer;
+}
+.itpButom:focus {
+  outline: none;
+  background-color: #b5bccf;
+}
+/* -- Sec -- */
+.xTbo {
+  width: 100%;
+  border-collapse:separate; 
+  border-spacing: 0 0.5em;
+}
+.xTbo td {
+  padding: 10px;
+}
+.xTbo th{
+  padding: 12px;
+}
+td.trdEx ,th.trdEx{
+  border-radius: 3px 0 0 3px !important ;
+  text-align: center;
+  color: #463532;
+  cursor: pointer;
+}
+td.trfEx ,th.trfEx{
+  border-radius:0 3px 3px 0!important ;
+}
+td.edExTf {
+  border: 0;
+  border-left: 3px solid #cdd0cb;
+}
+td.deExTf {
+  border: 0;
+  border-left: 3px solid #d0cbcb;
+}
+tr.edExcon{
+  background-color: #e3e9e8;
+}
+tr.deExcon{
+  background-color: #e9e3e3;
+}
+tr.edvEx {
+  background-color: #f4f4f4;
+  text-align: left;
+  color: #5f5b50;
+}
+td.trdExX ,th.trdExX{
+  border-radius: 3px 0 0 3px !important ;
+  text-align: center;
+  color: #cfd3d4;
+}
 /* ---- TOLS CHOOSE ---- */
 
 .tolsMainTextArea {
@@ -968,13 +1069,6 @@ font-size: 16px;
 
 /* ---- END TOLS CHOOSE ---- */
 
-.isWiteTextControal {
-  position: absolute;
-  background-color: #f0f0f0;
-  padding: 10px;
-  min-width: 100px;
-  border-radius: 4px;
-}
 .isWiteTextInput {
   position: relative;
   background-color: #e6e6e6;
@@ -1197,4 +1291,15 @@ font-size: 16px;
 .lswItem {
   padding: 6px;
  border-bottom:2px solid #9abff0;
+}
+._bRed {
+  background-color: rgba(245, 167, 153, 0.863);
+  color: brown;
+}
+.coNads {
+  display: flex;
+  padding: 12px;
+  background-color: #ece3d1ec;
+  border-radius: 3px;
+  margin-bottom: 5px;
 }

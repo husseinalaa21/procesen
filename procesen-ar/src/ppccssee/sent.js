@@ -740,7 +740,7 @@ export default class P___rps extends Component {
                             </div>
                             <div className="toolsBottomAreaPcs toolsBottomAreaPcsPro">
                                 <div className="textAreaBottom">
-                                    {this.vxTextvx()[2]} من أصل {this.vxTextvx()[3]} الفرق {this.vxTextvx()[3] - this.vxTextvx()[2]}
+                                    {this.vxTextvx()[3]} / {this.vxTextvx()[2]}
                                 </div>
                                 <div className="textAreaBottomLogo"> نسبة التغيير  {Math.round(((this.vxTextvx()[3] - this.vxTextvx()[2]) / this.vxTextvx()[3]) * 100)} %</div>
                             </div>

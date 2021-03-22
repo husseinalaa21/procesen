@@ -783,9 +783,9 @@ font-size: 16px;
   color: red;
   text-align: center;
 }
-.conLisSp {
-  margin: 6px;
-}
+/*.conLisSp {
+  padding: 6px;
+}*/
 .conLisCon {
   padding: 6px;
   border-radius: 4px;

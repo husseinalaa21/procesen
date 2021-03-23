@@ -700,7 +700,7 @@ export default class P___rps extends Component {
                     <label className="llPcsSec">
                         <div className={this.props.bThem ? "titlePcs redeyTextAreaKDr" : "titlePcs redeyTextAreaK"}>
                             <div className="InfredeyTextAreaK"> <FontAwesomeIcon icon={faInfo} /> </div>
-                            <div className="titleTextArea"> In this section the text will appear after editing and processing . <a href="#"> Learn more </a></div>
+                            <div className="titleTextArea"> In this section the text will appear after editing and processing . <a href="#sec-how-use"> Learn more </a></div>
                         </div>
                         <div className="areaPccSec" style={ccThem ? this.drThem : this.liThem}>
                             <div className="secOntext">

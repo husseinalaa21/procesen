@@ -87,7 +87,7 @@ export default class Proc extends Component {
                             <label className="llPcs">
                                 <div className={this.props.them ? "titlePcs redeyTextArea redeyTextAreaDark" : "titlePcs redeyTextArea redeyTextAreaLight"}>
                                     <div className={this.props.them ? "inforedeyTextAreaDr" : "inforedeyTextArea"}> <FontAwesomeIcon icon={faInfo} className="icInfredeyTextArea" /></div>
-                                    <div className="titleTextArea "> Enter in this section the text you want to process . <a href="#"> Learn more </a> </div>
+                                    <div className="titleTextArea "> Enter in this section the text you want to process . <a href="#sec-how-use"> Learn more </a> </div>
                                 </div>
                                 <div className="areaPcc" style={this.props.them ? this.state.styleFormPrcsDark : this.state.styleFormPrcsLight}>
                                     <div className="secOntext">
@@ -117,7 +117,7 @@ export default class Proc extends Component {
                                             <div className="oveTextWrong">
                                                 <div className="titleOverText">
                                                     <div className="icoTitleOverText"> <FontAwesomeIcon icon={faExclamationTriangle} /> </div>
-                                                    <div className="textTitleOverText"> تم تحاوز العدد المسموح به , ينبغي أزالة {this.state.overTextNumX} حرف </div>
+                                                    <div className="textTitleOverText"> Allowed number exceeded, it should be removed [ {this.state.overTextNumX} ] Letter . </div>
                                                 </div>
                                                 <div className="containerOverTextCovert">
                                                     <div className="containerOverText">{this.state.overText} <mark className="remoOveText" onClick={() => this.cOveText()}>[-]</mark></div>

@@ -437,3 +437,22 @@ input.inputInf:focus {
 .__desInfoContainerMAin div{
   padding: 13px 10px 13px 10px;
 }
+.noBanBod {
+  position: fixed;
+  bottom: 5%;
+  padding: 12px;
+  background-color: #39afcf;
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  left: 50%;
+  margin-top: -100px; 
+  margin-left: -250px; 
+  border-radius: 4px;
+}
+.noBanBod a{
+  color: whitesmoke;
+}
+.icoBaNoBan {
+  color: rgb(184, 184, 184);
+}

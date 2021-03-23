@@ -16,9 +16,9 @@ export default function main(x) {
       <div className="bodyRootDisplay">
         <div className={x.themHeader ? "webDiskTols webDiskDark" : "webDiskTols webDiskLight"}>
           <div className="sectionProcess">
-            <SetSec class={secPlusClass + " onePlus"} ico={<FontAwesomeIcon icon={faInfo} />} title={"Text writing section ( section One ) ."} con={"Enter in this section the text you want to process . "} linN={true} lin={"#learnSectionOne"} />
+            <SetSec class={secPlusClass + " onePlus"} ico={<FontAwesomeIcon icon={faInfo} />} title={"Text writing section ( section One ) ."} con={"Enter in this section the text you want to process . "} linN={true} lin={"#sec-how-use"} />
             <WebAds ad={""} />
-            <SetSec class={secPlusClass + " threeplus"} ico={<FontAwesomeIcon icon={faInfo} />} title={"The next section ."} con={"In this section the text will appear after editing and processing ."} linN={true} lin={"#learnSectionThree"} />
+            <SetSec class={secPlusClass + " threeplus"} ico={<FontAwesomeIcon icon={faInfo} />} title={"The next section ."} con={"In this section the text will appear after editing and processing ."} linN={true} lin={"#sec-how-use"} />
             <SetSec class={secPlusClass + " twonPlus"} ico={<FontAwesomeIcon icon={faBolt} />} title={""} con={<ul> <li> You can add a specific word, letter, or symbol to be deleted . </li> <li> You can remove sentences or parts of the text entered, such as deleting quotations or sources . </li> </ul>} linN={false} lin={false} />
             <WebAds ad={""} />
           </div>

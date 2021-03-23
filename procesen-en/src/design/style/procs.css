@@ -593,6 +593,7 @@ font-size: 16px;
   background-color: rgb(224, 200, 200);
   width: 100%;
   padding: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .containerOverTextCovert {
   background-color:rgb(230, 219, 219);

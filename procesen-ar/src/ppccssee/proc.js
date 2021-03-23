@@ -87,7 +87,7 @@ export default class Proc extends Component {
                             <label className="llPcs">
                                 <div className={this.props.them ? "titlePcs redeyTextArea redeyTextAreaDark" : "titlePcs redeyTextArea redeyTextAreaLight"}>
                                     <div className={this.props.them ?"inforedeyTextAreaDr" :"inforedeyTextArea"}> <FontAwesomeIcon icon={faInfo} className="icInfredeyTextArea" /></div>
-                                    <div className="titleTextArea "> أدخل في هذا القسم النص الذي ترغب بمعالجته  . <a href="#learnSectionOne"> معرفة المزيد </a> </div>
+                                    <div className="titleTextArea "> أدخل في هذا القسم النص الذي ترغب بمعالجته  . <a href="#sec-how-use"> معرفة المزيد </a> </div>
                                 </div>
                                 <div className="areaPcc" style={this.props.them ? this.state.styleFormPrcsDark : this.state.styleFormPrcsLight}>
                                     <div className="secOntext">

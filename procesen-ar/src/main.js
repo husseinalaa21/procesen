@@ -16,9 +16,9 @@ export default function main(x) {
       <div className="bodyRootDisplay">
         <div className={x.themHeader ? "webDiskTols webDiskDark" : "webDiskTols webDiskLight"}>
           <div className="sectionProcess">
-            <SetSec class={secPlusClass + " onePlus"} ico={<FontAwesomeIcon icon={faInfo} />} title={"قسم كتابة النص"} con={"أدخل في هذا القسم النص الذي ترغب بمعالجته ."} linN={true} lin={"#learnSectionOne"} />
+            <SetSec class={secPlusClass + " onePlus"} ico={<FontAwesomeIcon icon={faInfo} />} title={"قسم كتابة النص - القسم الاول"} con={"أدخل في هذا القسم النص الذي ترغب بمعالجته ."} linN={true} lin={"#sec-how-use"} />
             <WebAds ad={""} />
-            <SetSec class={secPlusClass + " threeplus"} ico={<FontAwesomeIcon icon={faInfo} />} title={"النص المعدل "} con={"في هذا القسم سيظهر النص بعد التعديل و المعالجة  ."} linN={true} lin={"#learnSectionThree"} />
+            <SetSec class={secPlusClass + " threeplus"} ico={<FontAwesomeIcon icon={faInfo} />} title={"النص المعدل - القسم الثاني "} con={"في هذا القسم سيظهر النص بعد التعديل و المعالجة  ."} linN={true} lin={"#sec-how-use"} />
             <SetSec class={secPlusClass + " twonPlus"} ico={<FontAwesomeIcon icon={faBolt} />} title={""} con={<ul> <li> يمكنك اضافة كلمة أو حرف أو رمز معين لكي يتم حذفه </li> <li> يمكنك أزالة جمل أو جزء من النص لمدخل كحذف الاقتباسات أو المصادر . </li> </ul>} linN={false} lin={false} />
             <WebAds ad={""} />
           </div>

@@ -1,4 +1,4 @@
-import {faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
+import {faArrowLeft, faArrowRight, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
 import React , { useState, useEffect} from 'react'
@@ -13,6 +13,7 @@ export default function BodyEn(params) {
     const [idwa, setidwa] = useState(idw)
     const [idna, setidna] = useState(idn)
     const [numbol, setnumbol] = useState(0)
+    //const [NotesBanal, setNotesBanal] = useState(<div>  </div>)
     var numCommint = 0
 
     function TextCon(x) {
@@ -43,6 +44,22 @@ export default function BodyEn(params) {
         if(idwa.includes(twq) === true){
             var ex = idwa.indexOf(twq)
             setnumbol(idna[ex])
+            /*var isUnde =()=>{
+                if(idna[ex] - 1 > 0){
+                    return true
+                } else {
+                    return false
+                }
+            }
+            var isNext =()=>{
+                if(idna[ex] < idna.length){
+                    return true
+                } else {
+                    return false
+                }
+            }
+            setNotesBanal(<div className="noBanBod"> <div className="riNoBan"> {isUnde() ? <a>  <FontAwesomeIcon icon={faArrowLeft} /> </a> : <FontAwesomeIcon icon={faArrowLeft} className="icoBaNoBan"/>}  </div> <div className="naNoBan"> <a href="/"> [ أغلاق ] </a> &npbs; <a href={twq}> الانتقال الى العنصر </a> <div > </div> </div> <div className="riNoBan"> {isNext() ? <a><FontAwesomeIcon icon={faArrowRight} /> </a> : <FontAwesomeIcon icon={faArrowRight}  className="icoBaNoBan"/>}</div></div>)*/
+            
         } else {
             setnumbol(0)
         }
@@ -100,6 +117,7 @@ export default function BodyEn(params) {
                     <Textsp type="container_sp_ar" text=" This notification is shown to people according to the artificial intelligence algorithms on the site. " />
                 </>}
             />
+            {/*NotesBanal*/}
         </div>
     )
     function xcsd(xy) {

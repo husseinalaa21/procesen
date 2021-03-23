@@ -706,7 +706,7 @@ export default class P___rps extends Component {
                                         <div className="apiChoose" onClick={() => this.marba()}>
                                             {marBo() ? <FontAwesomeIcon icon={faBookmark} className={"apiBookMark"} /> : <FontAwesomeIcon icon={faBookmark} className={"unapiBookMark"} />}
                                         </div>
-                                        <div className="apiChoose" >
+                                        <div className="apiChoose" onClick={() => { navigator.clipboard.writeText(this.tekal(true)) }}>
                                             <FontAwesomeIcon icon={faCopy} className={this.state.apicopy ? "apiChose" : chew() ? "apiunChose" : "apiunChoseQ"} />
                                         </div>
                                         <div className="apiChoose" onClick={() => this.chanDis()}>

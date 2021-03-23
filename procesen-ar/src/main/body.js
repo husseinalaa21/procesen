@@ -54,9 +54,12 @@ export default function BodyEn(params) {
                 them={params.them}
                 title={'تعريف بالموقع |  محلل الجمل "Procesen"'}
                 idTi="sec-definition-site"
-                container={<><Textsp type="container_sp_ar" text=" بروسيسن هو برنامج لمعالجة الجمل و التعديل عليها ." />
-                    <NotesCon cx="red" type="containerNotes_ar" textTitle=" تنويه :  " textCon="الموقع قيد التطوير " />
-                    <TextCon type="container_ar" text=" قم بأدخال العبارة أو الجملة التي ترغب في تغييرها و التعديل عليها , وسيتم معالجتها تلقائياً بواسطة الذاكاء الاصطناعي . " />
+                container={<>
+                    <TextCon type="container_ar" text=" يقوم موقع بروسيسن بتعديل النص كإزالة الأرقام أو الأحرف أو علامات ترقيم أو كلمات معينة أو تغيير الكلمات في النص مع الحفاظ على المعنى  و غيرها. " />
+                    <Textsp type="container_sp_ar" text=" سيتم أضافة المزيد من المميزات في المستقبل . " />
+                    <TextCon type="container_ar" text=" كلمة بروسيسن مشتقة من ( Processing sentences ) أو processing the sentence by artificial intelligence و التي تعني معالجة الجُمل بواسطة الذكاء الاصطناعي ." />
+                    <Textsp type="container_sp_ar" text=" موقع بروسيسن يعتمد ايضاً على مبدأ معالجة اللغات الطبيعية أو ( NLP) . " />
+                    <TextCon type="container_ar" text=" تاريخ أصدار الموقع في 2021 . " />
                 </>}
             />
             <ContainerBody
@@ -65,13 +68,12 @@ export default function BodyEn(params) {
                 title={'كيفية الاستخدام'}
                 idTi="sec-how-use"
                 container={<>
-                    <TextCon text='' type='container_ar' />
                     <TextCon text=' أولا : ادخل النص المراد معالجته في أول خانة أعلاه . ' type='container_ar' />
-                    <TextCon text=' ثانيا : أسفل أول خانة - في قسم خيارات التحكم في معالجة الكلمات حدد التغييرات التي سوف تطبق على النص .' type='container_ar' />
-                    <NotesCon cx="blue" type="containerNotes_ar" textTitle=" ملاحضة : " textCon=" لأضهار الخيارات أنقر على أضهار في نفس القسم أعلاه و لأخفاء الكلمات أنقر على اخفاء و لا داعي لأعادة ضبط الاعدادات في كل مرة حيث أنها ستحفض ( على حسب متصفحك ) ." />
-                    <TextCon text=' ثالثاً : في خانة اضهار معلومات النص أعلاه سوف يضهر لك خيار حذف النص و بأمكانك أختيار حذف عنصر من النص أو لا بكل سهولة . ' type='container_ar' />
-                    <TextCon text=' رابعاً : في قسم النص المعدل سيضهر لك النص الجديد و بأمكانك نسخ النص أو التعديل عليه . ' type='container_ar' />
-                    <NotesCon cx="red" type="containerNotes_ar" textTitle=" تنويه :  " textCon=" هذا القسم يجري العمل عليه و تطويره و بمجرد الانتهاء من تعديله سيكون بأمكانك أستخدامه " /></>}
+                    <TextCon text=' ثانياً : سيضهر في القسم الثاني النص المعدل.' type='container_ar' />
+                    <NotesCon cx="blue" type="containerNotes_ar" textTitle=" ملاحضة :" textCon=" يجب عليك إخطار الموقع بأي تغييرات تريدها على النص ." />
+                    <TextCon text='قسم التحكم في النص: تُظهر البيانات الأساسية معلومات حول الأحرف والرموز والأرقام والتحكم فيها ، وتُظهر البيانات المتقدمة الإجراءات المتعلقة بتحديث أو تعديل أو تغيير كلمات معينة . ' type='container_ar' />
+                    <Textsp type="container_sp_ar" text=" لتطبيق أي خيار ، يجب النقر على علامة الجمع. و لعدم تطبيقه ، انقر على علامة الطرح . " />
+                    <TextCon text='ويمكنك أيضًا إضافة كلمات أو جمل أو أحرف محددة لحذفها أو استبدالها .' type='container_ar' /></>}
             />
             <ContainerBody
                 link={"#sec-policy-site"} 

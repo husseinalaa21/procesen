@@ -54,9 +54,12 @@ export default function BodyEn(params) {
                 them={params.them}
                 title={'Definition of the site | Procesen '}
                 idTi="sec-definition-site"
-                container={<><Textsp type="container_sp_ar" text=" Procsent is a program for processing sentences ." />
-                    <NotesCon cx="red" type="containerNotes_ar" textTitle=" Note :  " textCon=" The website is under development " />
-                    <TextCon type="container_ar" text=" Enter the phrase or sentence that you want to change and amend, and it will be processed automatically by the artificial intelligence. " />
+                container={<>
+                    <TextCon type="container_ar" text=" The site Procesen to amend the text by removing certain numbers, letters, punctuation marks, or words, or changing the words in the text . " />
+                    <Textsp type="container_sp_ar" text=" More features will be added in the future ." />
+                    <TextCon type="container_ar" text="Procesen is derived from a sentence ( Processing sentences ) Which means processing the sentence by artificial intelligence . " />
+                    <Textsp type="container_sp_ar" text="Procesen is also based on a principle natural language processing Or (NLP)" />
+                    <TextCon type="container_ar" text=" The site was launched in 2021 . " />
                 </>}
             />
             <ContainerBody
@@ -65,13 +68,12 @@ export default function BodyEn(params) {
                 title={'How to use '}
                 idTi="sec-how-use"
                 container={<>
-                    <TextCon text='' type='container_ar' />
                     <TextCon text=' First: Enter the text to be processed in the first box above . ' type='container_ar' />
-                    <TextCon text=' Second: Under the first column - in the Word Processing Control Options section, specify the changes to be applied to the text.' type='container_ar' />
-                    <NotesCon cx="blue" type="containerNotes_ar" textTitle=" Note :" textCon=" To show the options, click on Adhar in the same section above, and to hide the words, click on Hide. There is no need to reset the settings every time as they will be saved (depending on your browser)." />
-                    <TextCon text='Third: In the text display information box above, the option to delete the text will appear for you, and you can choose to delete an element of the text or not easily. ' type='container_ar' />
-                    <TextCon text='Fourth: In the modified text section, the new text will appear for you, and you can copy or modify the text. ' type='container_ar' />
-                    <NotesCon cx="red" type="containerNotes_ar" textTitle=" Note :   " textCon=" This section is being worked on and developed, and once it is modified, you will be able to use it " /></>}
+                    <TextCon text=' Second: The modified text will appear in the next section .' type='container_ar' />
+                    <NotesCon cx="blue" type="containerNotes_En" textTitle=" Note :" textCon=" You must notify the site of any changes you want to the text ." />
+                    <TextCon text='Text control section : Basic data shows information about letters, symbols and numbers and their control , Advanced data shows options related to deleting, modifying, or changing specific words . ' type='container_ar' />
+                    <Textsp type="container_sp_ar" text="To apply any option, you must click on the plus sign. To not apply it, click on the minus sign ." />
+                    <TextCon text='And you can also add specific words, sentences or letters to delete or replace them . ' type='container_ar' /></>}
             />
             <ContainerBody
                 link={"#sec-policy-site"} 
@@ -79,8 +81,8 @@ export default function BodyEn(params) {
                 title={' Usage Policy '}
                 idTi="sec-policy-site"
                 container={<>
-                    <NotesCon cx="blue" type="containerNotes_ar" textTitle=" " textCon="Some of the conditions below may change over time. " />
-                    <TextCon text=' The above artificial intelligence modified expressions are not copyrighted, and anyone can use and modify them .' type='container_ar' />
+                    <NotesCon cx="blue" type="containerNotes_En" textTitle=" " textCon="Some of the conditions below may change over time. " />
+                    <TextCon text=' Text area in Section Two in Above are not copyrighted, and anyone can use .' type='container_ar' />
                     <TextCon text=' We do not impose restrictions on the use of the site on any person or organization, as the use of the site is free of charge.' type='container_ar' />
                     <TextCon text=' We are not responsible for any use by users. ' type='container_ar' />
                     <TextCon text='The site does not violate any copyrights of any institution as it rewrites the sentences.' type='container_ar' />

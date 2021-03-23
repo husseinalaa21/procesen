@@ -410,7 +410,8 @@ input.inputInf:focus {
   direction: rtl;
 }
 .containerNotes_ar {
-  font-size: 18px;
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container_sp_ar {
@@ -418,7 +419,8 @@ input.inputInf:focus {
 }
 
 .container_ar {
-  font-size: 17px;
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .messArabic {
   font-size: 16px;

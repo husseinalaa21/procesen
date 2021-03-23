@@ -716,11 +716,11 @@ export default class P___rps extends Component {
                                         </div>
                                         {cheq() ? <div className="apiChoose" onClick={() => this.clenEd()}><FontAwesomeIcon icon={faUndoAlt} className="apiChoseUndo" /></div> : ""}
                                     </div>
-                                    <div className={this.state.classDivWait} onClick={() => { this.setState({ swli: !this.state.swli }) }}>
+                                    {/*<div className={this.state.classDivWait} onClick={() => { this.setState({ swli: !this.state.swli }) }}>
                                         <FontAwesomeIcon icon={faEllipsisH} className={this.state.swli ? "lixs lixsT" : "lixs"} />
-                                    </div>
+                                    </div>*/}
                                 </div>
-                                {this.swiLis()}
+                                {/*this.swiLis()*/}
                             </div>
                             <div className="textArea">
                                 {this.state.disVew ?

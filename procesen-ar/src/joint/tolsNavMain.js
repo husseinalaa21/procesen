@@ -6,7 +6,7 @@ export default function TolsNavMain(props) {
         var lang = props.lang
         var hrefX = props.thisHref
         return (
-            <div className="header_tols" className={thisLang ? "thisLangItem" : "LangItem"} onClick={() => thisLang? "" : window.location.href = "https://"+hrefX+".procesen.com"}>
+            <div className="header_tols" className={thisLang ? "thisLangItem" : "LangItem"} onClick={() => thisLang? "" : window.location.href = "https://"+hrefX+"procesen.com"}>
                 {lang}
             </div>
         )

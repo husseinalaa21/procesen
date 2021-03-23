@@ -140,12 +140,14 @@
 .langChose {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 20px;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 25px;
 }
 
 .langChose div{
   padding: 8px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
   border-radius: 5px;
   background-color: #cfcdcd18;
@@ -172,25 +174,105 @@
   cursor: auto  !important;
 }
 
-.socialMainMediaNav {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 10px;
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color: rgba(161, 163, 165, 0.137);
-    border-radius: 4px;
-    width: 80%;
-    max-width: 500px;
-    margin: auto;
-    margin-top: 20px;
+.navMain {
+  width: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  max-width: 500px;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
 }
-
-.namMainTols {
-    display: flex;
-    justify-content: space-evenly;
-    width: 80%;
-    max-width: 500px;
-    margin: auto;
-    margin-top: 20px;
+.secTopHeader {
+  display: grid;
+  margin: auto;
+  justify-content: center;
+  grid-template-columns: auto auto;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 4px 4px 10px 4px;
+  background-color: #edeef7;
+  margin-bottom: 10px;
+  justify-content: space-around;
+}
+._soceLi {
+  background-color: #eeeeee;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-evenly;
+  width: fit-content;
+  margin: auto;
+  margin-top: 5px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+._soceLi  div,i{
+  min-width: 30px;
+}
+._face {
+  background-color: #3B5998;
+  color: #f2f2f2;
+  padding: 8px;
+}
+._twit {
+  background-color: #55ACEE;
+  color: #f2f2f2;
+  padding: 8px;
+}
+._lin {
+  background-color: #606470;
+  color: #f2f2f2;
+  padding: 8px;
+  cursor: pointer;
+}
+.__email {
+  background-color: #c15050;
+  color: #f2f2f2;
+  padding: 8px;
+}
+.secTopHeader a.secHh{
+  text-align: center;
+  margin: 1px;
+  padding: 8px;
+  text-decoration: none;
+}
+.scb {
+  border: 0;
+  border-bottom: 2px solid #1687a7;
+  color: #3b3b3b;
+}
+.scw {
+  border: 0;
+  border-bottom: 2px solid #30475e;
+  color: #3b3b3b;
+}
+.supUs {
+  color:green;
+}
+.sopThisCon {
+  display: flex;
+  justify-content: center;
+  direction: ltr;
+  overflow: hidden;
+  border-radius: 2px;
+  width: fit-content;
+  margin: auto;
+  margin-top: 10px;
+}
+.copThis {
+  margin-top: 10px;
+}
+.sopThisCon div {
+  padding: 6px;
+}
+.icoCopThis i{
+  font-size: 15px;
+  color: whitesmoke;
+}
+.icoCopThis {
+  background-color: rgb(167, 167, 167);
+}
+.LiCopThis {
+  background-color: #c8cbce;
+  padding-right: 18px !important;
 }

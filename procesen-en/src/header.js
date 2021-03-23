@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Logo from './design/logo/logo5.png';
 import { useState } from 'react'
 import TolsNavMain from './joint/tolsNavMain'
-import { faLanguage, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faHandHoldingUsd, faLanguage, faMoon } from '@fortawesome/free-solid-svg-icons';
 import Main from './main'
 
 export default function App() {
@@ -12,36 +12,41 @@ export default function App() {
     const [clickNavLang, setClickNavLang] = useState(false)
     const [isNight, isNightX] = useState(false)
     const [srcc, setsrcc] = useState(false)
+    const [copThisLin, setcopThisLin] = useState(false)
     var themLd = isNight ? "barDark" : "barLight"
-    function ItemListMain(x) {
-        return (
-            <div >
-                <a href={x.css}> {x.i} </a>
-            </div>
-        )
-    }
+    var tue = window.location.protocol+"//"+window.location.hostname+"/"
     function tolsMenu() {
         if (clickNav) {
             return (
-                <div className="navMain">
-                    <div className="socialMainMediaNav">
-                        <div> <a href="#" className="fa fa-facebook"></a> </div>
-                        <div> <a href="#" className="fa fa-twitter"></a> </div>
-                        <div> <a href="#" className="fa fa-linkedin"></a> </div>
-                        <div> <a href="#" className="fa fa-google"></a> </div>
-                    </div>
-                    <div className="namMainTols">
-                        <ItemListMain i={" Site usage policy "} css={"#ppsite"} />
-                        <ItemListMain i={" The developer "} css={"#ppsite"} />
-                        <ItemListMain i={" Connect us "} css={"#ppsite"} />
-                    </div>
+              <div className="navMain">
+                <div className="secTopHeader">
+                  <a className="secHh scb" href="#sec-definition-site"> About us </a>
+                  <a className="secHh scw" href="#sec-policy-site"> Terms of use </a>
+                  <a className="secHh scw" href="https://callus.procesen.com/callus-en/index.html"> Connect with us  </a>
+                  <a className="secHh scb" href="https://www.paypal.com/paypalme/husseinalaa2000"> Our support <FontAwesomeIcon icon={faHandHoldingUsd} className="supUs"/></a>
                 </div>
+                <div className="secLinksTop ">
+                  <div className="_soceLi">
+                    <a href="https://web.facebook.com/procesen" className="_face"> <i className="fa fa-facebook" ></i> </a>
+                    <a href="https://twitter.com/procesen_" className="_twit"> <i className="fa fa-twitter" ></i> </a>
+                    <a href="mailto:procesen@gmail.com" className="__email"> <i className="fa fa-envelope" ></i> </a>
+                    <div className="_lin" onClick={()=>{setcopThisLin(!copThisLin)}}> <i className="fa fa-link"></i> </div>
+                  </div>
+                  <div className="copThis" style={copThisLin ? {display : "block"} : {display : "none"}}>
+                    <div className="texCopThis"> Copy this website link please </div>
+                    <div className="sopThisCon">
+                      <div className="icoCopThis"> <i className="fa fa-link"></i> </div>
+                      <div className="LiCopThis"> {tue} </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             )
         } if (clickNavLang) {
             return (
                 <div className="langChose">
-                    <TolsNavMain itemCase="Lang" lang=" English " thisHref="en" thisLang={true} />
-                    <TolsNavMain itemCase="Lang" lang="Arabic " thisHref="ar" thisLang={false} />
+                    <TolsNavMain itemCase="Lang" lang=" English " thisHref="" thisLang={true} />
+                    <TolsNavMain itemCase="Lang" lang="Arabic " thisHref="ar." thisLang={false} />
                 </div>
             )
         }

@@ -15,7 +15,8 @@ export default class P___rps extends Component {
             isW: false,
             valTex: "",
             lValEn: " ",
-            valed: ""
+            valed: "",
+            isH : false
         }
         this.ddrThem = this.props.ddrThem
         this.drThem = this.props.drThem
@@ -102,7 +103,11 @@ export default class P___rps extends Component {
             }
         }
         // tex
-        var swp = this.props.xtex
+        if(this.state.isH === true){
+            var swp = this.state.valTex
+        } else {
+            var swp = this.props.xtex
+        }
         // to set
         var obj = this.state.obp
         var vbn = this.state.dzVbn
@@ -463,7 +468,11 @@ export default class P___rps extends Component {
         var led = 0
         var ty = []
         if (this.props.caseXtex == true) {
-            var swp = this.props.xtex
+            if(this.state.isH === true){
+                var swp = this.state.valTex
+            } else {
+                var swp = this.props.xtex
+            }
             if (swp.length > 0) {
                 if (this.state.isW === true) {
                     var ets = this.seText(swp)
@@ -626,6 +635,10 @@ export default class P___rps extends Component {
             )
         }
     }
+    thThisK(){
+        this.setState({isH : !this.state.isH,
+        valTex : this.tekal(true)})
+    }
     render() {
         var ccThem = this.props.ccThem,
             xtexs = this.props.xtex;
@@ -711,9 +724,13 @@ export default class P___rps extends Component {
                                         <div className="apiChoose" onClick={() => this.chanDis()}>
                                             <FontAwesomeIcon icon={faPenAlt} className={this.state.disVew ? "apiChose" : chew() ? "apiunChose" : "apiunChoseQ"} />
                                         </div>
+                                        { chew() ?
+                                        <div className="apiChoose" onClick={()=>this.thThisK()}>
+                                            <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChose"} />
+                                        </div> :
                                         <div className="apiChoose" >
-                                            <FontAwesomeIcon icon={faThumbtack} className={this.state.apiUndoAlt ? "apiChose" : chew() ? "apiunChose" : "apiunChoseQ"} />
-                                        </div>
+                                            <FontAwesomeIcon icon={faThumbtack} className={this.state.isH? "apiChose" : "apiunChoseQ"} />
+                                        </div>}
                                         {cheq() ? <div className="apiChoose" onClick={() => this.clenEd()}><FontAwesomeIcon icon={faUndoAlt} className="apiChoseUndo" /></div> : ""}
                                     </div>
                                     {/*<div className={this.state.classDivWait} onClick={() => { this.setState({ swli: !this.state.swli }) }}>

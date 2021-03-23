@@ -17,7 +17,7 @@ export default class Proc extends Component {
     constructor(props) {
         super(props);
         this.wordsPcs = this.tPcsWor.bind(this);
-        this.state = { len: '0', words: '0', TextPcs: "", didOve: false, overTextNumX: '0' };
+        this.state = { len: 0, TextPcs: "", didOve: false, overTextNumX: '0' };
         this.state.styleFormPrcsDark = styleFormPrcsDarkV
         this.state.styleFormPrcsLight = styleFormPrcsLightV
         this.state.styleFormPrcsTextAreaLight = styleFormPrcsTextAreaLightV
@@ -40,39 +40,24 @@ export default class Proc extends Component {
     }
 
     tPcsWor(x) {
-        this.setState({ len: x.target.value.length });
-        var words = x.target.value.split(" ")
-        var wwords = words.length
-        if (x.target.value.length < 3) {
-            wwords = words.length - 1
-            this.setState({ caseXtex: true })
-        }
-        var wowords = x.target.value.replace(/\d+||\s+||\s+$/g, '')
-        var woword = wowords.split(" ")
-        for (var w = 0; w < woword.length; w++) {
-            if (woword[w] < 1) {
-                wwords = wwords - 1
-            }
-        }
-        if (wwords === -1) {
-            wwords = wwords + 1
-        }
         if (x.target.value.length > 0) {
             this.setState({ apiTrashAlt: true })
+            this.setState({ TextPcs: x.target.value })
+            this.setState({ len: x.target.value.length });
         } else {
             this.setState({ apiTrashAlt: false })
+            this.setState({ TextPcs: "" })
+            this.setState({ len: 0 });
         }
         if (x.target.value.length > 5000) {
             var xNum = x.target.value.length - 5000
             var ovText = x.target.value.slice(5000, x.target.value.length);
             this.setState({ overTextNumX: xNum })
-            this.setState({ overText: ovText })
+            this.setState({overText : ovText})
             this.setState({ didOve: true })
         } else {
             this.setState({ didOve: false })
         }
-        this.setState({ words: wwords });
-        this.setState({ TextPcs: x.target.value })
     }
 
     // tols ..
@@ -150,7 +135,7 @@ export default class Proc extends Component {
                                 </div>
                             </label>
                         </div>
-                        <P___rps ccThem={this.props.them} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.TextPcs} caseXtex={this.state.caseXtex} bThem={this.props.them} />
+                        <P___rps ccThem={this.props.them} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.TextPcs} bThem = {this.props.them}/>
                     </div>
                 </div>
             </div>

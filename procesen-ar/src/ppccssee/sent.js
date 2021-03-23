@@ -16,7 +16,7 @@ export default class P___rps extends Component {
             valTex: "",
             lValEn: " ",
             valed: "",
-            isH : false
+            isH: false
         }
         this.ddrThem = this.props.ddrThem
         this.drThem = this.props.drThem
@@ -103,7 +103,7 @@ export default class P___rps extends Component {
             }
         }
         // tex
-        if(this.state.isH === true){
+        if (this.state.isH === true) {
             var swp = this.state.valTex
         } else {
             var swp = this.props.xtex
@@ -130,46 +130,44 @@ export default class P___rps extends Component {
         var containerItems = []
         var containerItemsSp = []
         // ...
-        if (this.props.caseXtex === true) {
-            if (swp.length > 0) {
-                for (var t = 0; t < vbn.length; t++) {
-                    const namb = t
-                    var oi = { caseP: obj[namb], num: vbn[namb].nam, dz: vbn[namb].exdz }
-                    oj.push(oi)
-                }
-                var nifn = 0
-                var nift = ""
-                var nifb = false
-                var swpEls = 0
-                var wasw = 0
-                for (var ch = 0; ch < oj.length; ch++) {
-                    const tNumber = ch
-                    const dzv = oj[tNumber].dz
-                    const dz = new RegExp(dzv, 'g');
-                    const num = oj[ch].num
-                    const ccv = oj[ch].caseP
-                    if (dz.test(swp)) {
-                        wasw++;
-                        const Xswp = swp.length - swp.replace(dz, "").length
-                        swpEls += Xswp
-                        var XswpS = Math.round(Xswp / swp.length * 100)
-                        var item = this.infItems({ item: num, itemNu: Xswp, itemNumP: XswpS + "%", key: tNumber, ccv: ccv, nm: tNumber })
-                        containerItems.push(item)
-                        if (Xswp > nifn) {
-                            nifn = XswpS
-                            nift = num
-                            if (nifb === false) {
-                                nifb = true
-                            }
+        if (swp.length > 0) {
+            for (var t = 0; t < vbn.length; t++) {
+                const namb = t
+                var oi = { caseP: obj[namb], num: vbn[namb].nam, dz: vbn[namb].exdz }
+                oj.push(oi)
+            }
+            var nifn = 0
+            var nift = ""
+            var nifb = false
+            var swpEls = 0
+            var wasw = 0
+            for (var ch = 0; ch < oj.length; ch++) {
+                const tNumber = ch
+                const dzv = oj[tNumber].dz
+                const dz = new RegExp(dzv, 'g');
+                const num = oj[ch].num
+                const ccv = oj[ch].caseP
+                if (dz.test(swp)) {
+                    wasw++;
+                    const Xswp = swp.length - swp.replace(dz, "").length
+                    swpEls += Xswp
+                    var XswpS = Math.round(Xswp / swp.length * 100)
+                    var item = this.infItems({ item: num, itemNu: Xswp, itemNumP: XswpS + "%", key: tNumber, ccv: ccv, nm: tNumber })
+                    containerItems.push(item)
+                    if (Xswp > nifn) {
+                        nifn = XswpS
+                        nift = num
+                        if (nifb === false) {
+                            nifb = true
                         }
                     }
-                    if (oj.length - 1 === ch) {
-                        if (swpEls < swp.length) {
-                            var Xswp = swp.length - swpEls
-                            var XswpS = Xswp / swpEls * swpEls
-                            var item = this.infItems({ item: "اخرى", itemNu: Xswp, itemNumP: XswpS + "%", key: 12, ccv: false, nm: 12 })
-                            containerItems.push(item)
-                        }
+                }
+                if (oj.length - 1 === ch) {
+                    if (swpEls < swp.length) {
+                        var Xswp = swp.length - swpEls
+                        var XswpS = Xswp / swpEls * swpEls
+                        var item = this.infItems({ item: "اخرى", itemNu: Xswp, itemNumP: XswpS + "%", key: 12, ccv: false, nm: 12 })
+                        containerItems.push(item)
                     }
                 }
             }
@@ -203,7 +201,7 @@ export default class P___rps extends Component {
             twAdv = "",
             namAdv = ""
         var cotait = () => {
-            if (this.props.caseXtex === true && swp.length > 0) {
+            if (swp.length > 0) {
                 return true
             } else {
                 return false
@@ -348,7 +346,7 @@ export default class P___rps extends Component {
                 var ise = false
                 uez.forEach(ui => {
                     if (ui.ex === true) {
-                        if (x === ui.eo || x.length === 0|| ui.nam === u) {
+                        if (x === ui.eo || x.length === 0 || ui.nam === u) {
                             ise = true
                         }
                     }
@@ -369,8 +367,8 @@ export default class P___rps extends Component {
                 <tr className="edExcon" key={18 + ax.nu}>
                     <td className="trfEx edExTf">{ax.n}</td >
                     <td className="edExTu"> تعديل </td >
-                    <td className={ax.c ? "edExCf": "edExC"} onClick={() => this.szAvd(ax.nu)}>
-                        {ax.c ?<FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faMinus} />}
+                    <td className={ax.c ? "edExCf" : "edExC"} onClick={() => this.szAvd(ax.nu)}>
+                        {ax.c ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faMinus} />}
                     </td >
                     {ax.fu ?
                         <td className="trdEx" onClick={() => this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash} /> </td > :
@@ -382,8 +380,8 @@ export default class P___rps extends Component {
                 <tr className="deExcon" key={18 + ax.nu}>
                     <td className="trfEx deExTf"> {ax.n} </td >
                     <td> حذف </td >
-                    <td className={ax.c ? "edExCf": "edExC"} onClick={() => this.szAvd(ax.nu)}>
-                        {ax.c ?<FontAwesomeIcon icon={faPlus} />:<FontAwesomeIcon icon={faMinus} />}
+                    <td className={ax.c ? "edExCf" : "edExC"} onClick={() => this.szAvd(ax.nu)}>
+                        {ax.c ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faMinus} />}
                     </td >
                     {ax.fu ?
                         <td className="trdEx" onClick={() => this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash} /> </td > :
@@ -445,13 +443,13 @@ export default class P___rps extends Component {
                 const vdv = new RegExp(erv[rn].eo, 'g');
                 //const thTy = x.length - x.replace(vdv, "").length
                 tezx = tezx.replace(vdv, "")
-            } else if(erv[rn].ex === false && rv[rn] === true){
-                for(var wd = 0 ;wd < erv[rn].eo.length; wd ++){
+            } else if (erv[rn].ex === false && rv[rn] === true) {
+                for (var wd = 0; wd < erv[rn].eo.length; wd++) {
                     const wr = wd
                     var wx = erv[rn].eo[wr]
                     var ao = new RegExp(wx[0], 'g');
-                    if((ao.test(tezx)) === true){
-                        tezx = tezx.replace(ao,wx[1])
+                    if ((ao.test(tezx)) === true) {
+                        tezx = tezx.replace(ao, wx[1])
                     }
                 }
             }
@@ -468,45 +466,38 @@ export default class P___rps extends Component {
         var le = 0
         var led = 0
         var ty = []
-        if (this.props.caseXtex == true) {
-            if(this.state.isH === true){
-                var swp = this.state.valTex
-            } else {
-                var swp = this.props.xtex
-            }
-            if (swp.length > 0) {
-                if (this.state.isW === true) {
-                    var ets = this.seText(swp)
-                    if (ets[1].length > 0) {
-                        texUpStr = ets[1]
-                        coText = ets[0]
-                        le = ets[2]
-                        ty = ets[3]
-                        led = swp.length
-                    } else {
-                        texUpStr = this.state.vnText
-                        coText = this.state.vnText
-                        le = 0
-                        led = swp.length
-                        ty = ets[3]
-                    }
+        if (this.state.isH === true) {
+            var swp = this.state.valTex
+        } else {
+            var swp = this.props.xtex
+        }
+        if (swp.length > 0) {
+            if (this.state.isW === true) {
+                var ets = this.seText(swp)
+                if (ets[1].length > 0) {
+                    texUpStr = ets[1]
+                    coText = ets[0]
+                    le = ets[2]
+                    ty = ets[3]
+                    led = swp.length
                 } else {
-                    texUpStr = " ... "
-                    coText = " ... "
+                    texUpStr = this.state.vnText
+                    coText = this.state.vnText
                     le = 0
-                    led = 0
+                    led = swp.length
+                    ty = ets[3]
                 }
             } else {
-                texUpStr = this.state.vnText
-                coText = this.state.vnText
+                texUpStr = " ... "
+                coText = " ... "
                 le = 0
-                led = swp.length
+                led = 0
             }
         } else {
             texUpStr = this.state.vnText
             coText = this.state.vnText
             le = 0
-            led = 0
+            led = swp.length
         }
         return [texUpStr, coText, le, led, ty]
         // 0 === \n
@@ -636,20 +627,20 @@ export default class P___rps extends Component {
             )
         }
     }
-    thThisK(){
-        this.setState({isH : !this.state.isH,
-        valTex : this.tekal(true)})
+    thThisK() {
+        this.setState({
+            isH: !this.state.isH,
+            valTex: this.tekal(true)
+        })
     }
     render() {
         var ccThem = this.props.ccThem,
             xtexs = this.props.xtex;
         var caseInfoPP = () => {
-            if (this.props.caseXtex == true) {
-                if (xtexs.length > 0) {
-                    return true
-                } else {
-                    return false
-                }
+            if (xtexs.length > 0) {
+                return true
+            } else {
+                return false
             }
         }
         var chew = () => {
@@ -725,13 +716,13 @@ export default class P___rps extends Component {
                                         <div className="apiChoose" onClick={() => this.chanDis()}>
                                             <FontAwesomeIcon icon={faPenAlt} className={this.state.disVew ? "apiChose" : chew() ? "apiunChose" : "apiunChoseQ"} />
                                         </div>
-                                        { chew() ?
-                                        <div className="apiChoose" onClick={()=>this.thThisK()}>
-                                            <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChose"} />
-                                        </div> :
-                                        <div className="apiChoose" >
-                                            <FontAwesomeIcon icon={faThumbtack} className={this.state.isH? "apiChose" : "apiunChoseQ"} />
-                                        </div>}
+                                        {chew() ?
+                                            <div className="apiChoose" onClick={() => this.thThisK()}>
+                                                <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChose"} />
+                                            </div> :
+                                            <div className="apiChoose" >
+                                                <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChoseQ"} />
+                                            </div>}
                                         {cheq() ? <div className="apiChoose" onClick={() => this.clenEd()}><FontAwesomeIcon icon={faUndoAlt} className="apiChoseUndo" /></div> : ""}
                                     </div>
                                     {/*<div className={this.state.classDivWait} onClick={() => { this.setState({ swli: !this.state.swli }) }}>

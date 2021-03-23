@@ -598,7 +598,7 @@ export default class P___rps extends Component {
         } else {
             return (
                 <div className="pshCon">
-                    <div className="nPshOn"> There are no archives for this session yet .. </div>
+                    <div className="rtaTitle"> There are no archives for this session yet .. </div>
                     <div className="nPshOnLogo">
                         <FontAwesomeIcon icon={faClipboard} />
                     </div>

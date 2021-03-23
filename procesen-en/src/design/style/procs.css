@@ -212,6 +212,8 @@
 .rtaTitle {
   padding: 6px;
   font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
 }
 .rtaCon {
   font-size: 25px;
@@ -787,8 +789,7 @@ font-size: 16px;
 .conLisCon {
   padding: 6px;
   border-radius: 4px;
-  margin-bottom: 6px;;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 6px;
 }
 
 .conLisConLi {
@@ -807,9 +808,9 @@ font-size: 16px;
   width: fit-content;
   border-radius: 0 3px 0 0;
   background-color: #f0f0f0;
-  font-size: 17px;
   color: #3b3b3b;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
 }
 .conLisCrTiA {
   cursor: pointer;
@@ -817,9 +818,9 @@ font-size: 16px;
   width: fit-content;
   border-radius: 3px 0 0 0;
   background-color: #f0f0f0;
-  font-size: 17px;
   color: #3b3b3b;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
 }
 .conLisCrTiT {
   background-color: #e7dec8;
@@ -871,8 +872,8 @@ font-size: 16px;
   min-width: 37%;
   margin-left: 0px;
   border-radius: 4px 4px 0 0;
-  font-size: 15px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
 }
 .titleInpY {
   text-align:left;
@@ -882,9 +883,9 @@ font-size: 16px;
   min-width: 37%;
   margin-right: 0px;
   border-radius: 4px 4px 0 0;
-  font-size: 15px;
   color: #3b3b3b;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
 }
 .borInpt {
   padding: 5px;
@@ -942,6 +943,8 @@ font-size: 16px;
   width: 100%;
   border-collapse:separate; 
   border-spacing: 0 0.5em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14.5px;
 }
 .xTbo td {
   padding: 10px;
@@ -1283,8 +1286,9 @@ td.edExCf {
   margin: 5px;
   background-color: #f4f9f9;
   border-radius: 3px;
-  font-size: 16px;
+  font-size: 14px;
   width: fit-content;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* listSwi */

@@ -1235,23 +1235,28 @@ td.edExCf {
   padding: 4px;
   color: #1a73e8;
 }
-.hisCon {
-  display: flex;
-  justify-content: space-between;
-}
 .hisCon div{
   text-align: right;
   direction: rtl;
-  width: 50%;
-  padding: 13px;
   overflow-y: auto;
   position: relative;
   list-style-type: none;
   word-wrap: break-word; 
 }
 .hisOrg {
+  padding: 4px;
   border: 0;
   border-left: 2px solid rgb(243, 243, 243);
+}
+
+@media screen and (min-width : 700px){
+  .hisCon {
+    display: flex;
+    justify-content: space-between;
+  }
+  .hisOrg  {
+    width: 50%;
+  }
 }
 .laHisIn {
   display: flex;
@@ -1260,6 +1265,17 @@ td.edExCf {
   width: 90%;
   max-width: 600px;
   margin: auto;
+}
+.titleHisNam {
+  padding: 8px;
+  background-color: #8c88fa;
+  color: #edeef7;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.conHisNam {
+  padding: 8px;
 }
 .dLaHisIn {
   padding: 8px;

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faSlidersH, faPenAlt, faThumbtack, faEllipsisH, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faEdit, faEraser, faUnderline, faNewspaper, faSatellite, faArrowsAltH, faArrowAltCircleDown, faArrowCircleUp, faLongArrowAltLeft, faRocket, faArrowRight, faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faPenAlt, faThumbtack, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faEraser, faUnderline, faArrowAltCircleDown, faArrowCircleUp, faLongArrowAltLeft, faRocket, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import ContentEditable from 'react-contenteditable'
 import TextareaAutosize from 'react-textarea-autosize';
 
-export default class P___rps extends Component {
+export default class Sent extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -95,18 +95,19 @@ export default class P___rps extends Component {
         }
         var ePoin = (x) => {
             if (x >= 50 && x < 95) {
-                return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlueLi"></div></div>)
+                return (<div className="nitfRen"><div className="powerPoint powerPointBlue"></div><div className="powerPoint powerPointBlue"></div><div className="powerPoint powerPointBlueLi"></div></div>)
             } if (x < 50) {
-                return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlueLi"></div><div class="powerPoint powerPointBlueLi"></div></div>)
-            } if (x == 100 || x >= 95) {
-                return (<div className="nitfRen"><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div><div class="powerPoint powerPointBlue"></div></div>)
+                return (<div className="nitfRen"><div className="powerPoint powerPointBlue"></div><div className="powerPoint powerPointBlueLi"></div><div className="powerPoint powerPointBlueLi"></div></div>)
+            } if (x === 100 || x >= 95) {
+                return (<div className="nitfRen"><div className="powerPoint powerPointBlue"></div><div className="powerPoint powerPointBlue"></div><div className="powerPoint powerPointBlue"></div></div>)
             }
         }
         // tex
+        var swp;
         if (this.state.isH === true) {
-            var swp = this.state.valTex
+            swp = this.state.valTex
         } else {
-            var swp = this.props.xtex
+            swp = this.props.xtex
         }
         // to set
         var obj = this.state.obp
@@ -118,13 +119,14 @@ export default class P___rps extends Component {
         var avd = []
         // ...
         for (var v = 0; v < ez.length; v++) {
-            const eznu = v
+            const eznu = v;
+            var xsz;
             if ((ez[eznu].hasOwnProperty('exs')) === true) {
-                var xsz = ez[eznu].exs
+                xsz = ez[eznu].exs
             } else {
-                var xsz = false
+                xsz = false
             }
-            var ze = { caseP: ev[eznu], num: ez[eznu].nam, ex: ez[eznu].ex, eo: ez[eznu].eo, exs: xsz, nr: eznu }
+            let ze = { caseP: ev[eznu], num: ez[eznu].nam, ex: ez[eznu].ex, eo: ez[eznu].eo, exs: xsz, nr: eznu }
             avd.push(ze)
         }
         var containerItems = []
@@ -133,7 +135,7 @@ export default class P___rps extends Component {
         if (swp.length > 0) {
             for (var t = 0; t < vbn.length; t++) {
                 const namb = t
-                var oi = { caseP: obj[namb], num: vbn[namb].nam, dz: vbn[namb].exdz }
+                let oi = { caseP: obj[namb], num: vbn[namb].nam, dz: vbn[namb].exdz }
                 oj.push(oi)
             }
             var nifn = 0
@@ -143,16 +145,16 @@ export default class P___rps extends Component {
             var wasw = 0
             for (var ch = 0; ch < oj.length; ch++) {
                 const tNumber = ch
-                const dzv = oj[tNumber].dz
-                const dz = new RegExp(dzv, 'g');
-                const num = oj[ch].num
-                const ccv = oj[ch].caseP
+                let dzv = oj[tNumber].dz
+                let dz = new RegExp(dzv, 'g');
+                let num = oj[tNumber].num
+                let ccv = oj[tNumber].caseP
                 if (dz.test(swp)) {
                     wasw++;
                     const Xswp = swp.length - swp.replace(dz, "").length
                     swpEls += Xswp
-                    var XswpS = Math.round(Xswp / swp.length * 100)
-                    var item = this.infItems({ item: num, itemNu: Xswp, itemNumP: XswpS + "%", key: tNumber, ccv: ccv, nm: tNumber })
+                    let XswpS = Math.round(Xswp / swp.length * 100)
+                    let item = this.infItems({ item: num, itemNu: Xswp, itemNumP: XswpS + "%", key: tNumber, ccv: ccv, nm: tNumber })
                     containerItems.push(item)
                     if (Xswp > nifn) {
                         nifn = XswpS
@@ -164,9 +166,9 @@ export default class P___rps extends Component {
                 }
                 if (oj.length - 1 === ch) {
                     if (swpEls < swp.length) {
-                        var Xswp = swp.length - swpEls
-                        var XswpS = Xswp / swpEls * swpEls
-                        var item = this.infItems({ item: "اخرى", itemNu: Xswp, itemNumP: XswpS + "%", key: 12, ccv: false, nm: 12 })
+                        let Xswp = swp.length - swpEls
+                        let XswpS = Xswp / swpEls * swpEls
+                        let item = this.infItems({ item: "اخرى", itemNu: Xswp, itemNumP: XswpS + "%", key: 12, ccv: false, nm: 12 })
                         containerItems.push(item)
                     }
                 }
@@ -175,10 +177,10 @@ export default class P___rps extends Component {
         for (var fe = 0; fe < avd.length; fe++) {
             const nb = fe
             if (avd[nb].exs === true) {
-                var zEz = this.setAvd({ n: avd[nb].num, c: avd[nb].caseP, nu: avd[nb].nr, tn: avd[nb].ex, fu: true })
+                let zEz = this.setAvd({ n: avd[nb].num, c: avd[nb].caseP, nu: avd[nb].nr, tn: avd[nb].ex, fu: true })
                 containerItemsSp.push(zEz)
             } else {
-                var zEz = this.setAvd({ n: avd[nb].num, c: avd[nb].caseP, nu: avd[nb].nr, tn: avd[nb].ex, fu: false })
+                let zEz = this.setAvd({ n: avd[nb].num, c: avd[nb].caseP, nu: avd[nb].nr, tn: avd[nb].ex, fu: false })
                 containerItemsSp.push(zEz)
             }
         }
@@ -196,7 +198,6 @@ export default class P___rps extends Component {
                 }
             }
         }
-        var chnNewNum = Math.round(((this.vxTextvx()[3] - this.vxTextvx()[2]) / this.vxTextvx()[3]) * 100)
         var onAdv = "",
             twAdv = "",
             namAdv = ""
@@ -307,8 +308,8 @@ export default class P___rps extends Component {
                                 <div className="niftT"> اعلى عنصر في الجملة هو {nift} , حيث يشكل {nifn} % من الجملة . </div>
                             </div>
                             <div className="noteWeInf nift">
-                                {ePoin(chnNewNum)}
-                                <div className="niftT"> نسبة التغيير في النص هي {chnNewNum} % .</div>
+                                {ePoin(this.vxTextvx()[5])}
+                                <div className="niftT"> نسبة التغيير في النص هي {this.vxTextvx()[5]} % .</div>
                             </div>
                             {salaD()}
                         </div>
@@ -324,7 +325,7 @@ export default class P___rps extends Component {
         var iez = this.state.ev
         if (this.state.isclc === true) {
             if (x.length > 0 && y.length > 0) {
-                var ise = false
+                let ise = false
                 var arx = [[x, y]]
                 uez.forEach(ui => {
                     if (ui.ex === false) {
@@ -334,7 +335,7 @@ export default class P___rps extends Component {
                     }
                 })
                 if (ise === false) {
-                    var eqa = { nam: u, ex: false, eo: arx, exs: true }
+                    let eqa = { nam: u, ex: false, eo: arx, exs: true }
                     uez.push(eqa)
                     iez.push(false)
                     this.setState({ ezVbn: uez })
@@ -343,7 +344,7 @@ export default class P___rps extends Component {
             }
         } else {
             if (x.length > 0) {
-                var ise = false
+                let ise = false
                 uez.forEach(ui => {
                     if (ui.ex === true) {
                         if (x === ui.eo || x.length === 0 || ui.nam === u) {
@@ -352,7 +353,7 @@ export default class P___rps extends Component {
                     }
                 })
                 if (ise === false) {
-                    var eqa = { nam: u, ex: true, eo: x, exs: true }
+                    let eqa = { nam: u, ex: true, eo: x, exs: true }
                     uez.push(eqa)
                     iez.push(false)
                     this.setState({ ezVbn: uez })
@@ -419,17 +420,17 @@ export default class P___rps extends Component {
         )
     }
     seText(x) {
-        var tvp = this.state.dzVbn
-        var tbo = this.state.obp
-        var rv = this.state.ev
-        var erv = this.state.ezVbn
+        var tvp = this.state.dzVbn,
+            tbo = this.state.obp,
+            rv = this.state.ev,
+            erv = this.state.ezVbn
 
         let tezx = x
         var ty = []
         for (var a = 0; a < tvp.length; a++) {
             const na = a
             if (tbo[na] === true) {
-                const vdv = new RegExp(tvp[na].exdz, 'g');
+                let vdv = new RegExp(tvp[na].exdz, 'g');
                 //var thTy = tezx.match(vdv)
                 //const thTy = x.length - x.replace(vdv, "").length
                 //var deSa = {ty : tvp[na].nam , con : thTy}
@@ -440,36 +441,39 @@ export default class P___rps extends Component {
         for (var s = 0; s < erv.length; s++) {
             const rn = s
             if (erv[rn].ex === true && rv[rn] === true) {
-                const vdv = new RegExp(erv[rn].eo, 'g');
+                let vdv = new RegExp(erv[rn].eo, 'g');
                 //const thTy = x.length - x.replace(vdv, "").length
                 tezx = tezx.replace(vdv, "")
             } else if (erv[rn].ex === false && rv[rn] === true) {
                 for (var wd = 0; wd < erv[rn].eo.length; wd++) {
                     const wr = wd
-                    var wx = erv[rn].eo[wr]
-                    var ao = new RegExp(wx[0], 'g');
+                    let wx = erv[rn].eo[wr]
+                    let ao = new RegExp(wx[0], 'g');
                     if ((ao.test(tezx)) === true) {
                         tezx = tezx.replace(ao, wx[1])
                     }
                 }
             }
         }
-        var ttezx = tezx.replace(/\n/g, "<br />")
-        var el = tezx.length
+        let ttezx = tezx.replace(/\n/g, "<br />")
+        let el = tezx.length
         return [ttezx, tezx, el, ty]
         // 0 === <br />
         // 1 === \n
     }
     vxTextvx() {
-        var texUpStr = ""
-        var coText = ""
-        var le = 0
-        var led = 0
-        var ty = []
+        var texUpStr = "",
+            coText = "",
+            le = 0,
+            led = 0,
+            cLed = 0,
+            swp,
+            ty = [];
+
         if (this.state.isH === true) {
-            var swp = this.state.valTex
+            swp = this.state.valTex
         } else {
-            var swp = this.props.xtex
+            swp = this.props.xtex
         }
         if (swp.length > 0) {
             if (this.state.isW === true) {
@@ -479,27 +483,30 @@ export default class P___rps extends Component {
                     coText = ets[0]
                     le = ets[2]
                     ty = ets[3]
-                    led = swp.length
                 } else {
                     texUpStr = this.state.vnText
                     coText = this.state.vnText
                     le = 0
-                    led = swp.length
                     ty = ets[3]
                 }
             } else {
                 texUpStr = " ... "
                 coText = " ... "
                 le = 0
-                led = 0
             }
+            led = swp.length
         } else {
             texUpStr = this.state.vnText
             coText = this.state.vnText
             le = 0
-            led = swp.length
+            led = 0
         }
-        return [texUpStr, coText, le, led, ty]
+        if (led > 0) {
+            cLed = Math.round(((led - le) / led) * 100)
+        } else {
+            cLed = 0
+        }
+        return [texUpStr, coText, le, led, ty, cLed]
         // 0 === \n
         // 1 === <br />
     }
@@ -564,7 +571,7 @@ export default class P___rps extends Component {
                 }
             })
             if (isW === false) {
-                let we = { corg: vta, org: this.props.xtex }
+                let we = { corg: vta, org: this.props.xtex, corgd: this.tekal(false) }
                 hisV.push(we)
                 this.setState({ his: hisV })
                 isW = true
@@ -585,10 +592,35 @@ export default class P___rps extends Component {
             arHis.forEach(el => {
                 ogn++;
                 const corg = el.corg
+                const corgd = el.corgd
                 const org = el.org
                 const indx = arHis.indexOf(el)
-                var brt = ' <br />'
-                var itOrg = <div className="hisSec"> <div className="hisT"><div className="hisTn"> {ogn}# </div> <div className="hisTxo"> <FontAwesomeIcon icon={faTrash} className="hisTx" onClick={() => this.deIlm(indx)} /> <FontAwesomeIcon icon={faCopy} className="hisTx" onClick={() => { navigator.clipboard.writeText(corg) }} /> </div> </div> <div className="hisCon"> <div className="hisOrg"> {org.replace(/\n/g, brt)} </div> <div className="hisCorg"> {corg.replace(/\n/g, brt)} </div> </div> </div>
+                var itOrg = <div className="hisSec" key={ogn + 1}>
+                    <div className="hisT"><div className="hisTn"> {ogn}# </div> <div className="hisTxo"> <FontAwesomeIcon icon={faTrash} className="hisTx" onClick={() => this.deIlm(indx)} /> <FontAwesomeIcon icon={faCopy} className="hisTx" onClick={() => { navigator.clipboard.writeText(corg) }} /> </div> </div>
+                    <div className="hisCon">
+                        <div className="hisOrg">
+                            <div className="titleHisNam"> النص الاصلي </div>
+                            <div className="conHisNam">
+                                <ContentEditable
+                                    html={org.replace(/\n/g, "<br />")}
+                                    disabled={true}
+                                    tagName='div'
+                                    className="areaPcP areaPlus"
+                                />
+                            </div></div>
+                        <div className="hisOrg">
+                            <div className="titleHisNam"> النص المعدل </div>
+                            <div className="conHisNam">
+                                <ContentEditable
+                                    html={corgd}
+                                    disabled={true}
+                                    tagName='div'
+                                    className="areaPcP areaPlus"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 ritOrg.push(itOrg)
             })
             return (
@@ -628,10 +660,17 @@ export default class P___rps extends Component {
         }
     }
     thThisK() {
-        this.setState({
-            isH: !this.state.isH,
-            valTex: this.tekal(true)
-        })
+        if (this.tekal(true) === this.state.vnText) {
+            this.setState({
+                isH: !this.state.isH,
+                valTex: ""
+            })
+        } else {
+            this.setState({
+                isH: !this.state.isH,
+                valTex: this.tekal(true)
+            })
+        }
     }
     render() {
         var ccThem = this.props.ccThem,
@@ -716,13 +755,9 @@ export default class P___rps extends Component {
                                         <div className="apiChoose" onClick={() => this.chanDis()}>
                                             <FontAwesomeIcon icon={faPenAlt} className={this.state.disVew ? "apiChose" : chew() ? "apiunChose" : "apiunChoseQ"} />
                                         </div>
-                                        {chew() ?
-                                            <div className="apiChoose" onClick={() => this.thThisK()}>
-                                                <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChose"} />
-                                            </div> :
-                                            <div className="apiChoose" >
-                                                <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChoseQ"} />
-                                            </div>}
+                                        <div className="apiChoose" onClick={() => this.thThisK()}>
+                                            <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChose"} />
+                                        </div>
                                         {cheq() ? <div className="apiChoose" onClick={() => this.clenEd()}><FontAwesomeIcon icon={faUndoAlt} className="apiChoseUndo" /></div> : ""}
                                     </div>
                                     {/*<div className={this.state.classDivWait} onClick={() => { this.setState({ swli: !this.state.swli }) }}>
@@ -750,7 +785,7 @@ export default class P___rps extends Component {
                                 <div className="textAreaBottom">
                                     {this.vxTextvx()[3]} / {this.vxTextvx()[2]}
                                 </div>
-                                <div className="textAreaBottomLogo"> نسبة التغيير  {Math.round(((this.vxTextvx()[3] - this.vxTextvx()[2]) / this.vxTextvx()[3]) * 100)} %</div>
+                                <div className="textAreaBottomLogo"> نسبة التغيير  {this.vxTextvx()[5]} %</div>
                             </div>
                         </div>
                     </label>
@@ -758,7 +793,7 @@ export default class P___rps extends Component {
                 <div className="redeyTextAreaInf">
                     <div className={this.props.bThem ? "redeyTextAreaInfTIT TextAreaDr TextAreaSDr" : "redeyTextAreaInfTIT TextAreaLi TextAreaSLi"}>
                         <div className="stolsConSec">
-                            <div className={this.props.bThem ? caseInfoPP() ? "casSett casSettHide" : "casSettShow" + "Dr" : caseInfoPP() ? "casSett casSettHide" : "casSett casSettShow"}>
+                            <div className={this.props.bThem ? caseInfoPP() ? "casSett casSettHide" : "casSettShow Dr" : caseInfoPP() ? "casSett casSettHide" : "casSett casSettShow"}>
                                 <FontAwesomeIcon icon={faAlignLeft} className="icTolsSett" />
                             </div>
                             <div className="stolsCONTROLX">{this.state.isW ? "  معلومات النص المدخل و خيارات التحكم ." : <div className="isWiteTextControal"></div>}</div>

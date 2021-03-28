@@ -4,7 +4,7 @@ import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
 import React , { useState, useEffect} from 'react'
 import NotesCon from '../joint/notesCon'
 import SendCommint from '../joint/sendCommint'
-import { useLocation, Switch } from 'react-router-dom'; 
+import { useLocation } from 'react-router-dom'; 
 
 export default function BodyEn(params) {
     const location = useLocation();
@@ -33,11 +33,12 @@ export default function BodyEn(params) {
         )
     }
     useEffect(() => {
-        var wue = window.location.href
+        var wue = window.location.href,
+        tue;
         if(window.location.port === "3000"){
-            var tue = window.location.protocol+"//"+window.location.hostname+":"+window.location.port+"/"
+            tue = window.location.protocol+"//"+window.location.hostname+":"+window.location.port+"/"
         } else {
-            var tue = window.location.protocol+"//"+window.location.hostname+"/"
+            tue = window.location.protocol+"//"+window.location.hostname+"/"
         }
         var twq = wue.replace(tue,"")
         if(idwa.includes(twq) === true){

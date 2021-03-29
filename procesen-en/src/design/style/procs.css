@@ -884,10 +884,9 @@ font-size: 16px;
 .titleInpY {
   text-align:left;
   padding: 7px;
-  width: 37% !important;
+  width: 70% !important;
   background-color: #f9f7cf;
   width: fit-content;
-  min-width: 37%;
   margin-right: 0px;
   border-radius: 4px 4px 0 0;
   color: #3b3b3b;

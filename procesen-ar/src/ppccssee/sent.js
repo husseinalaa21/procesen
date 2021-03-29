@@ -62,9 +62,6 @@ export default class Sent extends Component {
                             _ev_.push(false)
                         }
                     }
-                    var objTets = {"exdz":false,"nam" : 'square brackets ',"ex": false, "eo" : [['[\[+(?=0|1|2|3|4|5|6|7|8|9|٠|٩|٨|٧|٦|٥|٤|٣|٢|١)\]+]', '']]}
-                    ez.push(objTets)
-                    _ev_.push(false)
                     var cookMyLis = cookies.get('meLis')
                     if (cookMyLis !== undefined) {
                         for (var co = 0; co < cookMyLis.length; co++) {

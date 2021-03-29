@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faPenAlt, faThumbtack, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faEraser, faUnderline, faArrowAltCircleDown, faArrowCircleUp, faLongArrowAltLeft, faRocket, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faPenAlt, faThumbtack, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faEraser, faUnderline, faArrowAltCircleDown, faArrowCircleUp, faLongArrowAltLeft, faRocket, faArrowRight, faPaintBrush, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import ContentEditable from 'react-contenteditable'
 import TextareaAutosize from 'react-textarea-autosize';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 export default class Sent extends Component {
     constructor(props) {
@@ -24,9 +27,12 @@ export default class Sent extends Component {
         this.liThem = this.props.liThem
         this.apiUndoAlt = false
         this.state.disVew = false
+        this.state.isCoFo = false
+        this.state.areaControl = false
+        this.state.isColor = true
         this._ctxvcr = this._ctxvnr.bind(this)
         this.state.his = []
-        this.state.swli = false
+        this.state.isInfo = false
         // ...
 
         this.state.obp = []
@@ -54,6 +60,13 @@ export default class Sent extends Component {
                             _obp_.push(false)
                         } else {
                             ez.push(result["_dvBn"][e])
+                            _ev_.push(false)
+                        }
+                    }
+                    var cookMyLis = cookies.get('meLis')
+                    if (cookMyLis !== undefined) {
+                        for (var co = 0; co < cookMyLis.length; co++) {
+                            ez.push(cookMyLis[co])
                             _ev_.push(false)
                         }
                     }
@@ -339,6 +352,15 @@ export default class Sent extends Component {
                     iez.push(false)
                     this.setState({ ezVbn: uez })
                     this.setState({ ev: iez })
+                    let cookMe = cookies.get('meLis')
+                    if (cookMe !== undefined && cookMe.length > 0) {
+                        cookMe.push(eqa)
+                        cookies.set('meLis', cookMe);
+                    } else {
+                        let newLisMy = []
+                        newLisMy.push(eqa)
+                        cookies.set('meLis', newLisMy);
+                    }
                 }
             }
         } else {
@@ -357,6 +379,15 @@ export default class Sent extends Component {
                     iez.push(false)
                     this.setState({ ezVbn: uez })
                     this.setState({ ev: iez })
+                    let cookMe = cookies.get('meLis')
+                    if (cookMe !== undefined && cookMe.length > 0) {
+                        cookMe.push(eqa)
+                        cookies.set('meLis', cookMe);
+                    } else {
+                        let newLisMy = []
+                        newLisMy.push(eqa)
+                        cookies.set('meLis', newLisMy);
+                    }
                 }
             }
         }
@@ -394,6 +425,12 @@ export default class Sent extends Component {
         var uez = this.state.ezVbn
         var iez = this.state.ev
         if (uez[x].exs === true) {
+            var cookMe = cookies.get('meLis')
+            var s = x-(uez.length - cookMe.length)
+            if (cookMe !== undefined && cookMe.length > 0) {
+                cookMe.splice(s, 1)
+                cookies.set('meLis', cookMe);
+            }
             uez.splice(x, 1)
             iez.splice(x, 1)
             this.setState({ ezVbn: uez })
@@ -424,8 +461,10 @@ export default class Sent extends Component {
             rv = this.state.ev,
             erv = this.state.ezVbn
 
-        let tezx = x
-        var ty = []
+        let tezx = x,
+            ttezx = x,
+            ty = [];
+
         for (var a = 0; a < tvp.length; a++) {
             const na = a
             if (tbo[na] === true) {
@@ -435,6 +474,7 @@ export default class Sent extends Component {
                 //var deSa = {ty : tvp[na].nam , con : thTy}
                 //ty.push(deSa)
                 tezx = tezx.replace(vdv, "")
+                ttezx = tezx.replace(vdv, "")
             }
         }
         for (var s = 0; s < erv.length; s++) {
@@ -443,6 +483,7 @@ export default class Sent extends Component {
                 let vdv = new RegExp(erv[rn].eo, 'g');
                 //const thTy = x.length - x.replace(vdv, "").length
                 tezx = tezx.replace(vdv, "")
+                this.state.isColor ? ttezx = ttezx.replace(vdv, '<b class="deWor">' + erv[rn].eo + '</b>') : ttezx = ttezx.replace(vdv, '')
             } else if (erv[rn].ex === false && rv[rn] === true) {
                 for (var wd = 0; wd < erv[rn].eo.length; wd++) {
                     const wr = wd
@@ -450,11 +491,12 @@ export default class Sent extends Component {
                     let ao = new RegExp(wx[0], 'g');
                     if ((ao.test(tezx)) === true) {
                         tezx = tezx.replace(ao, wx[1])
+                        this.state.isColor ? ttezx = ttezx.replace(ao, '<b class="olWor"> ' + wx[0] + ' </b> <b class="oneWor"> ' + wx[1] + ' </b>') : ttezx = ttezx.replace(ao, wx[1])
                     }
                 }
             }
         }
-        let ttezx = tezx.replace(/\n/g, "<br />")
+        ttezx = ttezx.replace(/\n/g, "<br />")
         let el = tezx.length
         return [ttezx, tezx, el, ty]
         // 0 === <br />
@@ -638,26 +680,6 @@ export default class Sent extends Component {
             )
         }
     }
-    swiLis() {
-        if (this.state.swli === true) {
-            return (
-                <div className="listSwiDiv">
-                    <div className="listSwi">
-                        <div className="listSwiCon">
-                            <div className="lswItem">
-                                Font Size
-                        </div>
-                        </div>
-                        <div className="listSwiEnd">
-                            <div className="listSwiBack" onClick={() => { this.setState({ swli: false }) }}>
-                                <FontAwesomeIcon icon={faLongArrowAltLeft} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )
-        }
-    }
     thThisK() {
         if (this.tekal(true) === this.state.vnText) {
             this.setState({
@@ -670,6 +692,32 @@ export default class Sent extends Component {
                 valTex: this.tekal(true)
             })
         }
+    }
+    infoContainer(){
+        var itemsAr = []
+        var infoContainerItems = (x,y) => {
+            return (
+                <tr><td className="tdInfA"> {x} </td> <td className="tdInfB"> {y} </td></tr>
+            )
+        }
+        var infTextArea = [
+            {n : "أختيار طريقة عرض النص من الشمال الى اليمين أو العكس" , s : <FontAwesomeIcon icon={faAlignLeft} />},
+            {n : "أعادة التغييرات التي أجريت" , s : <FontAwesomeIcon icon={faUndoAlt} />},
+            {n : "تثبيت النص الحالي بغض النضر عن التغييرات التي تجري في الحقل الاول" , s :<FontAwesomeIcon icon={faThumbtack} />},
+            {n : "أضافة تأثيرات الالوان الى النص المعدل" , s :<FontAwesomeIcon icon={faPaintBrush} />}
+        ]
+        infTextArea.forEach(re =>{
+            var itTr = infoContainerItems(re.s,re.n)
+            itemsAr.push(itTr)
+        })
+        return (
+            <table className="textAreaInf">
+                <tbody><tr>
+                    <th> الرمز </th>
+                    <th> الاستخدام </th>
+                </tr>{itemsAr}</tbody>
+            </table>
+        )
     }
     render() {
         var ccThem = this.props.ccThem,
@@ -754,20 +802,23 @@ export default class Sent extends Component {
                                         <div className="apiChoose" onClick={() => this.chanDis()}>
                                             <FontAwesomeIcon icon={faPenAlt} className={this.state.disVew ? "apiChose" : chew() ? "apiunChose" : "apiunChoseQ"} />
                                         </div>
+                                        <div className="apiChoose" onClick={()=>{this.setState({isColor : !this.state.isColor})}}>
+                                            <FontAwesomeIcon icon={faPaintBrush} className={this.state.isColor ? "apiChose" : "apiunChose"} />
+                                        </div>
                                         <div className="apiChoose" onClick={() => this.thThisK()}>
                                             <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChose"} />
                                         </div>
                                         {cheq() ? <div className="apiChoose" onClick={() => this.clenEd()}><FontAwesomeIcon icon={faUndoAlt} className="apiChoseUndo" /></div> : ""}
                                     </div>
-                                    {/*<div className={this.state.classDivWait} onClick={() => { this.setState({ swli: !this.state.swli }) }}>
-                                        <FontAwesomeIcon icon={faEllipsisH} className={this.state.swli ? "lixs lixsT" : "lixs"} />
-                                    </div>*/}
+                                    <div className="apiChoose" onClick={() => { this.setState({ isInfo: !this.state.isInfo }) }}>
+                                        <FontAwesomeIcon icon={faInfoCircle} className={this.state.isInfo ? "apiChose" : "apiunChose"} />
+                                    </div>
                                 </div>
-                                {/*this.swiLis()*/}
                             </div>
-                            <div className="textArea">
+                            <div className="textArea" style={this.props.dirFontThm ? { direction: 'ltr' } : { direction: 'rtl' }}>
                                 {this.state.disVew ?
-                                    <TextareaAutosize className="areaPcP"
+                                    <TextareaAutosize
+                                        className={this.props.themFont ? "areaPcP largFont" : "areaPcP smallFont"}
                                         style={this.props.bThem ? this.ddrThem : this.lliThem}
                                         rows="4"
                                         placeholder="  "
@@ -777,7 +828,7 @@ export default class Sent extends Component {
                                         html={'<p className="textareap">' + this.tekal(false) + '</p>'}
                                         disabled={true}
                                         tagName='div'
-                                        className="areaPcP areaPlus"
+                                        className={this.props.themFont ? "areaPcP areaPlus largFont" : "areaPcP areaPlus smallFont"}
                                     />}
                             </div>
                             <div className="toolsBottomAreaPcs toolsBottomAreaPcsPro">
@@ -791,16 +842,22 @@ export default class Sent extends Component {
                         </div>
                     </label>
                 </div>
+                {this.state.isInfo ? this.infoContainer() : <div></div>}
                 <div className="redeyTextAreaInf">
                     <div className={this.props.bThem ? "redeyTextAreaInfTIT TextAreaDr TextAreaSDr" : "redeyTextAreaInfTIT TextAreaLi TextAreaSLi"}>
                         <div className="stolsConSec">
-                            <div className={this.props.bThem ? caseInfoPP() ? "casSett casSettHide" : "casSettShow" + "Dr" : caseInfoPP() ? "casSett casSettHide" : "casSett casSettShow"}>
+                            <div className={this.props.bThem ? caseInfoPP() ? "casSett casSettHide" : "casSettShow Dr" : caseInfoPP() ? "casSett casSettHide" : "casSett casSettShow"}>
                                 <FontAwesomeIcon icon={faAlignLeft} className="icTolsSett" />
                             </div>
-                            <div className="stolsCONTROLX">{this.state.isW ? " Input text information and control options. " : <div className="isWiteTextControal"></div>}</div>
+                            <div className="stolsCONTROLX">{this.state.isW ? "   Input text information and control options." : <div className="isWiteTextControal"></div>}</div>
+                        </div>
+                        <div className="areaControl" onClick={() => this.setState({ areaControl: !this.state.areaControl })}>
+                            <FontAwesomeIcon icon={this.state.areaControl ? faSortUp : faSortDown} className={this.state.areaControl ? "pshHSPPlus" : "pshHSD"} />
                         </div>
                     </div>
-                    {this.infTextEnter()}
+                    <div style={this.state.areaControl ? { display: 'none' } : { display: 'block' }}>
+                        {this.infTextEnter()}
+                    </div>
                 </div>
                 <div className={this.state.sorHs ? "psh pshS" : "psh pshH"}>
                     <div className="psEcTitle">

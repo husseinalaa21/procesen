@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faPenAlt, faThumbtack, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faEraser, faUnderline, faArrowAltCircleDown, faArrowCircleUp, faLongArrowAltLeft, faRocket, faArrowRight, faPaintBrush, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faPenAlt, faThumbtack, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faEraser, faUnderline, faArrowAltCircleDown, faArrowCircleUp, faLongArrowAltLeft, faRocket, faArrowRight, faPaintBrush, faInfoCircle, faTools } from '@fortawesome/free-solid-svg-icons'
 import ContentEditable from 'react-contenteditable'
 import TextareaAutosize from 'react-textarea-autosize';
 import Cookies from 'universal-cookie';
@@ -32,7 +32,6 @@ export default class Sent extends Component {
         this.state.isColor = true
         this._ctxvcr = this._ctxvnr.bind(this)
         this.state.his = []
-        this.state.isInfo = false
         // ...
 
         this.state.obp = []
@@ -44,6 +43,8 @@ export default class Sent extends Component {
         // To
         this.state.shMoTo = false
         this.state.isclc = false
+        this.lsBlack = ['[', ']']
+        this.state.mesAdsList = ""
     }
     xs_ert() {
         fetch("https://server.procesen.com/pc/procsentEn")
@@ -260,6 +261,7 @@ export default class Sent extends Component {
                             </table>
                         </div>
                         <div className="conLisCr">
+                        <div> {this.state.mesAdsList} </div>
                             <div className="conLisCrSxTi">
                                 <div className={this.state.isclc ? "conLisCrTiA conLisCrTiT" : "conLisCrTiA conLisCrTiFalse"} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}> Replace element with element </div>
                                 <div className={this.state.isclc ? "conLisCrTiB conLisCrTiFalse" : "conLisCrTiB conLisCrTiT"} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}>Delete an item</div>
@@ -335,6 +337,10 @@ export default class Sent extends Component {
     adAdvSet(x, y, u) {
         var uez = this.state.ezVbn
         var iez = this.state.ev
+        if(x.includes(this.lsBlack[0]) === true || x.includes(this.lsBlack[1]) === true || y.includes(this.lsBlack[0]) === true || y.includes(this.lsBlack[1]) === true){
+            this.setState({mesAdsList : <div className="wrongMessLis"> <FontAwesomeIcon icon={faTools} /> One or both of the entered values are invalid. The value you are trying to enter may already be in the system options above .</div>})
+            return false
+        }
         if (this.state.isclc === true) {
             if (x.length > 0 && y.length > 0) {
                 let ise = false
@@ -361,6 +367,9 @@ export default class Sent extends Component {
                         newLisMy.push(eqa)
                         cookies.set('meLis', newLisMy);
                     }
+                    this.setState({mesAdsList : ""})
+                } else {
+                    this.setState({mesAdsList : <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{fontSize : '13px'}}/> It appears that the value or name is already in use. Please choose a new name or a new valid value .  </div>})
                 }
             }
         } else {
@@ -388,6 +397,9 @@ export default class Sent extends Component {
                         newLisMy.push(eqa)
                         cookies.set('meLis', newLisMy);
                     }
+                    this.setState({mesAdsList : ""})
+                } else {
+                    this.setState({mesAdsList : <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{fontSize : '13px'}}/> It appears that the value or name is already in use. Please choose a new name or a new valid value . </div>})
                 }
             }
         }
@@ -465,38 +477,43 @@ export default class Sent extends Component {
             ttezx = x,
             ty = [];
 
-        for (var a = 0; a < tvp.length; a++) {
-            const na = a
-            if (tbo[na] === true) {
-                let vdv = new RegExp(tvp[na].exdz, 'g');
-                //var thTy = tezx.match(vdv)
-                //const thTy = x.length - x.replace(vdv, "").length
-                //var deSa = {ty : tvp[na].nam , con : thTy}
-                //ty.push(deSa)
-                tezx = tezx.replace(vdv, "")
-                ttezx = tezx.replace(vdv, "")
+        try {
+            ttezx = ttezx.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
+            for (var a = 0; a < tvp.length; a++) {
+                const na = a
+                if (tbo[na] === true) {
+                    let vdv = new RegExp(tvp[na].exdz, 'g');
+                    //var thTy = tezx.match(vdv)
+                    //const thTy = x.length - x.replace(vdv, "").length
+                    //var deSa = {ty : tvp[na].nam , con : thTy}
+                    //ty.push(deSa)
+                    tezx = tezx.replace(vdv, "")
+                    ttezx = tezx.replace(vdv, "")
+                }
             }
-        }
-        for (var s = 0; s < erv.length; s++) {
-            const rn = s
-            if (erv[rn].ex === true && rv[rn] === true) {
-                let vdv = new RegExp(erv[rn].eo, 'g');
-                //const thTy = x.length - x.replace(vdv, "").length
-                tezx = tezx.replace(vdv, "")
-                this.state.isColor ? ttezx = ttezx.replace(vdv, '<b class="deWor">' + erv[rn].eo + '</b>') : ttezx = ttezx.replace(vdv, '')
-            } else if (erv[rn].ex === false && rv[rn] === true) {
-                for (var wd = 0; wd < erv[rn].eo.length; wd++) {
-                    const wr = wd
-                    let wx = erv[rn].eo[wr]
-                    let ao = new RegExp(wx[0], 'g');
-                    if ((ao.test(tezx)) === true) {
-                        tezx = tezx.replace(ao, wx[1])
-                        this.state.isColor ? ttezx = ttezx.replace(ao, '<b class="olWor"> ' + wx[0] + ' </b> <b class="oneWor"> ' + wx[1] + ' </b>') : ttezx = ttezx.replace(ao, wx[1])
+            for (var s = 0; s < erv.length; s++) {
+                const rn = s
+                if (erv[rn].ex === true && rv[rn] === true) {
+                    let vdv = new RegExp(erv[rn].eo, 'g');
+                    //const thTy = x.length - x.replace(vdv, "").length
+                    tezx = tezx.replace(vdv, "")
+                    this.state.isColor ? ttezx = ttezx.replace(vdv, '<b class="deWor">' + erv[rn].eo + '</b>') : ttezx = ttezx.replace(vdv, '')
+                } else if (erv[rn].ex === false && rv[rn] === true) {
+                    for (var wd = 0; wd < erv[rn].eo.length; wd++) {
+                        const wr = wd
+                        let wx = erv[rn].eo[wr]
+                        let ao = new RegExp(wx[0], 'g');
+                        if ((ao.test(tezx)) === true) {
+                            tezx = tezx.replace(ao, wx[1])
+                            this.state.isColor ? ttezx = ttezx.replace(ao, '<b class="olWor">' + wx[0] + '</b> <b class="oneWor">' + wx[1] + '</b>') : ttezx = ttezx.replace(ao, wx[1])
+                        }
                     }
                 }
             }
+        } catch(err) {
+            tezx = " ... "
+            ttezx = "<div class='errTextArea'> A problem occurred, there is an error in the input process, either with the input elements, or you entered an invalid value, or you tried to enter invalid functions to delete or modify, a notification has been sent to the programmers and they will work on solving the problem soon . </div> <div class='listErrInfo'> <p class='titleErr'> Please follow one of the following options : </p> <ul class='ulErr'> <li>Please check the text settings entered by you . </li> <li> To Reload page <a href='/'>click here</a> </li></ul> </div>"
         }
-        ttezx = ttezx.replace(/\n/g, "<br />")
         let el = tezx.length
         return [ttezx, tezx, el, ty]
         // 0 === <br />
@@ -571,7 +588,7 @@ export default class Sent extends Component {
         if (this.vxTextvx()[0] === this.state.lValEn) {
             if (teEd.length > 0) {
                 if (b === false) {
-                    return teEd.replace(/\n/g, "<br />")
+                    return teEd.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
                 } else {
                     return teEd
                 }
@@ -693,32 +710,6 @@ export default class Sent extends Component {
             })
         }
     }
-    infoContainer(){
-        var itemsAr = []
-        var infoContainerItems = (x,y) => {
-            return (
-                <tr><td className="tdInfA"> {x} </td> <td className="tdInfB"> {y} </td></tr>
-            )
-        }
-        var infTextArea = [
-            {n : "أختيار طريقة عرض النص من الشمال الى اليمين أو العكس" , s : <FontAwesomeIcon icon={faAlignLeft} />},
-            {n : "أعادة التغييرات التي أجريت" , s : <FontAwesomeIcon icon={faUndoAlt} />},
-            {n : "تثبيت النص الحالي بغض النضر عن التغييرات التي تجري في الحقل الاول" , s :<FontAwesomeIcon icon={faThumbtack} />},
-            {n : "أضافة تأثيرات الالوان الى النص المعدل" , s :<FontAwesomeIcon icon={faPaintBrush} />}
-        ]
-        infTextArea.forEach(re =>{
-            var itTr = infoContainerItems(re.s,re.n)
-            itemsAr.push(itTr)
-        })
-        return (
-            <table className="textAreaInf">
-                <tbody><tr>
-                    <th> الرمز </th>
-                    <th> الاستخدام </th>
-                </tr>{itemsAr}</tbody>
-            </table>
-        )
-    }
     render() {
         var ccThem = this.props.ccThem,
             xtexs = this.props.xtex;
@@ -810,8 +801,7 @@ export default class Sent extends Component {
                                         </div>
                                         {cheq() ? <div className="apiChoose" onClick={() => this.clenEd()}><FontAwesomeIcon icon={faUndoAlt} className="apiChoseUndo" /></div> : ""}
                                     </div>
-                                    <div className="apiChoose" onClick={() => { this.setState({ isInfo: !this.state.isInfo }) }}>
-                                        <FontAwesomeIcon icon={faInfoCircle} className={this.state.isInfo ? "apiChose" : "apiunChose"} />
+                                    <div className="apiChoose">
                                     </div>
                                 </div>
                             </div>
@@ -842,7 +832,6 @@ export default class Sent extends Component {
                         </div>
                     </label>
                 </div>
-                {this.state.isInfo ? this.infoContainer() : <div></div>}
                 <div className="redeyTextAreaInf">
                     <div className={this.props.bThem ? "redeyTextAreaInfTIT TextAreaDr TextAreaSDr" : "redeyTextAreaInfTIT TextAreaLi TextAreaSLi"}>
                         <div className="stolsConSec">

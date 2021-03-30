@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo,faInfoCircle, faPaintBrush, faThumbtack, faUndoAlt ,faPenAlt} from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize';
 import Sent from './sent';
 
 const styleFormPrcsDarkV = { backgroundColor: '#02101f', color: '#eee', border: '1.4px solid #02101f', borderRadius: '9px' }
 const styleFormPrcsLightV = { backgroundColor: 'rgb(243, 243, 243)', border: '1.4px solid rgb(204, 202, 202)', borderRadius: '9px' }
 
-const styleFormPrcsTextAreaLightV = { color: '#393e46', backgroundColor: 'transparent', margin: 'auto', width: '100%',overflow: "hidden", wordWrap: "break-word", resize: "none", height: "160px" }
-const styleFormPrcsTextAreaDarkV = { color: '#f7f7f7', backgroundColor: 'transparent', margin: 'auto', width: '100%',  overflow: "hidden", wordWrap: "break-word", resize: "none", height: "160px" }
+const styleFormPrcsTextAreaLightV = { color: '#393e46', backgroundColor: 'transparent', margin: 'auto', width: '100%', overflow: "hidden", wordWrap: "break-word", resize: "none", height: "160px" }
+const styleFormPrcsTextAreaDarkV = { color: '#f7f7f7', backgroundColor: 'transparent', margin: 'auto', width: '100%', overflow: "hidden", wordWrap: "break-word", resize: "none", height: "160px" }
 
 export default class Proc extends Component {
     constructor(props) {
@@ -22,6 +22,7 @@ export default class Proc extends Component {
         this.isStaProcs = false
         // < />
         this.caseXtext = false
+        this.state.isInfo = false
 
         // tols state ..
         this.apiTrashAlt = false
@@ -55,18 +56,6 @@ export default class Proc extends Component {
             this.setState({ didOve: false })
         }
     }
-
-    // tols ..
-    /*doApiTrashAlt() {
-        if (this.state.apiTrashAlt === true) {
-            this.setState({
-                dde : true,
-                apiTrashAlt: false,
-                didOve: false,
-                len: 0
-            })
-        }
-    }*/
     cOveText() {
         this.setState({ didOve: false })
         this.setState({ overTextNumX: 0 })
@@ -82,6 +71,34 @@ export default class Proc extends Component {
             this.tPcsWor(namAdv)
         }, 100);
     }
+    infoContainer() {
+        var itemsAr = []
+        var infoContainerItems = (x, y) => {
+            return (
+                <tr className="trTbIf"><td className="tdInfA"> {x} </td> <td className="tdInfB"> {y} </td></tr>
+            )
+        }
+        var infTextArea = [
+            { n: " تكبير الاحرف . ", s: <FontAwesomeIcon icon={faBold} /> },
+            { n: " اختر كيفية عرض النص من اليسار إلى اليمين أو العكس .", s: <FontAwesomeIcon icon={faAlignLeft} /> },
+            { n: " استعادة التغييرات التي تم إجراؤها . ", s: <FontAwesomeIcon icon={faUndoAlt} /> },
+            { n: " يثبت النص الحالي بغض النظر عن التغييرات التي تم إجراؤها في الحقل الأول . ", s: <FontAwesomeIcon icon={faThumbtack} /> },
+            { n: "أضف تأثيرات لونية إلى النص المعدل .", s: <FontAwesomeIcon icon={faPaintBrush} /> },
+            { n: "تحرير النص المعدل .", s: <FontAwesomeIcon icon={faPenAlt} /> }
+        ]
+        infTextArea.forEach(re => {
+            var itTr = infoContainerItems(re.s, re.n)
+            itemsAr.push(itTr)
+        })
+        return (
+            <table className="textAreaInf texInfTabLi">
+                <tbody><tr>
+                    <th className="tfTbTh"> الرمز </th>
+                    <th className="tfTbTh"> الاستخدام </th>
+                </tr>{itemsAr}</tbody>
+            </table>
+        )
+    }
     render() {
         return (
             <div className="MainProcsent infoStartP ar_text">
@@ -94,32 +111,32 @@ export default class Proc extends Component {
                                     <div className="titleTextArea "> أدخل في هذا القسم النص الذي ترغب بمعالجته  . <a href="#sec-how-use"> معرفة المزيد </a> </div>
                                 </div>
                                 <div className="areaPcc" style={this.props.them ? this.styleFormPrcsDark : this.styleFormPrcsLight}>
-                                    <div className="secOntext" style={{fontSize : '17px'}}>
+                                    <div className="secOntext" style={{ fontSize: '17px' }}>
                                         <div className="toolsMenuAreaPcs">
                                             <div className="tolsMainTextArea">
-                                                <div onClick={() => { this.setState({apiBlod : !this.state.apiBlod}) }}>
+                                                <div onClick={() => { this.setState({ apiBlod: !this.state.apiBlod }) }}>
                                                     <FontAwesomeIcon icon={faBold} className={this.state.apiBlod ? "apiChose" : "apiunChose"} />
                                                 </div>
                                                 <div onClick={() => { navigator.clipboard.writeText(this.TextPcs) }}>
                                                     <FontAwesomeIcon icon={faCopy} className={this.apicopy ? "apiChose" : "apiunChose"} />
                                                 </div>
-                                                <div onClick={() => {this.setState({dirFont : true}) }}>
+                                                <div onClick={() => { this.setState({ dirFont: true }) }}>
                                                     <FontAwesomeIcon icon={faAlignLeft} className={this.state.dirFont ? "apiChose" : "apiunChose"} />
                                                 </div>
-                                                <div onClick={() => {this.setState({dirFont : false}) }}>
+                                                <div onClick={() => { this.setState({ dirFont: false }) }}>
                                                     <FontAwesomeIcon icon={faAlignRight} className={this.state.dirFont ? "apiunChose" : "apiChose"} />
                                                 </div>
-                                                
+
                                                 {/*<div onClick={() => this.doApiTrashAlt()}>
                                                     <FontAwesomeIcon icon={faTrashAlt} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"} />
                                                 </div>*/}
                                             </div>
-                                            <div>
-
+                                            <div className="apiChoose" onClick={() => { this.setState({ isInfo: !this.state.isInfo }) }}>
+                                                <FontAwesomeIcon icon={faInfoCircle} className={this.state.isInfo ? "apiChose" : "apiunChose"} />
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="textArea" style={this.state.dirFont ? {direction : 'ltr'} :{direction : 'rtl'} }>
+                                    <div className="textArea" style={this.state.dirFont ? { direction: 'ltr' } : { direction: 'rtl' }}>
                                         <TextareaAutosize
                                             className={this.state.apiBlod ? "areaPcP largFont" : "areaPcP smallFont"}
                                             style={this.props.them ? this.styleFormPrcsTextAreaDark : this.styleFormPrcsTextAreaLight}
@@ -149,7 +166,8 @@ export default class Proc extends Component {
                                 </div>
                             </label>
                         </div>
-                        <Sent ccThem={this.props.them} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.TextPcs} bThem={this.props.them} themFont={this.state.apiBlod} dirFontThm = {this.state.dirFont} />
+                        {this.state.isInfo ? this.infoContainer() : <div></div>}
+                        <Sent ccThem={this.props.them} drThem={styleFormPrcsDarkV} liThem={styleFormPrcsLightV} ddrThem={styleFormPrcsTextAreaDarkV} lliThem={styleFormPrcsTextAreaLightV} xtex={this.state.TextPcs} bThem={this.props.them} themFont={this.state.apiBlod} dirFontThm={this.state.dirFont} />
                     </div>
                 </div>
             </div>

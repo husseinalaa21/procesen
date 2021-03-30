@@ -1348,3 +1348,73 @@ td.edExCf {
   background-color: #def1ef;
   border-bottom: 1px solid rgba(79,192,141,0.5);
 }
+/* info input */
+.textAreaInf {
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 10px;
+  border-collapse: collapse !important;
+}
+.textAreaInf tr {
+  width: 50%;
+  text-align: left;
+  padding: 10px;
+}
+.textAreaInf td ,.textAreaInf th {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+.tfTbTh {
+  padding-bottom: 14px;
+  padding-right: 7px;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.tdInfA {
+  color: #1a73e8;
+  text-align: center;
+  background-color: #e8e8e8;
+}
+.tdInfB {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.texInfTabLi {
+  background-color: rgba(238, 237, 237, 0.877);
+  color: #3b3b3b;
+  border: 1px solid rgba(228, 228, 228, 0.877);
+}
+
+.errTextArea {
+  background-color: rgba(238, 237, 237, 0.877);
+  padding: 10px;
+  list-style-type: none;
+  word-wrap: break-word;
+  width: 90% !important;
+  margin: auto !important;
+  border-radius: 4px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.listErrInfo {
+  width: 70% !important;
+  margin: auto;
+  margin-top: 10px;
+  background-color: rgba(238, 237, 237, 0.877);
+  padding: 10px;
+  border-radius: 4px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.ulErr {
+  margin-top: 5px;
+}
+.wrongMessLis {
+  background-color: #d3e0ea;
+  padding: 10px;
+  max-width: 90%;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  border-radius: 4px;
+  color: #383838;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

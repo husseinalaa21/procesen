@@ -14,33 +14,33 @@ export default function App() {
     const [srcc, setsrcc] = useState(false)
     const [copThisLin, setcopThisLin] = useState(false)
     var themLd = isNight ? "barDark" : "barLight"
-    var tue = window.location.protocol+"//"+window.location.hostname+"/"
+    var tue = window.location.protocol + "//" + window.location.hostname + "/"
     function tolsMenu() {
         if (clickNav) {
             return (
-              <div className="navMain">
-                <div className="secTopHeader">
-                  <a className="secHh scb" href="#sec-definition-site"> About us </a>
-                  <a className="secHh scw" href="#sec-policy-site"> Terms of use </a>
-                  <a className="secHh scw" href="https://callus.procesen.com/callus-en/index.html"> Connect with us  </a>
-                  <a className="secHh scb" href="https://www.paypal.com/paypalme/husseinalaa2000"> Our support <FontAwesomeIcon icon={faHandHoldingUsd} className="supUs"/></a>
-                </div>
-                <div className="secLinksTop ">
-                  <div className="_soceLi">
-                    <a href="https://web.facebook.com/procesen" className="_face"> <i className="fa fa-facebook" ></i> </a>
-                    <a href="https://twitter.com/procesen_" className="_twit"> <i className="fa fa-twitter" ></i> </a>
-                    <a href="mailto:procesen@gmail.com" className="__email"> <i className="fa fa-envelope" ></i> </a>
-                    <div className="_lin" onClick={()=>{setcopThisLin(!copThisLin)}}> <i className="fa fa-link"></i> </div>
-                  </div>
-                  <div className="copThis" style={copThisLin ? {display : "block"} : {display : "none"}}>
-                    <div className="texCopThis"> Copy this website link please </div>
-                    <div className="sopThisCon">
-                      <div className="icoCopThis"> <i className="fa fa-link"></i> </div>
-                      <div className="LiCopThis"> {tue} </div>
+                <div className="navMain">
+                    <div className="secTopHeader">
+                        <a className="secHh scb" href="#sec-definition-site"> About us </a>
+                        <a className="secHh scw" href="#sec-policy-site"> Terms of use </a>
+                        <a className="secHh scw" href="https://callus.procesen.com/callus-en/index.html"> Connect with us  </a>
+                        <a className="secHh scb" href="https://www.paypal.com/paypalme/husseinalaa2000"> Our support <FontAwesomeIcon icon={faHandHoldingUsd} className="supUs" /></a>
                     </div>
-                  </div>
+                    <div className="secLinksTop ">
+                        <div className="_soceLi">
+                            <a href="https://web.facebook.com/procesen" className="_face"> <i className="fa fa-facebook" ></i> </a>
+                            <a href="https://twitter.com/procesen_" className="_twit"> <i className="fa fa-twitter" ></i> </a>
+                            <a href="mailto:procesen@gmail.com" className="__email"> <i className="fa fa-envelope" ></i> </a>
+                            <div className="_lin" onClick={() => { setcopThisLin(!copThisLin) }}> <i className="fa fa-link"></i> </div>
+                        </div>
+                        <div className="copThis" style={copThisLin ? { display: "block" } : { display: "none" }}>
+                            <div className="texCopThis"> Copy this website link please </div>
+                            <div className="sopThisCon">
+                                <div className="icoCopThis"> <i className="fa fa-link"></i> </div>
+                                <div className="LiCopThis"> {tue} </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             )
         } if (clickNavLang) {
             return (
@@ -66,9 +66,9 @@ export default function App() {
                 <div className={srcc ? "header sha" : "header normHeader"}>
                     <div className="header_main">
                         <div className="sectionsNavFlex">
-                            <div className="searchToggThem" onClick={() => { isNightX(!isNight) }}>
+                            {/*<div className="searchToggThem" onClick={() => { isNightX(!isNight) }}>
                                 <FontAwesomeIcon icon={faMoon} style={isNight ? { marginTop: '10px', color: ' rgb(223, 180, 39)', fontSize: '17px', transition: '0.4s' } : { marginTop: '10px', color: ' #30475ecc', fontSize: '17px', transition: '0.4s' }} />
-                            </div>
+                            </div>*/}
 
                             <div className="searchChangeLang" onClick={() => {
                                 setClickNavLang(!clickNavLang)

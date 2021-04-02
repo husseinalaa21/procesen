@@ -409,10 +409,8 @@ export default class Sent extends Component {
     }
     // Call Main
     cleanUp() {
-        if(this.state.isH !== true){
-            this.feediT()
-            this.resLisAdv()
-        }
+        this.feediT()
+        this.resLisAdv()
     }
     // End Call Main
 
@@ -434,10 +432,6 @@ export default class Sent extends Component {
     thThisK() {
         var isH = this.state.isH
         if (isH === true) {
-            // call
-            this.feediT()
-            this.resLisAdv()
-            // .
             this.setState({
                 isH: false
             })

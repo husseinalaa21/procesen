@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo,faInfoCircle, faPaintBrush, faThumbtack, faUndoAlt ,faPenAlt} from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo,faInfoCircle, faPaintBrush, faThumbtack, faUndoAlt ,faPenAlt,faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize';
 import Sent from './sent';
 
@@ -46,7 +46,7 @@ export default class Proc extends Component {
                 len: 0
             })
         }
-        if (x.length > 5000) {
+        /*if (x.length > 5000) {
             var xNum = x.length - 5000
             var ovText = x.slice(5000, x.length);
             this.setState({
@@ -56,15 +56,17 @@ export default class Proc extends Component {
             })
         } else {
             this.setState({ didOve: false })
-        }
+        }*/
     }
-    cOveText() {
-        this.setState({ didOve: false })
-        this.setState({ overTextNumX: 0 })
-        this.setState({ overText: '' })
+    /*cOveText() {
         var orText = this.state.TextPcs
         var onText = orText.slice(0, 5000);
-        this.setState({ TextPcs: onText })
+        this.setState({ didOve: false , overTextNumX: 0 , overText: '' , TextPcs: onText })
+    }*/
+    doApiTrashAlt (){
+        this.setState({
+            TextPcs : "",len : 0
+        })
     }
     infoContainer() {
         var itemsAr = []
@@ -121,10 +123,9 @@ export default class Proc extends Component {
                                                 <div onClick={() => { this.setState({ dirFont: false }) }}>
                                                     <FontAwesomeIcon icon={faAlignRight} className={this.state.dirFont ? "apiunChose" : "apiChose"} />
                                                 </div>
-
-                                                {/*<div onClick={() => this.doApiTrashAlt()}>
+                                                <div onClick={() => this.doApiTrashAlt()}>
                                                     <FontAwesomeIcon icon={faTrashAlt} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"} />
-                                                </div>*/}
+                                                </div>
                                             </div>
                                             <div className="apiChoose" onClick={() => { this.setState({ isInfo: !this.state.isInfo }) }}>
                                                 <FontAwesomeIcon icon={faInfoCircle} className={this.state.isInfo ? "apiChose" : "apiunChose"} />
@@ -153,7 +154,7 @@ export default class Proc extends Component {
                                     </div>
                                     <div className="toolsBottomAreaPcs">
                                         <div className="textAreaBottom">
-                                            5000 / <mark className={this.state.didOve ? "marNumEnMain marNumX" : "marNumEnMain marNumN"}> {this.state.len} </mark>
+                                            Length : {this.state.len} {/*<mark className={this.state.didOve ? "marNumEnMain marNumX" : "marNumEnMain marNumN"}> {this.state.len} </mark>*/}
                                         </div>
                                         <div className="textAreaBottomLogo">
                                             Powered by procsent

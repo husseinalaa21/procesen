@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo,faInfoCircle, faPaintBrush, faThumbtack, faUndoAlt ,faPenAlt} from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo, faInfoCircle, faPaintBrush, faThumbtack, faUndoAlt, faPenAlt, faTrashAlt, faEraser, faToolbox, faBars } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize';
 import Sent from './sent';
 
@@ -13,16 +13,16 @@ const styleFormPrcsTextAreaDarkV = { color: '#f7f7f7', backgroundColor: 'transpa
 export default class Proc extends Component {
     constructor(props) {
         super(props);
-        this.state = { len: 0, TextPcs: "", didOve: false, overTextNumX: '0' };
+        this.state = { len: 0, TextPcs: "", didOve: false, overTextNumX: '0', toolSet: false };
         this.styleFormPrcsDark = styleFormPrcsDarkV
         this.styleFormPrcsLight = styleFormPrcsLightV
         this.styleFormPrcsTextAreaLight = styleFormPrcsTextAreaLightV
         this.styleFormPrcsTextAreaDark = styleFormPrcsTextAreaDarkV
 
         this.isStaProcs = false
+        this.state.isInfo = false
         // < />
         this.caseXtext = false
-        this.state.isInfo = false
 
         // tols state ..
         this.apiTrashAlt = false
@@ -30,8 +30,10 @@ export default class Proc extends Component {
         this.dde = false
         this.state.apiBlod = false
         this.state.dirFont = false
+        this.prcText = this.tPcsWor.bind(this)
     }
-    tPcsWor(x) {
+    tPcsWor(es) {
+        var x = es.target.value
         this.setState({ TextPcs: x })
         if (x.length > 0) {
             this.setState({
@@ -44,7 +46,7 @@ export default class Proc extends Component {
                 len: 0
             })
         }
-        if (x.length > 5000) {
+        /*if (x.length > 5000) {
             var xNum = x.length - 5000
             var ovText = x.slice(5000, x.length);
             this.setState({
@@ -54,22 +56,17 @@ export default class Proc extends Component {
             })
         } else {
             this.setState({ didOve: false })
-        }
+        }*/
     }
-    cOveText() {
-        this.setState({ didOve: false })
-        this.setState({ overTextNumX: 0 })
-        this.setState({ overText: '' })
+    /*cOveText() {
         var orText = this.state.TextPcs
         var onText = orText.slice(0, 5000);
-        this.setState({ TextPcs: onText })
-    }
-    ppt(x) {
-        if (this.timeout) clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => {
-            var namAdv = x.target.value
-            this.tPcsWor(namAdv)
-        }, 100);
+        this.setState({ didOve: false , overTextNumX: 0 , overText: '' , TextPcs: onText })
+    }*/
+    doApiTrashAlt() {
+        this.setState({
+            TextPcs: "", len: 0, apiTrashAlt: false
+        })
     }
     infoContainer() {
         var itemsAr = []
@@ -111,28 +108,38 @@ export default class Proc extends Component {
                                     <div className="titleTextArea "> أدخل في هذا القسم النص الذي ترغب بمعالجته  . <a href="#sec-how-use"> معرفة المزيد </a> </div>
                                 </div>
                                 <div className="areaPcc" style={this.props.them ? this.styleFormPrcsDark : this.styleFormPrcsLight}>
-                                    <div className="secOntext" style={{ fontSize: '17px' }}>
+                                    <div className="secOntext">
                                         <div className="toolsMenuAreaPcs">
                                             <div className="tolsMainTextArea">
-                                                <div onClick={() => { this.setState({ apiBlod: !this.state.apiBlod }) }}>
-                                                    <FontAwesomeIcon icon={faBold} className={this.state.apiBlod ? "apiChose" : "apiunChose"} />
-                                                </div>
                                                 <div onClick={() => { navigator.clipboard.writeText(this.TextPcs) }}>
                                                     <FontAwesomeIcon icon={faCopy} className={this.apicopy ? "apiChose" : "apiunChose"} />
                                                 </div>
-                                                <div onClick={() => { this.setState({ dirFont: true }) }}>
-                                                    <FontAwesomeIcon icon={faAlignLeft} className={this.state.dirFont ? "apiChose" : "apiunChose"} />
+                                                <div onClick={() => this.doApiTrashAlt()}>
+                                                    <FontAwesomeIcon icon={faEraser} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"} />
                                                 </div>
-                                                <div onClick={() => { this.setState({ dirFont: false }) }}>
-                                                    <FontAwesomeIcon icon={faAlignRight} className={this.state.dirFont ? "apiunChose" : "apiChose"} />
-                                                </div>
-
-                                                {/*<div onClick={() => this.doApiTrashAlt()}>
-                                                    <FontAwesomeIcon icon={faTrashAlt} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"} />
-                                                </div>*/}
                                             </div>
-                                            <div className="apiChoose" onClick={() => { this.setState({ isInfo: !this.state.isInfo }) }}>
-                                                <FontAwesomeIcon icon={faInfoCircle} className={this.state.isInfo ? "apiChose" : "apiunChose"} />
+                                            <div className="tolsSecAreaPcs">
+                                                <div className="tolsSetText">
+                                                    {this.state.toolSet ?
+                                                        <div className="containerTols">
+                                                            <div onClick={() => { this.setState({ apiBlod: !this.state.apiBlod }) }}>
+                                                                <FontAwesomeIcon icon={faBold} className={this.state.apiBlod ? "toolSetApiT" : "toolSetApi"} />
+                                                            </div>
+                                                            <div onClick={() => { this.setState({ dirFont: true }) }}>
+                                                                <FontAwesomeIcon icon={faAlignLeft} className={this.state.dirFont ? "toolSetApiT" : "toolSetApi"} />
+                                                            </div>
+                                                            <div onClick={() => { this.setState({ dirFont: false }) }}>
+                                                                <FontAwesomeIcon icon={faAlignRight} className={this.state.dirFont ? "toolSetApi" : "toolSetApiT"} />
+                                                            </div>
+                                                        </div>
+                                                        : "" }
+                                                        <div className={this.state.toolSet ? "MainTolsSet MainTolsSetT" : "MainTolsSet MainTolsSetF"}>
+                                                            <FontAwesomeIcon icon={faBars} onClick={() => this.setState({ toolSet: !this.state.toolSet })} />
+                                                        </div>
+                                                </div>
+                                                <div className="apiChoose" onClick={() => { this.setState({ isInfo: !this.state.isInfo }) }}>
+                                                    <FontAwesomeIcon icon={faInfo} className={this.state.isInfo ? "apiChose" : "apiunChose"} />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -141,26 +148,27 @@ export default class Proc extends Component {
                                             className={this.state.apiBlod ? "areaPcP largFont" : "areaPcP smallFont"}
                                             style={this.props.them ? this.styleFormPrcsTextAreaDark : this.styleFormPrcsTextAreaLight}
                                             rows="4"
-                                            placeholder=" اكتب هنا .."
-                                            onChange={(x) => { this.ppt(x) }}
-                                            onPaste={(x) => this.ppt(x)} />
+                                            placeholder=" اكتب هنا .. "
+                                            onChange={this.prcText}
+                                            onPaste={this.prcText}
+                                            value={this.state.TextPcs} />
                                         {/*this.state.didOve ?
-                                            <div className="oveTextWrong">
-                                                <div className="titleOverText">
-                                                    <div className="icoTitleOverText"> <FontAwesomeIcon icon={faExclamationTriangle} /> </div>
-                                                    <div className="textTitleOverText"> تم تجاوز العدد المسموح به , ينبغي أزالة {this.state.overTextNumX} حرف </div>
-                                                </div>
-                                                <div className="containerOverTextCovert">
-                                                    <div className="containerOverText">{this.state.overText} <mark className="remoOveText" onClick={() => this.cOveText()}>[-]</mark></div>
-                                                </div>
-                                        </div> : ""*/}
+                                                <div className="oveTextWrong">
+                                                    <div className="titleOverText">
+                                                        <div className="icoTitleOverText"> <FontAwesomeIcon icon={faExclamationTriangle} /> </div>
+                                                        <div className="textTitleOverText"> تم تجاوز العدد المسموح به , ينبغي أزالة {this.state.overTextNumX} حرف </div>
+                                                    </div>
+                                                    <div className="containerOverTextCovert">
+                                                        <div className="containerOverText">{this.state.overText} <mark className="remoOveText" onClick={() => this.cOveText()}>[-]</mark></div>
+                                                    </div>
+                                            </div> : ""*/}
                                     </div>
                                     <div className="toolsBottomAreaPcs">
                                         <div className="textAreaBottom">
-                                            5000 / <mark className={this.state.didOve ? "marNumEnMain marNumX" : "marNumEnMain marNumN"}>{this.state.len}</mark>
+                                            عدد الاحرف : {this.state.len} {/*<mark className={this.state.didOve ? "marNumEnMain marNumX" : "marNumEnMain marNumN"}> {this.state.len} </mark>*/}
                                         </div>
                                         <div className="textAreaBottomLogo">
-                                            Powered by procesen
+                                            Powered by procsent
                                         </div>
                                     </div>
                                 </div>

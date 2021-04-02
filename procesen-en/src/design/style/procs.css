@@ -1320,13 +1320,7 @@ td.edExCf {
   background-color: rgba(245, 167, 153, 0.863);
   color: brown;
 }
-.coNads {
-  display: flex;
-  padding: 12px;
-  background-color: #ece3d1ec;
-  border-radius: 3px;
-  margin-bottom: 5px;
-}
+/* coNads has been deleted! */
 .deWor {
   padding-left: 3px;
   padding-right: 3px;

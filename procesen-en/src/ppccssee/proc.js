@@ -30,8 +30,10 @@ export default class Proc extends Component {
         this.dde = false
         this.state.apiBlod = false
         this.state.dirFont = true
+        this.prcText = this.tPcsWor.bind(this)
     }
-    tPcsWor(x) {
+    tPcsWor(es) {
+        var x = es.target.value
         this.setState({ TextPcs: x })
         if (x.length > 0) {
             this.setState({
@@ -63,13 +65,6 @@ export default class Proc extends Component {
         var orText = this.state.TextPcs
         var onText = orText.slice(0, 5000);
         this.setState({ TextPcs: onText })
-    }
-    ppt(x) {
-        if (this.timeout) clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => {
-            var namAdv = x.target.value
-            this.tPcsWor(namAdv)
-        }, 100);
     }
     infoContainer() {
         var itemsAr = []
@@ -142,8 +137,9 @@ export default class Proc extends Component {
                                             style={this.props.them ? this.styleFormPrcsTextAreaDark : this.styleFormPrcsTextAreaLight}
                                             rows="4"
                                             placeholder=" write here .. "
-                                            onChange={(x) => { this.ppt(x) }}
-                                            onPaste={(x) => this.ppt(x)} />
+                                            onChange={this.prcText}
+                                            onPaste={this.prcText}
+                                            value={this.state.TextPcs} />
                                         {/*this.state.didOve ?
                                                 <div className="oveTextWrong">
                                                     <div className="titleOverText">

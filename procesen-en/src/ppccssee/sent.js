@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faPenAlt, faThumbtack, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faEraser, faUnderline, faArrowAltCircleDown, faArrowCircleUp, faLongArrowAltLeft, faRocket, faArrowRight, faPaintBrush, faInfoCircle, faTools } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faPenAlt, faThumbtack, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faEraser, faUnderline, faArrowAltCircleDown, faArrowCircleUp, faLongArrowAltLeft, faRocket, faArrowRight, faPaintBrush, faInfoCircle, faTools, faPalette, faCircleNotch, faDotCircle } from '@fortawesome/free-solid-svg-icons'
 import ContentEditable from 'react-contenteditable'
 import TextareaAutosize from 'react-textarea-autosize';
 import Cookies from 'universal-cookie';
@@ -17,33 +17,35 @@ export default class Sent extends Component {
             twAdv: "",
             namAdv: "",
             // Ne Text
-            curTex : "",
-            curTex_ : "",
-            vxTextA : "",
-            vxTextACopy : "",
-            vxTextB : "<div class='isWiteTextInput'> </div>",
+            curTex: "",
+            curTex_: "",
+            vxTextA: "",
+            vxTextACopy: "",
+            vxTextB: "<div class='isWiteTextInput'> </div>",
             // FontAwsome
-            disVew : false,
-            isCoFo : false,
-            areaControl : false,
-            isColor : true,
+            disVew: false,
+            isCoFo: false,
+            areaControl: false,
+            isColor: true,
             // arrays
-            his : [],
-            obp : [],
-            ev : [],
-            dzVbn : [],
-            ezVbn : [],
-            containerItems : [],
-            containerItemsSp : [],
+            his: [],
+            obp: [],
+            ev: [],
+            dzVbn: [],
+            ezVbn: [],
+            containerItems: [],
+            containerItemsSp: [],
             // else with ed text
-            tyDel : [],
-            numLis : [0, 0, 0]
+            tyDel: [],
+            numLis: [0, 0, 0],
+            cpu: <FontAwesomeIcon icon={faDotCircle} className="donCpu" />
         }
         this.ddrThem = this.props.ddrThem
         this.drThem = this.props.drThem
         this.lliThem = this.props.lliThem
         this.liThem = this.props.liThem
         this.timeout = 0;
+        this.cpuProcesen = 0;
         // To
         this.state.shMoTo = false
         this.state.isclc = false
@@ -102,7 +104,7 @@ export default class Sent extends Component {
                     curTex: this.props.xtex
                 })
                 if (this.state.isH === false) {
-                    this.setState({curTex_ : this.props.xtex})
+                    this.setState({ curTex_: this.props.xtex })
                     this.feediT()
                     this.anlyText()
                 }
@@ -115,10 +117,12 @@ export default class Sent extends Component {
             tbo = this.state.obp,
             rv = this.state.ev,
             erv = this.state.ezVbn,
-            lisNum = this.state.numLis;
+            lisNum = this.state.numLis,
+            donCpu = <FontAwesomeIcon icon={faDotCircle} className="donCpu" />;
 
+        this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
         if (swp.length > 0 && this.state.isW === true) {
-            let tezx = swp,
+            var tezx = swp,
                 ttezx = swp;
             try {
                 ttezx = ttezx.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
@@ -160,22 +164,30 @@ export default class Sent extends Component {
             lisNum[0] = swp.length
             lisNum[1] = tezx.length
             lisNum[2] = Math.round(((swp.length - tezx.length) / swp.length) * 100)
-            this.setState({
-                vxTextA: tezx,
-                vxTextACopy: tezx,
-                vxTextB: ttezx,
-                numLis: lisNum
-            })
+            if (this.cpuProcesen) clearTimeout(this.cpuProcesen);
+            this.cpuProcesen = setTimeout(() => {
+                this.setState({
+                    vxTextA: tezx,
+                    vxTextACopy: tezx,
+                    vxTextB: ttezx,
+                    numLis: lisNum,
+                    cpu: donCpu
+                })
+            }, 200);
         } else {
             lisNum[0] = 0
             lisNum[1] = 0
             lisNum[2] = 0
-            this.setState({
-                vxTextA: "",
-                vxTextACopy: "",
-                vxTextB: "<i className='nullTextArea'> There is nothing yet .. </i>",
-                numLis: lisNum
-            })
+            if (this.cpuProcesen) clearTimeout(this.cpuProcesen);
+            this.cpuProcesen = setTimeout(() => {
+                this.setState({
+                    vxTextA: "",
+                    vxTextACopy: "",
+                    vxTextB: "<i className='nullTextArea'> There is nothing yet .. </i>",
+                    numLis: lisNum,
+                    cpu: donCpu
+                })
+            }, 200);
         }
     }
     // Any Tools
@@ -281,18 +293,18 @@ export default class Sent extends Component {
         }
     }
     setAvd(ax) {
-            return (
-                <tr className={ax.tn ?"deExcon" : "edExcon"} key={18 + ax.nu}>{ax.tn ?<><td className="trfEx deExTf"> {ax.n} </td >
-                    <td> delete </td ></> : <><td className="trfEx edExTf">{ax.n}</td >
-                    <td className="edExTu"> Modification </td ></>}
-                    <td className={ax.c ? "edExCf" : "edExC"} onClick={() => this.szAvd(ax.nu)}>
-                        {ax.c ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faMinus} />}
-                    </td >
-                    {ax.fu ?
-                        <td className="trdEx" onClick={() => this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash} /> </td > :
-                        <td className="trdExX"> <FontAwesomeIcon icon={faTrash} /> </td >}
-                </tr>
-            )
+        return (
+            <tr className={ax.tn ? "deExcon" : "edExcon"} key={18 + ax.nu}>{ax.tn ? <><td className="trfEx deExTf"> {ax.n} </td >
+                <td> delete </td ></> : <><td className="trfEx edExTf">{ax.n}</td >
+                <td className="edExTu"> Modification </td ></>}
+                <td className={ax.c ? "edExCf" : "edExC"} onClick={() => this.szAvd(ax.nu)}>
+                    {ax.c ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faMinus} />}
+                </td >
+                {ax.fu ?
+                    <td className="trdEx" onClick={() => this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash} /> </td > :
+                    <td className="trdExX"> <FontAwesomeIcon icon={faTrash} /> </td >}
+            </tr>
+        )
     }
     deItAdv(x) {
         var uez = this.state.ezVbn
@@ -306,8 +318,10 @@ export default class Sent extends Component {
             }
             uez.splice(x, 1)
             iez.splice(x, 1)
-            this.setState({ ezVbn: uez , ev: iez })
+            this.setState({ ezVbn: uez, ev: iez })
         }
+        this.resLisAdv()
+        this.feediT()
     }
     szAvd(x) {
         let ecC = this.state.ev
@@ -422,7 +436,7 @@ export default class Sent extends Component {
             return false
         }
     }
-    isCurText(){
+    isCurText() {
         if (this.state.curTex.length > 0) {
             return true
         } else {
@@ -520,7 +534,7 @@ export default class Sent extends Component {
                                             <FontAwesomeIcon icon={faPenAlt} className={this.state.disVew ? "apiChose" : this.caseInfoPP() ? "apiunChose" : "apiunChoseQ"} />
                                         </div>
                                         <div className="apiChoose" onClick={() => { this.setState({ isColor: !this.state.isColor }) }}>
-                                            <FontAwesomeIcon icon={faPaintBrush} className={this.state.isColor ? "apiChose" : "apiunChose"} />
+                                            <FontAwesomeIcon icon={faPalette} className={this.state.isColor ? "apiChose" : "apiunChose"} />
                                         </div>
                                         <div className="apiChoose" onClick={() => this.thThisK()}>
                                             <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChose"} />
@@ -528,6 +542,7 @@ export default class Sent extends Component {
                                         {this.isCleanUp() ? <div className="apiChoose" onClick={() => this.cleanUp()}><FontAwesomeIcon icon={faUndoAlt} className="apiChoseUndo" /></div> : ""}
                                     </div>
                                     <div className="apiChoose">
+                                        {this.state.cpu}
                                     </div>
                                 </div>
                             </div>
@@ -712,8 +727,8 @@ export default class Sent extends Component {
                                 Note that the modified texts that it sets as a feature will appear in this section  <FontAwesomeIcon icon={faBookmark} style={{ fontSize: "14px", color: "rgba(255, 187, 0, 0.705)" }} /> Also, texts will be deleted as soon as you exit the site and re-download it .
                             </div>
                         </div>
+                        <HisDefi x={this.state.his} />
                     </div>
-                    <HisDefi x={this.state.his}/>
                 </div>
             </>
         )

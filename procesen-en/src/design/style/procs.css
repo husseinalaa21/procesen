@@ -242,9 +242,11 @@
 .redeyTextAreaInfTIT {
   font-size: 16px;
   font-family: sans-serif;
-  padding: 7.5px 5px 7.5px 5px;
   display: flex;
   justify-content: space-between;
+}
+.stolsConSec div {
+  padding: 14px;
 }
 .stolsCONTROLX{
   padding: 5px;
@@ -271,7 +273,6 @@
 }
 .casSett {
   padding: 5px 6px 5px 6px;
-  border-radius: 5px;
   cursor: pointer;
   transition: 0.5s;
 }
@@ -1013,6 +1014,58 @@ td.edExCf {
   padding-right: 10px;
 }
 
+.tolsSecAreaPcs {
+  display: flex;
+}
+.tolsSetText {
+  display: flex;
+  width: fit-content;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 7px;
+}
+.MainTolsSet {
+  padding: 5px 8px 5px 8px;
+  font-size : 16px;
+  color: #434444;
+  cursor : pointer;
+  transition: 0.5s;
+  background-color: #e6e6e6;
+}
+.MainTolsSetT {
+  color: #1588d4;
+}
+.toolSetApi {
+  padding: 5px;
+  font-size : 16px;
+  color: #727272;
+  cursor : pointer;
+  transition: 0.5s;
+  border: 0;
+  border-right: 1px solid #d4d4d4;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.toolSetApiT {
+  padding: 5px;
+  font-size : 16px;
+  color : #1687a7;
+  cursor : pointer;
+  transition: 0.5s;
+  border: 0;
+  border-right: 1px solid #d4d4d4;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.toolSetApi:hover{
+  color: #636262;
+  background-color: #cacaca;
+}
+.containerTols {
+  display: flex;
+  background-color: #e7e7e7;
+  padding-left: 3px;
+}
 .apiChose {
   padding: 5px;
   border-radius: 4px;
@@ -1154,7 +1207,7 @@ td.edExCf {
   cursor: pointer;
 }
 .areaControl {
-  padding: 6px;
+  padding: 12px 6px 12px 6px;
   font-size: 18px;
   text-align: center;
   justify-content: center;
@@ -1320,7 +1373,11 @@ td.edExCf {
   background-color: rgba(245, 167, 153, 0.863);
   color: brown;
 }
-/* coNads has been deleted! */
+.sict_text {
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .deWor {
   padding-left: 3px;
   padding-right: 3px;
@@ -1412,3 +1469,51 @@ td.edExCf {
   color: #383838;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+/*  SP  */
+.loader,
+.loader:after {
+  border-radius: 50%;
+}
+.donCpu {
+  position: relative;
+  color: #1588d467;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 14.5px;
+  transition: 0.8s;
+}
+.loader {
+  color: #1588d4;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 15px;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 .7s infinite linear;
+  transition: 0.3s;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/* End */

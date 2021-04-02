@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo,faInfoCircle, faPaintBrush, faThumbtack, faUndoAlt ,faPenAlt,faTrashAlt} from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo, faInfoCircle, faPaintBrush, faThumbtack, faUndoAlt, faPenAlt, faTrashAlt, faEraser, faToolbox, faBars } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize';
 import Sent from './sent';
 
@@ -13,7 +13,7 @@ const styleFormPrcsTextAreaDarkV = { color: '#f7f7f7', backgroundColor: 'transpa
 export default class Proc extends Component {
     constructor(props) {
         super(props);
-        this.state = { len: 0, TextPcs: "", didOve: false, overTextNumX: '0' };
+        this.state = { len: 0, TextPcs: "", didOve: false, overTextNumX: '0', toolSet: false };
         this.styleFormPrcsDark = styleFormPrcsDarkV
         this.styleFormPrcsLight = styleFormPrcsLightV
         this.styleFormPrcsTextAreaLight = styleFormPrcsTextAreaLightV
@@ -63,9 +63,9 @@ export default class Proc extends Component {
         var onText = orText.slice(0, 5000);
         this.setState({ didOve: false , overTextNumX: 0 , overText: '' , TextPcs: onText })
     }*/
-    doApiTrashAlt (){
+    doApiTrashAlt() {
         this.setState({
-            TextPcs : "",len : 0
+            TextPcs: "", len: 0, apiTrashAlt: false
         })
     }
     infoContainer() {
@@ -111,24 +111,35 @@ export default class Proc extends Component {
                                     <div className="secOntext">
                                         <div className="toolsMenuAreaPcs">
                                             <div className="tolsMainTextArea">
-                                                <div onClick={() => { this.setState({ apiBlod: !this.state.apiBlod }) }}>
-                                                    <FontAwesomeIcon icon={faBold} className={this.state.apiBlod ? "apiChose" : "apiunChose"} />
-                                                </div>
                                                 <div onClick={() => { navigator.clipboard.writeText(this.TextPcs) }}>
                                                     <FontAwesomeIcon icon={faCopy} className={this.apicopy ? "apiChose" : "apiunChose"} />
                                                 </div>
-                                                <div onClick={() => { this.setState({ dirFont: true }) }}>
-                                                    <FontAwesomeIcon icon={faAlignLeft} className={this.state.dirFont ? "apiChose" : "apiunChose"} />
-                                                </div>
-                                                <div onClick={() => { this.setState({ dirFont: false }) }}>
-                                                    <FontAwesomeIcon icon={faAlignRight} className={this.state.dirFont ? "apiunChose" : "apiChose"} />
-                                                </div>
                                                 <div onClick={() => this.doApiTrashAlt()}>
-                                                    <FontAwesomeIcon icon={faTrashAlt} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"} />
+                                                    <FontAwesomeIcon icon={faEraser} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"} />
                                                 </div>
                                             </div>
-                                            <div className="apiChoose" onClick={() => { this.setState({ isInfo: !this.state.isInfo }) }}>
-                                                <FontAwesomeIcon icon={faInfoCircle} className={this.state.isInfo ? "apiChose" : "apiunChose"} />
+                                            <div className="tolsSecAreaPcs">
+                                                <div className="tolsSetText">
+                                                    {this.state.toolSet ?
+                                                        <div className="containerTols">
+                                                            <div onClick={() => { this.setState({ apiBlod: !this.state.apiBlod }) }}>
+                                                                <FontAwesomeIcon icon={faBold} className={this.state.apiBlod ? "toolSetApiT" : "toolSetApi"} />
+                                                            </div>
+                                                            <div onClick={() => { this.setState({ dirFont: true }) }}>
+                                                                <FontAwesomeIcon icon={faAlignLeft} className={this.state.dirFont ? "toolSetApiT" : "toolSetApi"} />
+                                                            </div>
+                                                            <div onClick={() => { this.setState({ dirFont: false }) }}>
+                                                                <FontAwesomeIcon icon={faAlignRight} className={this.state.dirFont ? "toolSetApi" : "toolSetApiT"} />
+                                                            </div>
+                                                        </div>
+                                                        : "" }
+                                                        <div className={this.state.toolSet ? "MainTolsSet MainTolsSetT" : "MainTolsSet MainTolsSetF"}>
+                                                            <FontAwesomeIcon icon={faBars} onClick={() => this.setState({ toolSet: !this.state.toolSet })} />
+                                                        </div>
+                                                </div>
+                                                <div className="apiChoose" onClick={() => { this.setState({ isInfo: !this.state.isInfo }) }}>
+                                                    <FontAwesomeIcon icon={faInfo} className={this.state.isInfo ? "apiChose" : "apiunChose"} />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

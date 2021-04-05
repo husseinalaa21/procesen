@@ -45,17 +45,28 @@
 .net_logoD {
   color: #1687a7;
 }
-
 .conProcesen {
   padding-top: 90px;
   padding-bottom: 10px;
+}
+.conProL {
   background-color: #dddddd5d;
+}
+.conProDr {
+  background-color: rgb(23, 36, 44);
 }
 .defProcesen {
   display: flex;
   margin: 0 17px 0 17px;
   border-radius: 2px;
   padding: 0 10px 0 0;
+  overflow: hidden;
+}
+.defProDr {
+  background-color: #30475e;
+  color: #f2f2f2;
+}
+.defProL {
   background-color: #f6f6f6;
 }
 .defText {
@@ -76,9 +87,16 @@
 }
 .defImgIco {
   padding: 10px 10px 10px 10px;
+}
+.dImgL {
   background-color: #f6f6f6;
   border: 0;
   border-right: 1px solid #ecf0f1;
+}
+.dImgDr {
+  background-color: #3a5168;
+  border: 0;
+  border-right: 1px solid #3f5569;
 }
 .Pprocessing{
   color: #1687a7;

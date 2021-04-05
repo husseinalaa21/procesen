@@ -6,11 +6,27 @@ import { useState } from 'react'
 import TolsNavMain from './joint/tolsNavMain'
 import { faHandHoldingUsd, faLanguage, faMoon } from '@fortawesome/free-solid-svg-icons';
 import Main from './main'
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 export default function App() {
     const [clickNav, setClickNav] = useState(false)
     const [clickNavLang, setClickNavLang] = useState(false)
-    const [isNight, isNightX] = useState(false)
+    function isNi() {
+        const letMe = cookies.get('liNi')
+        if (letMe !== undefined && letMe === 'true') {
+            return true
+        } else {
+            return false
+        }
+    }
+    function resThem() {
+        let ili = '"' + !isNight + '"'
+        cookies.set('liNi', ili)
+        isNightX(!isNight)
+    }
+    const [isNight, isNightX] = useState(isNi())
     const [srcc, setsrcc] = useState(false)
     const [copThisLin, setcopThisLin] = useState(false)
     var themLd = isNight ? "barDark" : "barLight"
@@ -66,10 +82,9 @@ export default function App() {
                 <div className={srcc ? "header sha" : "header normHeader"}>
                     <div className="header_main">
                         <div className="sectionsNavFlex">
-                            {/*<div className="searchToggThem" onClick={() => { isNightX(!isNight) }}>
+                            <div className="searchToggThem" onClick={() => { resThem(!isNight) }}>
                                 <FontAwesomeIcon icon={faMoon} style={isNight ? { marginTop: '10px', color: ' rgb(223, 180, 39)', fontSize: '17px', transition: '0.4s' } : { marginTop: '10px', color: ' #30475ecc', fontSize: '17px', transition: '0.4s' }} />
-                            </div>*/}
-
+                            </div>
                             <div className="searchChangeLang" onClick={() => {
                                 setClickNavLang(!clickNavLang)
                                 if (clickNav === true) {
@@ -106,10 +121,10 @@ export default function App() {
 
                 </div>
             </div>
-            <div className="conProcesen">
-                <div className="defProcesen">
-                    <img src={Logo} alt="def" width="25px" height="25px" className="defImgIco" />
-                    <p className="defText"> <b className="defTextProce"> Proce</b><b className="defTextSen">sen</b> is a site for <b className="defTextProce">processing</b> <b className="defTextSen">sentences</b> by artificial intelligence . for more information , <a href="#sec-definition-site" >click here </a> </p>
+            <div className={isNight ? "conProcesen conProDr" : "conProcesen conProL"}>
+                <div className={isNight ? "defProcesen defProDr" : "defProcesen defProL"}>
+                    <div className={isNight ? "defImgIco dImgDr" : "defImgIco dImgL"} ><img src={Logo} alt="def" width="25px" height="25px" /></div>
+                    <div className="defText"> <b className="defTextProce"> Proce</b><b className="defTextSen">sen</b> is a site for <b className="defTextProce">processing</b> <b className="defTextSen">sentences</b> by artificial intelligence . for more information , <a href="#sec-definition-site" >click here </a> </div>
                 </div>
             </div>
             <Main themHeader={isNight} />

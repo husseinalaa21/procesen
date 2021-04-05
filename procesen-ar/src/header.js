@@ -6,16 +6,31 @@ import { useState } from 'react'
 import TolsNavMain from './joint/tolsNavMain'
 import { faHandHoldingUsd, faLanguage, faMoon } from '@fortawesome/free-solid-svg-icons';
 import Main from './main'
-import NotesCon from './joint/notesCon';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 export default function App() {
   const [clickNav, setClickNav] = useState(false)
   const [clickNavLang, setClickNavLang] = useState(false)
-  const [isNight, isNightX] = useState(false)
+  function isNi() {
+    const letMe = cookies.get('liNi')
+    if (letMe !== undefined && letMe === 'true') {
+      return true
+    } else {
+      return false
+    }
+  }
+  function resThem() {
+    let ili = '"' + !isNight + '"'
+    cookies.set('liNi', ili)
+    isNightX(!isNight)
+  }
+  const [isNight, isNightX] = useState(isNi())
   const [srcc, setsrcc] = useState(false)
   const [copThisLin, setcopThisLin] = useState(false)
   var themLd = isNight ? "barDark" : "barLight"
-  var tue = window.location.protocol+"//"+window.location.hostname+"/"
+  var tue = window.location.protocol + "//" + window.location.hostname + "/"
   function tolsMenu() {
     if (clickNav) {
       return (
@@ -24,16 +39,16 @@ export default function App() {
             <a className="secHh scb" href="#sec-definition-site"> نبذة عنا </a>
             <a className="secHh scw" href="#sec-policy-site"> شروط الاستخدام </a>
             <a className="secHh scw" href="https://callus.procesen.com/callus-ar/index.html"> تواصل معنا  </a>
-            <a className="secHh scb" href="https://www.paypal.com/paypalme/husseinalaa2000"> دعمنا <FontAwesomeIcon icon={faHandHoldingUsd} className="supUs"/></a>
+            <a className="secHh scb" href="https://www.paypal.com/paypalme/husseinalaa2000"> دعمنا <FontAwesomeIcon icon={faHandHoldingUsd} className="supUs" /></a>
           </div>
           <div className="secLinksTop ">
             <div className="_soceLi">
               <a href="https://web.facebook.com/procesen" className="_face"> <i className="fa fa-facebook" ></i> </a>
               <a href="https://twitter.com/procesen_" className="_twit"> <i className="fa fa-twitter" ></i> </a>
               <a href="mailto:procesen@gmail.com" className="__email"> <i className="fa fa-envelope" ></i> </a>
-              <div className="_lin" onClick={()=>{setcopThisLin(!copThisLin)}}> <i className="fa fa-link"></i> </div>
+              <div className="_lin" onClick={() => { setcopThisLin(!copThisLin) }}> <i className="fa fa-link"></i> </div>
             </div>
-            <div className="copThis" style={copThisLin ? {display : "block"} : {display : "none"}}>
+            <div className="copThis" style={copThisLin ? { display: "block" } : { display: "none" }}>
               <div className="texCopThis"> قم بنسخ هذا الرابط الخاص بالموقع من فضلك </div>
               <div className="sopThisCon">
                 <div className="icoCopThis"> <i className="fa fa-link"></i> </div>
@@ -67,10 +82,10 @@ export default function App() {
         <div className={srcc ? "header sha" : "header normHeader"}>
           <div className="header_main">
             <div className="sectionsNavFlex">
-              <div className="searchToggThem" onClick={() => { isNightX(!isNight) }}>
+              <div className="searchToggThem" onClick={() => { resThem(!isNight) }}>
                 <FontAwesomeIcon icon={faMoon} style={isNight ? { marginTop: '10px', color: ' rgb(223, 180, 39)', fontSize: '17px', transition: '0.4s' } : { marginTop: '10px', color: ' #30475ecc', fontSize: '17px', transition: '0.4s' }} />
               </div>
-
+              
               <div className="searchChangeLang" onClick={() => {
                 setClickNavLang(!clickNavLang)
                 if (clickNav === true) {
@@ -107,12 +122,11 @@ export default function App() {
 
         </div>
       </div>
-      <div className="conProcesen">
-        <div className="defProcesen">
-          <img src={Logo} alt="def" width="25px" height="25px" className="defImgIco" />
+      <div className={isNight ? "conProcesen conProDr" : "conProcesen conProL"}>
+        <div className={isNight ? "defProcesen defProDr" : "defProcesen defProL"}>
+          <div className={isNight ? "defImgIco dImgDr" : "defImgIco dImgL"} ><img src={Logo} alt="def" width="25px" height="25px" className="defImgIco" /></div>
           <p className="defText"> بروسيسن هو أختصار : ( <b className="defTextProce"> Proce</b><b className="defTextSen">sen</b> ) أي <b className="defTextProce">processing</b> <b className="defTextSen">sentences</b> by artificial intelligence . " و التي تعني معالجة الجُمل بواسطة الذكاء الاصطناعي " , <a href="#sec-definition-site" > معرفة المزيد </a> </p>
         </div>
-        {isNight ? <div className="noDiv"> <NotesCon cx="blue" type="noMo" textTitle=" ملاحضة : " textCon=" لايزال الوضع الليلي قيد التطوير و سيتم الانتهاء من تطويره قريباً . " /></div> : ""}
       </div>
       <Main themHeader={isNight} />
     </>

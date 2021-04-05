@@ -141,6 +141,8 @@ export default function BodyEn(params) {
         idw.push(lib)
         const cnm = numCommint
         idn.push(cnm)
+        var thmSortLi = casexsec(cnm) ?"titleKic tickT":"titleKic tickF",
+            thmSortDr = casexsec(cnm) ?"titleKic tickT":"titleKic tickFDr"
         return (
             <div className={params.them ? "titleThisPage titleThisPageDark" : "titleThisPage titleThisPageLight"} id={params.link}>
                 <div className={params.them ? "thisTitlePage_first thisTitlePage_firstDark title_ar" : "thisTitlePage_first thisTitlePage_firstLight title_ar"}>
@@ -148,7 +150,7 @@ export default function BodyEn(params) {
                         <div className="titleMainText" id={params.idTi}>
                             {params.title}
                         </div>
-                        <div className={casexsec(cnm) ?"titleKic tickT":"titleKic tickF"} onClick={()=>xcsd(cnm)}>{casexsec(cnm) ? <FontAwesomeIcon icon={faSortDown } />: <FontAwesomeIcon icon={faSortUp } className="sorUp"/>}</div>
+                        <div className={params.them ? thmSortDr : thmSortLi} onClick={()=>xcsd(cnm)}>{casexsec(cnm) ? <FontAwesomeIcon icon={faSortDown } />: <FontAwesomeIcon icon={faSortUp } className="sorUp"/>}</div>
                     </div>
                 </div>
                 <div className={params.them ? "thisTitlePage_seconedDark" : "thisTitlePage_seconedLight"} style={casexsec(cnm) ? {display : "block"} : {display : "none"}}>

@@ -1,10 +1,10 @@
-import {faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
+import { faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
-import React , { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import NotesCon from '../joint/notesCon'
 import SendCommint from '../joint/sendCommint'
-import { useLocation } from 'react-router-dom'; 
+import { useLocation } from 'react-router-dom';
 
 export default function BodyEn(params) {
     const location = useLocation();
@@ -34,14 +34,14 @@ export default function BodyEn(params) {
     }
     useEffect(() => {
         var wue = window.location.href,
-        tue;
-        if(window.location.port === "3000"){
-            tue = window.location.protocol+"//"+window.location.hostname+":"+window.location.port+"/"
+            tue;
+        if (window.location.port === "3000") {
+            tue = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/"
         } else {
-            tue = window.location.protocol+"//"+window.location.hostname+"/"
+            tue = window.location.protocol + "//" + window.location.hostname + "/"
         }
-        var twq = wue.replace(tue,"")
-        if(idwa.includes(twq) === true){
+        var twq = wue.replace(tue, "")
+        if (idwa.includes(twq) === true) {
             var ex = idwa.indexOf(twq)
             setnumbol(idna[ex])
         } else {
@@ -64,7 +64,7 @@ export default function BodyEn(params) {
                 </>}
             />
             <ContainerBody
-                link={"#sec-how-use"} 
+                link={"#sec-how-use"}
                 them={params.them}
                 title={'كيفية الاستخدام'}
                 idTi="sec-how-use"
@@ -77,7 +77,7 @@ export default function BodyEn(params) {
                     <TextCon text='ويمكنك أيضًا إضافة كلمات أو جمل أو أحرف محددة لحذفها أو استبدالها .' type='container_ar' /></>}
             />
             <ContainerBody
-                link={"#sec-policy-site"} 
+                link={"#sec-policy-site"}
                 them={params.them}
                 title={' شروط الاستخدام'}
                 idTi="sec-policy-site"
@@ -104,14 +104,14 @@ export default function BodyEn(params) {
         </div>
     )
     function xcsd(xy) {
-        if(xy === numbol){
+        if (xy === numbol) {
             setnumbol(0)
         } else {
             setnumbol(xy)
         }
     }
-    function casexsec (x) {
-        if(x === numbol){
+    function casexsec(x) {
+        if (x === numbol) {
             return true
         } else {
             return false
@@ -123,17 +123,19 @@ export default function BodyEn(params) {
         idw.push(lib)
         const cnm = numCommint
         idn.push(cnm)
+        var thmSortLi = casexsec(cnm) ? "titleKic tickT" : "titleKic tickF",
+            thmSortDr = casexsec(cnm) ? "titleKic tickT" : "titleKic tickFDr"
         return (
             <div className={params.them ? "titleThisPage titleThisPageDark" : "titleThisPage titleThisPageLight"} id={params.link}>
                 <div className={params.them ? "thisTitlePage_first thisTitlePage_firstDark title_ar" : "thisTitlePage_first thisTitlePage_firstLight title_ar"}>
-                    <div className={casexsec(cnm) ?"titleMain tiMaT" : "titleMain"}>
+                    <div className={casexsec(cnm) ? "titleMain tiMaT" : "titleMain"}>
                         <div className="titleMainText" id={params.idTi}>
                             {params.title}
                         </div>
-                        <div className={casexsec(cnm) ?"titleKic tickT":"titleKic tickF"} onClick={()=>xcsd(cnm)}>{casexsec(cnm) ? <FontAwesomeIcon icon={faSortDown } />: <FontAwesomeIcon icon={faSortUp } className="sorUp"/>}</div>
+                        <div className={params.them ? thmSortDr : thmSortLi} onClick={() => xcsd(cnm)}>{casexsec(cnm) ? <FontAwesomeIcon icon={faSortDown} /> : <FontAwesomeIcon icon={faSortUp} className="sorUp" />}</div>
                     </div>
                 </div>
-                <div className={params.them ? "thisTitlePage_seconedDark" : "thisTitlePage_seconedLight"} style={casexsec(cnm) ? {display : "block"} : {display : "none"}}>
+                <div className={params.them ? "thisTitlePage_seconedDark" : "thisTitlePage_seconedLight"} style={casexsec(cnm) ? { display: "block" } : { display: "none" }}>
                     {params.container}
                     <SendCommint sec={cnm} them={params.them} />
                 </div>

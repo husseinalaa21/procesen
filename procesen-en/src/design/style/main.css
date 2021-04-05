@@ -261,13 +261,17 @@
 }
 .titleMainText {
   padding: 6px 6px 6px 6px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
 }
 .thisTitlePage_seconedLight {
   background-color: #fdfdfd85;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 10px;
 }
 .thisTitlePage_seconedDark {
   background-color: rgb(17, 28, 39);
+  font-family: Arial, Helvetica, sans-serif;
   padding: 10px;
 }
 .titleKic {
@@ -283,6 +287,10 @@
   background-color: #f1f1f1;
   color: #686868;
 }
+.tickFDr {
+  background-color: #4957641a;
+  color: #dfdfdf;
+}
 .tickT {
   color:#1687a7;
   background-color: #c6d2dace;
@@ -290,6 +298,10 @@
 .tickF:hover{
   background-color: #e6eaeb;
   color: #727272;
+}
+.tickFDr:hover{
+  background-color: #8896a31a;
+  color: #f0f0f0;
 }
 .tickT:hover{
   color:#1a9cc0;
@@ -310,13 +322,16 @@
 }
 .cancelSendNote {
   background-color: #eee;
-  padding: 5px;
-  width: 50px;
+  padding: 6px;
+  width: fit-content;
   text-align: center;
   border-radius: 6px;
   font-size: 18px;
   cursor: pointer;
   color: #494a4b;
+}
+.sendReDr {
+  color: #dfdfdf;
 }
 
 .cancelSendNote:hover {
@@ -345,11 +360,19 @@ input.inputInf {
   border-radius: 3px;
   margin-bottom: 10px;
   background-color: rgba(255, 255, 255, 0.527);
-
+  font-size: 15px;
 }
-
+.inputInfDr ,.textareaDr{
+  color: #dfdfdf !important;
+}
+.inputInfDr::placeholder ,.textareaDr::placeholder{
+  color: #dfdfdf !important;
+}
 input.inputInf:focus {
   outline: 0;
+}
+.textarea{
+  font-size: 15px;
 }
 .textarea:focus {
   outline: none;
@@ -391,7 +414,7 @@ input.inputInf:focus {
   border: 2px solid #a8a8a65e;
 }
 .textSpText {
-  font-size: 16px;
+  font-size: 15px;
   padding: 5px;
   font-style: italic;
 }
@@ -415,11 +438,11 @@ input.inputInf:focus {
 }
 
 .container_sp_ar {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .container_ar {
-  font-size: 17px;
+  font-size: 16px;
 }
 .messArabic {
   font-size: 16px;

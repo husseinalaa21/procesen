@@ -110,7 +110,7 @@ export default class Proc extends Component {
                                 <div className="areaPcc" style={this.props.them ? this.styleFormPrcsDark : this.styleFormPrcsLight}>
                                     <div className="secOntext">
                                         <div className="toolsMenuAreaPcs">
-                                            <div className="tolsMainTextArea">
+                                            <div className={this.props.them ? "tolsMainTextArea tolsDr" : "tolsMainTextArea tolsLi"}>
                                                 <div onClick={() => { navigator.clipboard.writeText(this.TextPcs) }}>
                                                     <FontAwesomeIcon icon={faCopy} className={this.apicopy ? "apiChose" : "apiunChose"} />
                                                 </div>
@@ -118,7 +118,7 @@ export default class Proc extends Component {
                                                     <FontAwesomeIcon icon={faEraser} className={this.state.apiTrashAlt ? "apiChoseTrashT" : "apiChoseTrash"} />
                                                 </div>
                                             </div>
-                                            <div className="tolsSecAreaPcs">
+                                            <div className={this.props.them ? "tolsSecAreaPcs tolsDr" : "tolsSecAreaPcs tolsLi"}>
                                                 <div className="tolsSetText">
                                                     {this.state.toolSet ?
                                                         <div className="containerTols">
@@ -132,10 +132,10 @@ export default class Proc extends Component {
                                                                 <FontAwesomeIcon icon={faAlignRight} className={this.state.dirFont ? "toolSetApi" : "toolSetApiT"} />
                                                             </div>
                                                         </div>
-                                                        : "" }
-                                                        <div className={this.state.toolSet ? "MainTolsSet MainTolsSetT" : "MainTolsSet MainTolsSetF"}>
-                                                            <FontAwesomeIcon icon={faBars} onClick={() => this.setState({ toolSet: !this.state.toolSet })} />
-                                                        </div>
+                                                        : ""}
+                                                    <div className={this.state.toolSet ? "MainTolsSet MainTolsSetT" : "MainTolsSet MainTolsSetF"}>
+                                                        <FontAwesomeIcon icon={faBars} onClick={() => this.setState({ toolSet: !this.state.toolSet })} />
+                                                    </div>
                                                 </div>
                                                 <div className="apiChoose" onClick={() => { this.setState({ isInfo: !this.state.isInfo }) }}>
                                                     <FontAwesomeIcon icon={faInfo} className={this.state.isInfo ? "apiChose" : "apiunChose"} />
@@ -163,7 +163,7 @@ export default class Proc extends Component {
                                                     </div>
                                             </div> : ""*/}
                                     </div>
-                                    <div className="toolsBottomAreaPcs">
+                                    <div className={this.props.them ? "toolsBottomAreaPcs toolsBottomAreaPcsDr" : "toolsBottomAreaPcs toolsBottomAreaPcsLi"}>
                                         <div className="textAreaBottom">
                                             عدد الاحرف : {this.state.len} {/*<mark className={this.state.didOve ? "marNumEnMain marNumX" : "marNumEnMain marNumN"}> {this.state.len} </mark>*/}
                                         </div>

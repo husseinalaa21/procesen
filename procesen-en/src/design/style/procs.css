@@ -7,13 +7,14 @@
   padding-bottom: 0;
 }
 .titlePcs {
-  font-size: 17px;
+  font-size: 15px;
   border: 0;
   margin-bottom: 10px;
   border-radius: 3px;
   display: flex;
   margin-left: auto;
   overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .redeyTextAreaLight {
   background-color:#e7e7de;
@@ -51,6 +52,9 @@
   background-color: rgb(22, 37, 51);
   color: whitesmoke;
 }
+.redeyTextAreaKDr a , .redeyTextAreaDark a{
+  color: rgb(128, 155, 236);
+}
 .icInfredeyTextArea {
   color: #d4d4d4;
 }
@@ -67,11 +71,13 @@
 }
 .areaPlus{
   font-size: 18px;
-  color: #383838;
   overflow: hidden;
   width: max-content;
   max-width: 100%;
   word-wrap: break-word; 
+}
+.texArLi {
+  color: #383838;
 }
 .areaPlus div{
   height: 100%;
@@ -96,7 +102,12 @@
 .toolsBottomAreaPcsPro {
   margin-top: 4px;
 }
-
+.toolsBottomAreaPcsLi {
+  color: dimgrey;
+}
+.toolsBottomAreaPcsDr {
+  color: #d4d4d4;
+}
 @media screen and (min-width : 730px){
   .redeyTextArea {
     display: none;
@@ -113,7 +124,6 @@
   border: 0;
   padding: 5px;
   border-radius: 5px;
-  color: dimgrey;
 }
 .llPcs {
   position: relative;
@@ -281,8 +291,8 @@
   background-color: #c6d2dace;
 }
 .casSettHideDr {
-  color: #39afcf;
-  background-color: #c6d2da2f;
+  color: #4bcbee;
+  background-color: #5493bd83;
 }
 .casSettShow {
   color: #5a5a5a;
@@ -307,6 +317,13 @@
   width: 100%;
   font-size: 17px;
 }
+.sictDr {
+  padding: 10px;
+  background-color: #3b4b5f5b;
+  color: #eeeeee;
+  width: 100%;
+  font-size: 17px;
+}
 ._scsinf {
   padding: 4px;
 }
@@ -328,6 +345,11 @@
   padding: 10px;
   background-color: #bad1ee;
   color: #054f64;
+}
+.sictDrIc {
+  padding: 10px;
+  background-color: #1e2d3f;
+  color: #3f8bb1;
 }
 .ddTableDr {
   background-color: rgb(22, 37, 51);
@@ -382,14 +404,21 @@
 }
 .niftT {
 padding: 10px 4px 8px 10px;
-font-size: 16px;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size: 14px;
 }
 .noteWeInf {
   display: flex;
   padding: 4px;
-  background-color: #e1e7e9ec;
   border-radius: 4px;
   margin-bottom: 5px;
+}
+.nift{
+  background-color: #e1e7e9ec;
+}
+.dift{
+  background-color: #2a3546;
+  color: #e2e2e2;
 }
 ._listInfoDr td {
   background-color: #344d5562;
@@ -803,13 +832,17 @@ font-size: 16px;
   background-color: #ebecee;
   border: 1px solid #e7e7e7;
 }
+.conLisConDr {
+  background-color: #151e2cea;
+  border: 1px solid #2a3546;
+}
 .conLisCrSxTi {
   display: flex;
 }
 .conLisCr{
   padding: 6px;
 }
-.conLisCrTiB {
+.conLisCrTiBLi {
   cursor: pointer;
   padding: 10px;
   width: fit-content;
@@ -819,7 +852,17 @@ font-size: 16px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 15px;
 }
-.conLisCrTiA {
+.conLisCrTiBDr {
+  cursor: pointer;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 0 3px 0 0;
+  background-color: #1a3341;
+  color: #d1d1d1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+}
+.conLisCrTiALi {
   cursor: pointer;
   padding: 10px;
   width: fit-content;
@@ -829,18 +872,39 @@ font-size: 16px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 15px;
 }
+.conLisCrTiADr {
+  cursor: pointer;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 3px 0 0 0;
+  background-color: #1a3341;
+  color: #d1d1d1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+}
 .conLisCrTiT {
   background-color: #e7dec8;
   border: 1px solid #e7dec8;
   border-bottom: 0;
 }
+.conLisCrTiTDr {
+  background-color: #2d4858;
+  border: 1px solid #354661;
+  border-bottom: 0;
+}
 .conLisCrCon {
-  background-color: #e8e8e8;
   padding: 6px;
   border-radius:0 0 3px 3px;
   width: auto;
   max-width: 500px;
+}
+.conLisCrConLi {
+  background-color: #e8e8e8;
   border: 1px solid #e7dec8;
+}
+.conLisCrConDr {
+  background-color: #1d3041;
+  border: 1px solid #354661;
 }
 .zxzWtext {
   width: auto;
@@ -874,7 +938,6 @@ font-size: 16px;
 .titleInp {
   text-align:left;
   padding: 7px;
-  background-color: #f1f1f1;
   width: fit-content;
   min-width: 37%;
   margin-left: 0px;
@@ -882,28 +945,64 @@ font-size: 16px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 14px;
 }
+.titleInpLi {
+  background-color: #f1f1f1;
+}
+.titleInpDr {
+  background-color: #0a3b58;
+  color: #d4d4d4;
+}
 .titleInpY {
   text-align:left;
   padding: 7px;
   width: 70% !important;
-  background-color: #f9f7cf;
   width: fit-content;
   margin-right: 0px;
   border-radius: 4px 4px 0 0;
-  color: #3b3b3b;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 14px;
 }
+.titleInpYLi {
+  background-color: #f9f7cf;
+  color: #3b3b3b;
+}
+.titleInpYDr {
+  background-color: #0a4658;
+  color: #d4d4d4;
+}
 .borInpt {
   padding: 5px;
-  background-color: #f1f1f1;
   border-radius: 2px 0 2px 2px;
+}
+.borInptLi {
+  background-color: #f1f1f1;
+}
+.borInptDr {
+  background-color: #0a3b589a;
+}
+.borInptDr input{
+  color: #f3f3f3;
+}
+.borInptDr input::placeholder{
+  color: #f3f3f3;
 }
 .borInptY {
   padding: 5px;
-  background-color: #f9f7cf;
   border-radius: 2px 0 2px 2px;
 }
+.borInptYDr {
+  background-color: #0a4658c4;
+}
+.borInptYDr input{
+  color: #f3f3f3;
+}
+.borInptYDr input::placeholder{
+  color: #f3f3f3;
+}
+.borInptYLi {
+  background-color: #f9f7cf;
+}
+
 .inptText{
   margin: auto;
   justify-content: space-between;
@@ -912,24 +1011,36 @@ font-size: 16px;
 .inptText input{
   padding: 10px;
   width: auto;
-  background-color: #f6f5f5;
+  background-color: #f6f5f585;
+  border-radius: 2px;
 }
 .inptText input:focus{
   outline: none;
 }
 .itpButom {
-  background-color: #f2d974;
-  color: whitesmoke;
   padding: 8px;
   width: 100%;
   border-radius: 3px;
   margin: auto;
   justify-content: center;
   text-align: center;
-  border: 2px solid #f1d6a0;
   cursor: pointer;
 }
-.itpButom:focus {
+.itpButomLi {
+  background-color: #f2d974;
+  color: whitesmoke;
+  border: 2px solid #f1d6a0;
+}
+.itpButomDr {
+  background-color: #244e70;
+  color: whitesmoke;
+  border: 2px solid #47587a;
+}
+.itpButomDr:focus {
+  outline: none;
+  background-color:#47587a;
+}
+.itpButomLi:focus {
   outline: none;
   background-color:#f1d6a0;
 }
@@ -965,6 +1076,12 @@ td.trdEx ,th.trdEx{
   color: #58271f;
   cursor: pointer;
 }
+td.trdExDr ,th.trdExDr{
+  border-radius: 3px 0 0 3px !important ;
+  text-align: center;
+  color: #d36161bd;
+  cursor: pointer;
+}
 td.trfEx ,th.trfEx{
   border-radius:0 3px 3px 0!important ;
 }
@@ -972,15 +1089,31 @@ td.edExTf {
   border: 0;
   border-left: 3px solid #cdd0cb;
 }
+td.edExTfDr {
+  border: 0;
+  border-left: 3px solid #3b5270;
+}
 td.deExTf {
   border: 0;
   border-left: 3px solid #d0cbcb;
+}
+td.deExTfDr {
+  border: 0;
+  border-left: 3px solid #795f54;
 }
 tr.edExcon{
   background-color: #e3e9e8;
 }
 tr.deExcon{
   background-color: #e9e3e3;
+}
+tr.edExconDr{
+  color: #d4d4d4;
+  background-color: #05293d5b;
+}
+tr.deExconDr{
+  color: #d4d4d4;
+  background-color: #3521214d;
 }
 th.actEFe {
   text-align: center 
@@ -990,10 +1123,20 @@ tr.edvEx {
   text-align: left;
   color: #5f5b50;
 }
+tr.edvExDr {
+  background-color: #1a3341;
+  text-align: left;
+  color: #e9e9e9;
+}
 td.trdExX ,th.trdExX{
   border-radius: 3px 0 0 3px !important ;
   text-align: center;
   color: #cfd3d4;
+}
+td.trdExXDr ,th.trdExXDr{
+  border-radius: 3px 0 0 3px !important ;
+  text-align: center;
+  color: #74757534;
 }
 td.edExC {
   text-align: center ;
@@ -1013,7 +1156,12 @@ td.edExCf {
 .tolsMainTextArea div{
   padding-right: 10px;
 }
-
+.tolsDr {
+  color: rgb(204, 204, 204) !important;
+}
+.tolsLi {
+  color : #6a6c6d !important;
+}
 .tolsSecAreaPcs {
   display: flex;
 }
@@ -1097,26 +1245,24 @@ td.edExCf {
 .apiChoseTrashT {
   padding: 5px;
   border-radius: 4px;
-  color : #6a6c6d;
   font-size : 16px;
   transition: 0.5s;
   cursor : pointer;
 }
 .apiChoseTrashT:hover {
-  background-color: #999a9b65;
-  color : #3b3b3b;
+  background-color: #73879b1e;
+  color : #1292e7a6;
 }
 .apiunChose {
   padding: 5px;
   border-radius: 4px;
-  color : #6a6c6d;
   font-size : 16px;
   cursor : pointer;
   transition: 0.5s;
 }
 .apiunChose:hover {
-  background-color: #999a9b65;
-  color : #3b3b3b;
+  background-color: #73879b1e;
+  color : #1292e7a6;
 }
 .apiunChoseQ {
   padding: 5px;
@@ -1146,8 +1292,8 @@ td.edExCf {
   transition: 0.5s;
 }
 .unapiBookMark:hover{
-  background-color: #999a9b65;
-  color : #3b3b3b;
+  background-color: rgba(155, 155, 153, 0.396);
+  color : #e7a412a6;
 }
 /* ---- END TOLS CHOOSE ---- */
 
@@ -1172,8 +1318,8 @@ td.edExCf {
 .pshH {
   background-color: #fdfdfd91;
 }
-.pshS {
-  background-color: #fdfdfd6e;
+.pshDr {
+  background-color: #1b293691;
 }
 .psEcTitle {
   display: flex;
@@ -1182,14 +1328,26 @@ td.edExCf {
   border-top: 2px solid #f3f3f3;
   margin-top: 10px;
 }
+
+.pshContainerDr {
+  border-top: 2px solid #465966;
+  margin-top: 10px;
+}
 .psht_t {
   display: flex;
   padding: 6px;
   padding-top: 7px;
   border: 0;
   width: 100%;
+  border-radius: 3px 0 0 3px;
+}
+.psht_tLi{
   background-color: #fafafa;
-  border-radius: 3px;
+  color: #292929;
+}
+.psht_tDr{
+  background-color: #1b293691;
+  color: #faeae5;
 }
 .pshHS {
   padding: 6px;
@@ -1198,13 +1356,19 @@ td.edExCf {
   justify-content: center;
   width: 10%;
   max-width: 30px;
-  border-radius: 4px;
-  background-color: #fafafa;
-  color: #9c9c9c;
+  border-radius: 0 3px 3px 0;
   margin-right: 10px;
   padding-right: 16px;
   transition: 0.3s;
   cursor: pointer;
+}
+.pshHSLi {
+  background-color: #fafafa;
+  color: #9c9c9c;
+}
+.pshHSDr {
+  background-color: #1b293662;
+  color: #faeae5e1;
 }
 .areaControl {
   padding: 12px 6px 12px 6px;
@@ -1220,12 +1384,15 @@ td.edExCf {
   transition: 0.3s;
   cursor: pointer;
 }
-.pshHS:hover {
+.pshHSLi:hover {
   background-color: #e7e7e7;
   color: #4d4d4d;
 }
+.pshHSDr:hover {
+  background-color: #3e4f5f94;
+  color: #e6e6e6;
+}
 .areaControl:hover {
-  background-color: #e7e7e7;
   color: #4d4d4d;
 }
 .pshHSP {
@@ -1247,12 +1414,17 @@ td.edExCf {
 }
 .clipboard {
   font-size: 17px;
-  color: #595a5a;
   padding-left: 3px;
 }
 .pshCon {
   text-align: center;
   padding: 10px;
+  color: rgba(41, 41, 41, 0.527);
+}
+.pshConDr {
+  text-align: center;
+  padding: 10px;
+  color:#e7dec8;
 }
 .nPshOn {
   font-size: 18px;
@@ -1261,17 +1433,20 @@ td.edExCf {
 }
 .nPshOnLogo {
   font-size: 27px;
-  color: rgba(41, 41, 41, 0.527);
   padding-top: 15px;
 }
-
 .hisSec {
   margin: 10px;
-  background-color: #f7f7f7;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 5%), 0 8px 16px rgb(0 0 0 / 4%);
   border-radius: 4px;
   margin-top: 17px;
+}
+.hisSecLi {
+  background-color: #f7f7f7;
+}
+.hisSecDr {
+  background-color: rgba(45, 68, 94, 0.445);
 }
 .hisTxo {
   display: flex;
@@ -1280,10 +1455,16 @@ td.edExCf {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+}
+.hisTLi {
+  color: rgb(131, 131, 131);
   background-color: rgb(243, 243, 243);
 }
+.hisTDr {
+  color : #e7dec8;
+  background-color: rgb(52, 77, 105);
+}
 .hisTx {
-  color: rgb(131, 131, 131);
   padding: 6px;
   font-size: 16px;
   transition: 0.4s;
@@ -1308,7 +1489,6 @@ td.edExCf {
 .hisOrg {
   padding: 4px;
   border: 0;
-  border-left: 2px solid rgb(243, 243, 243);
 }
 
 @media screen and (min-width : 700px){
@@ -1338,6 +1518,12 @@ td.edExCf {
 }
 .conHisNam {
   padding: 8px;
+  color: #383838;
+}
+.conHisNamDr {
+  padding: 8px;
+  color: #dfdfdf;
+  background-color: #2a3546;
 }
 .dLaHisIn {
   padding: 8px;
@@ -1363,11 +1549,17 @@ td.edExCf {
 .infPsh {
   padding: 8px;
   margin: 5px;
-  background-color: #f4f9f9;
   border-radius: 3px;
   font-size: 14px;
   width: fit-content;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.infPshLi {
+  background-color: #f4f9f9;
+}
+.infPshDr {
+  background-color: #465966;
+  color: #dddddd;
 }
 ._bRed {
   background-color: rgba(245, 167, 153, 0.863);

@@ -38,7 +38,9 @@ export default class Sent extends Component {
             // else with ed text
             tyDel: [],
             numLis: [0, 0, 0],
-            cpu: <FontAwesomeIcon icon={faDotCircle} className="donCpu" />
+            cpu: <FontAwesomeIcon icon={faDotCircle} className="donCpu" />,
+            wasw: 0,
+            hightEle: [false, "", 0]
         }
         this.ddrThem = this.props.ddrThem
         this.drThem = this.props.drThem
@@ -110,6 +112,10 @@ export default class Sent extends Component {
                 }
             }, 200);
         }
+        if (this.props.bThem !== prevProps.bThem) {
+            this.resLisAdv()
+            this.anlyText()
+        }
     }
     feediT() {
         var swp = this.state.curTex_,
@@ -123,9 +129,10 @@ export default class Sent extends Component {
         this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
         if (swp.length > 0 && this.state.isW === true) {
             var tezx = swp,
-                ttezx = swp;
+                ttezx = swp,
+                textZip = swp;
             try {
-                ttezx = ttezx.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
+                ttezx = textZip.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
                 for (var a = 0; a < tvp.length; a++) {
                     const na = a
                     if (tbo[na] === true) {
@@ -135,7 +142,7 @@ export default class Sent extends Component {
                         //var deSa = {ty : tvp[na].nam , con : thTy}
                         //ty.push(deSa)
                         tezx = tezx.replace(vdv, "")
-                        ttezx = tezx.replace(vdv, "")
+                        ttezx = textZip.replace(vdv, "")
                     }
                 }
                 for (var s = 0; s < erv.length; s++) {
@@ -144,7 +151,7 @@ export default class Sent extends Component {
                         let vdv = new RegExp(erv[rn].eo, 'g');
                         //const thTy = x.length - x.replace(vdv, "").length
                         tezx = tezx.replace(vdv, "")
-                        this.state.isColor ? ttezx = ttezx.replace(vdv, '<b class="deWor">' + erv[rn].eo + '</b>') : ttezx = ttezx.replace(vdv, '')
+                        this.state.isColor ? ttezx = textZip.replace(vdv, '<b class="deWor">' + erv[rn].eo + '</b>') : ttezx = textZip.replace(vdv, '')
                     } else if (erv[rn].ex === false && rv[rn] === true) {
                         for (var wd = 0; wd < erv[rn].eo.length; wd++) {
                             const wr = wd
@@ -152,7 +159,7 @@ export default class Sent extends Component {
                             let ao = new RegExp(wx[0], 'g');
                             if ((ao.test(tezx)) === true) {
                                 tezx = tezx.replace(ao, wx[1])
-                                this.state.isColor ? ttezx = ttezx.replace(ao, '<b class="olWor">' + wx[0] + '</b> <b class="oneWor">' + wx[1] + '</b>') : ttezx = ttezx.replace(ao, wx[1])
+                                this.state.isColor ? ttezx = textZip.replace(ao, '<b class="olWor">' + wx[0] + '</b> <b class="oneWor">' + wx[1] + '</b>') : ttezx = textZip.replace(ao, wx[1])
                             }
                         }
                     }
@@ -203,7 +210,8 @@ export default class Sent extends Component {
                 let oi = { caseP: this.state.obp[namb], num: vbn[namb].nam, dz: vbn[namb].exdz }
                 oj.push(oi)
             }
-            var nifn = 0, nift = "", nifb = false, swpEls = 0, wasw = 0;
+            var swpEls = 0, wasw = 0;
+            var elementArr = [];
             for (var ch = 0; ch < oj.length; ch++) {
                 const tNumber = ch
                 let dzv = oj[tNumber].dz
@@ -216,14 +224,8 @@ export default class Sent extends Component {
                     swpEls += Xswp
                     let XswpS = Math.round(Xswp / swp.length * 100)
                     let item = this.infItems({ item: num, itemNu: Xswp, itemNumP: XswpS + "%", key: tNumber, ccv: ccv, nm: tNumber })
+                    elementArr.push({ e: XswpS, n: num })
                     containerItems.push(item)
-                    if (Xswp > nifn) {
-                        nifn = XswpS
-                        nift = num
-                        if (nifb === false) {
-                            nifb = true
-                        }
-                    }
                 }
                 if (oj.length - 1 === ch) {
                     if (swpEls < swp.length) {
@@ -234,11 +236,28 @@ export default class Sent extends Component {
                     }
                 }
                 if (oj.length - 1 === ch) {
+                    var nifn = 0, nift = "", nifb = false;
+                    elementArr.forEach(ew => {
+                        if (ew.e > nifn) {
+                            nifn = ew.e
+                            nift = ew.n
+                            nifb = true
+                        }
+                    })
                     this.setState({
-                        containerItems: containerItems
+                        containerItems: containerItems,
+                        wasw: wasw,
+                        hightEle: [nifb, nift, nifn]
                     })
                 }
             }
+        } else {
+            var nifn = 0,
+                nift = "",
+                nifb = false;
+            this.setState({
+                hightEle: [nifb, nift, nifn]
+            })
         }
     }
     infItems(cx) {
@@ -247,7 +266,7 @@ export default class Sent extends Component {
                 <td > {cx.item} </td>
                 <td > {cx.itemNu} </td>
                 <td > {cx.itemNumP} </td>
-                {this.props.bThem ? <td onClick={() => this.childOppenProcessx(cx.nam)} className={cx.ccv ? "faMinusDivDr" : "faPlusDivDr"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusiDr" : "faPlusiDr"} /> </td> :
+                {this.props.bThem ? <td onClick={() => this.childOppenProcessx(cx.nm)} className={cx.ccv ? "faMinusDivDr" : "faPlusDivDr"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusiDr" : "faPlusiDr"} /> </td> :
                     <td onClick={() => this.childOppenProcessx(cx.nm)} className={cx.ccv ? "faMinusDiv" : "faPlusDiv"}> <FontAwesomeIcon icon={cx.ccv ? faMinus : faPlus} className={cx.ccv ? "faMinusi" : "faPlusi"} /> </td>}
             </tr>
         )
@@ -293,16 +312,22 @@ export default class Sent extends Component {
         }
     }
     setAvd(ax) {
+        var trLi = ax.tn ? "deExcon" : "edExcon"
+        var trDr = ax.tn ? "deExconDr" : "edExconDr"
+        var tdDeLi = "trfEx deExTf"
+        var tdDeDr = "trfEx deExTfDr"
+        var edEdLi = "trfEx edExTf"
+        var edEdDr = "trfEx edExTfDr"
         return (
-            <tr className={ax.tn ? "deExcon" : "edExcon"} key={18 + ax.nu}>{ax.tn ? <><td className="trfEx deExTf"> {ax.n} </td >
-                <td> delete </td ></> : <><td className="trfEx edExTf">{ax.n}</td >
+            <tr className={this.props.bThem ? trDr : trLi} key={18 + ax.nu}>{ax.tn ? <><td className={this.props.bThem ? tdDeDr : tdDeLi}> {ax.n} </td >
+                <td> delete </td ></> : <><td className={this.props.bThem ? edEdDr : edEdLi}>{ax.n}</td >
                 <td className="edExTu"> Modification </td ></>}
                 <td className={ax.c ? "edExCf" : "edExC"} onClick={() => this.szAvd(ax.nu)}>
                     {ax.c ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faMinus} />}
                 </td >
                 {ax.fu ?
-                    <td className="trdEx" onClick={() => this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash} /> </td > :
-                    <td className="trdExX"> <FontAwesomeIcon icon={faTrash} /> </td >}
+                    <td className={this.props.bThem ? "trdExDr" : "trdEx"} onClick={() => this.deItAdv(ax.nu)}> <FontAwesomeIcon icon={faTrash} /> </td > :
+                    <td className={this.props.bThem ? "trdExXDr" : "trdExX"}> <FontAwesomeIcon icon={faTrash} /> </td >}
             </tr>
         )
     }
@@ -331,14 +356,6 @@ export default class Sent extends Component {
         this.feediT()
     }
     // End Adv
-
-    // tools history
-    deIlm(x) {
-        var hisV = this.state.his
-        hisV.splice(x, 1);
-        this.setState({ his: hisV })
-    }
-    // End Tools His
     adAdvSet() {
         var uez = this.state.ezVbn,
             iez = this.state.ev,
@@ -500,6 +517,12 @@ export default class Sent extends Component {
             this.setState({ disVew: false })
         }
     }
+    colorize() {
+        this.setState({ isColor: !this.state.isColor })
+        setTimeout(() => {
+            this.feediT()
+        }, 100);
+    }
     isCleanUp() {
         if (this.state.vxTextA !== this.state.vxTextACopy) {
             return true
@@ -511,7 +534,17 @@ export default class Sent extends Component {
 
     render() {
         var ccThem = this.props.ccThem,
-            numTextLen = this.state.numLis;
+            numTextLen = this.state.numLis,
+            conLisCrTiT = this.props.bThem ? "conLisCrTiTDr" : "conLisCrTiT",
+            conLiALi = this.state.isclc ? "conLisCrTiALi " + conLisCrTiT : "conLisCrTiALi conLisCrTiFalse",
+            conLiADr = this.state.isclc ? "conLisCrTiADr " + conLisCrTiT : "conLisCrTiADr conLisCrTiFalse",
+            conLiBLi = this.state.isclc ? "conLisCrTiBLi conLisCrTiFalse" : "conLisCrTiBLi " + conLisCrTiT,
+            conLiBDr = this.state.isclc ? "conLisCrTiBDr conLisCrTiFalse" : "conLisCrTiBDr " + conLisCrTiT;
+        var houresMaker = function (x) {
+            var hisV = this.state.his
+            hisV.splice(x, 1);
+            this.setState({ his: hisV })
+        }.bind(this)
         return (
             <>
                 <div className="ffPcsSec" style={{ paddingTop: '10px' }}>
@@ -523,7 +556,7 @@ export default class Sent extends Component {
                         <div className="areaPccSec" style={ccThem ? this.drThem : this.liThem}>
                             <div className="secOntext">
                                 <div className="toolsMenuAreaPcs">
-                                    <div className="tolsMainTextArea">
+                                    <div className={this.props.bThem ? "tolsMainTextArea tolsDr" : "tolsMainTextArea tolsLi"}>
                                         <div className="apiChoose" onClick={() => this.marba()}>
                                             {this.marko() ? <FontAwesomeIcon icon={faBookmark} className={"apiBookMark"} /> : <FontAwesomeIcon icon={faBookmark} className={"unapiBookMark"} />}
                                         </div>
@@ -533,7 +566,7 @@ export default class Sent extends Component {
                                         <div className="apiChoose" onClick={() => this.chanDis()}>
                                             <FontAwesomeIcon icon={faPenAlt} className={this.state.disVew ? "apiChose" : this.caseInfoPP() ? "apiunChose" : "apiunChoseQ"} />
                                         </div>
-                                        <div className="apiChoose" onClick={() => { this.setState({ isColor: !this.state.isColor }) }}>
+                                        <div className="apiChoose" onClick={() => this.colorize()}>
                                             <FontAwesomeIcon icon={faPalette} className={this.state.isColor ? "apiChose" : "apiunChose"} />
                                         </div>
                                         <div className="apiChoose" onClick={() => this.thThisK()}>
@@ -546,7 +579,7 @@ export default class Sent extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="textArea" style={this.props.dirFontThm ? { direction: 'ltr' } : { direction: 'rtl' }}>
+                            <div className={this.props.bThem ? "textArea texArDr" : "textArea texArLi"} style={this.props.dirFontThm ? { direction: 'ltr' } : { direction: 'rtl' }}>
                                 {this.state.disVew ?
                                     <TextareaAutosize
                                         className={this.props.themFont ? "areaPcP largFont" : "areaPcP smallFont"}
@@ -576,7 +609,7 @@ export default class Sent extends Component {
                 <div className="redeyTextAreaInf">
                     <div className={this.props.bThem ? "redeyTextAreaInfTIT TextAreaDr TextAreaSDr" : "redeyTextAreaInfTIT TextAreaLi TextAreaSLi"}>
                         <div className="stolsConSec">
-                            <div className={this.props.bThem ? this.caseInfoPP() ? "casSett casSettHide" : "casSettShow Dr" : this.caseInfoPP() ? "casSett casSettHide" : "casSett casSettShow"}>
+                            <div className={this.props.bThem ? this.caseInfoPP() ? "casSett casSettHideDr" : "casSett casSettShowDr" : this.caseInfoPP() ? "casSett casSettHide" : "casSett casSettShow"}>
                                 <FontAwesomeIcon icon={faAlignLeft} className="icTolsSett" />
                             </div>
                             <div className="stolsCONTROLX">{this.state.isW ? "   Input text information and control options." : <div className="isWiteTextControal"></div>}</div>
@@ -588,8 +621,8 @@ export default class Sent extends Component {
                     <div style={this.state.areaControl ? { display: 'none' } : { display: 'block' }}>
                         <div className={this.props.bThem ? "ddTable ddTableDr" : "ddTable ddTableLi"}>
                             <div className="seInfCurTable">
-                                <div className="sict_logo sictLiIc"> <FontAwesomeIcon icon={faEraser} /> </div>
-                                <div className="sict_text sictLi"> Current text control options </div>
+                                <div className={this.props.bThem ? "sictDrIc" : "sictLiIc"}> <FontAwesomeIcon icon={faEraser} /> </div>
+                                <div className={this.props.bThem ? "sict_text sictDr" : "sict_text sictLi"}> Current text control options </div>
                             </div>
                             <div className="_scsinf">
                                 {this.isCurText() ? <div className={this.props.bThem ? "tcontaorTabDr" : "tcontaorTab"}>
@@ -604,7 +637,7 @@ export default class Sent extends Component {
                                             {this.state.containerItems}
                                         </tbody>
                                     </table>
-                                    <div className={this.props.bThem ? "infTableXDr" : "infTableX"}><div className={this.props.bThem ? "infTableDr" : "infTable"}> The number of matrices : </div> </div></div> :
+                                    <div className={this.props.bThem ? "infTableXDr" : "infTableX"}><div className={this.props.bThem ? "infTableDr" : "infTable"}> The number of matrices : {this.state.wasw}</div> </div></div> :
                                     <div className={this.props.bThem ? "rtaWait rtaWaitDr" : "rtaWait rtaWaitLi"}>
                                         <div className="rtaTitle">There is nothing yet ..</div>
                                         <div className="rtaCon">
@@ -615,19 +648,19 @@ export default class Sent extends Component {
                         </div>
                         <div className={this.props.bThem ? "ddTable ddTableDr" : "ddTable ddTableLi"}>
                             <div className="seInfCurTable">
-                                <div className="sict_logo sictLiIc"> <FontAwesomeIcon icon={faEraser} /> </div>
-                                <div className="sict_text sictLi"> Advanced text control options .  </div>
+                                <div className={this.props.bThem ? "sictDrIc" : "sictLiIc"}> <FontAwesomeIcon icon={faEraser} /> </div>
+                                <div className={this.props.bThem ? "sict_text sictDr" : "sict_text sictLi"}> Advanced text control options .  </div>
                             </div>
                             <div className="_scsinf">
                                 <div className="conLisSp">
-                                    <div className="conLisCon conLisConLi">
+                                    <div className={this.props.bThem ? "conLisCon conLisConDr" : "conLisCon conLisConLi"}>
                                         <table className="xTbo">
                                             <tbody>
-                                                <tr className="edvEx">
+                                                <tr className={this.props.bThem ? "edvExDr" : "edvEx"}>
                                                     <th className="trfEx"> Name </th>
                                                     <th> Type </th>
                                                     <th className="actEFe"> Activation </th>
-                                                    <th className="trdEx"> Delete </th>
+                                                    <th className="trsdEx"> Delete </th>
                                                 </tr>
                                                 {this.state.containerItemsSp}
                                             </tbody>
@@ -636,30 +669,30 @@ export default class Sent extends Component {
                                     <div className="conLisCr">
                                         <div> {this.state.mesAdsList} </div>
                                         <div className="conLisCrSxTi">
-                                            <div className={this.state.isclc ? "conLisCrTiA conLisCrTiT" : "conLisCrTiA conLisCrTiFalse"} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}> Replace element with element </div>
-                                            <div className={this.state.isclc ? "conLisCrTiB conLisCrTiFalse" : "conLisCrTiB conLisCrTiT"} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}>Delete an item</div>
+                                            <div className={this.props.bThem ? conLiADr : conLiALi} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}> Replace element with element </div>
+                                            <div className={this.props.bThem ? conLiBDr : conLiBLi} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}>Delete an item</div>
                                         </div>
-                                        <div className="conLisCrCon">
+                                        <div className={this.props.bThem ? "conLisCrCon conLisCrConDr" : "conLisCrCon conLisCrConLi"}>
                                             {this.state.isclc ?
                                                 <div>
                                                     <div className="zWtext">
                                                         <div className="inptText">
-                                                            <div className="titleInpY"> Name of the element </div>
-                                                            <div className="borInptY">
+                                                            <div className={this.props.bThem ? "titleInpY titleInpYDr" : "titleInpY titleInpYLi"}> Name of the element </div>
+                                                            <div className={this.props.bThem ? "borInptY borInptYDr" : "borInptY borInptYLi"}>
                                                                 <input type="text" placeholder="write here " value={this.state.namAdv} onChange={(x) => { this.setState({ namAdv: x.target.value }) }} />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div className="zxzWtext">
                                                         <div className="inptText">
-                                                            <div className="titleInp"> Word </div>
-                                                            <div className="borInpt">
+                                                            <div className={this.props.bThem ? "titleInp titleInpDr" : "titleInp titleInpLi"}> Word </div>
+                                                            <div className={this.props.bThem ? "borInpt borInptDr" : "borInpt borInptLi"}>
                                                                 <input type="text" placeholder="write here " value={this.state.onAdv} onChange={(x) => { this.setState({ onAdv: x.target.value }) }} />
                                                             </div>
                                                         </div>
                                                         <div className="inptText">
-                                                            <div className="titleInp"> Reversible </div>
-                                                            <div className="borInpt">
+                                                            <div className={this.props.bThem ? "titleInp titleInpDr" : "titleInp titleInpLi"}> Reversible </div>
+                                                            <div className={this.props.bThem ? "borInpt borInptDr" : "borInpt borInptLi"}>
                                                                 <input type="text" placeholder="write here " value={this.state.twAdv} onChange={(x) => { this.setState({ twAdv: x.target.value }) }} />
                                                             </div>
                                                         </div>
@@ -667,20 +700,20 @@ export default class Sent extends Component {
                                                 </div> :
                                                 <div className="zxzWtext">
                                                     <div className="inptText">
-                                                        <div className="titleInpY"> Name of the element </div>
-                                                        <div className="borInptY">
+                                                        <div className={this.props.bThem ? "titleInpY titleInpYDr" : "titleInpY titleInpYLi"}> Name of the element </div>
+                                                        <div className={this.props.bThem ? "borInptY borInptYDr" : "borInptY borInptYLi"}>
                                                             <input type="text" placeholder="write here" value={this.state.namAdv} onChange={(x) => { this.setState({ namAdv: x.target.value }) }} />
                                                         </div>
                                                     </div>
                                                     <div className="inptText">
-                                                        <div className="titleInp"> Word </div>
-                                                        <div className="borInpt">
+                                                        <div className={this.props.bThem ? "titleInp titleInpDr" : "titleInp titleInpLi"}> Word </div>
+                                                        <div className={this.props.bThem ? "borInpt borInptDr" : "borInpt borInptLi"}>
                                                             <input type="text" placeholder="write here" value={this.state.onAdv} onChange={(x) => { this.setState({ onAdv: x.target.value }) }} />
                                                         </div>
                                                     </div>
                                                 </div>}
                                             <div className="itpButomN">
-                                                <button className="itpButom" onClick={() => this.adAdvSet()}> <FontAwesomeIcon icon={faArrowRight} /> </button>
+                                                <button className={this.props.bThem ? "itpButom itpButomDr" : "itpButom itpButomLi"} onClick={() => this.adAdvSet()}> <FontAwesomeIcon icon={faArrowRight} /> </button>
                                             </div>
                                         </div>
                                     </div>
@@ -690,16 +723,18 @@ export default class Sent extends Component {
                         <div className="secTwSitc" style={this.state.shMoTo ? { display: "block" } : { display: "none" }}>
                             <div className={this.props.bThem ? "ddTable ddTableDr" : "ddTable ddTableLi"}>
                                 <div className="seInfCurTable">
-                                    <div className="sict_logo sictLiIc"> <FontAwesomeIcon icon={faUnderline} /> </div>
-                                    <div className="sict_text sictLi"> Text information </div>
+                                    <div className={this.props.bThem ? "sictDrIc" : "sictLiIc"}> <FontAwesomeIcon icon={faUnderline} /> </div>
+                                    <div className={this.props.bThem ? "sict_text sictDr" : "sict_text sictLi"}> Text information </div>
                                 </div>
                                 <div className="_scsinf">
                                     <div>
-                                        <div className="noteWeInf nift">
-                                            <EPoin n={numTextLen[2]} />
-                                            <div className="niftT"> The highest element of the sentence is {numTextLen[2]} , Where it poses {numTextLen[2]} % Of the sentence . </div>
-                                        </div>
-                                        <div className="noteWeInf nift">
+                                        {this.state.hightEle[0] ?
+                                            <div className={this.props.bThem ? "noteWeInf dift" : "noteWeInf nift"}>
+                                                <EPoin n={this.state.hightEle[2]} />
+                                                <div className="niftT"> The highest element of the sentence is {this.state.hightEle[1]} , Where it poses {this.state.hightEle[2]} % Of the sentence . </div>
+                                            </div>
+                                            : ""}
+                                        <div className={this.props.bThem ? "noteWeInf dift" : "noteWeInf nift"}>
                                             <EPoin n={numTextLen[2]} />
                                             <div className="niftT"> The percentage change in the text is {this.state.numLis[2]} % .</div>
                                         </div>
@@ -711,23 +746,23 @@ export default class Sent extends Component {
                         <div className="shMoTo" onClick={() => { this.setState({ shMoTo: !this.state.shMoTo }) }}> <div className="shMoToTit"> {this.state.shMoTo ? " Show more " : " Show less "} </div> <div className="shMoToLo"> {this.state.shMoTo ? <FontAwesomeIcon icon={faArrowCircleUp} /> : <FontAwesomeIcon icon={faArrowAltCircleDown} />} </div> </div>
                     </div>
                 </div>
-                <div className={this.state.sorHs ? "psh pshS" : "psh pshH"}>
+                <div className={this.props.bThem ? "psh pshDr" : "psh pshH"}>
                     <div className="psEcTitle">
-                        <div className="psht_t">
+                        <div className={this.props.bThem ? "psht_t psht_tDr" : "psht_t psht_tLi"}>
                             <FontAwesomeIcon icon={faHistory} className="clipboard" />
                             <div className="pshTitle">The record</div>
                         </div>
-                        <div className="pshHS" onClick={() => this.setState({ sorHs: !this.state.sorHs })}>
-                            <FontAwesomeIcon icon={this.state.sorHs ? faSortUp : faSortDown} className={this.state.sorHs ? "pshHSP" : "pshHSD"} />
+                        <div className={this.props.bThem ? "pshHS pshHSDr" : "pshHS pshHSLi"} onClick={() => this.setState({ sorHs: !this.state.sorHs })}>
+                            <FontAwesomeIcon icon={this.state.sorHs ? faSortDown : faSortUp} className={this.state.sorHs ? "pshHSD" : "pshHSP"} />
                         </div>
                     </div>
-                    <div className="pshContainer" style={this.state.sorHs ? { display: 'none' } : { display: 'block' }}>
-                        <div className="infPsh">
+                    <div className={this.props.bThem ? "pshContainerDr" : "pshContainer"} style={this.state.sorHs ? { display: 'none' } : { display: 'block' }}>
+                        <div className={this.props.bThem ? "infPsh infPshDr" : "infPsh infPshLi"}>
                             <div className="infPshF">
                                 Note that the modified texts that it sets as a feature will appear in this section  <FontAwesomeIcon icon={faBookmark} style={{ fontSize: "14px", color: "rgba(255, 187, 0, 0.705)" }} /> Also, texts will be deleted as soon as you exit the site and re-download it .
                             </div>
                         </div>
-                        <HisDefi x={this.state.his} />
+                        <HisDefi x={this.state.his} bthem={this.props.bThem} />
                     </div>
                 </div>
             </>
@@ -743,12 +778,12 @@ export default class Sent extends Component {
                     const corgd = el.corgd
                     const org = el.org
                     const indx = arHis.indexOf(el)
-                    var itOrg = <div className="hisSec" key={ogn + 1}>
-                        <div className="hisT"><div className="hisTn"> {ogn}# </div> <div className="hisTxo"> <FontAwesomeIcon icon={faTrash} className="hisTx" onClick={() => this.deIlm(indx)} /> <FontAwesomeIcon icon={faCopy} className="hisTx" onClick={() => { navigator.clipboard.writeText(corg) }} /> </div> </div>
+                    var itOrg = <div className={params.bthem ? "hisSec hisSecDr" : "hisSec hisSecLi"} key={ogn + 1}>
+                        <div className={params.bthem ? "hisT hisTDr" : "hisT hisTLi"}><div className="hisTn"> {ogn}# </div> <div className="hisTxo"> <FontAwesomeIcon icon={faTrash} className="hisTx" onClick={() => houresMaker(indx)} /> <FontAwesomeIcon icon={faCopy} className="hisTx" onClick={() => { navigator.clipboard.writeText(corg) }} /> </div> </div>
                         <div className="hisCon">
                             <div className="hisOrg">
                                 <div className="titleHisNam"> The original text </div>
-                                <div className="conHisNam">
+                                <div className={params.bthem ? "conHisNamDr" : "conHisNam"}>
                                     <ContentEditable
                                         html={org.replace(/\n/g, "<br />")}
                                         disabled={true}
@@ -758,7 +793,7 @@ export default class Sent extends Component {
                                 </div></div>
                             <div className="hisOrg">
                                 <div className="titleHisNam"> Revised text </div>
-                                <div className="conHisNam">
+                                <div className={params.bthem ? "conHisNamDr" : "conHisNam"}>
                                     <ContentEditable
                                         html={corgd}
                                         disabled={true}
@@ -778,7 +813,7 @@ export default class Sent extends Component {
                 )
             } else {
                 return (
-                    <div className="pshCon">
+                    <div className={params.bthem ? "pshConDr" : "pshCon"}>
                         <div className="rtaTitle"> There are no archives for this session yet .. </div>
                         <div className="nPshOnLogo">
                             <FontAwesomeIcon icon={faClipboard} />

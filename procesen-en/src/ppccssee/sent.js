@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faPenAlt, faThumbtack, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faEraser, faUnderline, faArrowAltCircleDown, faArrowCircleUp, faLongArrowAltLeft, faRocket, faArrowRight, faPaintBrush, faInfoCircle, faTools, faPalette, faCircleNotch, faDotCircle } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faCopy, faInfo, faMinus, faPlus, faUndoAlt, faPenAlt, faThumbtack, faBookmark, faClipboard, faHistory, faSortDown, faSortUp, faTrash, faUnderline, faArrowAltCircleDown, faArrowCircleUp, faRocket, faArrowRight, faInfoCircle, faTools, faPalette, faCircleNotch, faDotCircle, faBolt, faPencilRuler } from '@fortawesome/free-solid-svg-icons'
 import ContentEditable from 'react-contenteditable'
 import TextareaAutosize from 'react-textarea-autosize';
 import Cookies from 'universal-cookie';
@@ -52,7 +52,6 @@ export default class Sent extends Component {
         // To
         this.state.shMoTo = false
         this.state.isclc = false
-        this.lsBlack = /[\[]/g
         this.state.mesAdsList = ""
 
         this.xs_ert()
@@ -131,10 +130,8 @@ export default class Sent extends Component {
         if (swp.length > 0 && this.state.isW === true) {
             var tezx = swp,
                 ttezx = swp,
-                textZip = swp,
                 tRash = [];
             try {
-                ttezx = textZip.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
                 for (var a = 0; a < tvp.length; a++) {
                     const na = a
                     if (tbo[na] === true) {
@@ -144,11 +141,11 @@ export default class Sent extends Component {
                         //var deSa = {ty : tvp[na].nam , con : thTy}
                         //ty.push(deSa)
                         tezx = tezx.replace(vdv, "")
-                        ttezx = textZip.replace(vdv, "")
+                        ttezx = ttezx.replace(vdv, "")
                     }
                     tRash.push(tvp[na].exdz)
                 }
-                if(this.state.unKo === true){
+                if (this.state.unKo === true) {
                     var newSwp = []
                     for (var eo = 0; eo < tezx.length; eo++) {
                         let isExs = false
@@ -162,26 +159,36 @@ export default class Sent extends Component {
                             }
                         })
                     }
-                    var nan = newSwp.join('');
-                    tezx = nan
-                    ttezx = nan
+                    tezx = newSwp.join('');
+                    ttezx = newSwp.join('');
                 }
+                var tusDus = [],
+                    colorix =  this.state.isColor;
+
                 for (var s = 0; s < erv.length; s++) {
                     const rn = s
                     if (erv[rn].ex === true && rv[rn] === true) {
-                        let vdv = new RegExp(erv[rn].eo, 'g');
                         //const thTy = x.length - x.replace(vdv, "").length
-                        tezx = tezx.replace(vdv, "")
-                        this.state.isColor ? ttezx = textZip.replace(vdv, '<b class="deWor">' + erv[rn].eo + '</b>') : ttezx = textZip.replace(vdv, '')
+                        tezx = tezx.replaceAll(erv[rn].eo, "")
+                        tusDus.push({n : '{291'+s+'}' , v : '<b class="deWor">' + erv[rn].eo + '</b>'})
+                        colorix ? ttezx = ttezx.replaceAll(erv[rn].eo, '{291'+s+'}') : ttezx = ttezx.replaceAll(erv[rn].eo, '')
                     } else if (erv[rn].ex === false && rv[rn] === true) {
                         for (var wd = 0; wd < erv[rn].eo.length; wd++) {
                             const wr = wd
                             let wx = erv[rn].eo[wr]
-                            let ao = new RegExp(wx[0], 'g');
-                            if ((ao.test(tezx)) === true) {
-                                tezx = tezx.replace(ao, wx[1])
-                                this.state.isColor ? ttezx = textZip.replace(ao, '<b class="olWor">' + wx[0] + '</b> <b class="oneWor">' + wx[1] + '</b>') : ttezx = textZip.replace(ao, wx[1])
+                            if ((tezx.includes(wx[0])) === true) {
+                                tezx = tezx.replaceAll(wx[0], wx[1])
+                                tusDus.push({n : '{291'+s+'}' , v : '<b class="olWor">' + wx[0] + '</b> <b class="oneWor">' + wx[1] + '</b>'})
+                                colorix ? ttezx = ttezx.replaceAll(wx[0], '{291'+s+'}') : ttezx = ttezx.replaceAll(wx[0], wx[1])
                             }
+                        }
+                    }
+                    if(erv.length - 1 === s){
+                        ttezx = ttezx.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
+                        if(colorix === true && tusDus.length > 0){
+                            tusDus.forEach(ts=>{
+                                ttezx = ttezx.replaceAll(ts.n, ts.v)
+                            })
                         }
                     }
                 }
@@ -252,7 +259,7 @@ export default class Sent extends Component {
                     if (swpEls < swp.length) {
                         let Xswp = swp.length - swpEls
                         let XswpS = Xswp / swpEls * swpEls
-                        let item = this.elsaIt({ itemNu: Xswp, itemNumP: XswpS + "%" , cas : this.state.unKo})
+                        let item = this.elsaIt({ itemNu: Xswp, itemNumP: XswpS + "%", cas: this.state.unKo })
                         containerItems.push(item)
                     }
                 }
@@ -300,7 +307,7 @@ export default class Sent extends Component {
         this.feediT()
     }
     //unKo
-    elsaIt (cx) {
+    elsaIt(cx) {
         return (
             <tr key={20000911}>
                 <td > Else </td>
@@ -312,7 +319,7 @@ export default class Sent extends Component {
         )
     }
     callElsa() {
-        this.setState({unKo : !this.state.unKo})
+        this.setState({ unKo: !this.state.unKo })
         setTimeout(() => {
             this.anlyText()
             this.feediT()
@@ -402,14 +409,22 @@ export default class Sent extends Component {
             iez = this.state.ev,
             x = this.state.onAdv,
             y = this.state.twAdv,
-            u = this.state.namAdv;
+            u = this.state.namAdv,
+            mesErr = <div className="wrongMessLis"> <FontAwesomeIcon icon={faTools} /> One or both of the entered values are invalid. The value you are trying to enter may already be in the system options above .</div>,
+            mesExc = <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} /> It appears that the value or name is already in use. Please choose a new name or a new valid value . </div>;
 
-        if (this.lsBlack.test(y) || this.lsBlack.test(x)) {
-            this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faTools} /> One or both of the entered values are invalid. The value you are trying to enter may already be in the system options above .</div> })
-            return false
-        }
         if (this.state.isclc === true) {
             if (x.length > 0 && y.length > 0) {
+                try {
+                    let valOne = x.replaceAll(x, y)
+                    if (valOne !== y) {
+                        this.setState({ mesAdsList: mesErr })
+                        return false
+                    }
+                } catch (err) {
+                    this.setState({ mesAdsList: mesErr })
+                    return false
+                }
                 let ise = false
                 var arx = [[x, y]]
                 uez.forEach(ui => {
@@ -435,7 +450,7 @@ export default class Sent extends Component {
                     }
                     this.setState({ ezVbn: uez, ev: iez, mesAdsList: "" })
                 } else {
-                    this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} /> It appears that the value or name is already in use. Please choose a new name or a new valid value .  </div> })
+                    this.setState({ mesAdsList: mesExc })
                 }
                 this.setState({
                     onAdv: "",
@@ -445,6 +460,16 @@ export default class Sent extends Component {
             }
         } else {
             if (x.length > 0) {
+                try {
+                    let valOne = x.replaceAll(x, "")
+                    if (valOne !== "") {
+                        this.setState({ mesAdsList: mesErr })
+                        return false
+                    }
+                } catch (err) {
+                    this.setState({ mesAdsList: mesErr })
+                    return false
+                }
                 let ise = false
                 uez.forEach(ui => {
                     if (ui.ex === true) {
@@ -469,7 +494,7 @@ export default class Sent extends Component {
                     }
                     this.setState({ ezVbn: uez, ev: iez, mesAdsList: "" })
                 } else {
-                    this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} /> It appears that the value or name is already in use. Please choose a new name or a new valid value . </div> })
+                    this.setState({ mesAdsList: mesExc })
                 }
                 this.setState({
                     onAdv: "",
@@ -651,7 +676,7 @@ export default class Sent extends Component {
                     <div className={this.props.bThem ? "redeyTextAreaInfTIT TextAreaDr TextAreaSDr" : "redeyTextAreaInfTIT TextAreaLi TextAreaSLi"}>
                         <div className="stolsConSec">
                             <div className={this.props.bThem ? this.caseInfoPP() ? "casSett casSettHideDr" : "casSett casSettShowDr" : this.caseInfoPP() ? "casSett casSettHide" : "casSett casSettShow"}>
-                                <FontAwesomeIcon icon={faAlignLeft} className="icTolsSett" />
+                                <FontAwesomeIcon icon={faBolt} className="icTolsSett" />
                             </div>
                             <div className="stolsCONTROLX">{this.state.isW ? "   Input text information and control options." : <div className="isWiteTextControal"></div>}</div>
                         </div>
@@ -662,7 +687,7 @@ export default class Sent extends Component {
                     <div style={this.state.areaControl ? { display: 'none' } : { display: 'block' }}>
                         <div className={this.props.bThem ? "ddTable ddTableDr" : "ddTable ddTableLi"}>
                             <div className="seInfCurTable">
-                                <div className={this.props.bThem ? "sictDrIc" : "sictLiIc"}> <FontAwesomeIcon icon={faEraser} /> </div>
+                                <div className={this.props.bThem ? "sictDrIc" : "sictLiIc"}> <FontAwesomeIcon icon={faAlignLeft} /> </div>
                                 <div className={this.props.bThem ? "sict_text sictDr" : "sict_text sictLi"}> Current text control options </div>
                             </div>
                             <div className="_scsinf">
@@ -678,7 +703,7 @@ export default class Sent extends Component {
                                             {this.state.containerItems}
                                         </tbody>
                                     </table>
-                                    <div className={this.props.bThem ? "infTableXDr" : "infTableX"}><div className={this.props.bThem ? "infTableDr" : "infTable"}> The number of matrices : {this.state.wasw}</div> </div></div> :
+                                    <div className={this.props.bThem ? "infTableXDr" : "infTableX"}><div className={this.props.bThem ? "infTableDr matnum" : "infTable matnum"}> The number of matrices : {this.state.wasw}</div> </div></div> :
                                     <div className={this.props.bThem ? "rtaWait rtaWaitDr" : "rtaWait rtaWaitLi"}>
                                         <div className="rtaTitle">There is nothing yet ..</div>
                                         <div className="rtaCon">
@@ -689,7 +714,7 @@ export default class Sent extends Component {
                         </div>
                         <div className={this.props.bThem ? "ddTable ddTableDr" : "ddTable ddTableLi"}>
                             <div className="seInfCurTable">
-                                <div className={this.props.bThem ? "sictDrIc" : "sictLiIc"}> <FontAwesomeIcon icon={faEraser} /> </div>
+                                <div className={this.props.bThem ? "sictDrIc" : "sictLiIc"}> <FontAwesomeIcon icon={faPencilRuler} /> </div>
                                 <div className={this.props.bThem ? "sict_text sictDr" : "sict_text sictLi"}> Advanced text control options .  </div>
                             </div>
                             <div className="_scsinf">
@@ -791,7 +816,7 @@ export default class Sent extends Component {
                     <div className="psEcTitle">
                         <div className={this.props.bThem ? "psht_t psht_tDr" : "psht_t psht_tLi"}>
                             <FontAwesomeIcon icon={faHistory} className="clipboard" />
-                            <div className="pshTitle">The record</div>
+                            <div className="pshTitle">Archives</div>
                         </div>
                         <div className={this.props.bThem ? "pshHS pshHSDr" : "pshHS pshHSLi"} onClick={() => this.setState({ sorHs: !this.state.sorHs })}>
                             <FontAwesomeIcon icon={this.state.sorHs ? faSortDown : faSortUp} className={this.state.sorHs ? "pshHSD" : "pshHSP"} />
@@ -800,7 +825,7 @@ export default class Sent extends Component {
                     <div className={this.props.bThem ? "pshContainerDr" : "pshContainer"} style={this.state.sorHs ? { display: 'none' } : { display: 'block' }}>
                         <div className={this.props.bThem ? "infPsh infPshDr" : "infPsh infPshLi"}>
                             <div className="infPshF">
-                                Note that the modified texts that it sets as a feature will appear in this section  <FontAwesomeIcon icon={faBookmark} style={{ fontSize: "14px", color: "rgba(255, 187, 0, 0.705)" }} /> Also, texts will be deleted as soon as you exit the site and re-download it .
+                                Note that the modified texts that it sets as a feature will appear in this section  <FontAwesomeIcon icon={faBookmark} style={{ fontSize: "14px", color: "rgba(255, 187, 0, 0.705)" }} /> Also, texts will be deleted as soon as you exit the site and re-loader it .
                             </div>
                         </div>
                         <HisDefi x={this.state.his} bthem={this.props.bThem} />

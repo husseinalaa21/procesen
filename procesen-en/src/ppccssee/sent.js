@@ -58,7 +58,7 @@ export default class Sent extends Component {
         this.xs_ert()
     }
     xs_ert() {
-        fetch("http://localhost:4200/pc/procsentEn")
+        fetch("https://server.procesen.com/pc/procsentEn")
             .then(res => res.json())
             .then(
                 (result) => {

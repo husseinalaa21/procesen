@@ -16,6 +16,7 @@ export default class Sent extends Component {
             onAdv: "",
             twAdv: "",
             namAdv: "",
+            unKo: false,
             // Ne Text
             curTex: "",
             curTex_: "",
@@ -51,13 +52,13 @@ export default class Sent extends Component {
         // To
         this.state.shMoTo = false
         this.state.isclc = false
-        this.lsBlack = ['[', ']']
+        this.lsBlack = /[\[]/g
         this.state.mesAdsList = ""
 
         this.xs_ert()
     }
     xs_ert() {
-        fetch("https://server.procesen.com/pc/procsentEn")
+        fetch("http://localhost:4200/pc/procsentEn")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -130,7 +131,8 @@ export default class Sent extends Component {
         if (swp.length > 0 && this.state.isW === true) {
             var tezx = swp,
                 ttezx = swp,
-                textZip = swp;
+                textZip = swp,
+                tRash = [];
             try {
                 ttezx = textZip.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
                 for (var a = 0; a < tvp.length; a++) {
@@ -144,6 +146,25 @@ export default class Sent extends Component {
                         tezx = tezx.replace(vdv, "")
                         ttezx = textZip.replace(vdv, "")
                     }
+                    tRash.push(tvp[na].exdz)
+                }
+                if(this.state.unKo === true){
+                    var newSwp = []
+                    for (var eo = 0; eo < tezx.length; eo++) {
+                        let isExs = false
+                        tRash.forEach(tb => {
+                            if (isExs === false) {
+                                let asw = new RegExp(tb, 'g');
+                                if (asw.test(tezx[eo])) {
+                                    newSwp.push(tezx[eo])
+                                    isExs = true
+                                }
+                            }
+                        })
+                    }
+                    var nan = newSwp.join('');
+                    tezx = nan
+                    ttezx = nan
                 }
                 for (var s = 0; s < erv.length; s++) {
                     const rn = s
@@ -231,7 +252,7 @@ export default class Sent extends Component {
                     if (swpEls < swp.length) {
                         let Xswp = swp.length - swpEls
                         let XswpS = Xswp / swpEls * swpEls
-                        let item = this.infItems({ item: "Else ", itemNu: Xswp, itemNumP: XswpS + "%", key: 12, ccv: false, nm: 12 })
+                        let item = this.elsaIt({ itemNu: Xswp, itemNumP: XswpS + "%" , cas : this.state.unKo})
                         containerItems.push(item)
                     }
                 }
@@ -278,6 +299,26 @@ export default class Sent extends Component {
         this.anlyText()
         this.feediT()
     }
+    //unKo
+    elsaIt (cx) {
+        return (
+            <tr key={20000911}>
+                <td > Else </td>
+                <td > {cx.itemNu} </td>
+                <td > {cx.itemNumP} </td>
+                {this.props.bThem ? <td onClick={() => this.callElsa()} className={cx.cas ? "faMinusDivDr" : "faPlusDivDr"}> <FontAwesomeIcon icon={cx.cas ? faMinus : faPlus} className={cx.cas ? "faMinusiDr" : "faPlusiDr"} /> </td> :
+                    <td onClick={() => this.callElsa()} className={cx.cas ? "faMinusDiv" : "faPlusDiv"}> <FontAwesomeIcon icon={cx.cas ? faMinus : faPlus} className={cx.cas ? "faMinusi" : "faPlusi"} /> </td>}
+            </tr>
+        )
+    }
+    callElsa() {
+        this.setState({unKo : !this.state.unKo})
+        setTimeout(() => {
+            this.anlyText()
+            this.feediT()
+        }, 100);
+    }
+    // End unKo
 
     // End Any
 
@@ -363,7 +404,7 @@ export default class Sent extends Component {
             y = this.state.twAdv,
             u = this.state.namAdv;
 
-        if (x.includes(this.lsBlack[0]) === true || x.includes(this.lsBlack[1]) === true || y.includes(this.lsBlack[0]) === true || y.includes(this.lsBlack[1]) === true) {
+        if (this.lsBlack.test(y) || this.lsBlack.test(x)) {
             this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faTools} /> One or both of the entered values are invalid. The value you are trying to enter may already be in the system options above .</div> })
             return false
         }

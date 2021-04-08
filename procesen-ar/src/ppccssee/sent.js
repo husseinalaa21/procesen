@@ -231,7 +231,7 @@ export default class Sent extends Component {
                     if (swpEls < swp.length) {
                         let Xswp = swp.length - swpEls
                         let XswpS = Xswp / swpEls * swpEls
-                        let item = this.infItems({ item: "Else ", itemNu: Xswp, itemNumP: XswpS + "%", key: 12, ccv: false, nm: 12 })
+                        let item = this.infItems({ item: " أخرى ", itemNu: Xswp, itemNumP: XswpS + "%", key: 12, ccv: false, nm: 12 })
                         containerItems.push(item)
                     }
                 }

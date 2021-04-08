@@ -285,7 +285,7 @@
 }
 .casSettHide {
   color: #1687a7;
-  background-color: #c6d2dace;
+  background-color: #d6dce4ce;
 }
 .casSettHideDr {
   color: #4bcbee;
@@ -309,17 +309,15 @@
 }
 .sictLi {
   padding: 10px;
-  background-color: #a7c5eb5b;
+  background-color: #c8cfd3a1;
   color: #3b3b3b;
   width: 100%;
-  font-size: 17px;
 }
 .sictDr {
   padding: 10px;
   background-color: #3b4b5f5b;
   color: #eeeeee;
   width: 100%;
-  font-size: 17px;
 }
 ._scsinf {
   padding: 4px;
@@ -340,8 +338,8 @@
 }
 .sictLiIc {
   padding: 10px;
-  background-color: #bad1ee;
-  color: #054f64;
+  background-color: #c8cfd3a1;
+  color: #0f5163;
 }
 .sictDrIc {
   padding: 10px;

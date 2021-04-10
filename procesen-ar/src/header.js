@@ -15,10 +15,10 @@ export default function App() {
   const [clickNavLang, setClickNavLang] = useState(false)
   function cockInfF() {
     const coInf = cookies.get('infFront')
-    if (coInf !== undefined && coInf === 'true') {
-      return true
-    } else {
+    if (coInf !== undefined && coInf === 'false') {
       return false
+    } else {
+      return true
     }
   }
   function isNi() {
@@ -35,8 +35,9 @@ export default function App() {
     isNightX(!isNight)
   }
   function deFroTex(x) {
+    let ili = '"' + false + '"'
     setinfI(false)
-    cookies.set('infFront', false)
+    cookies.set('infFront', ili)
   }
   const [infI, setinfI] = useState(cockInfF())
   const [isNight, isNightX] = useState(isNi())

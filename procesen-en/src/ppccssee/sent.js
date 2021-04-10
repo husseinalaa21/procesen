@@ -126,50 +126,47 @@ export default class Sent extends Component {
         var swp = this.state.curTex_,
             lisNum = this.state.numLis,
             donCpu = <FontAwesomeIcon icon={faDotCircle} className="donCpu" />;
-        if (swp.length > 0 && this.state.isW === true) {
             this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
-            if (this.cpuProcesen) clearTimeout(this.cpuProcesen);
-            this.cpuProcesen = setTimeout(() => {
-                var daBot = [this.state.curTex_, this.state.obp, this.state.ev, this.state.unKo, this.state.neIlemntEnter]
-                fetch("https://server.procesen.com/pc/procsentEn/sen/?pr=" + JSON.stringify(daBot))
-                    .then(res => res.json())
-                    .then((re) => {
-                        try {
-                            lisNum[0] = swp.length
-                            lisNum[1] = re[0].length
-                            lisNum[2] = Math.round(((swp.length - re[0].length) / swp.length) * 100)
-                            this.setState({
-                                vxTextA: re[0],
-                                vxTextACopy: re[0],
-                                vxTextB: re[1],
-                                numLis: lisNum,
-                                cpu: donCpu
-                            })
-                        } catch (err) {
-                            lisNum[0] = swp.length
-                            lisNum[1] = 0
-                            lisNum[2] = 0
-                            this.setState({
-                                vxTextA: "",
-                                vxTextACopy: "",
-                                vxTextB: "<div class='errTextArea'> A problem occurred, there is an error in the input process, either with the input elements, or you entered an invalid value, or you tried to enter invalid functions to delete or modify, a notification has been sent to the programmers and they will work on solving the problem soon . </div> <div class='listErrInfo'> <p class='titleErr'> Please follow one of the following options : </p> <ul class='ulErr'> <li>Please check the text settings entered by you . </li> <li> To Reload page <a href='/'>click here</a> </li></ul> </div>",
-                                numLis: lisNum,
-                                cpu: donCpu
-                            })
-                        }
-                    }, (er) => {
-                        lisNum[0] = 0
+        if (swp.length > 0 && this.state.isW === true) {
+            var daBot = [this.state.curTex_, this.state.obp, this.state.ev, this.state.unKo, this.state.neIlemntEnter]
+            fetch("https://server.procesen.com/pc/procsentEn/sen/?pr=" + JSON.stringify(daBot))
+                .then(res => res.json())
+                .then((re) => {
+                    try {
+                        lisNum[0] = swp.length
+                        lisNum[1] = re[0].length
+                        lisNum[2] = Math.round(((swp.length - re[0].length) / swp.length) * 100)
+                        this.setState({
+                            vxTextA: re[0],
+                            vxTextACopy: re[0],
+                            vxTextB: re[1],
+                            numLis: lisNum,
+                            cpu: donCpu
+                        })
+                    } catch (err) {
+                        lisNum[0] = swp.length
                         lisNum[1] = 0
                         lisNum[2] = 0
                         this.setState({
                             vxTextA: "",
                             vxTextACopy: "",
-                            vxTextB: " ... ",
+                            vxTextB: "<div class='errTextArea'> A problem occurred, there is an error in the input process, either with the input elements, or you entered an invalid value, or you tried to enter invalid functions to delete or modify, a notification has been sent to the programmers and they will work on solving the problem soon . </div> <div class='listErrInfo'> <p class='titleErr'> Please follow one of the following options : </p> <ul class='ulErr'> <li>Please check the text settings entered by you . </li> <li> To Reload page <a href='/'>click here</a> </li></ul> </div>",
                             numLis: lisNum,
                             cpu: donCpu
                         })
+                    }
+                }, (er) => {
+                    lisNum[0] = 0
+                    lisNum[1] = 0
+                    lisNum[2] = 0
+                    this.setState({
+                        vxTextA: "",
+                        vxTextACopy: "",
+                        vxTextB: " ... ",
+                        numLis: lisNum,
+                        cpu: donCpu
                     })
-            }, 200);
+                })
         } else {
             lisNum[0] = 0
             lisNum[1] = 0

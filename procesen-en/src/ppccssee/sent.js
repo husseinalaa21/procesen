@@ -58,7 +58,7 @@ export default class Sent extends Component {
         this.xs_ert()
     }
     xs_ert() {
-        fetch("http://localhost:4200/pc/procsentEn")
+        fetch("https://server.procesen.com/pc/procsentEn")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -131,7 +131,7 @@ export default class Sent extends Component {
             if (this.cpuProcesen) clearTimeout(this.cpuProcesen);
             this.cpuProcesen = setTimeout(() => {
                 var daBot = [this.state.curTex_, this.state.obp, this.state.ev, this.state.unKo, this.state.neIlemntEnter]
-                fetch("http://localhost:4200/pc/procsentEn/sen/?pr=" + JSON.stringify(daBot))
+                fetch("https://server.procesen.com/pc/procsentEn/sen/?pr=" + JSON.stringify(daBot))
                     .then(res => res.json())
                     .then((re) => {
                         try {

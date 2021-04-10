@@ -34,6 +34,7 @@ export default class Sent extends Component {
             ev: [],
             dzVbn: [],
             ezVbn: [],
+            neIlemntEnter: [],
             containerItems: [],
             containerItemsSp: [],
             // else with ed text
@@ -57,20 +58,22 @@ export default class Sent extends Component {
         this.xs_ert()
     }
     xs_ert() {
-        fetch("https://server.procesen.com/pc/procsentEn")
+        fetch("http://localhost:4200/pc/procsentEn")
             .then(res => res.json())
             .then(
                 (result) => {
-                    var _obp_ = []
-                    var dz = []
-                    var ez = []
-                    var _ev_ = []
-                    for (var e = 0; e < result["_dvBn"].length; e++) {
-                        if (result["_dvBn"][e].exdz !== false) {
-                            dz.push(result["_dvBn"][e])
+                    var _obp_ = [],
+                        dz = [],
+                        ez = [],
+                        _ev_ = [],
+                        _neIlemntEnter = []
+
+                    for (var e = 0; e < result.length; e++) {
+                        if (result[e].exdz !== false) {
+                            dz.push(result[e])
                             _obp_.push(false)
                         } else {
-                            ez.push(result["_dvBn"][e])
+                            ez.push(result[e])
                             _ev_.push(false)
                         }
                     }
@@ -79,6 +82,7 @@ export default class Sent extends Component {
                         for (var co = 0; co < cookMyLis.length; co++) {
                             ez.push(cookMyLis[co])
                             _ev_.push(false)
+                            _neIlemntEnter.push({ ex: cookMyLis[co].ex, eo: cookMyLis[co].eo })
                         }
                     }
                     this.setState({
@@ -87,6 +91,7 @@ export default class Sent extends Component {
                         dzVbn: dz,
                         ezVbn: ez,
                         ev: _ev_,
+                        neIlemntEnter: _neIlemntEnter,
                         vxTextB: "<i className='nullTextArea'> There is nothing yet .. </i>"
                     });
                     this.resLisAdv()
@@ -119,95 +124,51 @@ export default class Sent extends Component {
     }
     feediT() {
         var swp = this.state.curTex_,
-            tvp = this.state.dzVbn,
-            tbo = this.state.obp,
-            rv = this.state.ev,
-            erv = this.state.ezVbn,
             lisNum = this.state.numLis,
             donCpu = <FontAwesomeIcon icon={faDotCircle} className="donCpu" />;
-
-        this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
         if (swp.length > 0 && this.state.isW === true) {
-            var tezx = swp,
-                ttezx = swp,
-                tRash = [];
-            try {
-                for (var a = 0; a < tvp.length; a++) {
-                    const na = a
-                    if (tbo[na] === true) {
-                        let vdv = new RegExp(tvp[na].exdz, 'g');
-                        //var thTy = tezx.match(vdv)
-                        //const thTy = x.length - x.replace(vdv, "").length
-                        //var deSa = {ty : tvp[na].nam , con : thTy}
-                        //ty.push(deSa)
-                        tezx = tezx.replace(vdv, "")
-                        ttezx = ttezx.replace(vdv, "")
-                    }
-                    tRash.push(tvp[na].exdz)
-                }
-                if (this.state.unKo === true) {
-                    var newSwp = []
-                    for (var eo = 0; eo < tezx.length; eo++) {
-                        let isExs = false
-                        tRash.forEach(tb => {
-                            if (isExs === false) {
-                                let asw = new RegExp(tb, 'g');
-                                if (asw.test(tezx[eo])) {
-                                    newSwp.push(tezx[eo])
-                                    isExs = true
-                                }
-                            }
-                        })
-                    }
-                    tezx = newSwp.join('');
-                    ttezx = newSwp.join('');
-                }
-                var tusDus = [],
-                    colorix =  this.state.isColor;
-
-                for (var s = 0; s < erv.length; s++) {
-                    const rn = s
-                    if (erv[rn].ex === true && rv[rn] === true) {
-                        //const thTy = x.length - x.replace(vdv, "").length
-                        tezx = tezx.replaceAll(erv[rn].eo, "")
-                        tusDus.push({n : '{291'+s+'}' , v : '<b class="deWor">' + erv[rn].eo + '</b>'})
-                        colorix ? ttezx = ttezx.replaceAll(erv[rn].eo, '{291'+s+'}') : ttezx = ttezx.replaceAll(erv[rn].eo, '')
-                    } else if (erv[rn].ex === false && rv[rn] === true) {
-                        for (var wd = 0; wd < erv[rn].eo.length; wd++) {
-                            const wr = wd
-                            let wx = erv[rn].eo[wr]
-                            if ((tezx.includes(wx[0])) === true) {
-                                tezx = tezx.replaceAll(wx[0], wx[1])
-                                tusDus.push({n : '{291'+s+'}' , v : '<b class="olWor">' + wx[0] + '</b> <b class="oneWor">' + wx[1] + '</b>'})
-                                colorix ? ttezx = ttezx.replaceAll(wx[0], '{291'+s+'}') : ttezx = ttezx.replaceAll(wx[0], wx[1])
-                            }
-                        }
-                    }
-                    if(erv.length - 1 === s){
-                        ttezx = ttezx.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
-                        if(colorix === true && tusDus.length > 0){
-                            tusDus.forEach(ts=>{
-                                ttezx = ttezx.replaceAll(ts.n, ts.v)
-                            })
-                        }
-                    }
-                }
-            } catch (err) {
-                tezx = " ... "
-                ttezx = "<div class='errTextArea'> A problem occurred, there is an error in the input process, either with the input elements, or you entered an invalid value, or you tried to enter invalid functions to delete or modify, a notification has been sent to the programmers and they will work on solving the problem soon . </div> <div class='listErrInfo'> <p class='titleErr'> Please follow one of the following options : </p> <ul class='ulErr'> <li>Please check the text settings entered by you . </li> <li> To Reload page <a href='/'>click here</a> </li></ul> </div>"
-            }
-            lisNum[0] = swp.length
-            lisNum[1] = tezx.length
-            lisNum[2] = Math.round(((swp.length - tezx.length) / swp.length) * 100)
+            this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
             if (this.cpuProcesen) clearTimeout(this.cpuProcesen);
             this.cpuProcesen = setTimeout(() => {
-                this.setState({
-                    vxTextA: tezx,
-                    vxTextACopy: tezx,
-                    vxTextB: ttezx,
-                    numLis: lisNum,
-                    cpu: donCpu
-                })
+                var daBot = [this.state.curTex_, this.state.obp, this.state.ev, this.state.unKo, this.state.neIlemntEnter]
+                fetch("http://localhost:4200/pc/procsentEn/sen/?pr=" + JSON.stringify(daBot))
+                    .then(res => res.json())
+                    .then((re) => {
+                        try {
+                            lisNum[0] = swp.length
+                            lisNum[1] = re[0].length
+                            lisNum[2] = Math.round(((swp.length - re[0].length) / swp.length) * 100)
+                            this.setState({
+                                vxTextA: re[0],
+                                vxTextACopy: re[0],
+                                vxTextB: re[1],
+                                numLis: lisNum,
+                                cpu: donCpu
+                            })
+                        } catch (err) {
+                            lisNum[0] = swp.length
+                            lisNum[1] = 0
+                            lisNum[2] = 0
+                            this.setState({
+                                vxTextA: "",
+                                vxTextACopy: "",
+                                vxTextB: "<div class='errTextArea'> A problem occurred, there is an error in the input process, either with the input elements, or you entered an invalid value, or you tried to enter invalid functions to delete or modify, a notification has been sent to the programmers and they will work on solving the problem soon . </div> <div class='listErrInfo'> <p class='titleErr'> Please follow one of the following options : </p> <ul class='ulErr'> <li>Please check the text settings entered by you . </li> <li> To Reload page <a href='/'>click here</a> </li></ul> </div>",
+                                numLis: lisNum,
+                                cpu: donCpu
+                            })
+                        }
+                    }, (er) => {
+                        lisNum[0] = 0
+                        lisNum[1] = 0
+                        lisNum[2] = 0
+                        this.setState({
+                            vxTextA: "",
+                            vxTextACopy: "",
+                            vxTextB: " ... ",
+                            numLis: lisNum,
+                            cpu: donCpu
+                        })
+                    })
             }, 200);
         } else {
             lisNum[0] = 0
@@ -382,6 +343,7 @@ export default class Sent extends Component {
     deItAdv(x) {
         var uez = this.state.ezVbn
         var iez = this.state.ev
+        var neit = this.state.neIlemntEnter
         if (uez[x].exs === true) {
             var cookMe = cookies.get('meLis')
             var s = x - (uez.length - cookMe.length)
@@ -389,9 +351,12 @@ export default class Sent extends Component {
                 cookMe.splice(s, 1)
                 cookies.set('meLis', cookMe);
             }
+            if (neit !== undefined && neit.length > 0) {
+                neit.splice(s, 1)
+            }
             uez.splice(x, 1)
             iez.splice(x, 1)
-            this.setState({ ezVbn: uez, ev: iez })
+            this.setState({ ezVbn: uez, ev: iez, neIlemntEnter: neit })
         }
         this.resLisAdv()
         this.feediT()
@@ -406,6 +371,7 @@ export default class Sent extends Component {
     // End Adv
     adAdvSet() {
         var uez = this.state.ezVbn,
+            neit = this.state.neIlemntEnter,
             iez = this.state.ev,
             x = this.state.onAdv,
             y = this.state.twAdv,
@@ -416,8 +382,16 @@ export default class Sent extends Component {
         if (this.state.isclc === true) {
             if (x.length > 0 && y.length > 0) {
                 try {
-                    let valOne = x.replaceAll(x, y)
-                    if (valOne !== y) {
+                    // tee one check
+                    let reLe = new RegExp(x, 'g')
+                    let valOne = x.replace(reLe, y)
+                    // tee two check
+                    let eapi = { ex: x }
+                    let api = JSON.parse(JSON.stringify(eapi))
+                    let erle = new RegExp(api.ex, 'g')
+                    let valapi = x.replace(erle, y)
+                    // check both
+                    if (valOne !== y && valapi !== y) {
                         this.setState({ mesAdsList: mesErr })
                         return false
                     }
@@ -425,10 +399,11 @@ export default class Sent extends Component {
                     this.setState({ mesAdsList: mesErr })
                     return false
                 }
+                // check list
                 let ise = false
                 var arx = [[x, y]]
                 uez.forEach(ui => {
-                    if (ui.ex === false) {
+                    if (ui.hasOwnProperty('eo') && ui.ex === false) {
                         if (arx.toString() === ui.eo.toString() || x.length === 0 || ui.nam === u) {
                             ise = true
                         }
@@ -436,6 +411,14 @@ export default class Sent extends Component {
                 })
                 if (ise === false) {
                     let eqa = { nam: u, ex: false, eo: arx, exs: true }
+                    let syNe = { ex: false, eo: arx }
+                    if (neit.length > 0 && neit !== undefined) {
+                        neit.push(syNe)
+                    } else {
+                        let teeNeit = []
+                        teeNeit.push(syNe)
+                        neit = teeNeit
+                    }
                     uez.push(eqa)
                     iez.push(false)
                     this.resLisAdv()
@@ -448,7 +431,7 @@ export default class Sent extends Component {
                         newLisMy.push(eqa)
                         cookies.set('meLis', newLisMy);
                     }
-                    this.setState({ ezVbn: uez, ev: iez, mesAdsList: "" })
+                    this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit })
                 } else {
                     this.setState({ mesAdsList: mesExc })
                 }
@@ -461,8 +444,16 @@ export default class Sent extends Component {
         } else {
             if (x.length > 0) {
                 try {
-                    let valOne = x.replaceAll(x, "")
-                    if (valOne !== "") {
+                    // tee check one
+                    let lily = new RegExp(x, 'g')
+                    let valOne = x.replace(lily, "")
+                    // tee check two
+                    let layla = { ex: x }
+                    let liiArr = JSON.parse(JSON.stringify(layla))
+                    let leali = new RegExp(liiArr.ex, 'g')
+                    let valapi = x.replace(leali, "")
+                    // check both
+                    if (valOne !== "" && valapi !== "") {
                         this.setState({ mesAdsList: mesErr })
                         return false
                     }
@@ -472,7 +463,7 @@ export default class Sent extends Component {
                 }
                 let ise = false
                 uez.forEach(ui => {
-                    if (ui.ex === true) {
+                    if (ui.hasOwnProperty('eo') && ui.ex === true) {
                         if (x === ui.eo || x.length === 0 || ui.nam === u) {
                             ise = true
                         }
@@ -480,6 +471,14 @@ export default class Sent extends Component {
                 })
                 if (ise === false) {
                     let eqa = { nam: u, ex: true, eo: x, exs: true }
+                    let syNe = { ex: true, eo: x }
+                    if (neit.length > 0 && neit !== undefined) {
+                        neit.push(syNe)
+                    } else {
+                        let teeNeit = []
+                        teeNeit.push(syNe)
+                        neit = teeNeit
+                    }
                     uez.push(eqa)
                     iez.push(false)
                     this.resLisAdv()
@@ -492,7 +491,7 @@ export default class Sent extends Component {
                         newLisMy.push(eqa)
                         cookies.set('meLis', newLisMy);
                     }
-                    this.setState({ ezVbn: uez, ev: iez, mesAdsList: "" })
+                    this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit })
                 } else {
                     this.setState({ mesAdsList: mesExc })
                 }
@@ -898,4 +897,83 @@ function EPoin(x) {
     } if (x.n === 100 || x.n >= 95) {
         return (<div className="nitfRen"><div className="powerPoint powerPointBlue"></div><div className="powerPoint powerPointBlue"></div><div className="powerPoint powerPointBlue"></div></div>)
     }
+}
+//xs : this.state.curTex_, tbo : this.state.obp, tvp :  this.state.dzVbn , rv : this.state.ev ,erv : this.state.ezVbn ,trs : this.state.unKo, colo : this.state.isColor
+//var coffee = _feedPr({xs : this.state.curTex_, tbo : this.state.obp, tvp :  this.state.dzVbn , rv : this.state.ev ,erv : this.state.ezVbn ,trs : this.state.unKo, colo : this.state.isColor})
+function proces(tee) {
+    var tezx = tee.xs,
+        ttezx = tee.xs,
+        tbo = tee.tbo,
+        tvp = tee.tvp,
+        rv = tee.rv,
+        erv = tee.erv,
+        isTrs = tee.trs,
+        isColo = tee.colo,
+        tRash = [];
+    try {
+        for (var a = 0; a < tvp.length; a++) {
+            const na = a
+            if (tbo[na] === true) {
+                let vdv = new RegExp(tvp[na].exdz, 'g');
+                //var thTy = tezx.match(vdv)
+                //const thTy = x.length - x.replace(vdv, "").length
+                //var deSa = {ty : tvp[na].nam , con : thTy}
+                //ty.push(deSa)
+                tezx = tezx.replace(vdv, "")
+                ttezx = ttezx.replace(vdv, "")
+            }
+            tRash.push(tvp[na].exdz)
+        }
+        if (isTrs === true) {
+            var newSwp = []
+            for (var eo = 0; eo < tezx.length; eo++) {
+                let isExs = false
+                tRash.forEach(tb => {
+                    if (isExs === false) {
+                        let asw = new RegExp(tb, 'g');
+                        if (asw.test(tezx[eo])) {
+                            newSwp.push(tezx[eo])
+                            isExs = true
+                        }
+                    }
+                })
+            }
+            tezx = newSwp.join('');
+            ttezx = newSwp.join('');
+        }
+        var tusDus = [],
+            colorix = isColo;
+
+        for (var s = 0; s < erv.length; s++) {
+            const rn = s
+            if (erv[rn].ex === true && rv[rn] === true) {
+                //const thTy = x.length - x.replace(vdv, "").length
+                tezx = tezx.replaceAll(erv[rn].eo, "")
+                tusDus.push({ n: '{291' + s + '}', v: '<b class="deWor">' + erv[rn].eo + '</b>' })
+                colorix ? ttezx = ttezx.replaceAll(erv[rn].eo, '{291' + s + '}') : ttezx = ttezx.replaceAll(erv[rn].eo, '')
+            } else if (erv[rn].ex === false && rv[rn] === true) {
+                for (var wd = 0; wd < erv[rn].eo.length; wd++) {
+                    const wr = wd
+                    let wx = erv[rn].eo[wr]
+                    if ((tezx.includes(wx[0])) === true) {
+                        tezx = tezx.replaceAll(wx[0], wx[1])
+                        tusDus.push({ n: '{291' + s + '}', v: '<b class="olWor">' + wx[0] + '</b> <b class="oneWor">' + wx[1] + '</b>' })
+                        colorix ? ttezx = ttezx.replaceAll(wx[0], '{291' + s + '}') : ttezx = ttezx.replaceAll(wx[0], wx[1])
+                    }
+                }
+            }
+            if (erv.length - 1 === s) {
+                ttezx = ttezx.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
+                if (colorix === true && tusDus.length > 0) {
+                    tusDus.forEach(ts => {
+                        ttezx = ttezx.replaceAll(ts.n, ts.v)
+                    })
+                }
+            }
+        }
+    } catch (err) {
+        tezx = " ... "
+        ttezx = "<div class='errTextArea'> A problem occurred, there is an error in the input process, either with the input elements, or you entered an invalid value, or you tried to enter invalid functions to delete or modify, a notification has been sent to the programmers and they will work on solving the problem soon . </div> <div class='listErrInfo'> <p class='titleErr'> Please follow one of the following options : </p> <ul class='ulErr'> <li>Please check the text settings entered by you . </li> <li> To Reload page <a href='/'>click here</a> </li></ul> </div>"
+    }
+    return { te: tezx, tet: ttezx }
 }

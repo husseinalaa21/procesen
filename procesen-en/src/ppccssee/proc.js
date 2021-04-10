@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo, faInfoCircle, faPaintBrush, faThumbtack, faUndoAlt, faPenAlt, faTrashAlt, faEraser, faToolbox, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo, faPaintBrush, faThumbtack, faUndoAlt, faPenAlt, faEraser, faBars } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize';
 import Sent from './sent';
 
@@ -70,9 +70,9 @@ export default class Proc extends Component {
     }
     infoContainer() {
         var itemsAr = []
-        var infoContainerItems = (x, y) => {
+        var infoContainerItems = (x, y,k) => {
             return (
-                <tr className="trTbIf"><td className="tdInfA"> {x} </td> <td className="tdInfB"> {y} </td></tr>
+                <tr className="trTbIf" key={544+k}><td className={this.props.them ?"tdInfADr":"tdInfA"}>{x}</td><td className="tdInfB">{y}</td></tr>
             )
         }
         var infTextArea = [
@@ -80,15 +80,16 @@ export default class Proc extends Component {
             { n: "Choose how to display text from left to right or vice versa .", s: <FontAwesomeIcon icon={faAlignLeft} /> },
             { n: "Restore the changes made .", s: <FontAwesomeIcon icon={faUndoAlt} /> },
             { n: "Anchors the current text regardless of the changes made in the first field .", s: <FontAwesomeIcon icon={faThumbtack} /> },
-            { n: "Add color effects to the modified text .", s: <FontAwesomeIcon icon={faPaintBrush} /> },
+            { n: " Delete the current text .", s: <FontAwesomeIcon icon={faEraser} /> },
             { n: "Edit modified text .", s: <FontAwesomeIcon icon={faPenAlt} /> }
         ]
-        infTextArea.forEach(re => {
-            var itTr = infoContainerItems(re.s, re.n)
+        for(var re = 0; re < infTextArea.length; re++){
+            const ker = re
+            var itTr = infoContainerItems(infTextArea[re].s, infTextArea[re].n,ker)
             itemsAr.push(itTr)
-        })
+        }
         return (
-            <table className="textAreaInf texInfTabLi">
+            <table className={this.props.them ? "textAreaInfDr texInfTabDr" : "textAreaInf texInfTabLi"}>
                 <tbody><tr>
                     <th className="tfTbTh"> The symbols </th>
                     <th className="tfTbTh"> The use </th>

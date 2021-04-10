@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo, faInfoCircle, faPaintBrush, faThumbtack, faUndoAlt, faPenAlt, faTrashAlt, faEraser, faToolbox, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faAlignRight, faBold, faCopy, faInfo,  faPaintBrush, faThumbtack, faUndoAlt, faPenAlt,  faEraser,  faBars } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize';
 import Sent from './sent';
 
@@ -70,9 +70,9 @@ export default class Proc extends Component {
     }
     infoContainer() {
         var itemsAr = []
-        var infoContainerItems = (x, y) => {
+        var infoContainerItems = (x, y,k) => {
             return (
-                <tr className="trTbIf"><td className="tdInfA"> {x} </td> <td className="tdInfB"> {y} </td></tr>
+                <tr className="trTbIf" key={544+k}><td className={this.props.them ?"tdInfADr":"tdInfA"}>{x}</td><td className="tdInfB">{y}</td></tr>
             )
         }
         var infTextArea = [
@@ -80,15 +80,16 @@ export default class Proc extends Component {
             { n: " اختر كيفية عرض النص من اليسار إلى اليمين أو العكس .", s: <FontAwesomeIcon icon={faAlignLeft} /> },
             { n: " استعادة التغييرات التي تم إجراؤها . ", s: <FontAwesomeIcon icon={faUndoAlt} /> },
             { n: " يثبت النص الحالي بغض النظر عن التغييرات التي تم إجراؤها في الحقل الأول . ", s: <FontAwesomeIcon icon={faThumbtack} /> },
-            { n: "أضف تأثيرات لونية إلى النص المعدل .", s: <FontAwesomeIcon icon={faPaintBrush} /> },
+            { n: " حذف النص الحالي .", s: <FontAwesomeIcon icon={faEraser} /> },
             { n: "تحرير النص المعدل .", s: <FontAwesomeIcon icon={faPenAlt} /> }
         ]
-        infTextArea.forEach(re => {
-            var itTr = infoContainerItems(re.s, re.n)
+        for(var re = 0; re < infTextArea.length; re++){
+            const ker = re
+            var itTr = infoContainerItems(infTextArea[re].s, infTextArea[re].n,ker)
             itemsAr.push(itTr)
-        })
+        }
         return (
-            <table className="textAreaInf texInfTabLi">
+            <table className={this.props.them ? "textAreaInfDr texInfTabDr" : "textAreaInf texInfTabLi"}>
                 <tbody><tr>
                     <th className="tfTbTh"> الرمز </th>
                     <th className="tfTbTh"> الاستخدام </th>

@@ -1589,20 +1589,29 @@ td.edExCf {
   border-bottom: 1px solid rgba(79,192,141,0.5);
 }
 /* info input */
-.textAreaInf {
+.textAreaInf ,.textAreaInfDr {
   width: 100%;
-  border-radius: 5px;
-  margin-top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
   border-collapse: collapse !important;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 7%);
 }
-.textAreaInf tr {
+.textAreaInf tr ,.textAreaInfDr tr{
   width: 50%;
   text-align: right;
   padding: 10px;
 }
-.textAreaInf td ,.textAreaInf th {
-  border: 1px solid #dddddd;
+.textAreaInf td ,.textAreaInf th ,.textAreaInfDr td,.textAreaInfDr th{
   padding: 8px;
+}
+.textAreaInf th {
+  border: 0;
+  border-bottom: 1px solid #dddddd;
+}
+.textAreaInfDr th{
+  border: 0;
+  border-bottom: 1px solid rgba(26, 51, 100, 0.466);
 }
 .tfTbTh {
   padding-bottom: 14px;
@@ -1615,15 +1624,22 @@ td.edExCf {
   text-align: center;
   background-color: #e8e8e8;
 }
+.tdInfADr {
+  color: #1a73e8;
+  text-align: center;
+  background-color: rgba(204, 202, 202, 0.089);
+}
 .tdInfB {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .texInfTabLi {
   background-color: rgba(238, 237, 237, 0.877);
   color: #3b3b3b;
-  border: 1px solid rgba(228, 228, 228, 0.877);
 }
-
+.texInfTabDr {
+  background-color: rgb(17, 28, 39);
+  color: #eeeeee;
+}
 .errTextArea {
   background-color: rgba(238, 237, 237, 0.877);
   padding: 10px;

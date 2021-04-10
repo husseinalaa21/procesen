@@ -628,9 +628,9 @@ export default class Sent extends Component {
                                         <div className="apiChoose" onClick={() => this.chanDis()}>
                                             <FontAwesomeIcon icon={faPenAlt} className={this.state.disVew ? "apiChose" : this.caseInfoPP() ? "apiunChose" : "apiunChoseQ"} />
                                         </div>
-                                        <div className="apiChoose" onClick={() => this.colorize()}>
+                                        {/*<div className="apiChoose" onClick={() => this.colorize()}>
                                             <FontAwesomeIcon icon={faPalette} className={this.state.isColor ? "apiChose" : "apiunChose"} />
-                                        </div>
+                                        </div>*/}
                                         <div className="apiChoose" onClick={() => this.thThisK()}>
                                             <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChose"} />
                                         </div>

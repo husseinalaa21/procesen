@@ -126,7 +126,7 @@ export default class Sent extends Component {
         var swp = this.state.curTex_,
             lisNum = this.state.numLis,
             donCpu = <FontAwesomeIcon icon={faDotCircle} className="donCpu" />;
-            this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
+        this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
         if (swp.length > 0 && this.state.isW === true) {
             var daBot = [this.state.curTex_, this.state.obp, this.state.ev, this.state.unKo, this.state.neIlemntEnter]
             fetch("https://server.procesen.com/pc/procsentEn/sen/?pr=" + JSON.stringify(daBot))
@@ -628,9 +628,9 @@ export default class Sent extends Component {
                                         <div className="apiChoose" onClick={() => this.chanDis()}>
                                             <FontAwesomeIcon icon={faPenAlt} className={this.state.disVew ? "apiChose" : this.caseInfoPP() ? "apiunChose" : "apiunChoseQ"} />
                                         </div>
-                                        <div className="apiChoose" onClick={() => this.colorize()}>
+                                        {/*<div className="apiChoose" onClick={() => this.colorize()}>
                                             <FontAwesomeIcon icon={faPalette} className={this.state.isColor ? "apiChose" : "apiunChose"} />
-                                        </div>
+                                        </div>*/}
                                         <div className="apiChoose" onClick={() => this.thThisK()}>
                                             <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChose"} />
                                         </div>
@@ -672,7 +672,7 @@ export default class Sent extends Component {
                     <div className={this.props.bThem ? "redeyTextAreaInfTIT TextAreaDr TextAreaSDr" : "redeyTextAreaInfTIT TextAreaLi TextAreaSLi"}>
                         <div className="stolsConSec">
                             <div className={this.props.bThem ? this.caseInfoPP() ? "casSett casSettHideDr" : "casSett casSettShowDr" : this.caseInfoPP() ? "casSett casSettHide" : "casSett casSettShow"}>
-                            <FontAwesomeIcon icon={faBolt} className="icTolsSett" />
+                                <FontAwesomeIcon icon={faBolt} className="icTolsSett" />
                             </div>
                             <div className="stolsCONTROLX">{this.state.isW ? " معلومات النص المدخل و خيارات التحكم ." : <div className="isWiteTextControal"></div>}</div>
                         </div>
@@ -876,7 +876,7 @@ export default class Sent extends Component {
             } else {
                 return (
                     <div className={params.bthem ? "pshConDr" : "pshCon"}>
-                    <div className="rtaTitle"> لا توجد محفوظات لهذه الجلسة بعد .. </div>
+                        <div className="rtaTitle"> لا توجد محفوظات لهذه الجلسة بعد .. </div>
                         <div className="nPshOnLogo">
                             <FontAwesomeIcon icon={faClipboard} />
                         </div>

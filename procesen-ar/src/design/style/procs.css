@@ -1710,6 +1710,52 @@ td.edExCf {
   background-color: #1d415f;
   color: rgb(154, 170, 187);
 }
+.botoAdsMapDr {
+  background-color: #24394b;
+  color: rgb(208, 215, 223);
+  border-radius: 3px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.botoAdsMap {
+  background-color:rgb(222, 225, 228);
+  color:#35383a;
+  border-radius: 3px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.botoMApSec {
+  padding: 11px;
+  margin-top: 10px;
+}
+.caseAttrAds {
+  font-style: italic !important;
+  padding-right: 5px;
+  font-size: 12px;
+}
+.showDitAds {
+  color: #28527a;
+  padding-right: 3px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.secDiSh {
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+.namDiSh {
+  padding-left: 3px;
+}
+.vamDiSh {
+  padding-right: 10px;
+}
+.showDitAdsA {
+  color: #297ac7;
+  padding-right: 3px;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 2px;
+}
 /*  SP  */
 .loader,
 .loader:after {

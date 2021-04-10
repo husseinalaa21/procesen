@@ -22,6 +22,7 @@ export default class Sent extends Component {
             curTex_: "",
             vxTextA: "",
             vxTextACopy: "",
+            shDit : "",
             vxTextB: "<div class='isWiteTextInput'> </div>",
             // FontAwsome
             disVew: false,
@@ -42,6 +43,7 @@ export default class Sent extends Component {
             numLis: [0, 0, 0],
             cpu: <FontAwesomeIcon icon={faDotCircle} className="donCpu" />,
             wasw: 0,
+            numAdsEnt: 0,
             hightEle: [false, "", 0]
         }
         this.ddrThem = this.props.ddrThem
@@ -92,6 +94,7 @@ export default class Sent extends Component {
                         ezVbn: ez,
                         ev: _ev_,
                         neIlemntEnter: _neIlemntEnter,
+                        numAdsEnt: _neIlemntEnter.length,
                         vxTextB: "<i class='nullTextArea'> There is nothing yet .. </i>"
                     });
                     this.resLisAdv()
@@ -317,6 +320,27 @@ export default class Sent extends Component {
             }
         }
     }
+    shDit(x, y) {
+        if (y === true) {
+            var uez = this.state.ezVbn
+            if (uez[x].exs === true) {
+                let num = uez[x].nam
+                let eo;
+                let ex;
+                if (uez[x].ex === true) {
+                    ex = " Delete "
+                    eo = uez[x].eo
+                } else {
+                    ex = " Modification "
+                    eo = "( "+uez[x].eo[0][0] + " ) - Changed to - ( " + uez[x].eo[0][1] +" )"
+                }
+                var itDi = <div className="botoMApSec"> <div className="secDiSh"><div className="namDiSh"> Name of the element  : </div> <div className="vamDiSh"> {num} </div></div>   <div className="secDiSh"><div className="namDiSh"> Item type : </div> <div className="vamDiSh"> {ex} </div></div>   <div className="secDiSh"><div className="namDiSh">  The value  :   </div> <div className="vamDiSh"> {eo} </div></div><span className="showDitAdsA" onClick={() => this.shDit(x, false)}> Close </span></div>
+                this.setState({ shDit: itDi })
+            }
+        } else {
+            this.setState({ shDit: "" })
+        }
+    }
     setAvd(ax) {
         var trLi = ax.tn ? "deExcon" : "edExcon"
         var trDr = ax.tn ? "deExconDr" : "edExconDr"
@@ -325,8 +349,8 @@ export default class Sent extends Component {
         var edEdLi = "trfEx edExTf"
         var edEdDr = "trfEx edExTfDr"
         return (
-            <tr className={this.props.bThem ? trDr : trLi} key={18 + ax.nu}>{ax.tn ? <><td className={this.props.bThem ? tdDeDr : tdDeLi}> {ax.n} </td >
-                <td> delete </td ></> : <><td className={this.props.bThem ? edEdDr : edEdLi}>{ax.n}</td >
+            <tr className={this.props.bThem ? trDr : trLi} key={18 + ax.nu}>{ax.tn ? <><td className={this.props.bThem ? tdDeDr : tdDeLi}> {ax.n}  {ax.fu ? <span className="caseAttrAds"> (By you) </span> : <span className="caseAttrAds"> ( From system ) </span>} {ax.fu ? <span className="showDitAds" onClick={() => this.shDit(ax.nu, true)}> [Show details] </span> : ''}</td >
+                <td> delete </td ></> : <><td className={this.props.bThem ? edEdDr : edEdLi}>{ax.n} {ax.fu ? <span className="caseAttrAds"> (By you) </span> : <span className="caseAttrAds"> ( From system ) </span>} {ax.fu ? <span className="showDitAds" onClick={() => this.shDit(ax.nu, true)}> [Show details] </span> : ''}</td >
                 <td className="edExTu"> Modification </td ></>}
                 <td className={ax.c ? "edExCf" : "edExC"} onClick={() => this.szAvd(ax.nu)}>
                     {ax.c ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faMinus} />}
@@ -353,7 +377,7 @@ export default class Sent extends Component {
             }
             uez.splice(x, 1)
             iez.splice(x, 1)
-            this.setState({ ezVbn: uez, ev: iez, neIlemntEnter: neit })
+            this.setState({ ezVbn: uez, ev: iez, neIlemntEnter: neit, numAdsEnt: neit.length })
         }
         this.resLisAdv()
         this.feediT()
@@ -376,128 +400,132 @@ export default class Sent extends Component {
             mesErr = <div className="wrongMessLis"> <FontAwesomeIcon icon={faTools} /> One or both of the entered values are invalid. The value you are trying to enter may already be in the system options above .</div>,
             mesExc = <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} /> It appears that the value or name is already in use. Please choose a new name or a new valid value . </div>;
 
-        if (this.state.isclc === true) {
-            if (x.length > 0 && y.length > 0) {
-                try {
-                    // tee one check
-                    let reLe = new RegExp(x, 'g')
-                    let valOne = x.replace(reLe, y)
-                    // tee two check
-                    let eapi = { ex: x }
-                    let api = JSON.parse(JSON.stringify(eapi))
-                    let erle = new RegExp(api.ex, 'g')
-                    let valapi = x.replace(erle, y)
-                    // check both
-                    if (valOne !== y && valapi !== y) {
+        if (this.state.numAdsEnt < 8) {
+            if (this.state.isclc === true) {
+                if (x.length > 0 && y.length > 0) {
+                    try {
+                        // tee one check
+                        let reLe = new RegExp(x, 'g')
+                        let valOne = x.replace(reLe, y)
+                        // tee two check
+                        let eapi = { ex: x }
+                        let api = JSON.parse(JSON.stringify(eapi))
+                        let erle = new RegExp(api.ex, 'g')
+                        let valapi = x.replace(erle, y)
+                        // check both
+                        if (valOne !== y && valapi !== y) {
+                            this.setState({ mesAdsList: mesErr })
+                            return false
+                        }
+                    } catch (err) {
                         this.setState({ mesAdsList: mesErr })
                         return false
                     }
-                } catch (err) {
-                    this.setState({ mesAdsList: mesErr })
-                    return false
-                }
-                // check list
-                let ise = false
-                var arx = [[x, y]]
-                uez.forEach(ui => {
-                    if (ui.hasOwnProperty('eo') && ui.ex === false) {
-                        if (arx.toString() === ui.eo.toString() || x.length === 0 || ui.nam === u) {
-                            ise = true
+                    // check list
+                    let ise = false
+                    var arx = [[x, y]]
+                    uez.forEach(ui => {
+                        if (ui.hasOwnProperty('eo') && ui.ex === false) {
+                            if (arx.toString() === ui.eo.toString() || x.length === 0 || ui.nam === u) {
+                                ise = true
+                            }
                         }
-                    }
-                })
-                if (ise === false) {
-                    let eqa = { nam: u, ex: false, eo: arx, exs: true }
-                    let syNe = { ex: false, eo: arx }
-                    if (neit.length > 0 && neit !== undefined) {
-                        neit.push(syNe)
+                    })
+                    if (ise === false) {
+                        let eqa = { nam: u, ex: false, eo: arx, exs: true }
+                        let syNe = { ex: false, eo: arx }
+                        if (neit.length > 0 && neit !== undefined) {
+                            neit.push(syNe)
+                        } else {
+                            let teeNeit = []
+                            teeNeit.push(syNe)
+                            neit = teeNeit
+                        }
+                        uez.push(eqa)
+                        iez.push(false)
+                        this.resLisAdv()
+                        let cookMe = cookies.get('meLis')
+                        if (cookMe !== undefined && cookMe.length > 0) {
+                            cookMe.push(eqa)
+                            cookies.set('meLis', cookMe);
+                        } else {
+                            let newLisMy = []
+                            newLisMy.push(eqa)
+                            cookies.set('meLis', newLisMy);
+                        }
+                        this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit, numAdsEnt: neit.length })
                     } else {
-                        let teeNeit = []
-                        teeNeit.push(syNe)
-                        neit = teeNeit
+                        this.setState({ mesAdsList: mesExc })
                     }
-                    uez.push(eqa)
-                    iez.push(false)
-                    this.resLisAdv()
-                    let cookMe = cookies.get('meLis')
-                    if (cookMe !== undefined && cookMe.length > 0) {
-                        cookMe.push(eqa)
-                        cookies.set('meLis', cookMe);
-                    } else {
-                        let newLisMy = []
-                        newLisMy.push(eqa)
-                        cookies.set('meLis', newLisMy);
-                    }
-                    this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit })
-                } else {
-                    this.setState({ mesAdsList: mesExc })
+                    this.setState({
+                        onAdv: "",
+                        twAdv: "",
+                        namAdv: ""
+                    })
                 }
-                this.setState({
-                    onAdv: "",
-                    twAdv: "",
-                    namAdv: ""
-                })
+            } else {
+                if (x.length > 0) {
+                    try {
+                        // tee check one
+                        let lily = new RegExp(x, 'g')
+                        let valOne = x.replace(lily, "")
+                        // tee check two
+                        let layla = { ex: x }
+                        let liiArr = JSON.parse(JSON.stringify(layla))
+                        let leali = new RegExp(liiArr.ex, 'g')
+                        let valapi = x.replace(leali, "")
+                        // check both
+                        if (valOne !== "" && valapi !== "") {
+                            this.setState({ mesAdsList: mesErr })
+                            return false
+                        }
+                    } catch (err) {
+                        this.setState({ mesAdsList: mesErr })
+                        return false
+                    }
+                    let ise = false
+                    uez.forEach(ui => {
+                        if (ui.hasOwnProperty('eo') && ui.ex === true) {
+                            if (x === ui.eo || x.length === 0 || ui.nam === u) {
+                                ise = true
+                            }
+                        }
+                    })
+                    if (ise === false) {
+                        let eqa = { nam: u, ex: true, eo: x, exs: true }
+                        let syNe = { ex: true, eo: x }
+                        if (neit.length > 0 && neit !== undefined) {
+                            neit.push(syNe)
+                        } else {
+                            let teeNeit = []
+                            teeNeit.push(syNe)
+                            neit = teeNeit
+                        }
+                        uez.push(eqa)
+                        iez.push(false)
+                        this.resLisAdv()
+                        let cookMe = cookies.get('meLis')
+                        if (cookMe !== undefined && cookMe.length > 0) {
+                            cookMe.push(eqa)
+                            cookies.set('meLis', cookMe);
+                        } else {
+                            let newLisMy = []
+                            newLisMy.push(eqa)
+                            cookies.set('meLis', newLisMy);
+                        }
+                        this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit, numAdsEnt: neit.length })
+                    } else {
+                        this.setState({ mesAdsList: mesExc })
+                    }
+                    this.setState({
+                        onAdv: "",
+                        twAdv: "",
+                        namAdv: ""
+                    })
+                }
             }
         } else {
-            if (x.length > 0) {
-                try {
-                    // tee check one
-                    let lily = new RegExp(x, 'g')
-                    let valOne = x.replace(lily, "")
-                    // tee check two
-                    let layla = { ex: x }
-                    let liiArr = JSON.parse(JSON.stringify(layla))
-                    let leali = new RegExp(liiArr.ex, 'g')
-                    let valapi = x.replace(leali, "")
-                    // check both
-                    if (valOne !== "" && valapi !== "") {
-                        this.setState({ mesAdsList: mesErr })
-                        return false
-                    }
-                } catch (err) {
-                    this.setState({ mesAdsList: mesErr })
-                    return false
-                }
-                let ise = false
-                uez.forEach(ui => {
-                    if (ui.hasOwnProperty('eo') && ui.ex === true) {
-                        if (x === ui.eo || x.length === 0 || ui.nam === u) {
-                            ise = true
-                        }
-                    }
-                })
-                if (ise === false) {
-                    let eqa = { nam: u, ex: true, eo: x, exs: true }
-                    let syNe = { ex: true, eo: x }
-                    if (neit.length > 0 && neit !== undefined) {
-                        neit.push(syNe)
-                    } else {
-                        let teeNeit = []
-                        teeNeit.push(syNe)
-                        neit = teeNeit
-                    }
-                    uez.push(eqa)
-                    iez.push(false)
-                    this.resLisAdv()
-                    let cookMe = cookies.get('meLis')
-                    if (cookMe !== undefined && cookMe.length > 0) {
-                        cookMe.push(eqa)
-                        cookies.set('meLis', cookMe);
-                    } else {
-                        let newLisMy = []
-                        newLisMy.push(eqa)
-                        cookies.set('meLis', newLisMy);
-                    }
-                    this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit })
-                } else {
-                    this.setState({ mesAdsList: mesExc })
-                }
-                this.setState({
-                    onAdv: "",
-                    twAdv: "",
-                    namAdv: ""
-                })
-            }
+            this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} />  It seems you have exceeded the allowed number of partitions, please delete the previous values to add new ones . </div> })
         }
     }
     // Call Main
@@ -727,6 +755,8 @@ export default class Sent extends Component {
                                                 {this.state.containerItemsSp}
                                             </tbody>
                                         </table>
+                                        <div className={this.props.bThem ? "botoAdsMapDr botoMApSec" : "botoAdsMap botoMApSec"}>  ( {this.state.numAdsEnt} ) of the eight permitted sections was added .</div>
+                                        <div className={this.props.bThem ? "botoAdsMapDr" : "botoAdsMap"}> {this.state.shDit}  </div>
                                     </div>
                                     <div className="conLisCr">
                                         <div> {this.state.mesAdsList} </div>

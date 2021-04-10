@@ -1640,9 +1640,11 @@ td.edExCf {
 .texInfTabLi {
   background-color: rgba(238, 237, 237, 0.877);
   color: #3b3b3b;
-  border: 1px solid rgba(228, 228, 228, 0.877);
 }
-
+.texInfTabDr {
+  background-color: rgb(17, 28, 39);
+  color: #eeeeee;
+}
 .errTextArea {
   background-color: rgba(238, 237, 237, 0.877);
   padding: 10px;

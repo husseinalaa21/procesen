@@ -1678,6 +1678,38 @@ td.edExCf {
   padding-left: 6px;
   padding-right: 6px;
 }
+.secAdsInfo {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.secAdsInfoIco {
+  padding: 7px;
+}
+.secAdsInfoCon {
+  padding: 7px;
+  font-size: 15px;
+}
+.secAdsInfo .secAdsInfoIco{
+  background-color:rgb(199, 203, 207);
+  color:#35383a;
+}
+.secAdsInfo .secAdsInfoCon {
+  background-color:rgb(222, 225, 228);
+  color:#35383a;
+}
+.secAdsInfoDr .secAdsInfoIco{
+  background-color: #244e70;
+  color: rgb(154, 170, 187);
+}
+.secAdsInfoDr .secAdsInfoCon {
+  background-color: #1d415f;
+  color: rgb(154, 170, 187);
+}
 /*  SP  */
 .loader,
 .loader:after {

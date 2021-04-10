@@ -735,6 +735,10 @@ export default class Sent extends Component {
                                             <div className={this.props.bThem ? conLiBDr : conLiBLi} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}> حذف عنصر </div>
                                         </div>
                                         <div className={this.props.bThem ? "conLisCrCon conLisCrConDr" : "conLisCrCon conLisCrConLi"}>
+                                            <div className={this.props.bThem ? "secAdsInfo secAdsInfoDr" : "secAdsInfo secAdsInfoLi"}>
+                                                <div className="secAdsInfoIco"><FontAwesomeIcon icon={faBolt} /></div>
+                                                <div className="secAdsInfoCon"> أدخل عبارات أو كلمات صالحة ، يرجى الانتباه إلى المسافات قبل وبعد الكلمات أو العبارات . </div>
+                                            </div>
                                             {this.state.isclc ?
                                                 <div>
                                                     <div className="zWtext">

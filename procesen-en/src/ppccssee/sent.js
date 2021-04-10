@@ -126,7 +126,7 @@ export default class Sent extends Component {
         var swp = this.state.curTex_,
             lisNum = this.state.numLis,
             donCpu = <FontAwesomeIcon icon={faDotCircle} className="donCpu" />;
-            this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
+        this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
         if (swp.length > 0 && this.state.isW === true) {
             var daBot = [this.state.curTex_, this.state.obp, this.state.ev, this.state.unKo, this.state.neIlemntEnter]
             fetch("https://server.procesen.com/pc/procsentEn/sen/?pr=" + JSON.stringify(daBot))
@@ -735,6 +735,10 @@ export default class Sent extends Component {
                                             <div className={this.props.bThem ? conLiBDr : conLiBLi} onClick={() => { this.setState({ isclc: !this.state.isclc }) }}>Delete an item</div>
                                         </div>
                                         <div className={this.props.bThem ? "conLisCrCon conLisCrConDr" : "conLisCrCon conLisCrConLi"}>
+                                            <div className={this.props.bThem ? "secAdsInfo secAdsInfoDr" : "secAdsInfo secAdsInfoLi"}>
+                                                <div className="secAdsInfoIco"><FontAwesomeIcon icon={faBolt} /></div>
+                                                <div className="secAdsInfoCon"> Enter valid phrases or words, please pay attention to the spaces before and after the words or phrases </div>
+                                            </div>
                                             {this.state.isclc ?
                                                 <div>
                                                     <div className="zWtext">

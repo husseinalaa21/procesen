@@ -92,7 +92,7 @@ export default class Sent extends Component {
                         ezVbn: ez,
                         ev: _ev_,
                         neIlemntEnter: _neIlemntEnter,
-                        vxTextB: "<i className='nullTextArea'> There is nothing yet .. </i>"
+                        vxTextB: "<i class='nullTextArea'> There is nothing yet .. </i>"
                     });
                     this.resLisAdv()
                 },
@@ -176,7 +176,7 @@ export default class Sent extends Component {
                 this.setState({
                     vxTextA: "",
                     vxTextACopy: "",
-                    vxTextB: "<i className='nullTextArea'> There is nothing yet .. </i>",
+                    vxTextB: "<i class='nullTextArea'> There is nothing yet .. </i>",
                     numLis: lisNum,
                     cpu: donCpu
                 })

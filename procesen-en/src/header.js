@@ -13,6 +13,14 @@ const cookies = new Cookies();
 export default function App() {
     const [clickNav, setClickNav] = useState(false)
     const [clickNavLang, setClickNavLang] = useState(false)
+    function cockInfF() {
+      const coInf = cookies.get('infFront')
+      if (coInf !== undefined && coInf === 'true') {
+        return true
+      } else {
+        return false
+      }
+    }
     function isNi() {
         const letMe = cookies.get('liNi')
         if (letMe !== undefined && letMe === 'true') {
@@ -25,6 +33,10 @@ export default function App() {
         let ili = '"' + !isNight + '"'
         cookies.set('liNi', ili)
         isNightX(!isNight)
+    }
+    function deFroTex(x) {
+      setinfI(false)
+      cookies.set('infFront', false)
     }
     const [isNight, isNightX] = useState(isNi())
     const [srcc, setsrcc] = useState(false)
@@ -121,11 +133,11 @@ export default function App() {
 
                 </div>
             </div>
-            <div className={isNight ? "conProcesen conProDr" : "conProcesen conProL"}>
+            <div className={isNight ? "conProcesen conProDr" : "conProcesen conProL"}>{infI ?
                 <div className={isNight ? "defProcesen defProDr" : "defProcesen defProL"}>
                     <div className={isNight ? "defImgIco dImgDr" : "defImgIco dImgL"} ><img src={Logo} alt="def" width="25px" height="25px" /></div>
-                    <div className="defText"> <b className="defTextProce"> Proce</b><b className="defTextSen">sen</b> is a site for <b className="defTextProce">processing</b> <b className="defTextSen">sentences</b> by artificial intelligence . for more information , <a href="#sec-definition-site" >click here </a> </div>
-                </div>
+                    <div className="defText"> <b className="defTextProce"> Proce</b><b className="defTextSen">sen</b> is a site for <b className="defTextProce">processing</b> <b className="defTextSen">sentences</b> by artificial intelligence . for more information , <a href="#sec-definition-site" > click here </a> , To remove the introductory text <span className="spanDeleteInfoFront" onClick={() => deFroTex()}> click here . </span> </div>
+                </div> : ""}
             </div>
             <Main themHeader={isNight} />
         </>

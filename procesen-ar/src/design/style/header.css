@@ -296,3 +296,6 @@
   background-color: #c8cbce;
   padding-right: 18px !important;
 }
+.spanDeleteInfoFront {
+  cursor: pointer;
+}

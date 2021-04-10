@@ -1663,6 +1663,10 @@ td.edExCf {
   color: #383838;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+.nullTextArea {
+  padding-left: 6px;
+  padding-right: 6px;
+}
 
 /*  SP  */
 .loader,

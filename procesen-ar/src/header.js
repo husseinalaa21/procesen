@@ -13,6 +13,14 @@ const cookies = new Cookies();
 export default function App() {
   const [clickNav, setClickNav] = useState(false)
   const [clickNavLang, setClickNavLang] = useState(false)
+  function cockInfF() {
+    const coInf = cookies.get('infFront')
+    if (coInf !== undefined && coInf === 'true') {
+      return true
+    } else {
+      return false
+    }
+  }
   function isNi() {
     const letMe = cookies.get('liNi')
     if (letMe !== undefined && letMe === 'true') {
@@ -26,6 +34,11 @@ export default function App() {
     cookies.set('liNi', ili)
     isNightX(!isNight)
   }
+  function deFroTex(x) {
+    setinfI(false)
+    cookies.set('infFront', false)
+  }
+  const [infI, setinfI] = useState(cockInfF())
   const [isNight, isNightX] = useState(isNi())
   const [srcc, setsrcc] = useState(false)
   const [copThisLin, setcopThisLin] = useState(false)
@@ -85,7 +98,7 @@ export default function App() {
               <div className="searchToggThem" onClick={() => { resThem(!isNight) }}>
                 <FontAwesomeIcon icon={faMoon} style={isNight ? { marginTop: '10px', color: ' rgb(223, 180, 39)', fontSize: '17px', transition: '0.4s' } : { marginTop: '10px', color: ' #30475ecc', fontSize: '17px', transition: '0.4s' }} />
               </div>
-              
+
               <div className="searchChangeLang" onClick={() => {
                 setClickNavLang(!clickNavLang)
                 if (clickNav === true) {
@@ -122,12 +135,11 @@ export default function App() {
 
         </div>
       </div>
-      <div className={isNight ? "conProcesen conProDr" : "conProcesen conProL"}>
+      <div className={isNight ? "conProcesen conProDr" : "conProcesen conProL"}>{infI ?
         <div className={isNight ? "defProcesen defProDr" : "defProcesen defProL"}>
           <div className={isNight ? "defImgIco dImgDr" : "defImgIco dImgL"} ><img src={Logo} alt="def" width="25px" height="25px" className="defImgIco" /></div>
-          <p className="defText"> بروسيسن هو أختصار : ( <b className="defTextProce"> Proce</b><b className="defTextSen">sen</b> ) أي <b className="defTextProce">processing</b> <b className="defTextSen">sentences</b> by artificial intelligence . " و التي تعني معالجة الجُمل بواسطة الذكاء الاصطناعي " , <a href="#sec-definition-site" > معرفة المزيد </a> </p>
-        </div>
-      </div>
+          <p className="defText"> بروسيسن هو أختصار : ( <b className="defTextProce"> Proce</b><b className="defTextSen">sen</b> ) أي <b className="defTextProce">processing</b> <b className="defTextSen">sentences</b> by artificial intelligence . " و التي تعني معالجة الجُمل بواسطة الذكاء الاصطناعي " , <a href="#sec-definition-site" > معرفة المزيد </a> , و لأزالة النص التعريفي <span className="spanDeleteInfoFront" onClick={() => deFroTex()}> أضغط هنا </span> </p>
+        </div> : ""}</div>
       <Main themHeader={isNight} />
     </>
   )

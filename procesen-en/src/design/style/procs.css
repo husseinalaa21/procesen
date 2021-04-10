@@ -1697,7 +1697,8 @@ td.edExCf {
 }
 .secAdsInfoCon {
   padding: 7px;
-  font-size: 15px;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .secAdsInfo .secAdsInfoIco{
   background-color:rgb(199, 203, 207);

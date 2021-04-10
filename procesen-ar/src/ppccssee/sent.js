@@ -725,6 +725,9 @@ export default class Sent extends Component {
                                                     <th className="trsdEx"> حذف </th>
                                                 </tr>
                                                 {this.state.containerItemsSp}
+                                                <div className={this.props.bThem ? "edvExDr" : "edvEx"}>
+                                                    as
+                                                </div>
                                             </tbody>
                                         </table>
                                     </div>

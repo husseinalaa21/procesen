@@ -821,6 +821,7 @@ font-size: 16px;
   padding: 6px;
   border-radius: 4px;
   margin-bottom: 6px;
+  padding: 8px;
 }
 
 .conLisConLi {
@@ -1056,13 +1057,17 @@ font-size: 16px;
   width: 100%;
   border-collapse:separate; 
   border-spacing: 0 0.5em;
+  table-layout:fixed;
+  overflow: hidden;
 }
 .xTbo td {
   padding: 10px;
+  word-wrap: break-word; 
 }
 .xTbo th{
-  padding: 12px;
+  padding: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  word-wrap: break-word; 
 }
 td.trdEx ,th.trdEx{
   border-radius: 3px 0 0 3px !important ;
@@ -1078,6 +1083,7 @@ td.trdExDr ,th.trdExDr{
 }
 td.trfEx ,th.trfEx{
   border-radius:0 3px 3px 0!important ;
+  width:50% !important;
 }
 td.edExTf {
   border: 0;

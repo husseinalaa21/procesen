@@ -99,7 +99,7 @@ export default class Sent extends Component {
                     });
                     this.resLisAdv()
                 },
-                (error) => {
+                (err) => {
                     this.setState({
                         vxTextB: "There appears to be a problem with the server [002]. Please wait a while and try again ."
                     });
@@ -127,8 +127,7 @@ export default class Sent extends Component {
     }
     feediT() {
         var swp = this.state.curTex_,
-            lisNum = this.state.numLis,
-            donCpu = <FontAwesomeIcon icon={faDotCircle} className="donCpu" />;
+            rr = "<div class='errTextArea'> A problem occurred, there is an error in the input process, either with the input elements, or you entered an invalid value, or you tried to enter invalid functions to delete or modify, a notification has been sent to the programmers and they will work on solving the problem soon . </div> <div class='listErrInfo'> <p class='titleErr'> Please follow one of the following options : </p> <ul class='ulErr'> <li>Please check the text settings entered by you . </li> <li> To Reload page <a href='/'>click here</a> </li></ul> </div>"
         this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
         if (swp.length > 0 && this.state.isW === true) {
             var daBot = [this.state.curTex_, this.state.obp, this.state.ev, this.state.unKo, this.state.neIlemntEnter]
@@ -136,55 +135,35 @@ export default class Sent extends Component {
                 .then(res => res.json())
                 .then((re) => {
                     try {
-                        lisNum[0] = swp.length
-                        lisNum[1] = re[0].length
-                        lisNum[2] = Math.round(((swp.length - re[0].length) / swp.length) * 100)
-                        this.setState({
-                            vxTextA: re[0],
-                            vxTextACopy: re[0],
-                            vxTextB: re[0].replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"),
-                            numLis: lisNum,
-                            cpu: donCpu
-                        })
+                        if(re[0] === false){
+                            this.iValCom({a : swp.length, v : "" , vb : rr,n : 0, p : 0})
+                        } else {
+                            let perV = Math.round(((swp.length - re[0].length) / swp.length) * 100)
+                            this.iValCom({a : swp.length, v : re[0] , vb : re[0].replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"),n : re[0].length, p : perV})
+                        }
                     } catch (err) {
-                        lisNum[0] = swp.length
-                        lisNum[1] = 0
-                        lisNum[2] = 0
-                        this.setState({
-                            vxTextA: "",
-                            vxTextACopy: "",
-                            vxTextB: " ... ",
-                            numLis: lisNum,
-                            cpu: donCpu
-                        })
+                        this.iValCom({a : swp.length, v : "" , vb : rr,n : 0, p : 0})
                     }
                 }, (er) => {
-                    lisNum[0] = 0
-                    lisNum[1] = 0
-                    lisNum[2] = 0
-                    this.setState({
-                        vxTextA: "",
-                        vxTextACopy: "",
-                        vxTextB: " ... ",
-                        numLis: lisNum,
-                        cpu: donCpu
-                    })
+                    this.iValCom({a : swp.length, v : "" , vb : " There appears to be a problem with the server [002]. Please wait a while and try again . ",n : 0, p : 0})
                 })
         } else {
-            lisNum[0] = 0
-            lisNum[1] = 0
-            lisNum[2] = 0
-            if (this.cpuProcesen) clearTimeout(this.cpuProcesen);
-            this.cpuProcesen = setTimeout(() => {
-                this.setState({
-                    vxTextA: "",
-                    vxTextACopy: "",
-                    vxTextB: "<i class='nullTextArea'> There is nothing yet .. </i>",
-                    numLis: lisNum,
-                    cpu: donCpu
-                })
-            }, 200);
+            this.iValCom({a : swp.length, v : "" , vb : "<i class='nullTextArea'> There is nothing yet .. </i>",n : 0, p : 0})
         }
+    }
+    iValCom(x) {
+        var lisNum = this.state.numLis,
+            donCpu = <FontAwesomeIcon icon={faDotCircle} className="donCpu" />;
+        lisNum[0] = x.a
+        lisNum[1] = x.n
+        lisNum[2] = x.p
+        this.setState({
+            vxTextA: x.v,
+            vxTextACopy: x.v,
+            vxTextB:  x.vb,
+            numLis: lisNum,
+            cpu: donCpu
+        })
     }
     // Any Tools
     anlyText() {

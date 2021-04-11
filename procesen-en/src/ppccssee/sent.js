@@ -22,7 +22,7 @@ export default class Sent extends Component {
             curTex_: "",
             vxTextA: "",
             vxTextACopy: "",
-            shDit : "",
+            shDit: "",
             vxTextB: "<div class='isWiteTextInput'> </div>",
             // FontAwsome
             disVew: false,
@@ -135,20 +135,20 @@ export default class Sent extends Component {
                 .then(res => res.json())
                 .then((re) => {
                     try {
-                        if(re[0] === false){
-                            this.iValCom({a : swp.length, v : "" , vb : rr,n : 0, p : 0})
+                        if (re[0] === false) {
+                            this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0 })
                         } else {
                             let perV = Math.round(((swp.length - re[0].length) / swp.length) * 100)
-                            this.iValCom({a : swp.length, v : re[0] , vb : re[0].replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"),n : re[0].length, p : perV})
+                            this.iValCom({ a: swp.length, v: re[0], vb: re[0].replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"), n: re[0].length, p: perV })
                         }
                     } catch (err) {
-                        this.iValCom({a : swp.length, v : "" , vb : rr,n : 0, p : 0})
+                        this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0 })
                     }
                 }, (er) => {
-                    this.iValCom({a : swp.length, v : "" , vb : " There appears to be a problem with the server [002]. Please wait a while and try again . ",n : 0, p : 0})
+                    this.iValCom({ a: swp.length, v: "", vb: " There appears to be a problem with the server [002]. Please wait a while and try again . ", n: 0, p: 0 })
                 })
         } else {
-            this.iValCom({a : swp.length, v : "" , vb : "<i class='nullTextArea'> There is nothing yet .. </i>",n : 0, p : 0})
+            this.iValCom({ a: swp.length, v: "", vb: "<i class='nullTextArea'> There is nothing yet .. </i>", n: 0, p: 0 })
         }
     }
     iValCom(x) {
@@ -160,7 +160,7 @@ export default class Sent extends Component {
         this.setState({
             vxTextA: x.v,
             vxTextACopy: x.v,
-            vxTextB:  x.vb,
+            vxTextB: x.vb,
             numLis: lisNum,
             cpu: donCpu
         })
@@ -311,7 +311,7 @@ export default class Sent extends Component {
                     eo = uez[x].eo
                 } else {
                     ex = " Modification "
-                    eo = "( "+uez[x].eo[0][0] + " ) - Changed to - ( " + uez[x].eo[0][1] +" )"
+                    eo = "( " + uez[x].eo[0][0] + " ) - Changed to - ( " + uez[x].eo[0][1] + " )"
                 }
                 var itDi = <div className="botoMApSec"> <div className="secDiSh"><div className="namDiSh"> Name of the element  : </div> <div className="vamDiSh"> {num} </div></div>   <div className="secDiSh"><div className="namDiSh"> Item type : </div> <div className="vamDiSh"> {ex} </div></div>   <div className="secDiSh"><div className="namDiSh">  The value  :   </div> <div className="vamDiSh"> {eo} </div></div><span className="showDitAdsA" onClick={() => this.shDit(x, false)}> Close </span></div>
                 this.setState({ shDit: itDi })
@@ -378,133 +378,146 @@ export default class Sent extends Component {
             u = this.state.namAdv,
             mesErr = <div className="wrongMessLis"> <FontAwesomeIcon icon={faTools} /> One or both of the entered values are invalid. The value you are trying to enter may already be in the system options above .</div>,
             mesExc = <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} /> It appears that the value or name is already in use. Please choose a new name or a new valid value . </div>;
-
-        if (this.state.numAdsEnt < 8) {
-            if (this.state.isclc === true) {
-                if (x.length > 0 && y.length > 0) {
-                    try {
-                        // tee one check
-                        let reLe = new RegExp(x, 'g')
-                        let valOne = x.replace(reLe, y)
-                        // tee two check
-                        let eapi = { ex: x }
-                        let api = JSON.parse(JSON.stringify(eapi))
-                        let erle = new RegExp(api.ex, 'g')
-                        let valapi = x.replace(erle, y)
-                        // check both
-                        if (valOne !== y && valapi !== y) {
-                            this.setState({ mesAdsList: mesErr })
-                            return false
-                        }
-                    } catch (err) {
+        if (this.state.numAdsEnt > 8) {
+            this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} /> It seems you have exceeded the allowed number of partitions, please delete the previous values to add new ones . </div> })
+            return false
+        }
+        if(x.length > 80 || y.length > 80 || u.length > 80){
+            this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} /> Please do not write more than 80 characters for each section . </div> })
+            return false
+        }
+        if(x.includes('#') || y.includes('#')){
+            this.setState({ mesAdsList: mesErr })
+            return false
+        }
+        if (this.state.isclc === true) {
+            if (x.length > 0 && y.length > 0) {
+                try {
+                    // tee one check
+                    let reLe = new RegExp(x, 'g')
+                    let valOne = x.replace(reLe, y)
+                    // tee two check
+                    let eapi = { ex: x }
+                    let api = JSON.parse(JSON.stringify(eapi))
+                    let erle = new RegExp(api.ex, 'g')
+                    let valapi = x.replace(erle, y)
+                    // check both
+                    if (valOne !== y && valapi !== y) {
                         this.setState({ mesAdsList: mesErr })
                         return false
                     }
-                    // check list
-                    let ise = false
-                    var arx = [[x, y]]
-                    uez.forEach(ui => {
-                        if (ui.hasOwnProperty('eo') && ui.ex === false) {
-                            if (arx.toString() === ui.eo.toString() || x.length === 0 || ui.nam === u) {
-                                ise = true
-                            }
-                        }
-                    })
-                    if (ise === false) {
-                        let eqa = { nam: u, ex: false, eo: arx, exs: true }
-                        let syNe = { ex: false, eo: arx }
-                        if (neit.length > 0 && neit !== undefined) {
-                            neit.push(syNe)
-                        } else {
-                            let teeNeit = []
-                            teeNeit.push(syNe)
-                            neit = teeNeit
-                        }
-                        uez.push(eqa)
-                        iez.push(false)
-                        this.resLisAdv()
-                        let cookMe = cookies.get('meLis')
-                        if (cookMe !== undefined && cookMe.length > 0) {
-                            cookMe.push(eqa)
-                            cookies.set('meLis', cookMe);
-                        } else {
-                            let newLisMy = []
-                            newLisMy.push(eqa)
-                            cookies.set('meLis', newLisMy);
-                        }
-                        this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit, numAdsEnt: neit.length })
-                    } else {
-                        this.setState({ mesAdsList: mesExc })
-                    }
-                    this.setState({
-                        onAdv: "",
-                        twAdv: "",
-                        namAdv: ""
-                    })
+                } catch (err) {
+                    this.setState({ mesAdsList: mesErr })
+                    return false
                 }
-            } else {
-                if (x.length > 0) {
-                    try {
-                        // tee check one
-                        let lily = new RegExp(x, 'g')
-                        let valOne = x.replace(lily, "")
-                        // tee check two
-                        let layla = { ex: x }
-                        let liiArr = JSON.parse(JSON.stringify(layla))
-                        let leali = new RegExp(liiArr.ex, 'g')
-                        let valapi = x.replace(leali, "")
-                        // check both
-                        if (valOne !== "" && valapi !== "") {
-                            this.setState({ mesAdsList: mesErr })
-                            return false
+                // check list
+                let ise = false
+                var arx = [[x, y]]
+                uez.forEach(ui => {
+                    if (ui.hasOwnProperty('eo') && ui.ex === false) {
+                        if (arx.toString() === ui.eo.toString() || x.length === 0 || ui.nam === u) {
+                            ise = true
                         }
-                    } catch (err) {
-                        this.setState({ mesAdsList: mesErr })
-                        return false
                     }
-                    let ise = false
-                    uez.forEach(ui => {
-                        if (ui.hasOwnProperty('eo') && ui.ex === true) {
-                            if (x === ui.eo || x.length === 0 || ui.nam === u) {
-                                ise = true
-                            }
-                        }
-                    })
-                    if (ise === false) {
-                        let eqa = { nam: u, ex: true, eo: x, exs: true }
-                        let syNe = { ex: true, eo: x }
-                        if (neit.length > 0 && neit !== undefined) {
-                            neit.push(syNe)
-                        } else {
-                            let teeNeit = []
-                            teeNeit.push(syNe)
-                            neit = teeNeit
-                        }
-                        uez.push(eqa)
-                        iez.push(false)
-                        this.resLisAdv()
-                        let cookMe = cookies.get('meLis')
-                        if (cookMe !== undefined && cookMe.length > 0) {
-                            cookMe.push(eqa)
-                            cookies.set('meLis', cookMe);
-                        } else {
-                            let newLisMy = []
-                            newLisMy.push(eqa)
-                            cookies.set('meLis', newLisMy);
-                        }
-                        this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit, numAdsEnt: neit.length })
+                })
+                if (ise === false) {
+                    let eqa = { nam: u, ex: false, eo: arx, exs: true }
+                    let syNe = { ex: false, eo: arx }
+                    if (neit.length > 0 && neit !== undefined) {
+                        neit.push(syNe)
                     } else {
-                        this.setState({ mesAdsList: mesExc })
+                        let teeNeit = []
+                        teeNeit.push(syNe)
+                        neit = teeNeit
                     }
-                    this.setState({
-                        onAdv: "",
-                        twAdv: "",
-                        namAdv: ""
-                    })
+                    uez.push(eqa)
+                    iez.push(true)
+                    this.resLisAdv()
+                    let cookMe = cookies.get('meLis')
+                    if (cookMe !== undefined && cookMe.length > 0) {
+                        cookMe.push(eqa)
+                        cookies.set('meLis', cookMe);
+                    } else {
+                        let newLisMy = []
+                        newLisMy.push(eqa)
+                        cookies.set('meLis', newLisMy);
+                    }
+                    this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit, numAdsEnt: neit.length })
+                } else {
+                    this.setState({ mesAdsList: mesExc })
                 }
+                this.setState({
+                    onAdv: "",
+                    twAdv: "",
+                    namAdv: ""
+                })
+                setTimeout(() => {
+                    this.feediT()
+                }, 100);
             }
         } else {
-            this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} />  It seems you have exceeded the allowed number of partitions, please delete the previous values to add new ones . </div> })
+            if (x.length > 0) {
+                try {
+                    // tee check one
+                    let lily = new RegExp(x, 'g')
+                    let valOne = x.replace(lily, "")
+                    // tee check two
+                    let layla = { ex: x }
+                    let liiArr = JSON.parse(JSON.stringify(layla))
+                    let leali = new RegExp(liiArr.ex, 'g')
+                    let valapi = x.replace(leali, "")
+                    // check both
+                    if (valOne !== "" && valapi !== "") {
+                        this.setState({ mesAdsList: mesErr })
+                        return false
+                    }
+                } catch (err) {
+                    this.setState({ mesAdsList: mesErr })
+                    return false
+                }
+                let ise = false
+                uez.forEach(ui => {
+                    if (ui.hasOwnProperty('eo') && ui.ex === true) {
+                        if (x === ui.eo || x.length === 0 || ui.nam === u) {
+                            ise = true
+                        }
+                    }
+                })
+                if (ise === false) {
+                    let eqa = { nam: u, ex: true, eo: x, exs: true }
+                    let syNe = { ex: true, eo: x }
+                    if (neit.length > 0 && neit !== undefined) {
+                        neit.push(syNe)
+                    } else {
+                        let teeNeit = []
+                        teeNeit.push(syNe)
+                        neit = teeNeit
+                    }
+                    uez.push(eqa)
+                    iez.push(true)
+                    this.resLisAdv()
+                    let cookMe = cookies.get('meLis')
+                    if (cookMe !== undefined && cookMe.length > 0) {
+                        cookMe.push(eqa)
+                        cookies.set('meLis', cookMe);
+                    } else {
+                        let newLisMy = []
+                        newLisMy.push(eqa)
+                        cookies.set('meLis', newLisMy);
+                    }
+                    this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit, numAdsEnt: neit.length })
+                } else {
+                    this.setState({ mesAdsList: mesExc })
+                }
+                this.setState({
+                    onAdv: "",
+                    twAdv: "",
+                    namAdv: ""
+                })
+                setTimeout(() => {
+                    this.feediT()
+                }, 100);
+            }
         }
     }
     // Call Main

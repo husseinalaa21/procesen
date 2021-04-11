@@ -22,7 +22,7 @@ export default class Sent extends Component {
             curTex_: "",
             vxTextA: "",
             vxTextACopy: "",
-            shDit : "",
+            shDit: "",
             vxTextB: "<div class='isWiteTextInput'> </div>",
             // FontAwsome
             disVew: false,
@@ -135,20 +135,20 @@ export default class Sent extends Component {
                 .then(res => res.json())
                 .then((re) => {
                     try {
-                        if(re[0] === false){
-                            this.iValCom({a : swp.length, v : "" , vb : rr,n : 0, p : 0})
+                        if (re[0] === false) {
+                            this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0 })
                         } else {
                             let perV = Math.round(((swp.length - re[0].length) / swp.length) * 100)
-                            this.iValCom({a : swp.length, v : re[0] , vb : re[0].replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"),n : re[0].length, p : perV})
+                            this.iValCom({ a: swp.length, v: re[0], vb: re[0].replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"), n: re[0].length, p: perV })
                         }
                     } catch (err) {
-                        this.iValCom({a : swp.length, v : "" , vb : rr,n : 0, p : 0})
+                        this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0 })
                     }
                 }, (er) => {
-                    this.iValCom({a : swp.length, v : "" , vb : " يبدو أن هنالك مشكلة بالخادم [ 002 ] , يرجى الانتضار قليلاً ثم أعادة المحاولة ",n : 0, p : 0})
+                    this.iValCom({ a: swp.length, v: "", vb: " يبدو أن هنالك مشكلة بالخادم [ 002 ] , يرجى الانتضار قليلاً ثم أعادة المحاولة ", n: 0, p: 0 })
                 })
         } else {
-            this.iValCom({a : swp.length, v : "" , vb : "<i class='nullTextArea'> لا يوجد شيء بعد </i>",n : 0, p : 0})
+            this.iValCom({ a: swp.length, v: "", vb: "<i class='nullTextArea'> لا يوجد شيء بعد </i>", n: 0, p: 0 })
         }
     }
     iValCom(x) {
@@ -160,7 +160,7 @@ export default class Sent extends Component {
         this.setState({
             vxTextA: x.v,
             vxTextACopy: x.v,
-            vxTextB:  x.vb,
+            vxTextB: x.vb,
             numLis: lisNum,
             cpu: donCpu
         })
@@ -299,25 +299,25 @@ export default class Sent extends Component {
             }
         }
     }
-    shDit(x,y){
-        if(y === true){
+    shDit(x, y) {
+        if (y === true) {
             var uez = this.state.ezVbn
             if (uez[x].exs === true) {
                 let num = uez[x].nam
                 let eo;
                 let ex;
-                if(uez[x].ex === true){
+                if (uez[x].ex === true) {
                     ex = "حذف"
                     eo = uez[x].eo
                 } else {
                     ex = "تعديل"
-                    eo = uez[x].eo[0][0] +" - تعديل الى - " +uez[x].eo[0][1]
+                    eo = uez[x].eo[0][0] + " - تعديل الى - " + uez[x].eo[0][1]
                 }
-                var itDi = <div className="botoMApSec"> <div className="secDiSh"><div className="namDiSh"> أسم القسم : </div> <div className="vamDiSh"> {num} </div></div>   <div className="secDiSh"><div className="namDiSh"> نوع العنصر : </div> <div className="vamDiSh"> {ex} </div></div>   <div className="secDiSh"><div className="namDiSh">  القيمة  :   </div> <div className="vamDiSh"> {eo} </div></div><span className="showDitAdsA" onClick={()=>this.shDit(x,false)}> أغلاق </span></div>
-                this.setState({shDit : itDi})
+                var itDi = <div className="botoMApSec"> <div className="secDiSh"><div className="namDiSh"> أسم القسم : </div> <div className="vamDiSh"> {num} </div></div>   <div className="secDiSh"><div className="namDiSh"> نوع العنصر : </div> <div className="vamDiSh"> {ex} </div></div>   <div className="secDiSh"><div className="namDiSh">  القيمة  :   </div> <div className="vamDiSh"> {eo} </div></div><span className="showDitAdsA" onClick={() => this.shDit(x, false)}> أغلاق </span></div>
+                this.setState({ shDit: itDi })
             }
         } else {
-            this.setState({shDit : ""})
+            this.setState({ shDit: "" })
         }
     }
     setAvd(ax) {
@@ -328,8 +328,8 @@ export default class Sent extends Component {
         var edEdLi = "trfEx edExTf"
         var edEdDr = "trfEx edExTfDr"
         return (
-            <tr className={this.props.bThem ? trDr : trLi} key={18 + ax.nu}>{ax.tn ? <><td className={this.props.bThem ? tdDeDr : tdDeLi}> {ax.n} {ax.fu ? <span className="caseAttrAds"> ( من قبلك )</span> : <span className="caseAttrAds"> ( من النظام ) </span>} {ax.fu ? <span className="showDitAds" onClick={()=>this.shDit(ax.nu,true)}> [أضهار التفاصيل] </span> : ''} </td >
-                <td> حذف </td ></> : <><td className={this.props.bThem ? edEdDr : edEdLi}>{ax.n} {ax.fu ? <span className="caseAttrAds"> ( من قبلك ) </span> : <span className="caseAttrAds"> ( من النظام ) </span>}{ax.fu ? <span className="showDitAds" onClick={()=>this.shDit(ax.nu,true)}> [أضهار التفاصيل] </span> : ''} </td >
+            <tr className={this.props.bThem ? trDr : trLi} key={18 + ax.nu}>{ax.tn ? <><td className={this.props.bThem ? tdDeDr : tdDeLi}> {ax.n} {ax.fu ? <span className="caseAttrAds"> ( من قبلك )</span> : <span className="caseAttrAds"> ( من النظام ) </span>} {ax.fu ? <span className="showDitAds" onClick={() => this.shDit(ax.nu, true)}> [أضهار التفاصيل] </span> : ''} </td >
+                <td> حذف </td ></> : <><td className={this.props.bThem ? edEdDr : edEdLi}>{ax.n} {ax.fu ? <span className="caseAttrAds"> ( من قبلك ) </span> : <span className="caseAttrAds"> ( من النظام ) </span>}{ax.fu ? <span className="showDitAds" onClick={() => this.shDit(ax.nu, true)}> [أضهار التفاصيل] </span> : ''} </td >
                 <td className="edExTu"> تعديل </td ></>}
                 <td className={ax.c ? "edExCf" : "edExC"} onClick={() => this.szAvd(ax.nu)}>
                     {ax.c ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faMinus} />}
@@ -379,132 +379,140 @@ export default class Sent extends Component {
             mesErr = <div className="wrongMessLis"> <FontAwesomeIcon icon={faTools} /> واحدة من القيم المدخلة أو كلتيهما غير صالحة. قد تكون القيمة التي تحاول إدخالها موجودة بالفعل في خيارات النظام أعلاه .</div>,
             mesExc = <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} /> يبدو أن القيمة أو الاسم قيد الاستخدام بالفعل. الرجاء اختيار اسم جديد أو قيمة جديدة صالحة . </div>;
 
-        if (this.state.numAdsEnt < 8) {
-            if (this.state.isclc === true) {
-                if (x.length > 0 && y.length > 0) {
-                    try {
-                        // tee one check
-                        let reLe = new RegExp(x, 'g')
-                        let valOne = x.replace(reLe, y)
-                        // tee two check
-                        let eapi = { ex: x }
-                        let api = JSON.parse(JSON.stringify(eapi))
-                        let erle = new RegExp(api.ex, 'g')
-                        let valapi = x.replace(erle, y)
-                        // check both
-                        if (valOne !== y && valapi !== y) {
-                            this.setState({ mesAdsList: mesErr })
-                            return false
-                        }
-                    } catch (err) {
+        if (this.state.numAdsEnt > 8) {
+            this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} />  يبدو أنك تجاوزت عدد الأقسام المسموح بها , يرجى حذف القيّم السابقة لأضافة قيم جديدة . </div>})
+            return false
+        }
+        if(x.length > 80 && y.length > 80 || u.length > 80){
+            this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} />  يرجى عدم كتابة اكثر من ٨٠ حرف لكل قسم . </div> })
+            return false
+        }
+        if(x.includes('#') || y.includes('#')){
+            this.setState({ mesAdsList: mesErr })
+            return false
+        }
+        if (this.state.isclc === true) {
+            if (x.length > 0 && y.length > 0) {
+                try {
+                    // tee one check
+                    let reLe = new RegExp(x, 'g')
+                    let valOne = x.replace(reLe, y)
+                    // tee two check
+                    let eapi = { ex: x }
+                    let api = JSON.parse(JSON.stringify(eapi))
+                    let erle = new RegExp(api.ex, 'g')
+                    let valapi = x.replace(erle, y)
+                    // check both
+                    if (valOne !== y && valapi !== y) {
                         this.setState({ mesAdsList: mesErr })
                         return false
                     }
-                    // check list
-                    let ise = false
-                    var arx = [[x, y]]
-                    uez.forEach(ui => {
-                        if (ui.hasOwnProperty('eo') && ui.ex === false) {
-                            if (arx.toString() === ui.eo.toString() || x.length === 0 || ui.nam === u) {
-                                ise = true
-                            }
-                        }
-                    })
-                    if (ise === false) {
-                        let eqa = { nam: u, ex: false, eo: arx, exs: true }
-                        let syNe = { ex: false, eo: arx }
-                        if (neit.length > 0 && neit !== undefined) {
-                            neit.push(syNe)
-                        } else {
-                            let teeNeit = []
-                            teeNeit.push(syNe)
-                            neit = teeNeit
-                        }
-                        uez.push(eqa)
-                        iez.push(false)
-                        this.resLisAdv()
-                        let cookMe = cookies.get('meLis')
-                        if (cookMe !== undefined && cookMe.length > 0) {
-                            cookMe.push(eqa)
-                            cookies.set('meLis', cookMe);
-                        } else {
-                            let newLisMy = []
-                            newLisMy.push(eqa)
-                            cookies.set('meLis', newLisMy);
-                        }
-                        this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit, numAdsEnt: neit.length })
-                    } else {
-                        this.setState({ mesAdsList: mesExc })
-                    }
-                    this.setState({
-                        onAdv: "",
-                        twAdv: "",
-                        namAdv: ""
-                    })
+                } catch (err) {
+                    this.setState({ mesAdsList: mesErr })
+                    return false
                 }
-            } else {
-                if (x.length > 0) {
-                    try {
-                        // tee check one
-                        let lily = new RegExp(x, 'g')
-                        let valOne = x.replace(lily, "")
-                        // tee check two
-                        let layla = { ex: x }
-                        let liiArr = JSON.parse(JSON.stringify(layla))
-                        let leali = new RegExp(liiArr.ex, 'g')
-                        let valapi = x.replace(leali, "")
-                        // check both
-                        if (valOne !== "" && valapi !== "") {
-                            this.setState({ mesAdsList: mesErr })
-                            return false
+                // check list
+                let ise = false
+                var arx = [[x, y]]
+                uez.forEach(ui => {
+                    if (ui.hasOwnProperty('eo') && ui.ex === false) {
+                        if (arx.toString() === ui.eo.toString() || x.length === 0 || ui.nam === u) {
+                            ise = true
                         }
-                    } catch (err) {
-                        this.setState({ mesAdsList: mesErr })
-                        return false
                     }
-                    let ise = false
-                    uez.forEach(ui => {
-                        if (ui.hasOwnProperty('eo') && ui.ex === true) {
-                            if (x === ui.eo || x.length === 0 || ui.nam === u) {
-                                ise = true
-                            }
-                        }
-                    })
-                    if (ise === false) {
-                        let eqa = { nam: u, ex: true, eo: x, exs: true }
-                        let syNe = { ex: true, eo: x }
-                        if (neit.length > 0 && neit !== undefined) {
-                            neit.push(syNe)
-                        } else {
-                            let teeNeit = []
-                            teeNeit.push(syNe)
-                            neit = teeNeit
-                        }
-                        uez.push(eqa)
-                        iez.push(false)
-                        this.resLisAdv()
-                        let cookMe = cookies.get('meLis')
-                        if (cookMe !== undefined && cookMe.length > 0) {
-                            cookMe.push(eqa)
-                            cookies.set('meLis', cookMe);
-                        } else {
-                            let newLisMy = []
-                            newLisMy.push(eqa)
-                            cookies.set('meLis', newLisMy);
-                        }
-                        this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit, numAdsEnt: neit.length })
+                })
+                if (ise === false) {
+                    let eqa = { nam: u, ex: false, eo: arx, exs: true }
+                    let syNe = { ex: false, eo: arx }
+                    if (neit.length > 0 && neit !== undefined) {
+                        neit.push(syNe)
                     } else {
-                        this.setState({ mesAdsList: mesExc })
+                        let teeNeit = []
+                        teeNeit.push(syNe)
+                        neit = teeNeit
                     }
-                    this.setState({
-                        onAdv: "",
-                        twAdv: "",
-                        namAdv: ""
-                    })
+                    uez.push(eqa)
+                    iez.push(false)
+                    this.resLisAdv()
+                    let cookMe = cookies.get('meLis')
+                    if (cookMe !== undefined && cookMe.length > 0) {
+                        cookMe.push(eqa)
+                        cookies.set('meLis', cookMe);
+                    } else {
+                        let newLisMy = []
+                        newLisMy.push(eqa)
+                        cookies.set('meLis', newLisMy);
+                    }
+                    this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit, numAdsEnt: neit.length })
+                } else {
+                    this.setState({ mesAdsList: mesExc })
                 }
+                this.setState({
+                    onAdv: "",
+                    twAdv: "",
+                    namAdv: ""
+                })
             }
         } else {
-            this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} />  يبدو أنك تجاوزت عدد الأقسام المسموح بها , يرجى حذف القيّم السابقة لأضافة قيم جديدة . </div>})
+            if (x.length > 0) {
+                try {
+                    // tee check one
+                    let lily = new RegExp(x, 'g')
+                    let valOne = x.replace(lily, "")
+                    // tee check two
+                    let layla = { ex: x }
+                    let liiArr = JSON.parse(JSON.stringify(layla))
+                    let leali = new RegExp(liiArr.ex, 'g')
+                    let valapi = x.replace(leali, "")
+                    // check both
+                    if (valOne !== "" && valapi !== "") {
+                        this.setState({ mesAdsList: mesErr })
+                        return false
+                    }
+                } catch (err) {
+                    this.setState({ mesAdsList: mesErr })
+                    return false
+                }
+                let ise = false
+                uez.forEach(ui => {
+                    if (ui.hasOwnProperty('eo') && ui.ex === true) {
+                        if (x === ui.eo || x.length === 0 || ui.nam === u) {
+                            ise = true
+                        }
+                    }
+                })
+                if (ise === false) {
+                    let eqa = { nam: u, ex: true, eo: x, exs: true }
+                    let syNe = { ex: true, eo: x }
+                    if (neit.length > 0 && neit !== undefined) {
+                        neit.push(syNe)
+                    } else {
+                        let teeNeit = []
+                        teeNeit.push(syNe)
+                        neit = teeNeit
+                    }
+                    uez.push(eqa)
+                    iez.push(false)
+                    this.resLisAdv()
+                    let cookMe = cookies.get('meLis')
+                    if (cookMe !== undefined && cookMe.length > 0) {
+                        cookMe.push(eqa)
+                        cookies.set('meLis', cookMe);
+                    } else {
+                        let newLisMy = []
+                        newLisMy.push(eqa)
+                        cookies.set('meLis', newLisMy);
+                    }
+                    this.setState({ ezVbn: uez, ev: iez, mesAdsList: "", neIlemntEnter: neit, numAdsEnt: neit.length })
+                } else {
+                    this.setState({ mesAdsList: mesExc })
+                }
+                this.setState({
+                    onAdv: "",
+                    twAdv: "",
+                    namAdv: ""
+                })
+            }
         }
     }
     // Call Main

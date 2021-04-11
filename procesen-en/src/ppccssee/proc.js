@@ -169,7 +169,7 @@ export default class Proc extends Component {
                                             3000 / {this.state.len} {/*<mark className={this.state.didOve ? "marNumEnMain marNumX" : "marNumEnMain marNumN"}> {this.state.len} </mark>*/}
                                         </div>
                                         <div className="textAreaBottomLogo">
-                                            Powered by procsent
+                                            Powered by procesen
                                         </div>
                                     </div>
                                 </div>

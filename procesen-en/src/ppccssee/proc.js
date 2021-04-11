@@ -33,7 +33,7 @@ export default class Proc extends Component {
         this.prcText = this.tPcsWor.bind(this)
     }
     tPcsWor(es) {
-        var x = es.target.value
+        var x = es.target.value.slice(0,3000)
         this.setState({ TextPcs: x })
         if (x.length > 0) {
             this.setState({
@@ -166,7 +166,7 @@ export default class Proc extends Component {
                                     </div>
                                     <div className={this.props.them ? "toolsBottomAreaPcs toolsBottomAreaPcsDr" : "toolsBottomAreaPcs toolsBottomAreaPcsLi"}>
                                         <div className="textAreaBottom">
-                                            Length : {this.state.len} {/*<mark className={this.state.didOve ? "marNumEnMain marNumX" : "marNumEnMain marNumN"}> {this.state.len} </mark>*/}
+                                            3000 / {this.state.len} {/*<mark className={this.state.didOve ? "marNumEnMain marNumX" : "marNumEnMain marNumN"}> {this.state.len} </mark>*/}
                                         </div>
                                         <div className="textAreaBottomLogo">
                                             Powered by procsent

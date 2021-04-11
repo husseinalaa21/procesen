@@ -821,7 +821,6 @@ font-size: 16px;
   padding: 6px;
   border-radius: 4px;
   margin-bottom: 6px;
-  padding: 8px;
 }
 
 .conLisConLi {
@@ -1083,7 +1082,10 @@ td.trdExDr ,th.trdExDr{
 }
 td.trfEx ,th.trfEx{
   border-radius:0 3px 3px 0!important ;
-  width:50% !important;
+  width: 37% !important;
+}
+th.trsdEx {
+  text-align: center;
 }
 td.edExTf {
   border: 0;
@@ -1695,6 +1697,8 @@ td.edExCf {
 }
 .secAdsInfoIco {
   padding: 7px;
+  font-size: 13px !important;
+  padding-top: 15px;
 }
 .secAdsInfoCon {
   padding: 7px;

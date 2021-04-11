@@ -378,7 +378,7 @@ export default class Sent extends Component {
             u = this.state.namAdv,
             mesErr = <div className="wrongMessLis"> <FontAwesomeIcon icon={faTools} /> One or both of the entered values are invalid. The value you are trying to enter may already be in the system options above .</div>,
             mesExc = <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} /> It appears that the value or name is already in use. Please choose a new name or a new valid value . </div>;
-        if (this.state.numAdsEnt > 8) {
+        if (this.state.numAdsEnt > 7) {
             this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} /> It seems you have exceeded the allowed number of partitions, please delete the previous values to add new ones . </div> })
             return false
         }

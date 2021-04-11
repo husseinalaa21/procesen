@@ -379,7 +379,7 @@ export default class Sent extends Component {
             mesErr = <div className="wrongMessLis"> <FontAwesomeIcon icon={faTools} /> واحدة من القيم المدخلة أو كلتيهما غير صالحة. قد تكون القيمة التي تحاول إدخالها موجودة بالفعل في خيارات النظام أعلاه .</div>,
             mesExc = <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} /> يبدو أن القيمة أو الاسم قيد الاستخدام بالفعل. الرجاء اختيار اسم جديد أو قيمة جديدة صالحة . </div>;
 
-        if (this.state.numAdsEnt > 8) {
+        if (this.state.numAdsEnt > 7) {
             this.setState({ mesAdsList: <div className="wrongMessLis"> <FontAwesomeIcon icon={faInfoCircle} style={{ fontSize: '13px' }} />  يبدو أنك تجاوزت عدد الأقسام المسموح بها , يرجى حذف القيّم السابقة لأضافة قيم جديدة . </div>})
             return false
         }
@@ -833,7 +833,7 @@ export default class Sent extends Component {
                     <div className="psEcTitle">
                         <div className={this.props.bThem ? "psht_t psht_tDr" : "psht_t psht_tLi"}>
                             <FontAwesomeIcon icon={faHistory} className="clipboard" />
-                            <div className="pshTitle">السجل</div>
+                            <div className="pshTitle">المحفوضات</div>
                         </div>
                         <div className={this.props.bThem ? "pshHS pshHSDr" : "pshHS pshHSLi"} onClick={() => this.setState({ sorHs: !this.state.sorHs })}>
                             <FontAwesomeIcon icon={this.state.sorHs ? faSortDown : faSortUp} className={this.state.sorHs ? "pshHSD" : "pshHSP"} />

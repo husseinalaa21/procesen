@@ -166,7 +166,7 @@ export default class Proc extends Component {
                                     </div>
                                     <div className={this.props.them ? "toolsBottomAreaPcs toolsBottomAreaPcsDr" : "toolsBottomAreaPcs toolsBottomAreaPcsLi"}>
                                         <div className="textAreaBottom">
-                                            عدد الاحرف : {this.state.len} {/*<mark className={this.state.didOve ? "marNumEnMain marNumX" : "marNumEnMain marNumN"}> {this.state.len} </mark>*/}
+                                            {this.state.len} / 3000{/*<mark className={this.state.didOve ? "marNumEnMain marNumX" : "marNumEnMain marNumN"}> {this.state.len} </mark>*/}
                                         </div>
                                         <div className="textAreaBottomLogo">
                                             Powered by procesen

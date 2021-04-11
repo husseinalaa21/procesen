@@ -767,7 +767,7 @@ export default class Sent extends Component {
                                                         <div className="inptText">
                                                             <div className={this.props.bThem ? "titleInpY titleInpYDr" : "titleInpY titleInpYLi"}> Name of the element </div>
                                                             <div className={this.props.bThem ? "borInptY borInptYDr" : "borInptY borInptYLi"}>
-                                                                <input type="text" placeholder="write here " value={this.state.namAdv} onChange={(x) => { this.setState({ namAdv: x.target.value }) }} />
+                                                                <input type="text" placeholder="write here " value={this.state.namAdv} onChange={(x) => { this.setState({ namAdv: x.target.value }) }} maxLength="80" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -775,13 +775,13 @@ export default class Sent extends Component {
                                                         <div className="inptText">
                                                             <div className={this.props.bThem ? "titleInp titleInpDr" : "titleInp titleInpLi"}> Word </div>
                                                             <div className={this.props.bThem ? "borInpt borInptDr" : "borInpt borInptLi"}>
-                                                                <input type="text" placeholder="write here " value={this.state.onAdv} onChange={(x) => { this.setState({ onAdv: x.target.value }) }} />
+                                                                <input type="text" placeholder="write here " value={this.state.onAdv} onChange={(x) => { this.setState({ onAdv: x.target.value }) }} maxLength="80" />
                                                             </div>
                                                         </div>
                                                         <div className="inptText">
                                                             <div className={this.props.bThem ? "titleInp titleInpDr" : "titleInp titleInpLi"}> Reversible </div>
                                                             <div className={this.props.bThem ? "borInpt borInptDr" : "borInpt borInptLi"}>
-                                                                <input type="text" placeholder="write here " value={this.state.twAdv} onChange={(x) => { this.setState({ twAdv: x.target.value }) }} />
+                                                                <input type="text" placeholder="write here " value={this.state.twAdv} onChange={(x) => { this.setState({ twAdv: x.target.value }) }} maxLength="80" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -790,13 +790,13 @@ export default class Sent extends Component {
                                                     <div className="inptText">
                                                         <div className={this.props.bThem ? "titleInpY titleInpYDr" : "titleInpY titleInpYLi"}> Name of the element </div>
                                                         <div className={this.props.bThem ? "borInptY borInptYDr" : "borInptY borInptYLi"}>
-                                                            <input type="text" placeholder="write here" value={this.state.namAdv} onChange={(x) => { this.setState({ namAdv: x.target.value }) }} />
+                                                            <input type="text" placeholder="write here" value={this.state.namAdv} onChange={(x) => { this.setState({ namAdv: x.target.value }) }}  maxLength="80"/>
                                                         </div>
                                                     </div>
                                                     <div className="inptText">
                                                         <div className={this.props.bThem ? "titleInp titleInpDr" : "titleInp titleInpLi"}> Word </div>
                                                         <div className={this.props.bThem ? "borInpt borInptDr" : "borInpt borInptLi"}>
-                                                            <input type="text" placeholder="write here" value={this.state.onAdv} onChange={(x) => { this.setState({ onAdv: x.target.value }) }} />
+                                                            <input type="text" placeholder="write here" value={this.state.onAdv} onChange={(x) => { this.setState({ onAdv: x.target.value }) }}  maxLength="80"/>
                                                         </div>
                                                     </div>
                                                 </div>}

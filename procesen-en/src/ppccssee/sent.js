@@ -142,7 +142,7 @@ export default class Sent extends Component {
                         this.setState({
                             vxTextA: re[0],
                             vxTextACopy: re[0],
-                            vxTextB: re[1],
+                            vxTextB: re[0].replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"),
                             numLis: lisNum,
                             cpu: donCpu
                         })
@@ -153,7 +153,7 @@ export default class Sent extends Component {
                         this.setState({
                             vxTextA: "",
                             vxTextACopy: "",
-                            vxTextB: "<div class='errTextArea'> A problem occurred, there is an error in the input process, either with the input elements, or you entered an invalid value, or you tried to enter invalid functions to delete or modify, a notification has been sent to the programmers and they will work on solving the problem soon . </div> <div class='listErrInfo'> <p class='titleErr'> Please follow one of the following options : </p> <ul class='ulErr'> <li>Please check the text settings entered by you . </li> <li> To Reload page <a href='/'>click here</a> </li></ul> </div>",
+                            vxTextB: " ... ",
                             numLis: lisNum,
                             cpu: donCpu
                         })

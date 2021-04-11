@@ -142,7 +142,7 @@ export default class Sent extends Component {
                         this.setState({
                             vxTextA: re[0],
                             vxTextACopy: re[0],
-                            vxTextB: re[1],
+                            vxTextB: re[0].replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"),
                             numLis: lisNum,
                             cpu: donCpu
                         })

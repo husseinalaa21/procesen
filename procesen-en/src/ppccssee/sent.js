@@ -130,7 +130,8 @@ export default class Sent extends Component {
             rr = "<div class='errTextArea'> A problem occurred, there is an error in the input process, either with the input elements, or you entered an invalid value, or you tried to enter invalid functions to delete or modify, a notification has been sent to the programmers and they will work on solving the problem soon . </div> <div class='listErrInfo'> <p class='titleErr'> Please follow one of the following options : </p> <ul class='ulErr'> <li>Please check the text settings entered by you . </li> <li> To Reload page <a href='/'>click here</a> </li></ul> </div>"
         this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
         if (swp.length > 0 && this.state.isW === true) {
-            var daBot = [this.state.curTex_, this.state.obp, this.state.ev, this.state.unKo, this.state.neIlemntEnter]
+            var ccv = this.state.curTex_.replace(/\u00A3/g,'0S1').replace(/\$/g,'0D8').replace(/\&/g,'0W1').replace(/\#/g,'0X6').replace(/\%/g,'0G2')
+            var daBot = [ccv, this.state.obp, this.state.ev, this.state.unKo, this.state.neIlemntEnter]
             fetch("https://server.procesen.com/pc/procsentEn/sen/?pr=" + JSON.stringify(daBot))
                 .then(res => res.json())
                 .then((re) => {
@@ -138,8 +139,9 @@ export default class Sent extends Component {
                         if (re[0] === false) {
                             this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0 })
                         } else {
-                            let perV = Math.round(((swp.length - re[0].length) / swp.length) * 100)
-                            this.iValCom({ a: swp.length, v: re[0], vb: re[0].replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"), n: re[0].length, p: perV })
+                            var ccq = re[0].replace(/0S1/g,'£').replace(/0D8/g,'$').replace(/0W1/g,'&').replace(/0X6/g,'#').replace(/0G2/g,'%')
+                            let perV = Math.round(((swp.length - ccq.length) / swp.length) * 100)
+                            this.iValCom({ a: swp.length, v: ccq, vb: ccq.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"), n: ccq.length, p: perV })
                         }
                     } catch (err) {
                         this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0 })

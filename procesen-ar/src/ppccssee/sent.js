@@ -24,6 +24,7 @@ export default class Sent extends Component {
             vxTextACopy: "",
             shDit: "",
             vxTextB: "<div class='isWiteTextInput'> </div>",
+            vbPlus : "",
             // FontAwsome
             disVew: false,
             isCoFo: false,
@@ -41,7 +42,7 @@ export default class Sent extends Component {
             // else with ed text
             tyDel: [],
             numLis: [0, 0, 0],
-            cpu: <FontAwesomeIcon icon={faDotCircle} className="donCpu" />,
+            cpu: true,
             wasw: 0,
             numAdsEnt: 0,
             hightEle: [false, "", 0]
@@ -84,7 +85,7 @@ export default class Sent extends Component {
                         for (var co = 0; co < cookMyLis.length; co++) {
                             ez.push(cookMyLis[co])
                             _ev_.push(false)
-                            _neIlemntEnter.push({ ex: cookMyLis[co].ex, eo: cookMyLis[co].eo })
+                            _neIlemntEnter.push({ ex: cookMyLis[co].ex, eo: cookMyLis[co].eo , xvy : false})
                         }
                     }
                     this.setState({
@@ -128,7 +129,7 @@ export default class Sent extends Component {
     feediT() {
         var swp = this.state.curTex_,
             rr = "<div class='errTextArea'> A problem occurred, there is an error in the input process, either with the input elements, or you entered an invalid value, or you tried to enter invalid functions to delete or modify, a notification has been sent to the programmers and they will work on solving the problem soon . </div> <div class='listErrInfo'> <p class='titleErr'> Please follow one of the following options : </p> <ul class='ulErr'> <li>Please check the text settings entered by you . </li> <li> To Reload page <a href='/'>click here</a> </li></ul> </div>"
-        this.setState({ cpu: <FontAwesomeIcon icon={faCircleNotch} className="loader" /> })
+        this.setState({ cpu: false })
         if (swp.length > 0 && this.state.isW === true) {
             var ccv = this.state.curTex_.replace(/\u00A3/g, '0S1').replace(/\$/g, '0D8').replace(/\&/g, '0W1').replace(/\#/g, '0X6').replace(/\%/g, '0G2')
             var daBot = [ccv, this.state.obp, this.state.ev, this.state.unKo, this.state.neIlemntEnter]
@@ -137,25 +138,25 @@ export default class Sent extends Component {
                 .then((re) => {
                     try {
                         if (re[0] === false) {
-                            this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0 })
+                            this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0 ,vbPlus : ""})
                         } else {
-                            var ccq = re[0].replace(/0S1/g, '£').replace(/0D8/g, '$').replace(/0W1/g, '&').replace(/0X6/g, '#').replace(/0G2/g, '%')
+                            var ccq = re[0].replace(/0S1/g,'£').replace(/0D8/g,'$').replace(/0W1/g,'&').replace(/0X6/g,'#').replace(/0G2/g,'%')
+                            var xca = re[1].replace(/0S1/g,'£').replace(/0D8/g,'$').replace(/0W1/g,'&').replace(/0X6/g,'#').replace(/0G2/g,'%').replace(/7H0/g,'*').replace(/8I9/g,'#')
                             let perV = Math.round(((swp.length - ccq.length) / swp.length) * 100)
-                            this.iValCom({ a: swp.length, v: ccq, vb: ccq.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"), n: ccq.length, p: perV })
+                            this.iValCom({ a: swp.length, v: ccq, vb: ccq.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"), n: ccq.length, p: perV , vbPlus : xca })
                         }
                     } catch (err) {
-                        this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0 })
+                        this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0,vbPlus : "" })
                     }
                 }, (er) => {
-                    this.iValCom({ a: swp.length, v: "", vb: " يبدو أن هنالك مشكلة بالخادم [ 002 ] , يرجى الانتضار قليلاً ثم أعادة المحاولة ", n: 0, p: 0 })
+                    this.iValCom({ a: swp.length, v: "", vb: " يبدو أن هنالك مشكلة بالخادم [ 002 ] , يرجى الانتضار قليلاً ثم أعادة المحاولة ", n: 0, p: 0 ,vbPlus : ""})
                 })
         } else {
-            this.iValCom({ a: swp.length, v: "", vb: "<i class='nullTextArea'> لا يوجد شيء بعد </i>", n: 0, p: 0 })
+            this.iValCom({ a: swp.length, v: "", vb: "<i class='nullTextArea'> لا يوجد شيء بعد </i>", n: 0, p: 0,vbPlus : "" })
         }
     }
     iValCom(x) {
-        var lisNum = this.state.numLis,
-            donCpu = <FontAwesomeIcon icon={faDotCircle} className="donCpu" />;
+        var lisNum = this.state.numLis;
         lisNum[0] = x.a
         lisNum[1] = x.n
         lisNum[2] = x.p
@@ -164,8 +165,26 @@ export default class Sent extends Component {
             vxTextACopy: x.v,
             vxTextB: x.vb,
             numLis: lisNum,
-            cpu: donCpu
+            cpu: true,
+            vbPlus : x.vbPlus
         })
+        setTimeout(() => {
+            this.isVbPlus()
+        }, 200);
+    }
+
+    isVbPlus(){
+        var xca = this.state.vbPlus
+        if(xca.length > 0 && this.state.cpu === true){
+            if(this.state.isColor === true){
+                xca = xca.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
+                xca = xca.replace(/\*\#/g, "")
+                xca = xca.replace(/\#/g, '<b class="deWor">').replace(/\*/g, '</b>')
+                this.setState({vxTextB : xca})
+            } else {
+                this.setState({vxTextB : this.state.vxTextA.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")})
+            }
+        }
     }
     // Any Tools
     anlyText() {
@@ -425,7 +444,7 @@ export default class Sent extends Component {
                 })
                 if (ise === false) {
                     let eqa = { nam: u, ex: false, eo: arx, exs: true }
-                    let syNe = { ex: false, eo: arx }
+                    let syNe = { ex: false, eo: arx , xvy : false}
                     if (neit.length > 0 && neit !== undefined) {
                         neit.push(syNe)
                     } else {
@@ -485,7 +504,7 @@ export default class Sent extends Component {
                 })
                 if (ise === false) {
                     let eqa = { nam: u, ex: true, eo: x, exs: true }
-                    let syNe = { ex: true, eo: x }
+                    let syNe = { ex: true, eo: x , xvy : false}
                     if (neit.length > 0 && neit !== undefined) {
                         neit.push(syNe)
                     } else {
@@ -645,16 +664,16 @@ export default class Sent extends Component {
                                         <div className="apiChoose" onClick={() => this.chanDis()}>
                                             <FontAwesomeIcon icon={faPenAlt} className={this.state.disVew ? "apiChose" : this.caseInfoPP() ? "apiunChose" : "apiunChoseQ"} />
                                         </div>
-                                        {/*<div className="apiChoose" onClick={() => this.colorize()}>
+                                        <div className="apiChoose" onClick={() => this.colorize()}>
                                             <FontAwesomeIcon icon={faPalette} className={this.state.isColor ? "apiChose" : "apiunChose"} />
-                                        </div>*/}
+                                        </div>
                                         <div className="apiChoose" onClick={() => this.thThisK()}>
                                             <FontAwesomeIcon icon={faThumbtack} className={this.state.isH ? "apiChose" : "apiunChose"} />
                                         </div>
                                         {this.isCleanUp() ? <div className="apiChoose" onClick={() => this.cleanUp()}><FontAwesomeIcon icon={faUndoAlt} className="apiChoseUndo" /></div> : ""}
                                     </div>
                                     <div className="apiChoose">
-                                        {this.state.cpu}
+                                        {this.state.cpu ? <FontAwesomeIcon icon={faDotCircle} className="donCpu" /> : <FontAwesomeIcon icon={faCircleNotch} className="loader" />}
                                     </div>
                                 </div>
                             </div>

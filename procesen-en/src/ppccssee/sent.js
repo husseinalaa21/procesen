@@ -178,8 +178,8 @@ export default class Sent extends Component {
         if(xca.length > 0 && this.state.cpu === true){
             if(this.state.isColor === true){
                 xca = xca.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
-                xca = xca.replace(/\*\#/g, "")
-                xca = xca.replace(/\#/g, '<b class="deWor">').replace(/\*/g, '</b>')
+                xca = xca.replace(/\#\*\#\*\#\*/g, "")
+                xca = xca.replace(/\*\#\*/g, '<b class="deWor">').replace(/\#\*\#/g, '</b>')
                 this.setState({vxTextB : xca})
             } else {
                 this.setState({vxTextB : this.state.vxTextA.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")})

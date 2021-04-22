@@ -141,7 +141,7 @@ export default class Sent extends Component {
                             this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0 ,vbPlus : ""})
                         } else {
                             var ccq = re[0].replace(/0S1/g,'£').replace(/0D8/g,'$').replace(/0W1/g,'&').replace(/0X6/g,'#').replace(/0G2/g,'%')
-                            var xca = re[1].replace(/0S1/g,'£').replace(/0D8/g,'$').replace(/0W1/g,'&').replace(/0X6/g,'#').replace(/0G2/g,'%').replace(/7H0/g,'*').replace(/8I9/g,'#')
+                            var xca = re[1].replace(/0S1/g,'£').replace(/0D8/g,'$').replace(/0W1/g,'&').replace(/0X6/g,'#').replace(/0G2/g,'%').replace(/7H0/g,'*')
                             let perV = Math.round(((swp.length - ccq.length) / swp.length) * 100)
                             this.iValCom({ a: swp.length, v: ccq, vb: ccq.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"), n: ccq.length, p: perV , vbPlus : xca })
                         }

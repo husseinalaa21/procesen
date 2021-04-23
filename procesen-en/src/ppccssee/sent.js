@@ -102,7 +102,7 @@ export default class Sent extends Component {
                 },
                 (err) => {
                     this.setState({
-                        vxTextB: "There appears to be a problem with the server [002]. Please wait a while and try again ."
+                        vxTextB: "It seems that there is a problem with the server or with the website data stored in your browser, please delete the website data from your browser (cookies) and try again."
                     });
                 }
             )

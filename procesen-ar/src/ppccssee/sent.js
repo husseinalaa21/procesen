@@ -61,7 +61,7 @@ export default class Sent extends Component {
         this.xs_ert()
     }
     xs_ert() {
-        fetch("https://server.procesen.com/pc/procsentAr")
+        fetch("http://localhost:4200/pc/procsentAr")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -102,7 +102,7 @@ export default class Sent extends Component {
                 },
                 (error) => {
                     this.setState({
-                        vxTextB: " يبدو أن هنالك مشكلة بالخادم [ 002 ] , يرجى الانتضار قليلاً ثم أعادة المحاولة "
+                        vxTextB: " يبدو أن هنالك مشكلة بالخادم أو ببيانات الموقع المخزونة بمتصفحك ,يرجى حذف بيانات الموقع من متصفحك (الكوكيز ) و أعادة المحاولة "
                     });
                 }
             )
@@ -133,7 +133,7 @@ export default class Sent extends Component {
         if (swp.length > 0 && this.state.isW === true) {
             var ccv = this.state.curTex_.replace(/\u00A3/g, '0S1').replace(/\$/g, '0D8').replace(/\&/g, '0W1').replace(/\#/g, '0X6').replace(/\%/g, '0G2')
             var daBot = [ccv, this.state.obp, this.state.ev, this.state.unKo, this.state.neIlemntEnter]
-            fetch("https://server.procesen.com/pc/procsentAr/sen/?pr=" + JSON.stringify(daBot))
+            fetch("http://localhost:4200/pc/procsentAr/sen/?pr=" + JSON.stringify(daBot))
                 .then(res => res.json())
                 .then((re) => {
                     try {

@@ -24,7 +24,7 @@ export default class Sent extends Component {
             vxTextACopy: "",
             shDit: "",
             vxTextB: "<div class='isWiteTextInput'> </div>",
-            vbPlus : "",
+            vbPlus: "",
             // FontAwsome
             disVew: false,
             isCoFo: false,
@@ -61,51 +61,41 @@ export default class Sent extends Component {
         this.xs_ert()
     }
     xs_ert() {
-        fetch("https://procesen.vercel.app/pc/procsentAr")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    var _obp_ = [],
-                        dz = [],
-                        ez = [],
-                        _ev_ = [],
-                        _neIlemntEnter = []
+        var result = [{ "exdz": "[0-9]", "nam": " أرقام " }, { "exdz": " ", "nam": " مسافات " }, { "exdz": "[؀-ۿ]", "nam": " أحرف عربية " }, { "exdz": "[a-zA-Z]", "nam": " أحرف انجليزية " }, { "exdz": "[@|#|$|%|=|&|*|(|)|{|}|:|/|\\>|<]", "nam": " رموز و فواصل " }, { "exdz": "[.]", "nam": " نقطة فاصل " }, { "exdz": "[?]", "nam": " علامة استفهام " }, { "exdz": "[']", "nam": " علامة اقتباس [ ' ]" }, { "exdz": "[\"]", "nam": " علامة اقتباس [ \" ]" }, { "exdz": "[`]", "nam": " علامة اقتباس [ ` ]" }, { "exdz": "[,]", "nam": " فاصلة [ , ] " }, { "exdz": "[!]", "nam": " علامة تعجب " }, { "exdz": "[;]", "nam": " فاصلة منقوطة [ ; ]" }, { "exdz": "[+]", "nam": " علامة جمع " }, { "exdz": "[-]", "nam": " علامة ناقص " }, { "exdz": "[\\]|[]", "nam": " أقواس مربعة " }, { "exdz": "\n", "nam": " سطور " }, { "exdz": false, "nam": " أزالة الاقتباسات ", "ex": true }, { "exdz": false, "nam": " أزالة علامات التكسير ", "ex": true }, { "exdz": false, "nam": " (العربية) معالجة الكلمات ", "ex": false }, { "exdz": false, "nam": " (العربية) معالجة الجمل ", "ex": false }, { "exdz": false, "nam": " تحويل الارقام العربية الى احرف أنجليزية ", "ex": false }, { "exdz": false, "nam": " تحويل الارقام الانجليزية الى احرف عربية ", "ex": false }]
+        var _obp_ = [],
+            dz = [],
+            ez = [],
+            _ev_ = [],
+            _neIlemntEnter = []
 
-                    for (var e = 0; e < result.length; e++) {
-                        if (result[e].exdz !== false) {
-                            dz.push(result[e])
-                            _obp_.push(false)
-                        } else {
-                            ez.push(result[e])
-                            _ev_.push(false)
-                        }
-                    }
-                    var cookMyLis = cookies.get('meLis')
-                    if (cookMyLis !== undefined) {
-                        for (var co = 0; co < cookMyLis.length; co++) {
-                            ez.push(cookMyLis[co])
-                            _ev_.push(false)
-                            _neIlemntEnter.push({ ex: cookMyLis[co].ex, eo: cookMyLis[co].eo , xvy : false})
-                        }
-                    }
-                    this.setState({
-                        isW: true,
-                        obp: _obp_,
-                        dzVbn: dz,
-                        ezVbn: ez,
-                        ev: _ev_,
-                        neIlemntEnter: _neIlemntEnter,
-                        numAdsEnt: _neIlemntEnter.length,
-                        vxTextB: "<i class='nullTextArea'> لا يوجد شيء بعد </i>"
-                    });
-                    this.resLisAdv()
-                },
-                (error) => {
-                    this.setState({
-                        vxTextB: " يبدو أن هنالك مشكلة بالخادم أو ببيانات الموقع المخزونة بمتصفحك ,يرجى حذف بيانات الموقع من متصفحك (الكوكيز ) و أعادة المحاولة "
-                    });
-                }
-            )
+        for (var e = 0; e < result.length; e++) {
+            if (result[e].exdz !== false) {
+                dz.push(result[e])
+                _obp_.push(false)
+            } else {
+                ez.push(result[e])
+                _ev_.push(false)
+            }
+        }
+        var cookMyLis = cookies.get('meLis')
+        if (cookMyLis !== undefined) {
+            for (var co = 0; co < cookMyLis.length; co++) {
+                ez.push(cookMyLis[co])
+                _ev_.push(false)
+                _neIlemntEnter.push({ ex: cookMyLis[co].ex, eo: cookMyLis[co].eo, xvy: false })
+            }
+        }
+        this.setState({
+            isW: true,
+            obp: _obp_,
+            dzVbn: dz,
+            ezVbn: ez,
+            ev: _ev_,
+            neIlemntEnter: _neIlemntEnter,
+            numAdsEnt: _neIlemntEnter.length,
+            vxTextB: "<i class='nullTextArea'> لا يوجد شيء بعد </i>"
+        });
+        this.resLisAdv()
     }
     componentDidUpdate(prevProps) {
         if (this.props.xtex !== prevProps.xtex) {
@@ -138,21 +128,21 @@ export default class Sent extends Component {
                 .then((re) => {
                     try {
                         if (re[0] === false) {
-                            this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0 ,vbPlus : ""})
+                            this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0, vbPlus: "" })
                         } else {
-                            var ccq = re[0].replace(/0S1/g,'£').replace(/0D8/g,'$').replace(/0W1/g,'&').replace(/0X6/g,'#').replace(/0G2/g,'%')
-                            var xca = re[1].replace(/0S1/g,'£').replace(/0D8/g,'$').replace(/0W1/g,'&').replace(/0X6/g,'#').replace(/0G2/g,'%').replace(/7H0/g,'*')
+                            var ccq = re[0].replace(/0S1/g, '£').replace(/0D8/g, '$').replace(/0W1/g, '&').replace(/0X6/g, '#').replace(/0G2/g, '%')
+                            var xca = re[1].replace(/0S1/g, '£').replace(/0D8/g, '$').replace(/0W1/g, '&').replace(/0X6/g, '#').replace(/0G2/g, '%').replace(/7H0/g, '*')
                             let perV = Math.round(((swp.length - ccq.length) / swp.length) * 100)
-                            this.iValCom({ a: swp.length, v: ccq, vb: ccq.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"), n: ccq.length, p: perV , vbPlus : xca })
+                            this.iValCom({ a: swp.length, v: ccq, vb: ccq.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;"), n: ccq.length, p: perV, vbPlus: xca })
                         }
                     } catch (err) {
-                        this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0,vbPlus : "" })
+                        this.iValCom({ a: swp.length, v: "", vb: rr, n: 0, p: 0, vbPlus: "" })
                     }
                 }, (er) => {
-                    this.iValCom({ a: swp.length, v: "", vb: " يبدو أن هنالك مشكلة بالخادم [ 002 ] , يرجى الانتضار قليلاً ثم أعادة المحاولة ", n: 0, p: 0 ,vbPlus : ""})
+                    this.iValCom({ a: swp.length, v: "", vb: " يبدو أن هنالك مشكلة بالخادم [ 002 ] , يرجى الانتضار قليلاً ثم أعادة المحاولة ", n: 0, p: 0, vbPlus: "" })
                 })
         } else {
-            this.iValCom({ a: swp.length, v: "", vb: "<i class='nullTextArea'> لا يوجد شيء بعد </i>", n: 0, p: 0,vbPlus : "" })
+            this.iValCom({ a: swp.length, v: "", vb: "<i class='nullTextArea'> لا يوجد شيء بعد </i>", n: 0, p: 0, vbPlus: "" })
         }
     }
     iValCom(x) {
@@ -166,23 +156,23 @@ export default class Sent extends Component {
             vxTextB: x.vb,
             numLis: lisNum,
             cpu: true,
-            vbPlus : x.vbPlus
+            vbPlus: x.vbPlus
         })
         setTimeout(() => {
             this.isVbPlus()
         }, 200);
     }
 
-    isVbPlus(){
+    isVbPlus() {
         var xca = this.state.vbPlus
-        if(xca.length > 0 && this.state.cpu === true){
-            if(this.state.isColor === true){
+        if (xca.length > 0 && this.state.cpu === true) {
+            if (this.state.isColor === true) {
                 xca = xca.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")
                 xca = xca.replace(/\#\*\#\*\#\*/g, "")
                 xca = xca.replace(/\*\#\*/g, '<b class="deWor">').replace(/\#\*\#/g, '</b>')
-                this.setState({vxTextB : xca})
+                this.setState({ vxTextB: xca })
             } else {
-                this.setState({vxTextB : this.state.vxTextA.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;")})
+                this.setState({ vxTextB: this.state.vxTextA.replace(/\n/g, "<br/>").replace(/ /g, "&nbsp;") })
             }
         }
     }
@@ -444,7 +434,7 @@ export default class Sent extends Component {
                 })
                 if (ise === false) {
                     let eqa = { nam: u, ex: false, eo: arx, exs: true }
-                    let syNe = { ex: false, eo: arx , xvy : false}
+                    let syNe = { ex: false, eo: arx, xvy: false }
                     if (neit.length > 0 && neit !== undefined) {
                         neit.push(syNe)
                     } else {
@@ -504,7 +494,7 @@ export default class Sent extends Component {
                 })
                 if (ise === false) {
                     let eqa = { nam: u, ex: true, eo: x, exs: true }
-                    let syNe = { ex: true, eo: x , xvy : false}
+                    let syNe = { ex: true, eo: x, xvy: false }
                     if (neit.length > 0 && neit !== undefined) {
                         neit.push(syNe)
                     } else {

@@ -61,51 +61,41 @@ export default class Sent extends Component {
         this.xs_ert()
     }
     xs_ert() {
-        fetch("https://procesen.vercel.app/pc/procsentEn")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    var _obp_ = [],
-                        dz = [],
-                        ez = [],
-                        _ev_ = [],
-                        _neIlemntEnter = []
+        var result = [{"exdz":"[0-9]","nam":" Numbers "},{"exdz":" ","nam":" Spaces "},{"exdz":"[؀-ۿ]","nam":"Letters Arabic"},{"exdz":"[a-zA-Z]","nam":" Letters English "},{"exdz":"[@|#|$|%|=|&|*|(|)|{|}|:|/|\\>|<]","nam":" Breaks and symbols "},{"exdz":"[.]","nam":" Dot Break "},{"exdz":"[?]","nam":" A question mark "},{"exdz":"[']","nam":" Quotation marks [ ' ]"},{"exdz":"[\"]","nam":" Quotation marks [ \" ]"},{"exdz":"[`]","nam":" Quotation marks [ ` ]"},{"exdz":"[,]","nam":" Comma [ , ] "},{"exdz":"[!]","nam":" Exclamation mark "},{"exdz":"[;]","nam":" Semicolon [ ; ]"},{"exdz":"[+]","nam":" Plus "},{"exdz":"[-]","nam":" Minus "},{"exdz":"[\\]|[]","nam":" Square brackets "},{"exdz":"\n","nam":" Lins "},{"exdz":false,"nam":" Remove quotes ","ex":true},{"exdz":false,"nam":" Word processing ( English ) ","ex":false},{"exdz":false,"nam":" Sentences processing ( English ) ","ex":false}]
+        var _obp_ = [],
+            dz = [],
+            ez = [],
+            _ev_ = [],
+            _neIlemntEnter = []
 
-                    for (var e = 0; e < result.length; e++) {
-                        if (result[e].exdz !== false) {
-                            dz.push(result[e])
-                            _obp_.push(false)
-                        } else {
-                            ez.push(result[e])
-                            _ev_.push(false)
-                        }
-                    }
-                    var cookMyLis = cookies.get('meLis')
-                    if (cookMyLis !== undefined) {
-                        for (var co = 0; co < cookMyLis.length; co++) {
-                            ez.push(cookMyLis[co])
-                            _ev_.push(false)
-                            _neIlemntEnter.push({ ex: cookMyLis[co].ex, eo: cookMyLis[co].eo , xvy : false})
-                        }
-                    }
-                    this.setState({
-                        isW: true,
-                        obp: _obp_,
-                        dzVbn: dz,
-                        ezVbn: ez,
-                        ev: _ev_,
-                        neIlemntEnter: _neIlemntEnter,
-                        numAdsEnt: _neIlemntEnter.length,
-                        vxTextB: "<i class='nullTextArea'> There is nothing yet .. </i>"
-                    });
-                    this.resLisAdv()
-                },
-                (err) => {
-                    this.setState({
-                        vxTextB: "It seems that there is a problem with the server or with the website data stored in your browser, please delete the website data from your browser (cookies) and try again."
-                    });
-                }
-            )
+        for (var e = 0; e < result.length; e++) {
+            if (result[e].exdz !== false) {
+                dz.push(result[e])
+                _obp_.push(false)
+            } else {
+                ez.push(result[e])
+                _ev_.push(false)
+            }
+        }
+        var cookMyLis = cookies.get('meLis')
+        if (cookMyLis !== undefined) {
+            for (var co = 0; co < cookMyLis.length; co++) {
+                ez.push(cookMyLis[co])
+                _ev_.push(false)
+                _neIlemntEnter.push({ ex: cookMyLis[co].ex, eo: cookMyLis[co].eo , xvy : false})
+            }
+        }
+        this.setState({
+            isW: true,
+            obp: _obp_,
+            dzVbn: dz,
+            ezVbn: ez,
+            ev: _ev_,
+            neIlemntEnter: _neIlemntEnter,
+            numAdsEnt: _neIlemntEnter.length,
+            vxTextB: "<i class='nullTextArea'> There is nothing yet .. </i>"
+        });
+        this.resLisAdv()
     }
     componentDidUpdate(prevProps) {
         if (this.props.xtex !== prevProps.xtex) {

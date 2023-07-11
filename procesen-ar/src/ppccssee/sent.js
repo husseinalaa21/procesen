@@ -61,7 +61,7 @@ export default class Sent extends Component {
         this.xs_ert()
     }
     xs_ert() {
-        fetch("https://server.procesen.com/pc/procsentAr")
+        fetch("https://procesen.vercel.app/pc/procsentAr")
             .then(res => res.json())
             .then(
                 (result) => {
